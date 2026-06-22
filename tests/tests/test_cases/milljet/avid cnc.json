@@ -1,0 +1,74 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "avid cnc",
+      "outputFolder": "milljet",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "forceHomeAtEnd": true,
+            "useM06": false,
+            "useWCS": true
+          },
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "Multi-axis",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "safePositionMethod": "G53"
+          },
+          "machine": "tests/machine/A_table_NoTCP.mch",
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Multi-axis options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "safePositionMethod": "G53",
+            "forceHomeAtEnd": true
+          },
+          "machine": "tests/machine/A_table_NoTCP.mch",
+          "input": [
+            "A-axis 3+2"
+          ]
+        },
+        {
+          "description": "Laser operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {
+            "laserToolNumber": 2
+          },
+          "input": [
+            "Laser"
+          ]
+        }
+      ]
+    }
+  ]
+}

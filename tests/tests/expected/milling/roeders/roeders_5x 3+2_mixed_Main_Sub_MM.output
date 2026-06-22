@@ -1,0 +1,63 @@
+//  --- INFO ---
+// MYCOMMENT
+//  --- INIT ---
+TCorrOff                          // Deactivate RTCP function
+RMO                               // Reset the rotary axis coordinates
+
+Set_Offset_R -od -tor             // change calculation rule for 2D radius correction
+
+PROTOCOL -start -head
+MDC -Start -User1="Hauptprogramm"
+
+//  --- BEGIN MACHINING ---
+MaCoor -all                       // Reset all coordinate shifts
+LoadZero="1"-h=0.0               // Example: Workpiece zero point from zero point memory
+
+//  --- DYNAMIC ---
+Cam_Undersize=0                   // Workpiece undersize (minimum oversize of all programs)
+DynAuto="General"                 // ADPA rule"General"
+
+//  --- OPTIONS ---
+// SET_WARMUP=120                 // MANUAL USER SPINDLE WARMUP
+// SET_OFFSET_R=0.00              // MANUAL USER OFFSET FOR 2D_COMPENSATION
+
+// TOOLS
+// -------------------------------------
+//   T2 D=9.525 - FLAT END MILL
+//   T8 D=12.7 - FLAT END MILL
+// -------------------------------------
+
+// --------------------------------------------------------------------------------------------------
+//  T2, TT=MYTOOL2, TOOLDATA DIA=9.525, TIPR=0
+// --------------------------------------------------------------------------------------------------
+$TlmType=1
+XCALL sub1.rod
+
+// --------------------------------------------------------------------------------------------------
+//  T8, TT=MYTOOL8, TOOLDATA DIA=12.7, TIPR=0
+// --------------------------------------------------------------------------------------------------
+XCALL sub2.rod
+
+// --------------------------------------------------------------------------------------------------
+//  T2, TT=MYTOOL2, TOOLDATA DIA=9.525, TIPR=0
+// --------------------------------------------------------------------------------------------------
+$TlmType=0
+XCALL sub3.rod
+XCALL sub4.rod
+XCALL sub5.rod
+XCALL sub6.rod
+XCALL sub7.rod
+$TlmType=1
+XCALL sub8.rod
+
+
+//  RESET_WARMUP                  // RESETTING A TEMPORARY WARM-UP TIME
+//  RESET_OFFSET_R                // INITIALIZE 2D-RADIUS CORRECTION OFFSET
+//  LINEUP = 0
+
+
+//  --- END OF MACHINING ---
+
+
+MDC -End
+ M30

@@ -1,0 +1,24 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "romeo waterjet",
+      "outputFolder": "jet",
+      "testCases": [
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {
+            "writeTimeAndDate": false
+          },
+          "input": [
+            "Waterjet",
+            "Waterjet Compensation"
+          ]
+        }
+      ]
+    }
+  ]
+}

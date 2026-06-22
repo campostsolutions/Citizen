@@ -1,0 +1,35 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "grbl turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning No Compensation",
+            "Axial No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning No Compensation"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "kern laser",
+      "outputFolder": "jet",
+      "testCases": [
+        {
+          "description": "Standard laser operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Laser"
+          ]
+        }
+      ]
+    }
+  ]
+}

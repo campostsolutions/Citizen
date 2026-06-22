@@ -1,0 +1,165 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "robodrill",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "preloadTool": false,
+            "useRadius": true,
+            "useSmoothing": "0",
+            "usePitchForTapping": true,
+            "useG95": true,
+            "useG99": true,
+            "chipTransport": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Multi-axis",
+          "inputFolder": "milling",
+          "suffix": "_5axis",
+          "properties": {
+            "fifthAxis": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "5-axis Options",
+          "inputFolder": "milling",
+          "suffix": "_5Axis_options",
+          "properties": {
+            "fifthAxis": true,
+            "useTiltedWorkplane": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rotarysubs",
+          "properties": {
+            "useSubroutines": "patterns",
+            "fifthAxis": true
+          },
+          "input": [
+            "AC-Pattern"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular"
+          ]
+        }
+      ]
+    }
+  ]
+}

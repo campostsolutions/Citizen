@@ -1,0 +1,63 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "ezpath conversational turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning No Compensation",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "_misc",
+          "properties": {
+            "useCycles": false,
+            "useComments": false,
+            "useConstantSurfaceSpeed": false,
+            "useRadius": true,
+            "spindleRangeLow": 0,
+            "spindleRangeHigh":0,
+            "safePositionMethod": "homePosition",
+            "safePositionStyle": "XZ",
+            "homePositionX": 2,
+            "homePositionZ": 4
+          },
+          "input": [
+            "Turning No Compensation",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

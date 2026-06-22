@@ -1,0 +1,79 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "gskcnc turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial No Tapping Cycles"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {
+            "useCycles": true
+          },
+          "input": [
+            "Axial No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {
+            "useCycles": true
+          },
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_thread_cycle",
+          "properties": {
+            "useCycles": true,
+            "useSimpleThread": false
+          },
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning 2 Axis"
+          ]
+        }
+      ]
+    }
+  ]
+}

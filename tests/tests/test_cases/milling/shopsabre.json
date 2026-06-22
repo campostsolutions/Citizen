@@ -1,0 +1,72 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "shopsabre",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useToolCall": false,
+            "useCoolant": true
+          },
+          "input": [
+            "Milling Cycles"
+          ]
+        },
+        {
+          "description": "Multi-axis A-axis",
+          "inputFolder": "milling",
+          "suffix": "_aaxis",
+          "properties": {
+            "rotaryTableAxis": "x"
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Multi-axis B-axis",
+          "inputFolder": "milling",
+          "suffix": "_baxis",
+          "properties": {
+            "rotaryTableAxis": "-y"
+          },
+          "input": [
+            "B-axis 3+2",
+            "B-axis Simultaneous",
+            "B-axis Drilling"
+          ]
+        },
+        {
+          "description": "Feed first option",
+          "inputFolder": "milling",
+          "suffix": "_feedFirst",
+          "properties": {
+            "useXYZFeeds": "feedFirst"
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

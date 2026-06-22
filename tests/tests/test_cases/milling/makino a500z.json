@@ -1,0 +1,23 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "makino a500z",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "AB 3+2",
+            "AB Simultaneous",
+            "AB Drilling"
+          ]
+        }      
+      ]		
+    }
+  ]
+}

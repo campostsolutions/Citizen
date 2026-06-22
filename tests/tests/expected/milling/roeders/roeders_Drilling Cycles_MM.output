@@ -1,0 +1,399 @@
+//  --- INFO ---
+// MYCOMMENT
+//  --- INIT ---
+Set_Offset_R -od -tor             // change calculation rule for 2D radius correction
+
+PROTOCOL -start -head
+MDC -Start -User1="Hauptprogramm"
+
+//  --- BEGIN MACHINING ---
+MaCoor -all                       // Reset all coordinate shifts
+LoadZero="1"-h=0.0               // Example: Workpiece zero point from zero point memory
+
+//  --- DYNAMIC ---
+Cam_Undersize=0                   // Workpiece undersize (minimum oversize of all programs)
+DynAuto="General"                 // ADPA rule"General"
+
+//  --- OPTIONS ---
+// SET_WARMUP=120                 // MANUAL USER SPINDLE WARMUP
+// SET_OFFSET_R=0.00              // MANUAL USER OFFSET FOR 2D_COMPENSATION
+
+// TOOLS
+// -------------------------------------
+//   T3 D=5.11 TAPER=118DEG - ZMIN=-16.535 - ZMAX=16 - DRILL
+//   T4 D=6.35 - ZMIN=-14 - ZMAX=16 - RIGHT HAND TAP
+//   T5 D=6.35 - ZMIN=-14 - ZMAX=16 - LEFT HAND TAP
+//   T6 D=5.08 - ZMIN=-14 - ZMAX=16 - REAMER
+//   T7 D=6.35 TAPER=90DEG - ZMIN=-0.2 - ZMAX=9.9 - SPOT DRILL
+// -------------------------------------
+
+//  --- BEGIN MACHINING ---
+// RAPID OUT
+
+// --------------------------------------------------------------------------------------------------
+//  T3, TT=MYTOOL3, TOOLDATA DIA=5.11, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T3
+S5000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP -ssa                           // Approach safety position as starting position
+WaitC                             // Option: Program pause, if it was activated
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 200 DRILLING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=16.535 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+G00 M99
+G00 X25 M99
+G00 Z16
+
+// DWELL AND RAPID OUT
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 200 DRILLING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=16.535 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+G00 M99
+G00 X25 M99
+G00 Z16
+
+// CHIP BREAKING
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 203 UNIVERSAL DRILLING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q212=0.1 ;DECREMENT ~
+  Q213=5 ;BREAKS ~
+  Q205=0.5 ;MIN. PLUNGING DEPTH ~
+  Q211=0 ;DWELL TIME AT DEPTH ~
+  Q208=MAX ;RETRACTION FEED RATE ~
+  Q256=0.102 ;DIST. FOR CHIP BRKNG
+G00 M99
+G00 X25 M99
+G00 Z16
+
+// DEEP DRILLING
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 200 DRILLING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+G00 M99
+G00 X25 M99
+G00 Z16
+
+// BREAK-THROUGH DRILLING
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+G00 Z6
+G00 Z5
+G01 Z-11.425 F400
+S3000
+G01 Z-16.535 F500
+S5000
+G01 Z5 F1000
+G00 Z6
+G00 X25
+G00 Z5
+G01 Z-11.425 F400
+S3000
+G01 Z-16.535 F500
+S5000
+G01 Z5 F1000
+G00 Z6
+G00 Z16
+
+// GUIDED DEEP DRILLING
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 241 SINGLE-FLUTED DEEP-HOLE DRILLING ~
+ Q200=5 ;SET-UP CLEARANCE ~
+ Q201=-16.535 ;DEPTH ~
+ Q206=400 ;FEED RATE FOR PLUNGING ~
+ Q211=0 ;DWELL TIME AT DEPTH ~
+ Q203=0 ;SURFACE COORDINATE ~
+ Q204=6 ;2ND SET-UP CLEARANCE ~
+ Q379=5.11 ;STARTING POINT ~
+ Q253=500 ;F PRE-POSITIONING ~
+ Q208=1000 ;RETRACT FEED RATE ~
+ Q426=3 ;DIR. OF SPINDLE ROT. ~
+ Q427=3000 ;ENTRY EXIT SPEED ~
+ Q428=5000 ;DRILLING SPEED ~
+ Q429=VacAutoOff                        // Automatic graphite vacuum cleaner off,EmuOn -out                        // Emulsion on,HazeVacOn                         // Option: Mist suctioning on ;COOLANT ON ~
+ Q430=EmuOff                            // Emulsion off,HazeVacOff                        // Option: Mist suctioning off ;COOLANT OFF ~
+ Q435=0 ;DWELL DEPTH
+G00 M99
+G00 X25 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// TAP
+
+// --------------------------------------------------------------------------------------------------
+//  T4, TT=MYTOOL4, TOOLDATA DIA=6.35, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T4
+S1000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X25 Y10
+G00 Z16
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=+1.27 ;THREAD PITCH ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE
+G00 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// LEFT TAP
+
+// --------------------------------------------------------------------------------------------------
+//  T5, TT=MYTOOL5, TOOLDATA DIA=6.35, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T5
+S1000 M4
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=-1.27 ;THREAD PITCH ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE
+G00 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// RIGHT TAP
+
+// --------------------------------------------------------------------------------------------------
+//  T4, TT=MYTOOL4, TOOLDATA DIA=6.35, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T4
+S1000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X25 Y10
+G00 Z16
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=+1.27 ;THREAD PITCH ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE
+G00 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// REAMING
+
+// --------------------------------------------------------------------------------------------------
+//  T6, TT=MYTOOL6, TOOLDATA DIA=5.08, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T6
+S2000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 201 REAMING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q206=200 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=200 ;RETRACTION FEED TIME ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE
+G00 M99
+G00 X25 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// BORING
+
+// --------------------------------------------------------------------------------------------------
+//  T3, TT=MYTOOL3, TOOLDATA DIA=5.11, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T3
+S5000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 202 BORING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-15 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=400 ;RETRACTION FEED RATE ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q214=0 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+G00 M99
+G00 X25 M99
+G00 Z16
+
+// BORING RETRACT FEED
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+G00 X-25 Y10
+G00 Z16
+CYCL DEF 202 BORING ~
+  Q200=5 ;SET-UP CLEARANCE ~
+  Q201=-15 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=1000 ;RETRACTION FEED RATE ~
+  Q203=0 ;SURFACE COORDINATE ~
+  Q204=6 ;2ND SET-UP CLEARANCE ~
+  Q214=0 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+G00 M99
+G00 X25 M99
+G00 Z16
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+// RAPID MOVEMENT TEST
+
+// --------------------------------------------------------------------------------------------------
+//  T7, TT=MYTOOL7, TOOLDATA DIA=6.35, TIPR=0
+// --------------------------------------------------------------------------------------------------
+T7
+S6000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+SP                                // Safety position
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+G00 X-43.536 Y18.536
+G00 Z9.9
+CYCL DEF 200 DRILLING ~
+  Q200=0 ;SET-UP CLEARANCE ~
+  Q201=-0.1 ;DEPTH ~
+  Q206=333 ;FEED RATE FOR PLUNGING ~
+  Q202=0.1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=-0.1 ;SURFACE COORDINATE ~
+  Q204=0 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+G00 M99
+G00 X0 Y-18.536 M99
+G00 Z9.9
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+
+
+//  RESET_WARMUP                  // RESETTING A TEMPORARY WARM-UP TIME
+//  RESET_OFFSET_R                // INITIALIZE 2D-RADIUS CORRECTION OFFSET
+//  LINEUP = 0
+
+
+//  --- END OF MACHINING ---
+
+
+MDC -End
+ M30

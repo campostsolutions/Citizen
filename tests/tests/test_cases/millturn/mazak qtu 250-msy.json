@@ -1,0 +1,194 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "mazak qtu 250-msy",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Mill Turn Modes",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Misc Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "_misc",
+          "properties": {
+            "useYAxisForDrilling":true
+          },
+          "input": [
+            "Z-axis Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Parametric feed",
+          "inputFolder": "turning",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Parametric feed",
+          "inputFolder": "millturn",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Threading cycle",
+          "inputFolder": "turning",
+          "suffix": "_thread_cycle",
+          "properties": {
+            "useSimpleThread": false
+          },
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": " Tapping operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": " Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Radial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Secondary Spindle operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Secondary Turning 2 Axis",
+            "Secondary SFM Spindle Speed",
+            "Secondary Axial Drilling Cycles",
+            "Secondary Axial Milling Cycles",
+            "Secondary Mill Turn Axial",
+            "Secondary Z-axis Drilling Cycles",
+            "Secondary Mill Turn Polar",
+            "Secondary Mill Turn XZC",
+            "Secondary Mill Turn Modes",
+            "Secondary Radial Drilling Cycles",
+            "Secondary Radial Wrapped",
+            "Secondary Mill Turn Radial"
+          ]
+        },
+        {
+          "description": "Secondary Threading operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Secondary Straight Threading",
+            "Secondary Slant Threading",
+            "Secondary Straight Threading Cycle",
+            "Secondary Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Secondary Threading cycle",
+          "inputFolder": "millturn",
+          "suffix": "_thread_cycle",
+          "properties": {
+            "useSimpleThread": false
+          },
+          "input": [
+            "Secondary Straight Threading Cycle",
+            "Secondary Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": " Secondary Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Secondary Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Part transfer",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Simple Part Transfer",
+            "Part Transfer with Cutoff",
+            "Simple Bar Pull"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {
+            "showSequenceNumbers":"false"
+          },
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

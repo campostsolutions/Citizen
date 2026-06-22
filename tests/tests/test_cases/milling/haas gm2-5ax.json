@@ -1,0 +1,220 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "haas gm2-5ax",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useG28": true,
+            "useG0": true,
+            "preloadTool": false,
+            "useRadius": true,
+            "useSmoothing": "9999",
+            "usG95ForTapping": true,
+            "optionallyCycleToolsAtStart": true,
+            "measureTools": true,
+            "safeStartAllOperations": 3,
+            "showSequenceNumbers": "toolChange",
+            "adjustKnuckleAngle": "retract",
+            "usePeckTapping": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "fasttool",
+          "properties": {
+            "fastToolChange": true,
+            "adjustKnuckleAngle": "staydown",
+            "knuckleCircular": "false"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "knuckle",
+          "properties": {
+            "fastToolChange": true,
+            "adjustKnuckleAngle": "preposition",
+            "knuckleCircular": "lock"
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "Multi-axis",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Multi-axis miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "5x_Options",
+          "properties": {
+            "homePositionX": "111mm",
+            "homePositionY": "222mm",
+            "safeRetractDistanceZ": "60mm",
+            "preferredTilt": "1",
+            "homePositionZ": "-1mm",
+            "forceHomeOnIndexing": true,
+            "centerOnMultiAxis": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "No DWO",
+          "inputFolder": "milling",
+          "suffix": "_nodwo",
+          "properties": {
+            "useMultiAxisFeatures": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns_safestart",
+          "properties": {
+            "useSubroutines": "patterns",
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Geometry on PCD",
+            "Probe Partial Features"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "_safe",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "_safe",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Geometry on PCD",
+            "Probe Partial Features"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "glowforge",
+      "outputFolder": "jet",
+      "testCases": [
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Laser",
+            "Laser Compensation",
+            "Laser Etch",
+            "Laser Vaporize"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "jet",
+          "suffix": "_misc",
+          "properties": {
+            "aLineWidth": 0.15,
+            "aIgnoreLeadMoves": false,
+            "aMargin": 0
+          },
+          "input": [
+            "Laser"
+          ]
+        },
+        {
+          "description": "Workarea options",
+          "inputFolder": "jet",
+          "suffix": "_workarea",
+          "properties": {
+            "aWorkArea": "work",
+            "aWorkAreaWidth": 400,
+            "aWorkAreaHeight": 250
+          },
+          "input": [
+            "Laser"
+          ]
+        },
+        {
+          "inputFolder": "jet",
+          "suffix": "_none",
+          "properties": {
+            "aWorkArea": "none"
+          },
+          "input": [
+            "Laser"
+          ]
+        }
+      ]
+    }
+  ]
+}

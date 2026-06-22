@@ -1,0 +1,7 @@
+Error: Failed while processing onOpen().
+Error: Feedrate per second is not supported for INCH mode. Please set the property 'Feedrate output per second' to false.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Error: Failed to invoke function 'onOpen'.
+Error: Failed to invoke 'onOpen' in the post configuration.
+Error: Failed to execute configuration.
+Error: Failed to post process. See below for details.

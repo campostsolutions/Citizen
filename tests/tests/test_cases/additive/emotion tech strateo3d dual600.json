@@ -1,0 +1,22 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "emotion tech strateo3d dual600",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "fff_1extruder",
+            "fff_2extruders"
+          ]
+        }
+      ]
+    }
+  ]
+}

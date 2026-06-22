@@ -1,0 +1,132 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "machmotion",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "safePositionMethod": "G53",
+            "useM06": false,
+            "preloadTool": true,
+            "useRadius": true
+          },
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Simple Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Simple Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Multi-axis",
+          "inputFolder": "milling",
+          "properties": {},
+          "machine": "tests/machine/AC_table_table_NoTCP.mch",
+          "input": [
+            "5x 3+2",
+            "5x Drilling",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "description": "4axis",
+          "inputFolder": "milling",
+          "suffix": "_aaxis",
+          "properties": {
+            "useRotaryScale": "directional"
+          },
+          "machine": "tests/machine/A_table_NoTCP.mch",
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "No Y-axis machine",
+          "inputFolder": "milling",
+          "suffix": "_turner",
+          "properties": {
+            "useRotaryScale": "true"
+          },
+          "machine": "tests/machine/A_table_No_YAxis.mch",
+          "input": [
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rotarysubs",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "machine": "tests/machine/A_table_NoTCP.mch",
+          "input": [
+            "A-Pattern"
+          ]
+        }
+      ]
+    }
+  ]
+}

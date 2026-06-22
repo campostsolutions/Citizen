@@ -1,0 +1,769 @@
+!Makro file ; V9.09F!
+!mycomment!
+
+!Please make sure that the language on your control is set to "en"!
+_sprache 1;
+
+Dimension 1;
+
+Variable optional_stop, $Message, T1, startOperation, Op_X_probing__1, Op_Y_probingwcsoverride2__2, Op_Z_probingwcsoverride2__3, Op_X_channel__4, Op_Y_channelwcsoverride7__5, Op_X_wall__6, Op_Y_wall__7, Op_Xy_innercorner__8, Op_Xy_innercorner___9, Op_Xy_innercorner___10, Op_Xy_innercorner____11, Op_Xy_outercorner__12, Op_Xy_outercorner___13, Op_Xy_outercorner___14, Op_Xy_outercorner____15, Op_Circularhole__16, Op_Rectangularhole__17, Op_Circularboss__18, Op_Rectangularboss__19, Op_Circlularholewithisland__20, Op_Rectangularholewithisland__21, Curr_zpno, Zpos, Xvalue1, Xvalue2, Yvalue1, Yvalue2, Zvalue, Newpos, Rotationvalue;
+
+Smakros Sm_X_probing__1, Sm_Y_probingwcsoverride2__2, Sm_Z_probingwcsoverride2__3, Sm_X_channel__4, Sm_Y_channelwcsoverride7__5, Sm_X_wall__6, Sm_Y_wall__7, Sm_Xy_innercorner__8, Sm_Xy_innercorner___9, Sm_Xy_innercorner___10, Sm_Xy_innercorner____11, Sm_Xy_outercorner__12, Sm_Xy_outercorner___13, Sm_Xy_outercorner___14, Sm_Xy_outercorner____15, Sm_Circularhole__16, Sm_Rectangularhole__17, Sm_Circularboss__18, Sm_Rectangularboss__19, Sm_Circlularholewithisland__20, Sm_Rectangularholewithisland__21, Retractzmax;
+
+_maske _haupt, 1000, 0, "Submacro Description"
+_feld optional_stop, 1, 0, 0, 0, 1, 2, 0, "optional_stop", "optional_stop"
+_feld startOperation, 1, 0, 1, 0, 9999, 1, 0, "Startoperation <X_probing__1<1>, Y_probingwcsoverride2__2<2>, Z_probingwcsoverride2__3<3>, X_channel__4<4>, Y_channelwcsoverride7__5<5>, X_wall__6<6>, Y_wall__7<7>, Xy_innercorner__8<8>, Xy_innercorner___9<9>, Xy_innercorner___10<10>, Xy_innercorner____11<11>, Xy_outercorner__12<12>, Xy_outercorner___13<13>, Xy_outercorner___14<14>, Xy_outercorner____15<15>, Circularhole__16<16>, Rectangularhole__17<17>, Circularboss__18<18>, Rectangularboss__19<19>, Circlularholewithisland__20<20>, Rectangularholewithisland__21<21>>", "Select the operation to start with. ";
+
+(
+Curr_zpno = Zeromemnr;
+Zeromem 0;
+Zpos = - Wzl - 10;
+Axyz 1, Xp, Yp, Zpos, 0, 0;
+Zeromem Curr_zpno;
+) Retractzmax;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Submacro Retractzmax;
+Axyz 1, -12.5, 40, z6p, 0, 0;
+Axyz 1, -12.5, 40, 66, 0, 0;
+Axyz 1, -12.5, 40, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, -12.5, 40, 56, 0, 0;
+Axyz 0, -12.5, 40, -5, 0, 0;
+Xvalue1 = 5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (0) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Position 1, 3;
+Axyz 1, -12.5, 40, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_x_probing__1;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Submacro Retractzmax;
+Axyz 1, 40, -12.5, z6p, 0, 0;
+Axyz 1, 40, -12.5, 66, 0, 0;
+Axyz 1, 40, -12.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 40, -12.5, 56, 0, 0;
+Axyz 0, 40, -12.5, -5, 0, 0;
+Yvalue1 = 5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (0) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Position 1, 3;
+Axyz 1, 40, -12.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_y_probingwcsoverride2__2;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 40, 40, z6p, 0, 0;
+Axyz 1, 40, 40, 66, 0, 0;
+Axyz 1, 40, 40, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 0, 40, 40, 10, 0, 0;
+Zheight 0, 0, 1, 0, 10, 10;
+Position 1, 3;
+Axyz 1, 40, 40, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_z_probingwcsoverride2__3;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Submacro Retractzmax;
+Axyz 1, 240, 240, z6p, 0, 0;
+Axyz 1, 240, 240, 66, 0, 0;
+Axyz 1, 240, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 240, 240, 56, 0, 0;
+Axyz 0, 240, 240, -5, 0, 0;
+Xvalue1 = 263;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Xvalue2 = 217;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 240 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 240, 240, 56, 0, 0;
+Position 8, 3;
+Axyz 1, 240, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_x_channel__4;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Submacro Retractzmax;
+Axyz 1, 140, 240, z6p, 0, 0;
+Axyz 1, 140, 240, 66, 0, 0;
+Axyz 1, 140, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 140, 240, 56, 0, 0;
+Axyz 0, 140, 240, -5, 0, 0;
+Yvalue1 = 263;
+Taxyz 2, x6p, Yvalue1, Z6p, 1, 0, 0;
+Yvalue2 = 217;
+Taxyz 2, x6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 240 - (Yvalue1 + Yvalue2) / 2;
+Setzp x6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 140, 240, 56, 0, 0;
+Position 8, 3;
+Axyz 1, 140, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_y_channelwcsoverride7__5;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Submacro Retractzmax;
+Axyz 1, 335, 240, z6p, 0, 0;
+Axyz 1, 335, 240, 66, 0, 0;
+Axyz 1, 335, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 335, 240, 56, 0, 0;
+Axyz 1, 369.5, 240, 56, 0, 0;
+Axyz 0, 369.5, 240, -5, 0, 0;
+Xvalue1 = 359.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 300.5, 240, 56, 0, 0;
+Axyz 0, 300.5, 240, -5, 0, 0;
+Xvalue2 = 310.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 335 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 335, 240, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 335, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_x_wall__6;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 40, 240, z6p, 0, 0;
+Axyz 1, 40, 240, 66, 0, 0;
+Axyz 1, 40, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 40, 240, 56, 0, 0;
+Axyz 1, 40, 268.5, 56, 0, 0;
+Axyz 0, 40, 268.5, -5, 0, 0;
+Yvalue1 = 258.5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 40, 211.5, 56, 0, 0;
+Axyz 0, 40, 211.5, -5, 0, 0;
+Yvalue2 = 221.5;
+Taxyz 2, X6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 240 - (Yvalue1 + Yvalue2) / 2;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 40, 240, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 40, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_y_wall__7;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 317.5, 17.5, z6p, 0, 0;
+Axyz 1, 317.5, 17.5, 66, 0, 0;
+Axyz 1, 317.5, 17.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 317.5, 17.5, 56, 0, 0;
+Axyz 0, 317.5, 17.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (330) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 40;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (30) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 317.5, 17.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_innercorner__8;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 317.5, 62.5, z6p, 0, 0;
+Axyz 1, 317.5, 62.5, 66, 0, 0;
+Axyz 1, 317.5, 62.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 317.5, 62.5, 56, 0, 0;
+Axyz 0, 317.5, 62.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (330) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 40;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (50) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 317.5, 62.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_innercorner___9;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 362.5, 17.5, z6p, 0, 0;
+Axyz 1, 362.5, 17.5, 66, 0, 0;
+Axyz 1, 362.5, 17.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 362.5, 17.5, 56, 0, 0;
+Axyz 0, 362.5, 17.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (350) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 40;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (30) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 362.5, 17.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_innercorner___10;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 362.5, 62.5, z6p, 0, 0;
+Axyz 1, 362.5, 62.5, 66, 0, 0;
+Axyz 1, 362.5, 62.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 362.5, 62.5, 56, 0, 0;
+Axyz 0, 362.5, 62.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (350) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 40;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (50) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 362.5, 62.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_innercorner____11;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 317.5, -12.5, z6p, 0, 0;
+Axyz 1, 317.5, -12.5, 66, 0, 0;
+Axyz 1, 317.5, -12.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 317.5, -12.5, 56, 0, 0;
+Axyz 0, 317.5, -12.5, -5, 0, 0;
+Axyz 1, 317.5, 12.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (330) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, 317.5, -12.5, -5, 0, 0;
+Axyz 1, -317.5, -12.5, -5, 0, 0;
+Yvalue1 = 10;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (0) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, 317.5, -12.5, -5, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 317.5, -12.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_outercorner__12;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 317.5, 92.5, z6p, 0, 0;
+Axyz 1, 317.5, 92.5, 66, 0, 0;
+Axyz 1, 317.5, 92.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 317.5, 92.5, 56, 0, 0;
+Axyz 0, 317.5, 92.5, -5, 0, 0;
+Axyz 1, 317.5, -92.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (330) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, 317.5, 92.5, -5, 0, 0;
+Axyz 1, -317.5, 92.5, -5, 0, 0;
+Yvalue1 = 70;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (80) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, 317.5, 92.5, -5, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 317.5, 92.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_outercorner___13;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 362.5, -12.5, z6p, 0, 0;
+Axyz 1, 362.5, -12.5, 66, 0, 0;
+Axyz 1, 362.5, -12.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 362.5, -12.5, 56, 0, 0;
+Axyz 0, 362.5, -12.5, -5, 0, 0;
+Axyz 1, 362.5, 12.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (350) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, 362.5, -12.5, -5, 0, 0;
+Axyz 1, -362.5, -12.5, -5, 0, 0;
+Yvalue1 = 10;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (0) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, 362.5, -12.5, -5, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 362.5, -12.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_outercorner___14;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 362.5, 92.5, z6p, 0, 0;
+Axyz 1, 362.5, 92.5, 66, 0, 0;
+Axyz 1, 362.5, 92.5, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 362.5, 92.5, 56, 0, 0;
+Axyz 0, 362.5, 92.5, -5, 0, 0;
+Axyz 1, 362.5, -92.5, -5, 0, 0;
+Xvalue1 = 340;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Newpos = X6p + (350) - Xvalue1;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, 362.5, 92.5, -5, 0, 0;
+Axyz 1, -362.5, 92.5, -5, 0, 0;
+Yvalue1 = 70;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Newpos = Y6p + (80) - Yvalue1;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, 362.5, 92.5, -5, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 362.5, 92.5, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_xy_outercorner____15;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 40, 140, z6p, 0, 0;
+Axyz 1, 40, 140, 66, 0, 0;
+Axyz 1, 40, 140, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 40, 140, 56, 0, 0;
+Axyz 0, 40, 140, -25, 0, 0;
+Xvalue1 = 85.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Xvalue2 = -5.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 40 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 185.5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Yvalue2 = 94.5;
+Taxyz 2, X6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 140 - (Yvalue1 + Yvalue2) / 2;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 40, 140, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 40, 140, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_circularhole__16;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 140, 40, z6p, 0, 0;
+Axyz 1, 140, 40, 66, 0, 0;
+Axyz 1, 140, 40, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 140, 40, 56, 0, 0;
+Axyz 0, 140, 40, -25, 0, 0;
+Xvalue1 = 184.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Xvalue2 = 95.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 140 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Yvalue1 = 84.5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Yvalue2 = -4.5;
+Taxyz 2, X6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 40 - (Yvalue1 + Yvalue2) / 2;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 140, 40, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 140, 40, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_rectangularhole__17;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 140, 140, z6p, 0, 0;
+Axyz 1, 140, 140, 66, 0, 0;
+Axyz 1, 140, 140, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 140, 140, 56, 0, 0;
+Axyz 1, 188.5, 140, 56, 0, 0;
+Axyz 0, 188.5, 140, -5, 0, 0;
+Xvalue1 = 177.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 91.5, 140, 56, 0, 0;
+Axyz 0, 91.5, 140, -5, 0, 0;
+Xvalue2 = 102.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 140 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 140, 140, 56, 0, 0;
+Axyz 1, 140, 188.5, 56, 0, 0;
+Axyz 0, 140, 188.5, -5, 0, 0;
+Yvalue1 = 177.5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 140, 91.5, 56, 0, 0;
+Axyz 0, 140, 91.5, -5, 0, 0;
+Yvalue2 = 102.5;
+Taxyz 2, X6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 140 - (Yvalue1 + Yvalue2) / 2;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 140, 140, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 140, 140, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_circularboss__18;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 335, 240, z6p, 0, 0;
+Axyz 1, 335, 240, 66, 0, 0;
+Axyz 1, 335, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 335, 240, 56, 0, 0;
+Axyz 1, 372.5, 240, 56, 0, 0;
+Axyz 0, 372.5, 240, -5, 0, 0;
+Xvalue1 = 352.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 297.5, 240, 56, 0, 0;
+Axyz 0, 297.5, 240, -5, 0, 0;
+Xvalue2 = 317.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 335 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 335, 240, 56, 0, 0;
+Axyz 1, 335, 292.5, 56, 0, 0;
+Axyz 0, 335, 292.5, -5, 0, 0;
+Yvalue1 = 272.5;
+Taxyz 2, X6p, Yvalue1, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 335, 187.5, 56, 0, 0;
+Axyz 0, 335, 187.5, -5, 0, 0;
+Yvalue2 = 207.5;
+Taxyz 2, X6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 240 - (Yvalue1 + Yvalue2) / 2;
+Setzp X6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 335, 240, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 335, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_rectangularboss__19;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 440, 140, z6p, 0, 0;
+Axyz 1, 440, 140, 66, 0, 0;
+Axyz 1, 440, 140, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 440, 140, 56, 0, 0;
+Axyz 1, 467.5, 140, 56, 0, 0;
+Axyz 0, 467.5, 140, -25, 0, 0;
+Xvalue1 = 487.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 412.5, 140, 56, 0, 0;
+Axyz 0, 412.5, 140, -25, 0, 0;
+Xvalue2 = 392.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 440 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 140, 56, 0, 0;
+Axyz 1, 440, 167.5, 56, 0, 0;
+Axyz 0, 440, 167.5, -25, 0, 0;
+Yvalue1 = 187.5;
+Taxyz 2, x6p, Yvalue1, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 112.5, 56, 0, 0;
+Axyz 0, 440, 112.5, -25, 0, 0;
+Yvalue2 = 92.5;
+Taxyz 2, x6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 140 - (Yvalue1 + Yvalue2) / 2;
+Setzp x6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 140, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 440, 140, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_circlularholewithisland__20;
+(
+T3d 9, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Rpm 0, 30, 0, 30;
+Axyz 1, 440, 240, z6p, 0, 0;
+Axyz 1, 440, 240, 66, 0, 0;
+Axyz 1, 440, 240, 66, 0, 0;
+Feed 1, 1, 1, 1;
+Axyz 1, 440, 240, 56, 0, 0;
+Axyz 1, 467.5, 240, 56, 0, 0;
+Axyz 0, 467.5, 240, -25, 0, 0;
+Xvalue1 = 487.5;
+Taxyz 2, Xvalue1, Y6p, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 412.5, 240, 56, 0, 0;
+Axyz 0, 412.5, 240, -25, 0, 0;
+Xvalue2 = 392.5;
+Taxyz 2, Xvalue2, Y6p, Z6p, 1, 0, 0;
+Newpos = x6p + 440 - (Xvalue1 + Xvalue2) / 2;
+Setzp Newpos, Y6p, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 240, 56, 0, 0;
+Axyz 1, 440, 267.5, 56, 0, 0;
+Axyz 0, 440, 267.5, -25, 0, 0;
+Yvalue1 = 287.5;
+Taxyz 2, x6p, Yvalue1, Z6p, 1, 0, 0;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 212.5, 56, 0, 0;
+Axyz 0, 440, 212.5, -25, 0, 0;
+Yvalue2 = 192.5;
+Taxyz 2, x6p, Yvalue2, Z6p, 1, 0, 0;
+Newpos = y6p + 240 - (Yvalue1 + Yvalue2) / 2;
+Setzp x6p, Newpos, Z6p;
+Axyz 1, X6p, Y6p, 56, 0, 0;
+Axyz 1, 440, 240, 56, 0, 0;
+Position 1, 3;
+Axyz 1, 440, 240, 66, 0, 0;
+Rpm 1, 30, 0, 30;
+) Sm_rectangularholewithisland__21;
+
+; !Please make sure that the language on your control is set to "en"!
+; !Number of tools in use: 1!
+T1 = 1;!probe D:5 L2:10 L3:10!
+; !Workpiece dimensions:!
+; !min:     X: - 11.000; Y: - 11.000; Z: - 40.000!
+; !max:     X: +491.000; Y: +491.000; Z: + 51.000!
+; !Part size X: +502.000; Y: +502.000; Z: + 91.000!
+Wdef 502, 502, 91, -11, -11, 51, 0;
+Condition 0, 0, 0 , startOperation, startOperation;
+; !##########X_probing__1##########!
+Label 1;
+; ! ZMIN = -5!
+Dynamics 3;
+Position 1, 2;
+Submacro Sm_x_probing__1;
+; !##########Y_probing WCS override 2__2##########!
+Label 2;
+; ! ZMIN = -5!
+Dynamics 3;
+Position 2, 2;
+Submacro Sm_y_probingwcsoverride2__2;
+; !##########Z_probing WCS override 2__3##########!
+Label 3;
+; ! ZMIN = 0!
+Dynamics 3;
+Submacro Sm_z_probingwcsoverride2__3;
+; !##########X_channel__4##########!
+Label 4;
+; ! ZMIN = -5!
+Dynamics 3;
+Position 8, 2;
+Submacro Sm_x_channel__4;
+; !##########Y_channel WCS override 7__5##########!
+Label 5;
+; ! ZMIN = -5!
+Dynamics 3;
+Position 7, 2;
+Submacro Sm_y_channelwcsoverride7__5;
+; !##########X_wall__6##########!
+Label 6;
+; ! ZMIN = -5!
+Dynamics 3;
+Position 1, 2;
+Submacro Sm_x_wall__6;
+; !##########Y_wall__7##########!
+Label 7;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_y_wall__7;
+; !##########XY_inner corner (++)__8##########!
+Label 8;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_innercorner__8;
+; !##########XY_inner corner (+_)__9##########!
+Label 9;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_innercorner___9;
+; !##########XY_inner corner (_+)__10##########!
+Label 10;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_innercorner___10;
+; !##########XY_inner corner (__)__11##########!
+Label 11;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_innercorner____11;
+; !##########XY_outer corner (++)__12##########!
+Label 12;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_outercorner__12;
+; !##########XY_outer corner (+_)__13##########!
+Label 13;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_outercorner___13;
+; !##########XY_outer corner (_+)__14##########!
+Label 14;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_outercorner___14;
+; !##########XY_outer corner (__)__15##########!
+Label 15;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_xy_outercorner____15;
+; !##########Circular hole__16##########!
+Label 16;
+; ! ZMIN = -25!
+Dynamics 3;
+Submacro Sm_circularhole__16;
+; !##########Rectangular hole__17##########!
+Label 17;
+; ! ZMIN = -25!
+Dynamics 3;
+Submacro Sm_rectangularhole__17;
+; !##########Circular boss__18##########!
+Label 18;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_circularboss__18;
+; !##########Rectangular boss__19##########!
+Label 19;
+; ! ZMIN = -5!
+Dynamics 3;
+Submacro Sm_rectangularboss__19;
+; !##########Circlular hole with island__20##########!
+Label 20;
+; ! ZMIN = -25!
+Dynamics 3;
+Submacro Sm_circlularholewithisland__20;
+; !##########Rectangular hole with island__21##########!
+Label 21;
+; ! ZMIN = -25!
+Dynamics 3;
+Submacro Sm_rectangularholewithisland__21;
+; !###############################################!
+Submacro Retractzmax;
+T3d 0, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Park;

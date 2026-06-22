@@ -1,0 +1,87 @@
+!Makro file ; V9.09F!
+!mycomment!
+
+!Please make sure that the language on your control is set to "en"!
+_sprache 1;
+
+Dimension 1;
+
+Variable optional_stop, $Message, T3, startOperation, Op_Drill42_drilling_1, Op_Drill43_drilling_2, Curr_zpno, Zpos;
+
+Smakros Sm_Drill42_drilling_1, Sm_Drill43_drilling_2, Retractzmax;
+
+_maske _haupt, 1000, 0, "Submacro Description"
+_feld optional_stop, 1, 0, 0, 0, 1, 2, 0, "optional_stop", "optional_stop"
+_feld startOperation, 1, 0, 1, 0, 9999, 1, 0, "Startoperation <Drill42_drilling_1<1>, Drill43_drilling_2<2>>", "Select the operation to start with. ";
+
+(
+Curr_zpno = Zeromemnr;
+Zeromem 0;
+Zpos = - Wzl - 10;
+Axyz 1, Xp, Yp, Zpos, 0, 0;
+Zeromem Curr_zpno;
+) Retractzmax;
+(
+T3d 0, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Submacro Retractzmax;
+Axyzabc 1, x6p, y6p, z6p, a6p, 240, c6p;
+Contour_smoothing 1, 0.012, 0.1, 110, 1;
+Axyz 1, -48.3, 0, z6p, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Feed 0.4, 0.4, 0.4, 0.4;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Feed 0.4, 0.4, 0.4, 0.4;
+Axyz 0, -48.3, 0, 5, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+$Message = "Start next Operation";
+Condition optional_stop, 0, 1, 0, 9999;
+Message $Message, 0, 0, 0;
+$Message = "OK";
+) Sm_drill42_drilling_1;
+(
+T3d 0, 0, 1, 15, 17, 10, 10, 10, 10, 10, 10;
+Submacro Retractzmax;
+Axyzabc 1, x6p, y6p, z6p, a6p, 120, c6p;
+Contour_smoothing 1, 0.012, 0.1, 110, 1;
+Axyz 1, -48.3, 0, z6p, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Feed 0.4, 0.4, 0.4, 0.4;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Feed 0.4, 0.4, 0.4, 0.4;
+Axyz 0, -48.3, 0, 5, 0, 0;
+Axyz 1, -48.3, 0, 30.08, 0, 0;
+Axyz 1, -48.3, 0, 40.24, 0, 0;
+) Sm_drill43_drilling_2;
+
+; !Please make sure that the language on your control is set to "en"!
+; !Number of tools in use: 1!
+T3 = 3;!drill D:5.10997 L2:25 L3:29.99994!
+; !Workpiece dimensions:!
+; !min:     X: -101.600; Y: - 25.000; Z: - 25.000!
+; !max:     X: +  0.000; Y: + 25.000; Z: + 25.000!
+; !Part size X: +101.600; Y: + 50.000; Z: + 50.000!
+Wdef 101.6, 50, 50, -101.6, -25, 25, 0;
+Condition 0, 0, 0 , startOperation, startOperation;
+; !##########Drill42_drilling_1##########!
+Label 1;
+Tool T3, 0, 0, 1, 0;
+Rpm 3, 6, 0, 30;
+Dynamics 3;
+Submacro Sm_drill42_drilling_1;
+; !##########Drill43_drilling_2##########!
+Label 2;
+Tool T3, 0, 0, 1, 0;
+Rpm 3, 6, 0, 30;
+Dynamics 3;
+Submacro Sm_drill43_drilling_2;
+; !###############################################!
+Submacro Retractzmax;
+Axyzabc 1, x6p, y6p, z6p, a6p, 0, c6p;
+Park;

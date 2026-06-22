@@ -1,0 +1,42 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "siemens-840d inspection",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspection",
+          "properties": {
+            "probeOnCommand": "M27",
+            "probeOffCommand": "M28",
+            "commissioningMode": true,
+            "showSequenceNumbers": "false"
+          },
+          "input": [
+            "Inspection 3x single",
+            "Inspection 3x",
+            "Inspection 5x"
+          ]
+        },
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspect_seq",
+          "properties": {
+            "probeOnCommand": "M27",
+            "probeOffCommand": "M28",
+            "commissioningMode": false,
+            "showSequenceNumbers": "true"
+          },
+          "input": [
+            "Inspection 3x single"
+          ]
+        }
+      ]
+    }
+  ]
+}

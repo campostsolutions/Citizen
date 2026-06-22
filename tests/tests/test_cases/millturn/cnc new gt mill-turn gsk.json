@@ -1,0 +1,137 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "cnc new gt mill-turn gsk",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Standard Turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "homePositionZ": 2,
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "homePositionZ": 2
+          },
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Mill Turn Modes",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_thread_cycle",
+          "properties": {
+            "useSimpleThread": false
+          },
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_misc",
+          "properties": {
+            "autoEject": true,
+            "useCycles": false,
+            "useG28ZHome": true,
+            "optimizeCAxisSelect": true
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "millturn",
+          "suffix": "_misc",
+          "properties": {
+            "autoEject": true,
+            "useCycles": false,
+            "useG28ZHome": true,
+            "optimizeCAxisSelect": true
+          },
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Reverse C-axis",
+          "inputFolder": "millturn",
+          "suffix": "_reversed",
+          "properties": {
+            "reverseCAxis": true
+          },
+          "input": [
+            "Z-axis Drilling Cycles",
+            "Mill Turn XZC",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Bar pulling",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "barPullingTool": 7
+          },
+          "input": [
+            "Simple Bar Pull"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

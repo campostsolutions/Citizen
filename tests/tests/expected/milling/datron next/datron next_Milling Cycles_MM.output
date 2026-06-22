@@ -1,0 +1,131 @@
+﻿
+# !File ;
+# mycomment
+ 
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Metric" @
+
+@ ToolDescription : "Name":"2_MillingEndFlat_D9525_myTool2", "Category":"MillingEndFlat", "ArticleNr":"", "ToolNumber":2, "Vendor":"", "Diameter":9.525, "TipAngle":0, "TipDiameter":0, "FluteLength":16, "CornerRadius":0, "ShoulderLength":24, "ShoulderDiameter":9.525, "BodyLength":40, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":9.525, "OverallLength":59.05 @
+
+# Workpiece dimensions
+# min:      X: -50.000; Y: -25.000; Z: -50.000
+# max:      X: +50.000; Y: +25.000; Z: +1.000
+# Part size X: +100.000; Y: +50.000; Z: +51.000
+@ WorkpieceGeometry : "MinEdge":{"X":-50.000,"Y":-25.000,"Z":-50.000},"MaxEdge":{"X":+50.000,"Y":+25.000,"Z":+1.000} @
+
+sequence SEQUENCE_Circularmill_circular_pocket_milling_1
+sequence SEQUENCE_Threadmill_thread_milling_2
+
+using Base
+
+
+
+export program Main #  1234 MM
+  Absolute
+  Operation_Circularmill_circular_pocket_milling_1
+  Operation_Threadmill_thread_milling_2
+  SpraySystem Off
+  Spindle Off
+  MoveToParkPosition
+endprogram # 1234 MM
+
+# Operation Time: 7s
+# ZMIN = -5
+program Operation_Circularmill_circular_pocket_milling_1
+  BeginBlock name="Circularmill_circular_pocket_milling_1"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="2_MillingEndFlat_D9525_myTool2" newRpm=5000 skipRestoring
+  # Parameter circular-pocket-milling cycle
+  SEQUENCE_Circularmill_circular_pocket_milling_1 
+  EndBlock
+endprogram # Operation_Circularmill_circular_pocket_milling_1
+
+# Operation Time: 7s
+# ZMIN = -5
+program Operation_Threadmill_thread_milling_2
+  BeginBlock name="Threadmill_thread_milling_2"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="2_MillingEndFlat_D9525_myTool2" newRpm=5000 skipRestoring
+  # Parameter thread-milling cycle
+  SetFeedTechnology ramp=800 finishing=1000
+  nominalDiameter=15
+  pitch=0.8
+  SEQUENCE_Threadmill_thread_milling_2 nominalDiameter=nominalDiameter pitch=pitch finishing=0
+  EndBlock
+endprogram # Operation_Threadmill_thread_milling_2
+
+end
+# ##########################################################
+   
+$$$ SEQUENCE_Circularmill_circular_pocket_milling_1
+Spindle On
+PrePositioning X=30 Y=-8 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=500
+Line Z=0
+Line Z=-2
+Feed=1000
+Arc CCW X=30.75 Y=-8.43301 dX=0.5 dY=0
+Arc CCW X=31 Y=-8 dX=-0.25 dY=0.43301
+Arc CCW X=28.75 Y=-6.70096 dX=-1.5 dY=0
+Arc CCW X=28 Y=-8 dX=0.75 dY=-1.29904
+Arc CCW X=31.55312 Y=-10.0514 dX=2.36875 dY=0
+Arc CCW X=32.7375 Y=-8 dX=-1.18437 dY=2.0514
+Arc CCW X=28.63125 Y=-5.62926 dX=-2.7375 dY=0
+Arc CCW Y=-10.37074 dX=1.36875 dY=-2.37074
+Arc CCW X=32.7375 Y=-8 dX=1.36875 dY=2.37074
+Line X=30
+Feed=500
+Line Z=-4
+Feed=1000
+Arc CCW X=30.75 Y=-8.43301 dX=0.5 dY=0
+Arc CCW X=31 Y=-8 dX=-0.25 dY=0.43301
+Arc CCW X=28.75 Y=-6.70096 dX=-1.5 dY=0
+Arc CCW X=28 Y=-8 dX=0.75 dY=-1.29904
+Arc CCW X=31.55312 Y=-10.0514 dX=2.36875 dY=0
+Arc CCW X=32.7375 Y=-8 dX=-1.18437 dY=2.0514
+Arc CCW X=28.63125 Y=-5.62926 dX=-2.7375 dY=0
+Arc CCW Y=-10.37074 dX=1.36875 dY=-2.37074
+Arc CCW X=32.7375 Y=-8 dX=1.36875 dY=2.37074
+Line X=30
+Feed=500
+Line Z=-5
+Feed=1000
+Arc CCW X=30.75 Y=-8.43301 dX=0.5 dY=0
+Arc CCW X=31 Y=-8 dX=-0.25 dY=0.43301
+Arc CCW X=28.75 Y=-6.70096 dX=-1.5 dY=0
+Arc CCW X=28 Y=-8 dX=0.75 dY=-1.29904
+Arc CCW X=31.55312 Y=-10.0514 dX=2.36875 dY=0
+Arc CCW X=32.7375 Y=-8 dX=-1.18437 dY=2.0514
+Arc CCW X=28.63125 Y=-5.62926 dX=-2.7375 dY=0
+Arc CCW Y=-10.37074 dX=1.36875 dY=-2.37074
+Arc CCW X=32.7375 Y=-8 dX=1.36875 dY=2.37074
+Line X=30
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Threadmill_thread_milling_2
+Spindle On
+PrePositioning X=-30 Y=-8 Z=16
+Rapid X=-30 Y=-8 Z=6
+SpecialThread nominalDiameter=nominalDiameter pitch=pitch depth=5 strokeRapidZ=1 strokeCuttingZ=5 finishing=finishing direction=ThreadMillingDirection.RightHandThread
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+

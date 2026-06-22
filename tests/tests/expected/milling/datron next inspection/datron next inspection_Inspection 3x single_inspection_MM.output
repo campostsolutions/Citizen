@@ -1,0 +1,179 @@
+﻿
+# !File ;
+# mycomment
+ 
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Metric" @
+
+# Workpiece dimensions
+# min:      X: -31.000; Y: -53.000; Z: -126.500
+# max:      X: +31.000; Y: +12.500; Z: +12.500
+# Part size X: +62.000; Y: +65.500; Z: +139.000
+@ WorkpieceGeometry : "MinEdge":{"X":-31.000,"Y":-53.000,"Z":-126.500},"MaxEdge":{"X":+31.000,"Y":+12.500,"Z":+12.500} @
+
+sequence SEQUENCE_3AxisInspection__1
+
+using Base
+using File, LinearAlgebra, LinearAlgebraHelper, MeasuringCyclesExecutor, XyzSensor, String
+import AxisSystem
+
+
+InspectionFilename:string
+
+export program Main #  1234 MM
+  Absolute
+  Operation_3AxisInspection__1
+  SpraySystem Off
+  Spindle Off
+  MoveToParkPosition
+endprogram # 1234 MM
+
+# Operation Time: 2s
+# ZMIN = 22.5
+program Operation_3AxisInspection__1
+  BeginBlock name="3AxisInspection__1"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=37.5
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=-20.5 Y=-0.00004 Z=37.5
+  InspectionFilename = "Setup1 milling RESULTS.txt"
+  # delete existing old file
+  if FileExists filename=InspectionFilename
+    FileDelete filename=InspectionFilename
+  endif
+  
+  FileWriteLine filename=InspectionFilename value="START"
+  FileWriteLine filename=InspectionFilename value="DOCUMENTID f06057c0-1983-45ed-9e68-3abf8d573210"
+  FileWriteLine filename=InspectionFilename value="MODELVERSION c656480c-f2b5-4def-a1de-79a8ebf2a079"
+  FileWriteLine filename=InspectionFilename value="TOOLPATHID 19"
+  FileWriteLine filename=InspectionFilename value="G331 N1 A0 B0 C0 X0 Y0 Z-12.5"
+  FileWriteLine filename=InspectionFilename value=";TOOLPATH 3 Axis Inspection"
+  FileWriteLine filename=InspectionFilename value="G330 N1 A0 B0 C0 X0 Y0 Z0 I0 R0"
+  # Geometry Only
+  PrepareXyzSensor
+  Rapid Z=22.5
+  MeasurePoint(
+    pointID=1
+    surfacePos=NewPos(-12.5, -0.00003, 0.00008)
+    measureDirection=NewPos(1, 0, -0.00001)
+    searchDistance=5
+    surfaceOffset=0
+    upper=0.005
+    lower=-0.005)
+  
+  Rapid Z=22.5
+  Rapid X=-0.00002 Y=-20.5
+  MeasurePoint(
+    pointID=2
+    surfacePos=NewPos(-0.00002, -12.5, 0.00008)
+    measureDirection=NewPos(0, 1, -0.00001)
+    searchDistance=5
+    surfaceOffset=0
+    upper=0.005
+    lower=-0.005)
+  
+  Rapid Z=22.5
+  Rapid X=20.5 Y=-0.0001
+  MeasurePoint(
+    pointID=3
+    surfacePos=NewPos(12.5, -0.00006, 0.00017)
+    measureDirection=NewPos(-1, 0, -0.00001)
+    searchDistance=5
+    surfaceOffset=0
+    upper=0.005
+    lower=-0.005)
+  
+  Rapid Z=22.5
+  Rapid X=0.00005 Y=20.5
+  MeasurePoint(
+    pointID=4
+    surfacePos=NewPos(0.00003, 12.5, 0)
+    measureDirection=NewPos(0, -1, 0)
+    searchDistance=5
+    surfaceOffset=0
+    upper=0.005
+    lower=-0.005)
+  
+  Rapid Z=22.5
+  Rapid X=0.00016 Y=0.00012
+  MeasurePoint(
+    pointID=5
+    surfacePos=NewPos(0.0001, 0.00007, 12.5)
+    measureDirection=NewPos(-0.00001, -0.00001, -1)
+    searchDistance=5
+    surfaceOffset=0
+    upper=0.005
+    lower=-0.005)
+  
+  Rapid Z=22.5
+  Rapid Z=37.5
+  UnprepareXyzSensor
+  FileWriteLine filename=InspectionFilename value="END"
+  Dialog message="Finish Inspection" Yes No caption="Inspection" Info
+  ToolCompensation Off
+  PathCorrection Off
+  UnprepareXyzSensor
+  EndBlock
+endprogram # Operation_3AxisInspection__1
+
+program MeasurePoint pointID:number surfacePos:Position measureDirection:Position searchDistance:number surfaceOffset:number upper:number lower:number
+
+  # measure
+  measureResult = GetMeasuringResultCompensation(
+    ArrangeMeasuring(
+    targetPosition=surfacePos
+    direction=measureDirection
+    distance=searchDistance),
+  AxisSystem::GetRcsMatrix)
+
+  # Trigger not found
+  if measureResult.active == false
+    Dialog message="Target Point not found" caption="Inspection error" Error
+  endif
+
+ # write nominal values
+  measureNominalString = "G800 N" + ValueToString(pointID) + " X" + ValueToString(surfacePos.X)  + " Y" + ValueToString(surfacePos.Y) + " Z" + ValueToString(surfacePos.Z) + " I" + ValueToString(measureDirection.X * -1) + " J"+ ValueToString(measureDirection.Y * -1) + " K" + ValueToString(measureDirection.Z * -1) + " O" + ValueToString(surfaceOffset) + " U" + ValueToString(upper) + " L" + ValueToString(lower)
+  measureNominalString = StringReplace(measureNominalString, ",", ".")
+  FileWriteLine filename=InspectionFilename value=measureNominalString
+
+  # write result values
+   measureResultString = StringFormat(
+   baseString="G801 N{0} X{1:f3} Y{2:f3} Z{3:f3} R0"
+   p0=pointID
+   p1=(measureResult.measuredPoint.X)
+   p2=(measureResult.measuredPoint.Y)
+   p3=(measureResult.measuredPoint.Z)
+   )
+  measureResultString = StringReplace(measureResultString, ",", ".")
+
+FileWriteLine filename=InspectionFilename value=measureResultString
+
+  # check result
+  measuredPosition = NewPos(
+    measureResult.measuredPoint.X,
+    measureResult.measuredPoint.Y,
+    measureResult.measuredPoint.Z)
+
+  measuredDifferenceVector = SubPosition(surfacePos, measuredPosition)
+  deltaDirection = Normalize(measuredDifferenceVector)
+  distance = GetPositionDistance(measuredDifferenceVector)
+
+  # check deviation direction
+  if(GetPositionDistance(SubPosition(Normalize(measuredDifferenceVector),measureDirection))>1)
+    distance = distance * -1
+  endif
+
+  if(distance > lower and distance < upper)
+    return
+  endif
+
+  # Position out of tolerance
+  Dialog message="Position out of tolerance" caption="Position out of tolerance" Error
+
+endprogram
+end
+# ##########################################################

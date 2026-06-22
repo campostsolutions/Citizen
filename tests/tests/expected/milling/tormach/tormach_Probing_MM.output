@@ -1,0 +1,447 @@
+%
+(1234)
+(mycomment)
+(T1 D=5. CR=2.5 - ZMIN=-25. - probe)
+G90 G54 G64 G50 G17 G40 G80 G94 G91.1 G49
+G21 (Metric)
+G30
+
+(X-probing)
+T1 G43 H1 M6
+G17 G90 G94
+G54
+G0 X-12.5 Y40.
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_first_position_to_probe> = 7.5
+#<_x_wcs_offset> = 0.
+#<_measuring_wcs> = 1
+o<probe_x_edge> call (Probe in X)
+G54
+G90
+G0 Z66.
+G30
+
+(Y-probing WCS override 2)
+G55
+G0 X40. Y-12.5
+G0 G43 Z66. H1
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_first_position_to_probe> = 7.5
+#<_y_wcs_offset> = 0.
+#<_measuring_wcs> = 1
+o<probe_y_edge> call (Probe in Y)
+G55
+G90
+G0 Z66.
+
+(Z-probing WCS override 2)
+G0 X40. Y40.
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+#<_first_position_to_probe> = -10.
+#<_z_wcs_offset> = 0.
+#<_measuring_wcs> = 1
+o<probe_z> call (Probe in Z)
+G55
+G90
+G0 Z66.
+G30
+
+(X-channel)
+G59.2
+G0 X240. Y240.
+G0 G43 Z66. H1
+G0 X250.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 0.
+#<_first_position_to_probe> = 260.5
+#<_second_position_to_probe> = 219.5
+#<_second_x_position> = 229.5
+#<_second_y_position> = 240.
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 240.
+#<_measuring_wcs> = 8
+o<probe_x_pocket> call (Probe X-Pocket)
+G59.2
+G90
+G0 X240. Z66.
+G30
+
+(Y-channel WCS override 7)
+G59.1
+G0 X140. Y240.
+G0 G43 Z66. H1
+G0 Y250.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 0.
+#<_first_position_to_probe> = 260.5
+#<_second_position_to_probe> = 219.5
+#<_second_x_position> = 140.
+#<_second_y_position> = 229.5
+#<_second_z_position> = -5.
+#<_y_wcs_offset> = 240.
+#<_measuring_wcs> = 8
+o<probe_y_pocket> call (Probe Y-Pocket)
+G59.1
+G90
+G0 Y240. Z66.
+G30
+
+(X-wall)
+G54
+G0 X335. Y240.
+G0 G43 Z66. H1
+G0 X369.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 359.5
+#<_second_position_to_probe> = 310.5
+#<_second_x_position> = 300.5
+#<_second_y_position> = 240.
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 335.
+#<_measuring_wcs> = 1
+o<probe_x_boss> call (Probe X-Boss)
+G54
+G90
+G0 X335. Z66.
+
+(Y-wall)
+G54
+G0 X40. Y240.
+G0 Z66.
+G0 Y268.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 258.5
+#<_second_position_to_probe> = 221.5
+#<_second_x_position> = 40.
+#<_second_y_position> = 211.5
+#<_second_z_position> = -5.
+#<_y_wcs_offset> = 240.
+#<_measuring_wcs> = 1
+o<probe_y_boss> call (Probe Y-Boss)
+G54
+G90
+G0 Y240. Z66.
+
+(XY-inner corner ())
+G54
+G0 X317.5 Y17.5
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 342.5
+#<_second_position_to_probe> = 42.5
+#<_second_x_position> = 317.5
+#<_second_y_position> = 17.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 332.5
+#<_y_wcs_offset> = 32.5
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Inner Corner)
+G54
+G90
+G0 Z66.
+
+(XY-inner corner (-))
+G54
+G0 X317.5 Y62.5
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 342.5
+#<_second_position_to_probe> = 37.5
+#<_second_x_position> = 317.5
+#<_second_y_position> = 62.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 332.5
+#<_y_wcs_offset> = 47.5
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Inner Corner)
+G54
+G90
+G0 Z66.
+
+(XY-inner corner (-))
+G54
+G0 X362.5 Y17.5
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 337.5
+#<_second_position_to_probe> = 42.5
+#<_second_x_position> = 362.5
+#<_second_y_position> = 17.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 347.5
+#<_y_wcs_offset> = 32.5
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Inner Corner)
+G54
+G90
+G0 Z66.
+
+(XY-inner corner (--))
+G54
+G0 X362.5 Y62.5
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 337.5
+#<_second_position_to_probe> = 37.5
+#<_second_x_position> = 362.5
+#<_second_y_position> = 62.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 347.5
+#<_y_wcs_offset> = 47.5
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Inner Corner)
+G54
+G90
+G0 Z66.
+
+(XY-outer corner ())
+G54
+G0 X317.5 Y-12.5
+G0 Z66.
+G0 Y17.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 342.5
+#<_second_position_to_probe> = 12.5
+#<_second_x_position> = 347.5
+#<_second_y_position> = -12.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 330.
+#<_y_wcs_offset> = 0.
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Outer Corner)
+G54
+G90
+G0 Y-12.5 Z66.
+
+(XY-outer corner (-))
+G54
+G0 X317.5 Y92.5
+G0 Z66.
+G0 Y62.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 342.5
+#<_second_position_to_probe> = 67.5
+#<_second_x_position> = 347.5
+#<_second_y_position> = 92.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 330.
+#<_y_wcs_offset> = 80.
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Outer Corner)
+G54
+G90
+G0 Y92.5 Z66.
+
+(XY-outer corner (-))
+G54
+G0 X362.5 Y-12.5
+G0 Z66.
+G0 Y17.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 337.5
+#<_second_position_to_probe> = 12.5
+#<_second_x_position> = 332.5
+#<_second_y_position> = -12.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 350.
+#<_y_wcs_offset> = 0.
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Outer Corner)
+G54
+G90
+G0 Y-12.5 Z66.
+
+(XY-outer corner (--))
+G54
+G0 X362.5 Y92.5
+G0 Z66.
+G0 Y62.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 337.5
+#<_second_position_to_probe> = 67.5
+#<_second_x_position> = 332.5
+#<_second_y_position> = 92.5
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 350.
+#<_y_wcs_offset> = 80.
+#<_measuring_wcs> = 1
+o<probe_xy_corner> call (Probe XY Outer Corner)
+G54
+G90
+G0 Y92.5 Z66.
+
+(Circular hole)
+G54
+G0 X40. Y140.
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 0.
+#<_diameter_to_probe> = 85.5
+#<_diameter_to_position> = 72.5
+#<_x_wcs_offset> = 40.
+#<_y_wcs_offset> = 140.
+#<_measuring_wcs> = 1
+o<probe_circular_bore> call (Probe Circular Bore)
+G54
+G90
+G0 Z66.
+
+(Rectangular hole)
+G54
+G0 X140. Y40.
+G0 Z66.
+G0 X169.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 0.
+#<_first_position_to_probe> = 184.5
+#<_second_position_to_probe> = 95.5
+#<_second_x_position> = 110.5
+#<_second_y_position> = 40.
+#<_second_z_position> = -25.
+#<_x_wcs_offset> = 140.
+#<_measuring_wcs> = 1
+o<probe_x_pocket> call (Probe X-Pocket)
+G1 X140. Y69.5 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 0.
+#<_first_position_to_probe> = 84.5
+#<_second_position_to_probe> = -4.5
+#<_second_x_position> = 140.
+#<_second_y_position> = 10.5
+#<_second_z_position> = -25.
+#<_y_wcs_offset> = 40.
+#<_measuring_wcs> = 1
+o<probe_y_pocket> call (Probe Y-Pocket)
+G54
+G90
+G0 Y40. Z66.
+
+(Circular boss)
+G54
+G0 X140. Y140.
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+#<_first_position_to_probe> = -5.
+#<_z_clearance_position> = 56.
+#<_diameter_to_probe> = 77.5
+#<_diameter_to_position> = 88.5
+#<_x_wcs_offset> = 140.
+#<_y_wcs_offset> = 140.
+#<_measuring_wcs> = 1
+o<probe_circular_boss> call (Probe Circular Boss)
+G54
+G90
+G0 Z66.
+
+(Rectangular boss)
+G54
+G0 X335. Y240.
+G0 Z66.
+G0 X372.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 352.5
+#<_second_position_to_probe> = 317.5
+#<_second_x_position> = 297.5
+#<_second_y_position> = 240.
+#<_second_z_position> = -5.
+#<_x_wcs_offset> = 335.
+#<_measuring_wcs> = 1
+o<probe_x_boss> call (Probe X-Boss)
+G0 X335. Y292.5 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-5. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 272.5
+#<_second_position_to_probe> = 207.5
+#<_second_x_position> = 335.
+#<_second_y_position> = 187.5
+#<_second_z_position> = -5.
+#<_y_wcs_offset> = 240.
+#<_measuring_wcs> = 1
+o<probe_y_boss> call (Probe Y-Boss)
+G54
+G90
+G0 Y240. Z66.
+
+(Circlular hole with island)
+G54
+G0 X440. Y140.
+G0 Z66.
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_diameter_to_probe> = 87.5
+#<_diameter_to_position> = 67.5
+#<_x_wcs_offset> = 440.
+#<_y_wcs_offset> = 140.
+#<_measuring_wcs> = 1
+o<probe_circular_bore> call (Probe Circular Bore)
+G54
+G90
+G0 Z66.
+
+(Rectangular hole with island)
+G54
+G0 X440. Y240.
+G0 Z66.
+G0 X467.5
+G1 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 487.5
+#<_second_position_to_probe> = 392.5
+#<_second_x_position> = 412.5
+#<_second_y_position> = 240.
+#<_second_z_position> = -25.
+#<_x_wcs_offset> = 440.
+#<_measuring_wcs> = 1
+o<probe_x_pocket> call (Probe X-Pocket)
+G1 X440. Y267.5 Z56. F#<_probe_rapid_feed_per_min>
+G1 Z-25. F#<_probe_rough_feed_per_min>
+#<_z_clearance_position> = 56.
+#<_first_position_to_probe> = 287.5
+#<_second_position_to_probe> = 192.5
+#<_second_x_position> = 440.
+#<_second_y_position> = 212.5
+#<_second_z_position> = -25.
+#<_y_wcs_offset> = 240.
+#<_measuring_wcs> = 1
+o<probe_y_pocket> call (Probe Y-Pocket)
+G54
+G90
+G0 Y240. Z66.
+M5
+
+G30
+M30
+%

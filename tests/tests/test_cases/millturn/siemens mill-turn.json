@@ -1,0 +1,115 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "siemens mill-turn",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Mill Turn Modes",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Misc Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "_misc",
+          "properties": {
+            "useYAxisForDrilling": true
+          },
+          "input": [
+            "Z-axis Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading"
+          ]
+        },
+        {
+          "description": " Tapping operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": " Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Radial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "turning",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+           },
+          "input": [
+            "Turning 2 Axis"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "millturn",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+           },
+          "input": [
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

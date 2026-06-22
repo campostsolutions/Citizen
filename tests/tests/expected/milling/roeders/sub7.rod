@@ -1,0 +1,75 @@
+//  --- INFO ---
+// MYCOMMENT
+//  --- INIT ---
+TCorrOff                          // Deactivate RTCP function
+RMO                               // Reset the rotary axis coordinates
+
+// TOOLS
+// -------------------------------------
+//   T2 D=9.525 - FLAT END MILL
+//   T8 D=12.7 - FLAT END MILL
+// -------------------------------------
+//  --- BEGIN MACHINING ---
+// 2D-FACE RIGHT
+T2
+S5000 M3
+WarmUp                            // Warm-up (according to default or TT)
+
+// DYNAMIC
+Cam_Tol=0.01                      // CAM tolerance
+Cam_Stock=0                       // CAM oversize
+SP -ssa                           // Approach safety position as starting position
+WaitC                             // Option: Program pause, if it was activated
+
+VacAutoOff                        // Automatic graphite vacuum cleaner off
+EmuOn -out                        // Emulsion on
+HazeVacOn                         // Option: Mist suctioning on
+
+// START_3PLUS_2AXIS
+// POSITIONING OF THE ROTARY AXES, CARRYING ALONG THE ZERO POINT
+ROTZERO= A=30 ;C=90 // Zero point offset for rotary axis machines (no traversing movement)
+G01 C90 F10000
+G01 A30
+
+HEADEREND                 // End of the program header
+
+G00 X30.609 Y-39.703
+G00 Z40.866
+G00 Z30.866
+G01 Z22.72 F500
+G01 X30.602 Z22.606 F1000
+G01 X30.582 Z22.493
+G01 X30.547 Z22.383
+G01 X30.5 Z22.278
+G01 X30.441 Z22.179
+G01 X30.37 Z22.089
+G01 X30.288 Z22.007
+G01 X30.198 Z21.937
+G01 X30.1 Z21.877
+G01 X29.995 Z21.83
+G01 X29.885 Z21.796
+G01 X29.772 Z21.775
+G01 X29.657 Z21.768
+G01 X-28.031
+G01 X-28.146 Z21.775
+G01 X-28.259 Z21.796
+G01 X-28.369 Z21.83
+G01 X-28.474 Z21.877
+G01 X-28.572 Z21.937
+G01 X-28.663 Z22.007
+G01 X-28.744 Z22.089
+G01 X-28.815 Z22.179
+G01 X-28.875 Z22.278
+G01 X-28.922 Z22.383
+G01 X-28.956 Z22.493
+G01 X-28.977 Z22.606
+G01 X-28.984 Z22.72
+G00 Z40.866
+EmuOff                            // Emulsion off
+HazeVacOff                        // Option: Mist suctioning off
+SP                                // Safety position
+
+ROTZERO= A=0 ;C=0 // Zero point offset for rotary axis machines (no traversing movement)
+G01 C0 F10000
+G01 A0
+ M30

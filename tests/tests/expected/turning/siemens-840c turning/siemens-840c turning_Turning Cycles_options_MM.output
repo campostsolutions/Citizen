@@ -1,0 +1,261 @@
+%1234
+(mycomment)
+G90 G94 G18
+G71
+G40
+G92 S6000
+G53 G0 X2. D0
+G53 G0 Z3.
+
+(Profile Roughing Horizontal)
+T1 D1
+G54
+M8
+G95
+G97 S796 M3
+G0 Z0.
+X80.
+G96 S200 M3
+G92 5000
+G0 Z5.
+X68.
+(L95 Stock removal cycle)
+R20=100 (Subroutine number under which the contour is stored)
+R21=35. (Initial point of contour in X)
+R22=5. (Initial point of contour in Z)
+R24=4. (Finishing cut depth in X)
+R25=2. (Finishing cut depth in Z)
+R26=4.46 (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=31. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X80. Z5.
+Z0.
+G97 S796 M3
+
+(Profile Roughing Vertical)
+G95
+G0 Z0.
+X80.
+G96 S200 M3
+G92 5000
+G0 Z5.
+X68.
+(L95 Stock removal cycle)
+R20=101 (Subroutine number under which the contour is stored)
+R21=68. (Initial point of contour in X)
+R22=-43. (Initial point of contour in Z)
+R24=4. (Finishing cut depth in X)
+R25=2. (Finishing cut depth in Z)
+R26=7. (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=32. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X80. Z5.
+Z0.
+G97 S796 M3
+M9
+G53 G0 X2. D0
+G53 G0 Z3.
+
+(Profile Roughing Horizontal Back to Front)
+M1
+T2 D1
+G54
+M8
+G94
+G97 S500 M3
+G0 Z1.6
+X80.
+G0 Z-135.
+X78.
+(L95 Stock removal cycle)
+R20=102 (Subroutine number under which the contour is stored)
+R21=35. (Initial point of contour in X)
+R22=-135. (Initial point of contour in Z)
+R24=4. (Finishing cut depth in X)
+R25=-2. (Finishing cut depth in Z)
+R26=7. (Depth of roughing cut)
+R28=1000. (Feedrate)
+R29=31. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X68. Z-103.414
+X80.
+Z1.6
+M9
+G53 G0 X2. D0
+G53 G0 Z3.
+
+(Profile Roughing Horizontal Grooving)
+M1
+T1 D1
+G54
+M8
+G95
+G97 S796 M3
+G0 Z0.
+X80.
+G96 S200 M3
+G92 6000
+G0 Z5.
+X68.
+(L95 Stock removal cycle)
+R20=103 (Subroutine number under which the contour is stored)
+R21=35. (Initial point of contour in X)
+R22=5. (Initial point of contour in Z)
+R24=4. (Finishing cut depth in X)
+R25=2. (Finishing cut depth in Z)
+R26=7. (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=31. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X80. Z5.
+Z0.
+G97 S796 M3
+
+(Profile Roughing Vertical Grooving)
+G95
+G0 Z0.
+X80.
+G96 S200 M3
+G92 6000
+G0 Z5.
+X68.
+(L95 Stock removal cycle)
+R20=104 (Subroutine number under which the contour is stored)
+R21=68. (Initial point of contour in X)
+R22=-43. (Initial point of contour in Z)
+R24=4. (Finishing cut depth in X)
+R25=2. (Finishing cut depth in Z)
+R26=7. (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=32. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X80. Z5.
+Z0.
+G97 S796 M3
+M9
+G53 G0 X2. D0
+G53 G0 Z3.
+
+(Profile Roughing inside Horizontal)
+M1
+T3 D1
+G54
+M8
+G95
+G97 S6000 M3
+G0 Z0.
+X0.
+G96 S200 M3
+G92 6000
+G0 Z0.6
+(L95 Stock removal cycle)
+R20=105 (Subroutine number under which the contour is stored)
+R21=23. (Initial point of contour in X)
+R22=0.6 (Initial point of contour in Z)
+R24=-0.2 (Finishing cut depth in X)
+R25=0.1 (Finishing cut depth in Z)
+R26=1.2 (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=33. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 Z0.
+G97 S6000 M3
+
+(Profile Roughing inside Vertical)
+G95
+G0 Z0.
+X0.
+G96 S200 M3
+G92 6000
+G0 Z0.01
+(L95 Stock removal cycle)
+R20=106 (Subroutine number under which the contour is stored)
+R21=-0.02 (Initial point of contour in X)
+R22=-8. (Initial point of contour in Z)
+R24=-0.2 (Finishing cut depth in X)
+R25=0.1 (Finishing cut depth in Z)
+R26=1.2 (Depth of roughing cut)
+R28=1. (Feedrate)
+R29=34. (Type determination)
+R30=1. (Feed factor)
+L95 P1
+G0 X0.
+G97 S6000 M3
+
+M9
+G53 G0 X2. D0
+G53 G0 Z3.
+M30
+
+L100
+G1 Z-20. F1.
+X40.
+Z-35.
+X52.176
+X58. Z-43.
+M17
+
+L101
+G1 X58. F1.
+X52.176 Z-35.
+X40.
+Z-20.
+X35.
+Z0.
+M17
+
+L102
+G1 Z-100. F1000.
+X40.
+Z-85.
+X52.176
+X52.759 Z-84.2
+X58.
+M17
+
+L103
+G1 Z-20. F1.
+X40.
+Z-35.
+X52.176
+X58. Z-43.
+Z-51.
+X57.65 Z-53.
+X58.
+Z-67.
+X57.65 Z-69.
+X58.
+Z-77.
+X57.475 Z-80.
+X58.
+M17
+
+L104
+G1 X58. F1.
+X52.176 Z-35.
+X40.
+Z-20.
+X35.
+Z0.
+M17
+
+L105
+G1 Z0. F1.
+X20. Z-2.944
+Z-8.
+X0.
+M17
+
+L106
+G1 X20. F1.
+Z-2.944
+X23. Z0.
+M17

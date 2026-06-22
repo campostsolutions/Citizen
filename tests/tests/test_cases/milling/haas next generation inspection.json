@@ -1,0 +1,54 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "haas next generation inspection",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspection",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasBAxis": "yes"
+          },
+          "input": [
+            "Part Alignment",
+            "Inspection 3x single",
+            "Inspection 3x",
+            "Inspection 5x"
+          ]
+        },
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspection_safe",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasBAxis": "yes",
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Inspection 3x single",
+            "Inspection 3x",
+            "Inspection 5x"
+          ]
+        },
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_liveConnection",
+          "properties": {
+            "useLiveConnection": true
+          },
+          "input": [
+            "Part Alignment",
+            "Pattern 2D Linear No Compensation"
+          ]
+        }
+      ]
+    }
+  ]
+}

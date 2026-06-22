@@ -1,0 +1,31 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "okuma inspection",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspection",
+          "properties": {
+            "commissioningMode": true,
+            "probeOnCommand": "CALL O18",
+            "probeOffCommand": "CALL O19",
+            "probeCalibratedRadius": 21,
+            "probeEccentricityX": 22,
+            "probeEccentricityY": 23
+          },
+          "input": [
+            "Inspection 3x single",
+            "Inspection 3x",
+            "Inspection 5x"
+          ],
+          "machine": "tests/machine/AC_table_table_nonCyclic.mch"
+        }
+      ]
+    }
+  ]
+}

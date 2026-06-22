@@ -1,0 +1,49 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "intelitek",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": " Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useToolCall": false,
+            "safePositionMethod": "G28",
+            "useG43": true,
+            "machineModel": "BenchMill"
+          },
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling",
+            "5x Simultaneous"
+          ],
+          "machine": "tests/machine/AC_table_table_DPM.mch"
+        }
+      ]
+    }
+  ]
+}

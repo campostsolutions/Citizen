@@ -1,0 +1,85 @@
+* 1234
+* MACHINE
+*   VENDOR AUTODESK
+*   DESCRIPTION GENERIC 5-AXIS AC TABLE-TABLE
+* T3 D=0.2012 CR=0 TAPER=118DEG - DRILL
+Dim Abs
+Plane XY
+Unit Inch
+Rapid Z0 Tool# 0
+* DRILL44
+Tool# 3
+RPM 5000 M3
+Offset Fixture# 1
+Rapid Z0 Tool# 0
+Rapid A 30. C 0.
+M8
+Rapid X 0.0773 Y -0.7111 Z 1.1262
+Rapid Z 0.7262
+BasicDrill ZDepth -0.3656 StartHgt 0.5649 ReturnHgt 0.7262 Feed 15.7
+X 0.0773 Y -0.7111
+DrillingOff
+Rapid Z 1.1262
+Plane XY
+Rapid Z0 Tool# 0
+* DRILL44 2
+Tool# 3
+RPM 5000 M3
+Offset Fixture# 1
+Rapid Z0 Tool# 0
+Rapid A 30. C 90.
+Rapid X 0.0003 Y -1.5634 Z 1.6183
+Rapid Z 1.2183
+BasicDrill ZDepth 0.11 StartHgt 1.057 ReturnHgt 1.2183 Feed 15.7
+X 0.0003 Y -1.5634
+DrillingOff
+Rapid Z 1.6183
+Plane XY
+Rapid Z0 Tool# 0
+* DRILL44 3
+Tool# 3
+RPM 5000 M3
+Offset Fixture# 1
+Rapid Z0 Tool# 0
+Rapid A 30. C 180.
+Rapid X 0.0158 Y -0.7121 Z 1.1262
+Rapid Z 0.7262
+BasicDrill ZDepth -0.3851 StartHgt 0.5649 ReturnHgt 0.7262 Feed 15.7
+X 0.0158 Y -0.7121
+DrillingOff
+Rapid Z 1.1262
+Plane XY
+Rapid Z0 Tool# 0
+* DRILL44 4
+Tool# 3
+RPM 5000 M3
+Offset Fixture# 1
+Rapid Z0 Tool# 0
+Rapid A 30. C 270.
+Rapid X -0.1061 Y -1.5645 Z 1.6183
+Rapid Z 1.2183
+BasicDrill ZDepth 0.107 StartHgt 1.057 ReturnHgt 1.2183 Feed 15.7
+X -0.1061 Y -1.5645
+DrillingOff
+Rapid Z 1.6183
+Plane XY
+Rapid Z0 Tool# 0
+* DRILL44 5
+Tool# 3
+RPM 5000 M3
+Offset Fixture# 1
+Rapid Z0 Tool# 0
+Rapid A -22.208 C 225.
+Rapid X -0.6968 Y 1.6266 Z 1.4256
+Rapid Z 1.0256
+BasicDrill ZDepth -0.1386 StartHgt 0.8114 ReturnHgt 1.0256 Feed 15.7
+X -0.6968 Y 1.6266
+DrillingOff
+Rapid Z 1.4256
+Plane XY
+M9
+Rapid Z0 Tool# 0
+Rapid Z0 Tool# 0
+Rapid A 0. C 0.
+Rapid X0 Y0
+EndMain

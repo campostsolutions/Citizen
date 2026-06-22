@@ -1,0 +1,43 @@
+BEGIN PGM 1234 MM
+;mycomment
+BLK FORM 0.1 Z X-50 Y-25 Z-50
+BLK FORM 0.2 X+50 Y+25 Z+1
+;-------------------------------------
+;The postprocessor uses the following settings for CYCLE19:
+;  Make sure that these settings match the settings on your machine.
+;  MP7500 Bit1: 0 - Machine angles
+;  MP7500 Bit2: 1 - The tilting axes are positioned with CYCLE19
+;-------------------------------------
+;T4 D=+6.35 CR=+0 - ZMIN=-14 - right hand tap
+;-------------------------------------
+TOOL CALL Z ;SET TOOL AXIS FOR M140
+L M140 MB MAX
+* - Tap with chip breaking
+TOOL CALL 4 Z S1000
+L M140 MB MAX
+M3
+LBL 1
+CYCL DEF 247 DATUM SETTING ~
+  Q339=1 ; DATUM NUMBER
+LBL 0
+L X+25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CYCL DEF 32.0 TOLERANCE
+CYCL DEF 32.1
+CYCL DEF 209 TAPPING W/ CHIP BRKG ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=+1.27 ;THREAD PITCH ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q257=+3 ;DEPTH FOR CHIP BRKNG ~
+  Q256=+0.5 ;DIST. FOR CHIP BRKNG ~
+  Q336=0 ;ANGLE OF SPINDLE
+L FMAX M99
+L Z+16 FMAX
+M9
+M5
+L M140 MB MAX
+M30
+END PGM 1234 MM

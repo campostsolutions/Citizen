@@ -1,0 +1,35 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "bambulab",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {
+            "printerModel": "x1c"
+          },
+          "input": [
+            "fff_1extruder"
+          ]
+        },
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "_x1e_enclosure",
+          "properties": {
+            "printerModel": "x1e",
+            "enclosureTemperature": 50
+          },
+          "input": [
+            "fff_1extruder"
+          ]
+        }      
+      ]
+    }
+  ]
+}

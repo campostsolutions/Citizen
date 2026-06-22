@@ -1,0 +1,76 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "5axismaker",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "G28",
+            "useM06": false,
+            "useRadius": false,
+            "dwellInSeconds": false
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Preload tool",
+          "inputFolder": "milling",
+          "suffix": "_preload",
+          "properties": {
+            "preloadTool": true,
+            "useG43": true
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "safePositionMethod": "G28"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_setupc",
+          "properties": {
+            "safePositionMethod": "G28",
+            "setupAtCenterofCaxis": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple"
+          ]
+        }
+      ]
+    }
+  ]
+}

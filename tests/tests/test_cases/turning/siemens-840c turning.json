@@ -1,0 +1,87 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "siemens-840c turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Tapping operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": true
+          },
+          "input": [
+            "Axial Drilling Cycles",
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "cycleComments": true,
+            "useParametricFeed": true,
+            "useRadius": true,
+            "homePositionX": 1,
+            "homePositionZ": 3,
+            "safeRetractMethod": "Both",
+            "useRigidTapping": true,
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles",
+            "Turning Cycles",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        }
+      ]
+    }
+  ]
+}

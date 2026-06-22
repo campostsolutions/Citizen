@@ -1,0 +1,20 @@
+{
+  "externalDiffTools" : [
+    {
+      "tool" : "\"C:\\Program Files (x86)\\Meld\\Meld.exe\"",
+      "args" : "--newtab {expected} {actual}",
+      "async" : true
+    },
+    {
+      "tool" : "\"C:\\Program Files\\WinMerge\\WinMergeU.exe\"",
+      "args" : "/s {expected} {actual}",
+      "async" : true,
+      "default" : true
+    },
+    {
+      "tool" : "\"C:\\Program Files\\Araxis\\Araxis Merge\\Compare.exe\"",
+      "args" : "/2 {expected} {actual}",
+      "async" : true
+    }
+  ]
+}

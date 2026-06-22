@@ -1,0 +1,38 @@
+%1234
+(mycomment)
+G90 G94 G18
+G71
+G40
+G92 S6000
+G53 G0 X2. D0
+G53 G0 Z3.
+
+(Slant Threading Cycle)
+T3 D1
+G54
+M8
+G95
+G97 S500 M3
+G0 Z0.
+X80.
+G0 Z-31.538
+(L97 Thread cutting cycle)
+R20=1.016 (Thread pitch)
+R21=52.176 (Initial point of thread in X)
+R22=-35. (Initial point of thread in Z)
+R23=0. (Number of idle passes)
+R24=1. (Thread depth)
+R25=0. (Finishing allowance)
+R26=0. (Run-in path)
+R27=0. (Run-out path)
+R28=5. (Number of roughing cuts)
+R29=30. (Infeed angle)
+R31=58. (End point of thread in X)
+R32=-43. (End point of thread in Z)
+L97 P1
+Z0.
+
+M9
+G53 G0 X2. D0
+G53 G0 Z3.
+M30

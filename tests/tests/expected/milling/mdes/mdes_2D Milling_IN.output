@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MDESEquipment version="1.1.0">
+  <Library name="1234" uuid="00310030-0300-4000-d003-003000300031">
+    <Folder name="" uuid="00310030-0300-4000-d003-003000300032">
+      <Stock name="stock" uuid="00310030-0300-4000-d003-003000300034">
+        <Connector name="" uuid="00310030-0300-4000-d003-003000300033" transform="none" origin="Zero" direction="MS"/>
+        <Model transform="none">
+          <MeshGeometry length_unit="millimetre" mesh_folder_index="0" original_path=""/>
+          <Material color="132,135,137,255"/>
+        </Model>
+        <Target transform="none">
+          <EmptyGeometry/>
+          <Material color="138,148,158,255"/>
+        </Target>
+      </Stock>
+      <Fixture name="fixture" uuid="00310030-0300-4000-d003-003000300036">
+        <Connector name="" uuid="00310030-0300-4000-d003-003000300035" transform="none" origin="Zero" direction="MS"/>
+        <Model transform="none">
+          <MeshGeometry length_unit="millimetre" mesh_folder_index="1" original_path=""/>
+          <Material color="138,148,158,255"/>
+        </Model>
+      </Fixture>
+    </Folder>
+    <Folder uuid="00310030-0300-4000-d003-003000300037">
+      <ToolAssembly name="myTool1 Holder" uuid="00000001-0000-0000-0000-000000000000">
+        <ToolNode>
+          <AdaptiveItem name="myTool1 Adapter" uuid="00310030-0300-4000-d003-003000310030">
+            <Connector name="" uuid="00310030-0300-4000-d003-003000300038" transform="none" origin="PositiveExtentZ" direction="WS"/>
+            <Connector name="" uuid="00310030-0300-4000-d003-003000300039" transform="none" origin="NegativeExtentZ" direction="WS"/>
+            <Model>
+              <RevolvedGeometry length_unit="millimetre">
+                <Contour>
+                    <Point2D x="0" y="0"/>
+                    <Point2D x="22.238" y="0"/>
+                    <Point2D x="23" y="0.762"/>
+                    <Point2D x="23" y="4.4"/>
+                    <Point2D x="19" y="6.7094"/>
+                    <Point2D x="19" y="10.0906"/>
+                    <Point2D x="23" y="12.4"/>
+                    <Point2D x="23" y="19.238"/>
+                    <Point2D x="22.238" y="20"/>
+                    <Point2D x="15.875" y="20"/>
+                    <Point2D x="15.875" y="22.0066"/>
+                    <Point2D x="0" y="22.0066"/>
+                  </Contour>
+              </RevolvedGeometry>
+              <Material color="0,0,255,255"/>
+            </Model>
+          </AdaptiveItem>
+          <Connection>
+            <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000300039"/>
+            <ToolNode>
+              <ModelCuttingTool name="myTool1" uuid="00310030-0300-4000-d003-003000310031">
+                <Connector name="" uuid="00310030-0300-4000-d003-003000310032" transform="none" origin="PositiveExtentZ" direction="WS"/>
+                <CuttingModel transform="none">
+                  <RevolvedGeometry length_unit="millimetre">
+                    <Contour>
+                        <Point2D x="0" y="0"/>
+                        <Point2D x="25.4" y="0"/>
+                        <Point2D x="25.4" y="5"/>
+                      </Contour>
+                  </RevolvedGeometry>
+                  <Material color="255,215,0,255"/>
+                </CuttingModel>
+                <NonCuttingModel>
+                  <RevolvedGeometry length_unit="millimetre">
+                    <Contour>
+                        <Point2D x="0" y="5"/>
+                        <Point2D x="0" y="20"/>
+                        <Point2D x="20" y="20"/>
+                        <Point2D x="20" y="49.9999"/>
+                        <Point2D x="0" y="49.9999"/>
+                      </Contour>
+                  </RevolvedGeometry>
+                  <Material color="255,215,50,255"/>
+                </NonCuttingModel>
+              </ModelCuttingTool>
+              <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000310032"/>
+            </ToolNode>
+          </Connection>
+          <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000300038"/>
+        </ToolNode>
+      </ToolAssembly>
+      <ToolAssembly name="myTool2 Holder" uuid="00000002-0000-0000-0000-000000000000">
+        <ToolNode>
+          <AdaptiveItem name="myTool2 Adapter" uuid="00310030-0300-4000-d003-003000310035">
+            <Connector name="" uuid="00310030-0300-4000-d003-003000310033" transform="none" origin="PositiveExtentZ" direction="WS"/>
+            <Connector name="" uuid="00310030-0300-4000-d003-003000310034" transform="none" origin="NegativeExtentZ" direction="WS"/>
+            <Model>
+              <RevolvedGeometry length_unit="millimetre">
+                <Contour>
+                    <Point2D x="0" y="0"/>
+                    <Point2D x="12.5" y="0"/>
+                    <Point2D x="15" y="5"/>
+                    <Point2D x="15" y="13"/>
+                    <Point2D x="25" y="13"/>
+                    <Point2D x="25" y="15"/>
+                    <Point2D x="23" y="17"/>
+                    <Point2D x="23" y="20"/>
+                    <Point2D x="25" y="22"/>
+                    <Point2D x="25" y="24"/>
+                    <Point2D x="21" y="24"/>
+                    <Point2D x="20" y="29"/>
+                    <Point2D x="0" y="29"/>
+                  </Contour>
+              </RevolvedGeometry>
+              <Material color="0,0,255,255"/>
+            </Model>
+          </AdaptiveItem>
+          <Connection>
+            <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000310034"/>
+            <ToolNode>
+              <ModelCuttingTool name="myTool2" uuid="00310030-0300-4000-d003-003000310036">
+                <Connector name="" uuid="00310030-0300-4000-d003-003000310037" transform="none" origin="PositiveExtentZ" direction="WS"/>
+                <CuttingModel transform="none">
+                  <RevolvedGeometry length_unit="millimetre">
+                    <Contour>
+                        <Point2D x="0" y="0"/>
+                        <Point2D x="4.7625" y="0"/>
+                        <Point2D x="4.7625" y="16"/>
+                      </Contour>
+                  </RevolvedGeometry>
+                  <Material color="255,215,0,255"/>
+                </CuttingModel>
+                <NonCuttingModel>
+                  <RevolvedGeometry length_unit="millimetre">
+                    <Contour>
+                        <Point2D x="0" y="16"/>
+                        <Point2D x="0" y="24"/>
+                        <Point2D x="4.7625" y="24"/>
+                        <Point2D x="4.7625" y="39.9999"/>
+                        <Point2D x="0" y="39.9999"/>
+                      </Contour>
+                  </RevolvedGeometry>
+                  <Material color="255,215,50,255"/>
+                </NonCuttingModel>
+              </ModelCuttingTool>
+              <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000310037"/>
+            </ToolNode>
+          </Connection>
+          <ConnectorReference ref_uuid="00310030-0300-4000-d003-003000310033"/>
+        </ToolNode>
+      </ToolAssembly>
+    </Folder>
+  </Library>
+</MDESEquipment>

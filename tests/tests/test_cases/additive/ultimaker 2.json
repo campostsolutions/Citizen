@@ -1,0 +1,21 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "ultimaker 2",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "fff_1extruder"
+          ]
+        }
+      ]
+    }
+  ]
+}

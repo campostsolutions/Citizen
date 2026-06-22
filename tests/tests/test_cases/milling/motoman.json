@@ -1,0 +1,32 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "motoman",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_useMOVC",
+          "properties": {
+            "useMOVC": true
+          },
+          "input": [
+            "2D No Compensation"
+          ]
+        }
+      ]
+    }
+  ]
+}

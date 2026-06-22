@@ -1,0 +1,33 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "forest scientific cnc router",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous operations",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useToolCall": true
+          },
+          "input": [
+            "2D No Compensation"
+          ]
+        }
+      ]
+    }
+  ]
+}

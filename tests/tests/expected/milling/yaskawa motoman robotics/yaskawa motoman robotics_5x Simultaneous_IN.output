@@ -1,0 +1,21 @@
+/JOB
+//NAME YASKAWA MOTOMAN ROBOTICS_5X SIMULTANEOUS_IN
+//POS
+///NPOS 0,0,0,0,0,0
+//INST
+///ATTR SC,RW
+NOP
+' By Autodesk Fusion CAM 2.0.20494
+CALL JOB:sMulti_Axis_front
+CALL JOB:s2D_Face_front
+CALL JOB:sMulti_Axis_left
+CALL JOB:s2D_Face1_front
+CALL JOB:sMulti_Axis_back
+CALL JOB:sMulti_Axis_back_duplicate
+CALL JOB:sMulti_Axis_right
+CALL JOB:sMulti_Axis_right_toolchange
+CALL JOB:sMulti_Axis_diagonal
+CALL JOB:s2D_Contour_top
+CALL JOB:sSwarf1_multiple_spiral
+CALL JOB:sSwarf_outside
+END

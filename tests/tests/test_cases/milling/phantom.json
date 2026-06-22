@@ -1,0 +1,48 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "phantom",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "machineModel": "SC44"
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "_shadow",
+          "properties": {
+            "machineModel": "Shadow"
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "_reaper",
+          "properties": {
+            "machineModel": "Reaper"
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

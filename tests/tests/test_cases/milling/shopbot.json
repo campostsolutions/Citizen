@@ -1,0 +1,118 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "shopbot",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "minimizeFeedOutput": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "SB3V36": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "4-axis operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "fourthAxis": true,
+            "useDPMFeeds": "true",
+            "minimizeFeedOutput": false
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous"
+          ]
+        },
+        {
+          "description": "4-axis operations",
+          "inputFolder": "milling",
+          "suffix": "_fpm",
+          "properties": {
+            "fourthAxis": true,
+            "useDPMFeeds": "tooltip",
+            "minimizeFeedOutput": true
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "fourthAxis": true,
+            "bAxisTurnsAroundX": false,
+            "useDPMFeeds": "false",
+            "minimizeFeedOutput": false
+          },
+          "input": [
+            "B-axis 3+2",
+            "B-axis Simultaneous"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "fifthAxis": true,
+            "useDPMFeeds": "true",
+            "minimizeFeedOutput": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple"
+          ]
+        },
+        {
+          "description": "5-axis Options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "fifthAxis": true,
+            "useDPMFeeds": "false",
+            "minimizeFeedOutput": false
+          },
+          "input": [
+            "5x Simple"
+          ]
+        },
+        {
+          "description": "5-axis FPM feeds",
+          "inputFolder": "milling",
+          "suffix": "_fpm",
+          "properties": {
+            "fifthAxis": true,
+            "useDPMFeeds": "tooltip",
+            "minimizeFeedOutput": true
+          },
+          "input": [
+            "5x Simple"
+          ]
+        }
+      ]
+    }
+  ]
+}

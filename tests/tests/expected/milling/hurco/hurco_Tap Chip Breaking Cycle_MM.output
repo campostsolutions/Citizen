@@ -1,0 +1,28 @@
+%
+O1234 (mycomment)
+(T4 D=6.35 CR=0. - ZMIN=-14. - right hand tap)
+G90 G17 G40 G80
+G21
+M59
+G0 M140
+G69
+(Tap with chip breaking)
+T4 M6
+S1000 M3
+G43 H4
+G17 G90 G94
+G54
+M8
+G1 X25. Y10. F5000.
+G0 Z16.
+G0 Z6.
+M29
+G98 G84.2 X25. Y10. Z-14. Z3. R5. P0. Q3. F1270.
+G80
+Z16.
+M9
+G0 M140
+G53 G0 X0. Y0.
+M61
+M2
+E

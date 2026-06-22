@@ -1,0 +1,60 @@
+; %_N_1234_MPF
+; mycomment
+WORKPIECE(,,,"CYLINDER",192,1,-121,-120,60)
+G94 G18
+G71
+LIMS=6000
+G53 G0 X250 D0
+G53 Y0
+G53 Z300
+
+MSG ("; Radial Tap with chip breaking (4)")
+T16 D1
+M6
+DIAMOF
+SETMS(2)
+G97 S2=500 M2=3
+G19 G90 G95
+G54
+G0 SP1=160.
+D1
+M8
+G0 Z-12
+X45 Y0
+X35
+MCALL CYCLE84(35, 17.5, 5, 7, , , 3, 0, 1.27, 0, 500, 500, 0, 0, 0, 1, 1, 0.127)
+Y0 Z-12
+MCALL
+G1 X45 Z-12 F10
+
+MSG ("; Radial Tap with chip breaking (4)")
+DIAMOF
+G0 SP1=260.
+G1 X45 Y0 Z-12 F10
+G0 X35
+MCALL CYCLE84(35, 17.5, 5, 7, , , 3, 0, 1.27, 0, 500, 500, 0, 0, 0, 1, 1, 0.127)
+Y0 Z-12
+MCALL
+G1 X45 Z-12
+
+MSG ("; Radial Tap with chip breaking (4)")
+DIAMOF
+G0 SP1=0.
+G1 X45 Y0 Z-12 F10
+G0 X35
+MCALL CYCLE84(35, 17.5, 5, 7, , , 3, 0, 1.27, 0, 500, 500, 0, 0, 0, 1, 1, 0.127)
+Y0 Z-12
+MCALL
+G1 X45 Z-12
+
+M9
+G53 G0 X125 D0
+D1
+G53 Y0 D0
+D1
+G53 Z300 D0
+D1
+M2=5
+
+M30
+%

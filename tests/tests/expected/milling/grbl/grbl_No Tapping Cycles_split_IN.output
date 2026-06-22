@@ -1,0 +1,11 @@
+(1234)
+(mycomment)
+(T3 D=0.2012 CR=0 TAPER=118deg - ZMIN=-0.651 - drill)
+(T6 D=0.2 CR=0 - ZMIN=-0.5512 - reamer)
+(T7 D=0.25 CR=0 TAPER=90deg - ZMIN=-0.0079 - spot drill)
+(***THIS FILE DOES NOT CONTAIN NC CODE***)
+
+(Load tool number 3 and subprogram 1234_1_T3)
+(Load tool number 6 and subprogram 1234_2_T6)
+(Load tool number 3 and subprogram 1234_3_T3)
+(Load tool number 7 and subprogram 1234_4_T7)

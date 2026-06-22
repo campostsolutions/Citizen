@@ -1,0 +1,40 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "maho philips 432",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "programName": 9001
+          },
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "programName": 9001,
+            "vertical": false,
+            "useM53M54": true,
+            "useRadius": true,
+            "useComments": true
+          },
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

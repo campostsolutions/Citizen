@@ -1,0 +1,8 @@
+(1234)
+(mycomment)
+(T1 D=50.8 CR=0 - ZMIN=0 - face mill)
+(T2 D=9.525 CR=0 - ZMIN=-10 - flat end mill)
+(***THIS FILE DOES NOT CONTAIN NC CODE***)
+
+(Load tool number 1 and subprogram 1234_1_T1)
+(Load tool number 2 and subprogram 1234_2_T2)

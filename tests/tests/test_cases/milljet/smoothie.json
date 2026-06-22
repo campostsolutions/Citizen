@@ -1,0 +1,96 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "smoothie",
+      "outputFolder": "milljet",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useCycles": false
+          },
+          "input": [
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "4-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_A",
+          "properties": {
+            "fourthAxis": "x"
+          },
+          "input": [
+            "A-axis 3+2 No Comp",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_B",
+          "properties": {
+            "fourthAxis": "y"
+          },
+          "input": [
+            "B-axis 3+2 No Comp",
+            "B-axis Simultaneous",
+            "B-axis Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC",
+          "properties": {
+            "fourthAxis": "x",
+            "hasCAxis": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Laser",
+            "Laser Etch"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "jet",
+          "suffix": "_lasermisc",
+          "properties": {
+            "laserToolNumber": 2,
+            "laserEtchPower": 2,
+            "laserPower": 3,
+            "useLaserM3M5": false
+          },
+          "input": [
+            "Laser",
+            "Laser Etch"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4239 @@
+{
+  "name": "1234",
+  "unit": "in",
+  "setups": [
+    {
+      "name": "Setup:additive",
+      "operations": [
+        {
+          "name": "Feature Construction 3x arc wire",
+          "location": "Setups\\Setup:additive\\Deposition 3x\\Feature Construction 3x arc wire",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "additive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing additive surface "
+            }
+          ],
+          "tool": {
+            "name": "electric arc wire",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "electric arc wire"
+              },
+              {
+                "name": "bead width",
+                "value": 0.1969
+              },
+              {
+                "name": "depositing feedrate",
+                "value": 39.4488
+              },
+              {
+                "name": "lead-in feedrate",
+                "value": 39.3701
+              },
+              {
+                "name": "lead-out feedrate",
+                "value": 39.4094
+              },
+              {
+                "name": "plunge feedrate",
+                "value": 39.4882
+              },
+              {
+                "name": "step over",
+                "value": 0.1969
+              },
+              {
+                "name": "layer thickness",
+                "value": 0.1969
+              },
+              {
+                "name": "deposition length",
+                "value": 2.9835
+              },
+              {
+                "name": "stand-off distance",
+                "value": 0.9843
+              },
+              {
+                "name": "current",
+                "value": 20
+              },
+              {
+                "name": "voltage",
+                "value": 300
+              },
+              {
+                "name": "wire feedrate",
+                "value": 11.811
+              },
+              {
+                "name": "shiedling gas flow rate",
+                "value": 1.9423
+              },
+              {
+                "name": "number",
+                "value": 1
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6802,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0245
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7568,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0277
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0293
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0751
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.219,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0772
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.2731,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0793
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Feature Construction 3x laser powder",
+          "location": "Setups\\Setup:additive\\Deposition 3x\\Feature Construction 3x laser powder",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "additive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing additive surface "
+            }
+          ],
+          "tool": {
+            "name": "laser powder",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "laser powder"
+              },
+              {
+                "name": "bead width",
+                "value": 0.1969
+              },
+              {
+                "name": "depositing feedrate",
+                "value": 39.4488
+              },
+              {
+                "name": "lead-in feedrate",
+                "value": 39.3701
+              },
+              {
+                "name": "lead-out feedrate",
+                "value": 39.4094
+              },
+              {
+                "name": "plunge feedrate",
+                "value": 39.4882
+              },
+              {
+                "name": "step over",
+                "value": 0.1969
+              },
+              {
+                "name": "layer thickness",
+                "value": 0.0787
+              },
+              {
+                "name": "deposition length",
+                "value": 5.967
+              },
+              {
+                "name": "stand-off distance",
+                "value": 0.9843
+              },
+              {
+                "name": "auxiliary gas flow rate",
+                "value": 2.0129
+              },
+              {
+                "name": "power",
+                "value": 0.4021
+              },
+              {
+                "name": "powder flow rate",
+                "value": 60
+              },
+              {
+                "name": "carrier gas flow rate",
+                "value": 1.9776
+              },
+              {
+                "name": "shiedling gas flow rate",
+                "value": 1.9423
+              },
+              {
+                "name": "number",
+                "value": 2
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0092
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0092
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6802,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0098
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0104
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0104
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7568,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0111
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0117
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0209
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.03
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.219,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0309
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.2731,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0317
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0325
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0325
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0197,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0417
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0509
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0509
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6802,
+              "y": 0.3336,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0515
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0521
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0521
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7568,
+              "y": 0.3336,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0528
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0534
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0197,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0626
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0717
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.219,
+              "y": 0.3422,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0726
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.2731,
+              "y": 0.3422,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0734
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0742
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0742
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.2953,
+              "z": -0.1181,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0834
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0834
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0834
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Feature Construction 3x laser wire",
+          "location": "Setups\\Setup:additive\\Deposition 3x\\Feature Construction 3x laser wire",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "additive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing additive surface "
+            }
+          ],
+          "tool": {
+            "name": "laser wire",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "laser wire"
+              },
+              {
+                "name": "bead width",
+                "value": 0.1969
+              },
+              {
+                "name": "depositing feedrate",
+                "value": 39.4488
+              },
+              {
+                "name": "lead-in feedrate",
+                "value": 39.3701
+              },
+              {
+                "name": "lead-out feedrate",
+                "value": 39.4094
+              },
+              {
+                "name": "plunge feedrate",
+                "value": 39.4882
+              },
+              {
+                "name": "step over",
+                "value": 0.1969
+              },
+              {
+                "name": "layer thickness",
+                "value": 0.1969
+              },
+              {
+                "name": "deposition length",
+                "value": 2.9835
+              },
+              {
+                "name": "stand-off distance",
+                "value": 0.9843
+              },
+              {
+                "name": "auxiliary gas flow rate",
+                "value": 1.236
+              },
+              {
+                "name": "power",
+                "value": 0.6702
+              },
+              {
+                "name": "wire feedrate",
+                "value": 2.1654
+              },
+              {
+                "name": "shiedling gas flow rate",
+                "value": 1.0594
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 2
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6802,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0245
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7568,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0277
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0293
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0751
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.219,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0772
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.2731,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0793
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Feature Construction 3x laser wire duplicate",
+          "location": "Setups\\Setup:additive\\Deposition 3x\\Feature Construction 3x laser wire duplicate",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "additive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing additive surface "
+            }
+          ],
+          "tool": {
+            "name": "laser wire",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "laser wire"
+              },
+              {
+                "name": "bead width",
+                "value": 0.1969
+              },
+              {
+                "name": "depositing feedrate",
+                "value": 39.4488
+              },
+              {
+                "name": "lead-in feedrate",
+                "value": 39.3701
+              },
+              {
+                "name": "lead-out feedrate",
+                "value": 39.4094
+              },
+              {
+                "name": "plunge feedrate",
+                "value": 39.4882
+              },
+              {
+                "name": "step over",
+                "value": 0.1969
+              },
+              {
+                "name": "layer thickness",
+                "value": 0.1969
+              },
+              {
+                "name": "deposition length",
+                "value": 2.9835
+              },
+              {
+                "name": "stand-off distance",
+                "value": 0.9843
+              },
+              {
+                "name": "auxiliary gas flow rate",
+                "value": 1.236
+              },
+              {
+                "name": "power",
+                "value": 0.6702
+              },
+              {
+                "name": "wire feedrate",
+                "value": 2.1654
+              },
+              {
+                "name": "shiedling gas flow rate",
+                "value": 1.0594
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6644,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0229
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.6802,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0245
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7185,
+              "y": 0.3494,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0261
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7568,
+              "y": 0.3336,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0277
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0293
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.7726,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": 0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.0984,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "plunge"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.488
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead in"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0522
+                },
+                {
+                  "name": "feed",
+                  "value": 39.37
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.1919,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0751
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.219,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0772
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.2731,
+              "y": 0.3422,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0793
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "link"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": 0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.0814
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.2953,
+              "z": -0.1969,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "depositing"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.449
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": -0.1772,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "lead out"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 39.409
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "x": -0.3002,
+              "y": -0.315,
+              "z": 0.5906,
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "parameters": [
+                {
+                  "name": "layer index",
+                  "value": 1
+                },
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0.1043
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

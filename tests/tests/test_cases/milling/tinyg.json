@@ -1,0 +1,67 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "tinyg",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "G28",
+            "useRadius": true,
+            "useActiveSpindle": false,
+            "preloadTool": true,
+            "useM06": true
+          },
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Multi-axis A-axis",
+          "inputFolder": "milling",
+          "suffix": "_aaxis",
+          "properties": {
+            "rotaryTableAxis": "x",
+            "safePositionMethod": "G28"
+          },
+          "input": [
+            "A-axis 3+2 No Comp",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Multi-axis B-axis",
+          "inputFolder": "milling",
+          "suffix": "_baxis",
+          "properties": {
+            "rotaryTableAxis": "-y",
+            "useInverseTime": false,
+            "safePositionMethod": "G28"
+          },
+          "input": [
+            "B-axis 3+2 No Comp",
+            "B-axis Simultaneous",
+            "B-axis Drilling"
+          ]
+        }
+      ]
+    }
+  ]
+}
