@@ -29,9 +29,57 @@ tests/
 
 ## Quick Start
 
-### 1. Discover Available Tests
+### Baseline Workflow (Recommended)
 
-Run the test discovery script to see all available posts and test parts:
+This approach establishes a baseline from your first set of outputs, then tracks changes.
+
+#### Step 1: Generate NC Code
+
+Using Fusion 360:
+1. Open a test part from `Parts/` folder
+2. Select "Output to Citizen" from CAM Actions
+3. Generate NC code and save to `tests/output/` directory
+   - Format: `<part_name>_<machine_name>_<operation_type>.nc`
+
+#### Step 2: Run Tests
+
+**Simple one-command test:**
+```bash
+cd tests
+python quick_test.py
+# or on Windows: run_tests.bat
+```
+
+**First run** - establishes baseline from current outputs:
+```bash
+python baseline_manager.py --establish
+```
+
+**Subsequent runs** - compares against baseline:
+```bash
+python baseline_manager.py --compare
+```
+
+#### Step 3: Review Results
+
+- ✓ **Match** - Output matches baseline (no changes)
+- ⚠ **Changed** - Output differs from baseline
+- ✨ **New** - New output not in baseline yet
+
+#### Step 4: Accept Changes (if needed)
+
+Update baseline with new outputs:
+```bash
+# Accept all changes
+python baseline_manager.py --accept-all
+
+# Accept specific file
+python baseline_manager.py --accept "Qatest-Mill"
+```
+
+### Alternative: Detailed Test Discovery
+
+For comprehensive analysis without baseline tracking:
 
 ```bash
 python test_runner.py
@@ -41,36 +89,17 @@ This will:
 - List all 20+ post processors
 - Verify post syntax
 - Discover all test parts (11 CAM files)
-- Generate a detailed `TEST_REPORT.md`
+- Generate detailed `TEST_REPORT.md`
 
-### 2. Generate NC Code from Test Parts
+### Alternative: Validate Against Expected Outputs
 
-Using Fusion 360:
-
-1. Open a test part from `Parts/` folder
-   - Example: `Qatest-Mill.f3d` for milling operations
-   - Example: `Qatest-MillTurn.f3d` for turning operations
-
-2. Select "Output to Citizen" from CAM Actions
-3. Choose the appropriate machine/post from the dropdown
-4. Generate NC code
-5. Save outputs to the `output/` directory with naming convention:
-   - Format: `<part_name>_<machine_name>_<operation_type>.nc`
-   - Example: `Qatest-Mill_Citizen-L12-VII_milling.nc`
-
-### 3. Validate Generated Outputs
-
-Compare your generated outputs with expected results:
+Compare with pre-existing expected outputs:
 
 ```bash
 python validate_outputs.py
 ```
 
-This will:
-- Find all NC files in the `output/` directory
-- Match them against expected outputs in the `expected/` directory
-- Generate an HTML report with detailed comparisons
-- Show pass/fail status and similarity scores
+Generates HTML report with detailed comparisons.
 
 ## Available Post Processors
 
@@ -118,41 +147,69 @@ Outputs are organized by machine capability:
 
 ## Testing Workflow
 
+### Baseline-Based Testing (Recommended for Regression Testing)
+
+The baseline system provides a simple way to track changes over time:
+
+1. **First time:** Establish baseline from initial outputs
+   ```bash
+   python baseline_manager.py --establish
+   ```
+
+2. **After code changes:** Run comparison
+   ```bash
+   python baseline_manager.py --compare
+   # or: python quick_test.py
+   ```
+
+3. **Review results:**
+   - ✓ **MATCH** - Output identical to baseline (no regression)
+   - ⚠ **CHANGED** - Output differs from baseline (review changes)
+   - ✨ **NEW** - New output not yet in baseline
+
+4. **Accept changes** (if verified as correct):
+   ```bash
+   python baseline_manager.py --accept-all
+   ```
+
+### Baseline Storage
+
+- **Baseline files:** `tests/baseline/` directory
+- **Metadata:** `tests/baseline_metadata.json` (tracks file hashes)
+- Not committed to git (local regression tracking)
+
+### Baseline Comparison Features
+
+- **Normalized comparison** - Comments and whitespace ignored
+- **Hash-based tracking** - Detects any changes
+- **Similarity scoring** - Shows % match with baseline
+- **Size comparison** - Tracks byte and line count changes
+- **Change details** - Shows what's different (in --verbose mode)
+
 ### Full Integration Test
 
 ```bash
-# 1. Discover what needs testing
+# 1. Discover test structure
 python test_runner.py
 
 # 2. In Fusion 360:
-#    - Generate NC code for each machine/post combination
+#    - Generate NC code for each machine/post
 #    - Save to output/ directory
-#    - Use consistent naming convention
 
-# 3. Validate all outputs
-python validate_outputs.py
+# 3. First time: establish baseline
+python baseline_manager.py --establish
 
-# 4. Review results
-# - Check VALIDATION_REPORT.html in browser
-# - Review TEST_REPORT.md for structure
+# 4. Verify results look correct, then:
+python quick_test.py
+# Should show: "All outputs match baseline!"
+
+# 5. After modifying posts, regenerate in Fusion 360, then:
+python quick_test.py
+# Will show which outputs changed
+
+# 6. Review changes, then accept if correct:
+python baseline_manager.py --accept-all
 ```
-
-### Regression Testing
-
-After modifying a post processor:
-
-1. Generate test output for that post
-2. Run validation
-3. Compare similarity scores with previous runs
-4. Ensure all outputs are > 85% similar to expected
-
-### Single Post Testing
-
-To test a specific post processor:
-
-1. In Fusion 360, select only that post
-2. Generate outputs for key test parts
-3. Validate with `python validate_outputs.py`
 
 ## Output Comparison Details
 
@@ -240,14 +297,100 @@ test:
 ## Next Steps
 
 1. Generate test outputs using Fusion 360
-2. Run validation to establish baseline
-3. Create automated workflows for regression testing
-4. Set up notifications for failing tests
-5. Integrate with development workflow
+2. Run `python baseline_manager.py --establish` to create baseline
+3. Run `python quick_test.py` for simple pass/fail comparison
+4. After modifications, run `python baseline_manager.py --compare` to see changes
+5. Accept changes with `python baseline_manager.py --accept-all`
 
-## Support
+## Command Reference
 
-For questions about specific post processors, see:
-- `Current Release/posts/` - Active post processor files
-- `HTMLFusiontoCitizen/` - Fusion 360 add-in source code
-- Machine documentation files in parent directories
+### Quick Test (One Command)
+```bash
+python quick_test.py              # Simple pass/fail comparison
+# Windows: run_tests.bat
+```
+
+### Baseline Management
+```bash
+python baseline_manager.py --establish           # Create baseline from outputs
+python baseline_manager.py --compare             # Compare against baseline
+python baseline_manager.py --compare --verbose   # Show detailed diffs
+python baseline_manager.py --status              # Show baseline info
+python baseline_manager.py --accept-all          # Accept all changes
+python baseline_manager.py --accept "filename"   # Accept specific file
+python baseline_manager.py --establish --force   # Force overwrite baseline
+```
+
+### Test Discovery & Validation
+```bash
+python test_runner.py             # Discover posts and parts, syntax check
+python validate_outputs.py        # Validate against expected/ (HTML report)
+```
+
+## Examples
+
+### Workflow 1: First Time Setup
+
+```bash
+# Generate outputs in Fusion 360, save to output/
+
+# Establish baseline
+python baseline_manager.py --establish
+# Output:
+#  + Qatest-Mill_Citizen-L12-VII - ESTABLISHED baseline
+#  + Qatest-Mill_Miyano-BNE-MYY - ESTABLISHED baseline
+#  ... (establishes all files)
+
+# Verify baseline created
+python baseline_manager.py --status
+# Shows files in baseline/
+
+# Run test to confirm all match
+python quick_test.py
+# Output: "All tests PASS - outputs match baseline!"
+```
+
+### Workflow 2: After Modifying a Post Processor
+
+```bash
+# Regenerate outputs in Fusion 360 for modified post
+
+# Check what changed
+python baseline_manager.py --compare
+# Output:
+#  ✓ Qatest-Mill_Citizen-L220-VIII - MATCH
+#  ⚠ Qatest-Mill_Citizen-L12-VII - CHANGED (92.5% similar)
+#  ✓ Qatest-MillTurn - MATCH
+#  ... (shows what changed)
+
+# If changes look correct, accept them
+python baseline_manager.py --accept-all
+
+# Verify all pass again
+python quick_test.py
+# Output: "All tests PASS - outputs match baseline!"
+```
+
+### Workflow 3: Testing Single Post After Changes
+
+```bash
+# Regenerate outputs only for Citizen-L12-VII in Fusion 360
+
+# Compare
+python baseline_manager.py --compare --verbose
+# Shows detailed diff for changed file
+
+# Accept just that file's changes
+python baseline_manager.py --accept "Citizen-L12-VII"
+# Output: "→ Qatest-Mill_Citizen-L12-VII - UPDATED"
+
+# Run full test
+python quick_test.py
+```
+
+## Baseline Storage
+
+- **Baseline files:** `tests/baseline/` directory (local, not in git)
+- **Metadata:** `tests/baseline_metadata.json` (tracks file hashes)
+- Used for regression testing and change tracking
+- Can be rebuilt anytime with `--establish`
