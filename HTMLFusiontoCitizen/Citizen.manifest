@@ -1,0 +1,14 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"addin",
+	"id":	"bd3f16d8-613e-4237-94e8-61ddba172bac",
+	"author":	"Citizen",
+	"description":	{
+		"":	"Citizen Post Processor with HTML Form Integration"
+	},
+	"version":	"2.0.0",
+	"runOnStartup":	true,
+	"supportedOS":	"windows",
+	"editEnabled":	false,
+	"main":	"main.py"
+}

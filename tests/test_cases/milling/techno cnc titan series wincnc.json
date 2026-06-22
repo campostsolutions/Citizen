@@ -1,0 +1,74 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "techno cnc titan series wincnc",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "clearanceHeight",
+            "optionalStop": true,
+            "useXYZFeeds": "feedFirst"
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table_NoTCP.mch"
+        },
+		{
+          "description": "Multi-axis A-axis",
+          "inputFolder": "milling",
+          "suffix": "_aaxis",
+          "properties": {
+            "rotaryTableAxis": "x",
+            "safePositionMethod": "G53"
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Multi-axis B-axis",
+          "inputFolder": "milling",
+          "suffix": "_baxis",
+          "properties": {
+            "rotaryTableAxis": "-y"
+          },
+          "input": [
+            "B-axis 3+2",
+            "B-axis Simultaneous",
+            "B-axis Drilling"
+          ]
+        }
+      ]
+    }
+  ]
+}

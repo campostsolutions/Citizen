@@ -1,0 +1,255 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "haas st-10y",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles",
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "turning",
+          "suffix": "_noLiveTool",
+          "properties": {
+            "gotLiveTooling": false
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn XZC",
+            "Mill Turn Axial No Comp",
+            "Mill Turn Axial Simple",
+            "Mill Turn Modes",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_thread_cycle",
+          "properties": {
+            "useSimpleThread": false
+          },
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": " Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Radial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "optimizeCAxisSelect": true,
+            "safeStartAllOperations": true,
+            "useSmoothing": true,
+            "showSequenceNumbers": "toolChange",
+            "usePeckTapping": true
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles",
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "millturn",
+          "suffix": "_options",
+          "properties": {
+            "optimizeCAxisSelect": true,
+            "safeStartAllOperations": true,
+            "useYAxisForDrilling": true,
+            "useSmoothing": true,
+            "xAxisMinimum": -2.0,
+            "useG112": true,
+            "usePolarCircular": true,
+            "showSequenceNumbers": "toolChange"
+          },
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Simple Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial No Comp",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Next Generation Control",
+          "inputFolder": "millturn",
+          "suffix": "_ngc",
+          "properties": {
+            "controllerType": "ngc"
+          },
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn XZC",
+            "Mill Turn Axial No Comp",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Secondary Spindle operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "gotSecondarySpindle": "true"
+          },
+          "input": [
+            "Secondary Turning 2 Axis",
+            "Secondary SFM Spindle Speed",
+            "Secondary Axial Drilling Cycles",
+            "Secondary Mill Turn Axial Simple",
+            "Secondary Z-axis Simple Drilling Cycles",
+            "Secondary Radial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Secondary Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "gotSecondarySpindle": "contouring",
+            "useG112": true
+          },
+          "input": [
+            "Secondary Mill Turn Polar",
+            "Secondary Mill Turn XZC",
+            "Secondary Mill Turn Axial No Comp",
+            "Secondary Mill Turn Modes",
+            "Secondary Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Secondary Threading operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "gotSecondarySpindle": "true"
+          },
+          "input": [
+            "Secondary Straight Threading",
+            "Secondary Slant Threading",
+            "Secondary Straight Threading Cycle",
+            "Secondary Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Secondary Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "gotSecondarySpindle": "true"
+          },
+          "input": [
+            "Secondary Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Part transfer",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {
+            "gotSecondarySpindle": "true",
+            "looping": true,
+            "numberOfRepeats": 5
+          },
+          "input": [
+            "Simple Part Transfer",
+            "Part Transfer with Cutoff",
+            "Simple Bar Pull"
+          ]
+        },
+        {
+          "inputFolder": "millturn",
+          "suffix": "_eject",
+          "properties": {
+            "gotSecondarySpindle": "true",
+            "autoEject": true,
+            "optimizeCaxisSelect": true
+          },
+          "input": [
+            "Simple Part Transfer",
+            "Part Transfer with Cutoff",
+            "Simple Bar Pull"
+          ]
+        },
+        {
+          "inputFolder": "millturn",
+          "suffix": "_eject_options",
+          "properties": {
+            "controllerType": "ngc",
+            "gotSecondarySpindle": "true",
+            "autoEject": true,
+            "optimizeCaxisSelect": true,
+            "cleanAir": false,
+            "workPositionSub": 2.0
+          },
+          "input": [
+            "Simple Part Transfer",
+            "Part Transfer with Cutoff",
+            "Simple Bar Pull"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {
+            "showSequenceNumbers":"false"
+          },
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

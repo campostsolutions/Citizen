@@ -1,0 +1,39 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "haas gm2-5ax haasDriver",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useG28": true,
+            "useG0": true,
+            "preloadTool": false,
+            "useRadius": true,
+            "useSmoothing": "9999",
+            "usG95ForTapping": true,
+            "optionallyCycleToolsAtStart": true,
+            "measureTools": true,
+            "safeStartAllOperations": true,
+            "showSequenceNumbers": "toolChange",
+            "adjustKnuckleAngle": "retract",
+            "usePeckTapping": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling",
+            "Tap Chip Breaking Cycle"
+          ]
+        }
+      ]
+    }
+  ]
+}

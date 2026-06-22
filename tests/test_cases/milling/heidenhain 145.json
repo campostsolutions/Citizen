@@ -1,0 +1,47 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "heidenhain 145",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "preloadTool": false,
+            "expandCycles": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

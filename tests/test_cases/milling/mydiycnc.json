@@ -1,0 +1,33 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "mydiycnc",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table_NoTCP.mch"
+        }
+      ]
+    }
+  ]
+}

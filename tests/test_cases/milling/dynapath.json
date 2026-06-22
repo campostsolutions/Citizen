@@ -1,0 +1,36 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "dynapath",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Left Tap Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useToolCall": false,
+            "useCoolant": false,
+            "useRS274": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

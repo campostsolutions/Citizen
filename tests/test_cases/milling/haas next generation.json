@@ -1,0 +1,381 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "haas next generation",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "G28",
+            "useRadius": true,
+            "homePositionCenter": true,
+            "optionallyCycleToolsAtStart": true,
+            "toolArmDrive": true,
+            "measureTools": true,
+            "safeStartAllOperations": true,
+            "showSequenceNumbers": "toolChange",
+            "useSSV": true,
+            "useSmoothing": "9999",
+            "useG95forTapping": true,
+            "coolantPressure": "P1"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "fasttool",
+          "properties": {
+            "fastToolChange": true,
+            "homePositionCenter": true,
+            "safePositionMethod": "clearanceHeight"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_AC_noTCPC",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasCAxis": "yes",
+            "useTCP": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_useDWO",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasCAxis": "yes",
+            "useTiltedWorkplane": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_safeStartAllOperations",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasCAxis": "yes",
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_useDPMFeeds",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasCAxis": "yes",
+            "useTCP": false,
+            "useDPMFeeds": true,
+            "homePositionCenter": true
+          },
+          "input": [
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasCAxis": "yes"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_BC",
+          "properties": {
+            "hasBAxis": "yes",
+            "hasCAxis": "yes"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AB",
+          "properties": {
+            "hasAAxis": "yes",
+            "hasBAxis": "yes"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_A",
+          "properties": {
+            "hasAAxis": "yes"
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_A_reversed",
+          "properties": {
+            "hasAAxis": "reversed"
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_BC_reversed",
+          "properties": {
+            "hasBAxis": "reversed",
+            "hasCAxis": "reversed"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_UMC750",
+          "properties": {
+            "machineModel": "umc-750"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_UMC750_machine",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ],
+          "machine": "machines/subtractive/haas/haas umc-750.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "__BC_forceHomeOnIndexing",
+          "properties": {
+            "hasBAxis": "yes",
+            "hasCAxis": "yes",
+            "forceHomeOnIndexing": false
+          },
+          "input": [
+            "5x 3+2"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "_chiptap",
+          "properties": {
+            "usePeckTapping": true
+          },
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_polar",
+          "properties": {
+            "hasCAxis": "true"
+          },
+          "input": [
+            "Polar Interpolation"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns_safestart",
+          "properties": {
+            "useSubroutines": "patterns",
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rotarysubs",
+          "properties": {
+            "hasAAxis": true,
+            "hasCAxis": true,
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "AC-Pattern"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_4axissubs",
+          "properties": {
+            "hasAAxis": true,
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "A-Pattern"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_rewind",
+          "properties": {},
+          "input": [
+            "5x Simultaneous"
+          ],
+          "machine": "tests/machine/AC_table_table_nonCyclic.mch"
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probing AC_machine",
+          "inputFolder": "milling",
+          "suffix": "_AC",
+          "properties": {},
+          "input": [
+            "X Angular Probing",
+            "Y Angular Probing"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Partial Features",
+            "Probe Geometry on PCD"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "_safe",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "_safe",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Partial Features",
+            "Probe Geometry on PCD"
+          ]
+        }
+      ]
+    }
+  ]
+}

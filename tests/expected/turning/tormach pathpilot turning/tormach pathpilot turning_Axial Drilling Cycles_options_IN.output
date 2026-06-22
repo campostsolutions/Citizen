@@ -1,0 +1,302 @@
+;  program:   1234
+;             mycomment
+;
+G7
+G90 G18
+G20
+G54
+G40
+
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 4
+; Tooling: Turret
+;      Op: Axial Drill
+;    Time: 00:00:01
+;       Z: -0.1063
+;The machine will load tool4 and drill 1 hole in the center with
+;cycle Rapid out. Make sure that the main spindle is rotating to
+;perform the drilling operation.
+N10 T0404
+G94 G90 G18
+G54
+G97 S4000 M3
+G0 X0. Z0.6299
+G0 Z0.2362
+Z0.1969
+G1 Z-0.1063 F15.748
+G0 Z0.2362
+Z0.6299
+M5
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 5
+; Tooling: Turret
+;      Op: Axial Dwell
+;    Time: 00:00:04
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Dwell and rapid out. Make sure that the main spindle is
+;rotating to perform the drilling operation.
+N12 T0505
+G94 G90 G18
+G54
+G97 S4000 M3
+G0 X0. Z0.6299
+G0 Z0.2362
+Z0.1969
+G1 Z-0.7516 F15.748
+G0 Z0.2362
+Z0.6299
+
+; ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..
+;      Op: Axial Chip breaking
+;    Time: 00:00:04
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Chip breaking. Make sure that the main spindle is rotating to
+;perform the drilling operation.
+N14 G97 S4000 M3
+G0 X0. Z0.6299
+Z0.2362
+Z0.1969
+Z0.08
+G1 Z-0.0394 F15.748
+G0 Z-0.0354
+G1 Z-0.0787 F15.748
+G0 Z-0.0747
+G1 Z-0.1181 F15.748
+G0 Z-0.1141
+G1 Z-0.1575 F15.748
+G0 Z-0.1535
+G1 Z-0.1969 F15.748
+G0 Z-0.1929
+G1 Z-0.2362 F15.748
+G0 Z-0.2322
+G1 Z-0.2756 F15.748
+G0 Z-0.2716
+G1 Z-0.315 F15.748
+G0 Z-0.311
+G1 Z-0.3543 F15.748
+G0 Z-0.3503
+G1 Z-0.3937 F15.748
+G0 Z-0.3897
+G1 Z-0.4331 F15.748
+G0 Z-0.4291
+G1 Z-0.4724 F15.748
+G0 Z-0.4684
+G1 Z-0.5118 F15.748
+G0 Z0.2362
+Z-0.4318
+G1 Z-0.5512 F15.748
+G0 Z-0.5472
+G1 Z-0.5906 F15.748
+G0 Z-0.5866
+G1 Z-0.6299 F15.748
+G0 Z-0.6259
+G1 Z-0.6693 F15.748
+G0 Z-0.6653
+G1 Z-0.7087 F15.748
+G0 Z-0.7047
+G1 Z-0.748 F15.748
+G0 Z-0.744
+G1 Z-0.7516 F15.748
+G0 Z0.2362
+Z0.6299
+
+; ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..
+;      Op: Axial Deep drilling
+;    Time: 00:00:04
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Deep drilling. Make sure that the main spindle is rotating to
+;perform the drilling operation.
+N16 G97 S4000 M3
+G0 X0. Z0.6299
+Z0.2362
+Z0.1969
+Z0.08
+G1 Z-0.0394 F15.748
+G0 Z0.1969
+Z0.0406
+G1 Z-0.0787 F15.748
+G0 Z0.1969
+Z0.0013
+G1 Z-0.1181 F15.748
+G0 Z0.1969
+Z-0.0381
+G1 Z-0.1575 F15.748
+G0 Z0.1969
+Z-0.0775
+G1 Z-0.1969 F15.748
+G0 Z0.1969
+Z-0.1169
+G1 Z-0.2362 F15.748
+G0 Z0.1969
+Z-0.1562
+G1 Z-0.2756 F15.748
+G0 Z0.1969
+Z-0.1956
+G1 Z-0.315 F15.748
+G0 Z0.1969
+Z-0.235
+G1 Z-0.3543 F15.748
+G0 Z0.1969
+Z-0.2743
+G1 Z-0.3937 F15.748
+G0 Z0.1969
+Z-0.3137
+G1 Z-0.4331 F15.748
+G0 Z0.1969
+Z-0.3531
+G1 Z-0.4724 F15.748
+G0 Z0.1969
+Z-0.3924
+G1 Z-0.5118 F15.748
+G0 Z0.1969
+Z-0.4318
+G1 Z-0.5512 F15.748
+G0 Z0.1969
+Z-0.4712
+G1 Z-0.5906 F15.748
+G0 Z0.1969
+Z-0.5106
+G1 Z-0.6299 F15.748
+G0 Z0.1969
+Z-0.5499
+G1 Z-0.6693 F15.748
+G0 Z0.1969
+Z-0.5893
+G1 Z-0.7087 F15.748
+G0 Z0.1969
+Z-0.6287
+G1 Z-0.748 F15.748
+G0 Z0.1969
+Z-0.668
+G1 Z-0.7516 F15.748
+G0 Z0.2362
+Z0.6299
+
+; ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..
+;      Op: Axial Break-through
+;    Time: 00:00:04
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Break-through drilling. Make sure that the main spindle is
+;rotating to perform the drilling operation.
+N18 G97 S4000 M3
+G0 X0. Z0.6299
+
+; ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..
+;      Op: Axial Guided
+;    Time: 00:00:04
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Guided deep drilling. Make sure that the main spindle is
+;rotating to perform the drilling operation.
+N20 G97 S3000 M3
+G0 X0. Z0.6299
+M5
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 6
+; Tooling: Turret
+;      Op: Axial Tap
+;    Time: 00:00:05
+;       Z: -0.7516
+M1
+;The machine will load tool6 and tap 1 hole in the center with cycle
+;Tap. Make sure that the main spindle is rotating to perform the
+;drilling operation.
+N22 T0606
+G94 G90 G18
+G54
+G97 S500 M3
+G0 X0. Z0.6299
+G33.1 Z-0.7516 I0.02 K0.05
+G0 Z0.6299
+
+; ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..   ..
+;      Op: Axial Right tap
+;    Time: 00:00:05
+;       Z: -0.7516
+M1
+;The machine will load tool6 and tap 1 hole in the center with cycle
+;Right tap. Make sure that the main spindle is rotating to perform
+;the drilling operation.
+N24 G97 S500 M3
+G0 X0. Z0.6299
+M5
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 7
+; Tooling: Turret
+;      Op: Axial Left tap
+;    Time: 00:00:05
+;       Z: -0.7516
+M1
+;The machine will load tool7 and tap 1 hole in the center with cycle
+;Left tap. Make sure that the main spindle is rotating to perform the
+;drilling operation.
+N26 T0707
+G94 G90 G18
+G54
+G97 S500 M4
+G0 X0. Z0.6299
+M5
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 8
+; Tooling: Turret
+;      Op: Axial Reaming
+;    Time: 00:01:27
+;       Z: -0.7516
+M1
+;The machine will load tool8 and drill 1 hole in the center with
+;cycle Reaming. Make sure that the main spindle is rotating to
+;perform the drilling operation.
+N28 T0808
+G94 G90 G18
+G54
+G97 S1000 M3
+G0 X0. Z0.6299
+G0 Z0.2362
+Z0.1969
+G1 Z-0.7516 F1.31233
+Z0.1969
+G0 Z0.2362
+Z0.6299
+M5
+G30 Z#5422
+
+; ==============================================================
+;    Tool: 5
+; Tooling: Turret
+;      Op: Axial Boring
+;    Time: 00:00:07
+;       Z: -0.7516
+M1
+;The machine will load tool5 and drill 1 hole in the center with
+;cycle Boring. Make sure that the main spindle is rotating to perform
+;the drilling operation.
+N30 T0505
+G94 G90 G18
+G54
+G97 S4000 M3
+G0 X0. Z0.6299
+
+M5
+G30 Z#5422
+G28
+M30
+%

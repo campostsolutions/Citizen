@@ -1,0 +1,24 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "estlcam",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "useM06": "true"
+          },
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

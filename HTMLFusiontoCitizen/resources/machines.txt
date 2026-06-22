@@ -1,0 +1,34 @@
+# Machines are listed in the form of :-
+# Series Group | Name | Path to image in Alkart Wizard | Post Name (with Miyano & Citizen stripped)
+# Any machine that the customer doesn't have can be found in 'Disabled Machines'
+
+# Citizen L10 Series Machines
+L10Series|L12-VII|D:/temp/HTMLFusiontoCitizen/resources/L12.jpg|L12-VII
+
+# Citizen L20 Series Machines  
+#L20Series | L220-XII |C:/temp/HTMLFusiontoCitizen/resources/L220.jpg | L220-XII
+L20Series | L32-VIII |C:/temp/HTMLFusiontoCitizen/resources/L32-XII.jpg | L32-VIII
+L20Series | L32-X |C:/temp/HTMLFusiontoCitizen/resources/L32-XII.jpg | L32-X
+L20Series | L32-XII |C:/temp/HTMLFusiontoCitizen/resources/L20X.jpg | L32-XII
+L20Series | L212-X |C:/temp/HTMLFusiontoCitizen/resources/L12X.jpg | L212-X
+L20Series|L220-VIII|C:/temp/HTMLFusiontoCitizen/resources/L220-VIII.jpg|L220-VIII
+
+# Citizen L30 Series Machines
+L300Series|L320-XII|C:/temp/HTMLFusiontoCitizen/resources/L220.jpg|L320-XII
+L300Series|L320-XIIB5|C:/temp/HTMLFusiontoCitizen/resources/L220.jpg|L320-XIIB5
+L300Series|L320-VIII|C:/temp/HTMLFusiontoCitizen/resources/L220.jpg|L320-VIII
+L300Series|L320-X|C:/temp/HTMLFusiontoCitizen/resources/L220.jpg|L320-X
+
+# Citizen M Series Machines
+MSeries|M316 III|C:/temp/HTMLFusiontoCitizen/resources/M232-III.jpg|M316
+MSeries|M232 III|C:/temp/HTMLFusiontoCitizen/resources/M232-III.jpg|M232III
+
+# Miyano Machines
+Miyano|BNE MYY|C:/temp/HTMLFusiontoCitizen/resources/BNE MYY.jpg|BNE
+Miyano|ABX SYY|C:/temp/HTMLFusiontoCitizen/resources/ABX-SYY.jpg|ABXSYY
+Miyano|BNA GTY|C:/temp/HTMLFusiontoCitizen/resources/BNA GTY.jpg|BNAGTY
+
+# Disabled machines
+# L20Series|L220-XII|C:/temp/HTMLFusiontoCitizen/resources/L220.jpg|L220-XII
+#Miyano|BNJ SY6|C:/temp/HTMLFusiontoCitizen/resources/BNJ SY6.jpg|BNJSY6
+#L20Series|L220-X|C:/temp/HTMLFusiontoCitizen/resources/L20X.jpg|L220-X

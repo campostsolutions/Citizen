@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="304mm" height="204mm" viewBox="0 0 304 204">
+<desc>Created with Glowforge for Fusion CAM and HSM. To download visit: https://cam.autodesk.com/hsmposts?p=glowforge</desc>
+<!-- CAM Setup Info:
+Work Area Width: 304mm
+Work Area Height: 204mm
+Stock box Upper Right: 300,200
+Stock box Lower Left: 0,0
+Origin: 0,0
+Selected Colors: #0000d3, #02abea, #1fb714, #dd0907, #f20884, #fbf305
+-->
+<g id="global-translation-frame" transform="translate(2, 202) scale(1, -1)">
+<g id="operation-1">
+    <title>Sweep Angle 40deg (5) (Op: 1/3)</title>
+    <path d="M 150.807 55
+             L 140.5 55
+             A 3 3 0 0 1 137.5 52
+             L 137.5 43
+             A 3 3 0 0 0 134.5 40
+             L 115 40
+             A 5 5 0 0 1 110 35
+             L 110 25
+             A 5 5 0 0 1 115 20
+             L 185 20
+             A 5 5 0 0 1 190 25
+             L 190 35
+             A 5 5 0 0 1 185 40
+             L 165.5 40
+             A 3 3 0 0 0 162.5 43
+             L 162.5 52
+             A 3 3 0 0 1 159.5 55
+             L 150.762 55
+             L 150.717 55" fill="none" stroke="#0000d3" stroke-width="0.1"/>
+</g>
+<g id="operation-2">
+    <title>Sweep Angle 60deg and Radius (5) (Op: 2/3)</title>
+    <path d="M 150.762 55
+             L 140.5 55
+             A 3 3 0 0 1 137.5 52
+             L 137.5 43
+             A 3 3 0 0 0 134.5 40
+             L 115 40
+             A 5 5 0 0 1 110 35
+             L 110 25
+             A 5 5 0 0 1 115 20
+             L 185 20
+             A 5 5 0 0 1 190 25
+             L 190 35
+             A 5 5 0 0 1 185 40
+             L 165.5 40
+             A 3 3 0 0 0 162.5 43
+             L 162.5 52
+             A 3 3 0 0 1 159.5 55
+             L 150.762 55" fill="none" stroke="#02abea" stroke-width="0.1"/>
+</g>
+<g id="operation-3">
+    <title>Sweep Angle 90deg and Radius (5) (Op: 3/3)</title>
+    <path d="M 150.762 55
+             L 140.5 55
+             A 3 3 0 0 1 137.5 52
+             L 137.5 43
+             A 3 3 0 0 0 134.5 40
+             L 115 40
+             A 5 5 0 0 1 110 35
+             L 110 25
+             A 5 5 0 0 1 115 20
+             L 185 20
+             A 5 5 0 0 1 190 25
+             L 190 35
+             A 5 5 0 0 1 185 40
+             L 165.5 40
+             A 3 3 0 0 0 162.5 43
+             L 162.5 52
+             A 3 3 0 0 1 159.5 55
+             L 150.762 55" fill="none" stroke="#1fb714" stroke-width="0.1"/>
+</g>
+</g>
+</svg>

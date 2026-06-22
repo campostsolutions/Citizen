@@ -1,0 +1,17 @@
+/JOB
+//NAME YASKAWA MOTOMAN ROBOTICS_5X 3+2_MM
+//POS
+///NPOS 0,0,0,0,0,0
+//INST
+///ATTR SC,RW
+NOP
+' By Autodesk Fusion CAM 2.0.20494
+CALL JOB:s2D_Face_front
+CALL JOB:s2D_Face_left
+CALL JOB:s2D_Face_left_toolchange
+CALL JOB:s2D_Face_back
+CALL JOB:s2D_Face_back_duplicate
+CALL JOB:s2D_Contour_top
+CALL JOB:s2D_Face_right
+CALL JOB:s2D_Face_diagonal
+END

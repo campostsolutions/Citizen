@@ -1,0 +1,48 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "yasnac",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "_tapping",
+          "properties": {
+            "usePitchForTapping": false,
+            "useSolidTapping": false
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "dOffset": 10,
+            "useExtendedWCS": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

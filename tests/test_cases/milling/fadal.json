@@ -1,0 +1,78 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "fadal",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "4-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_4Axis",
+          "properties": {
+            "hasAAxis": true
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_dpm",
+          "properties": {
+            "useInverseTime": false,
+            "hasAAxis": true,
+            "rotaryScale": "linear"
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Tapping",
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Format Fadal",
+          "inputFolder": "milling",
+          "suffix": "_format1",
+          "properties": {
+            "format": "fadal",
+            "useRadius": true,
+            "disableFeedRamps": true,
+            "safePositionMethod": "clearanceHeight",
+            "onlyENumbers": false,
+            "preloadTool": "true",
+            "optionalStop": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

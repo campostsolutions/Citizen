@@ -1,0 +1,103 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "fanuc compact",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Smoothing operations",
+          "inputFolder": "milling",
+          "suffix": "_smoothing",
+          "properties": {
+            "useSmoothing": "0"
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useRadius": true,
+            "useSmoothing": "0",
+            "usePitchForTapping": true,
+            "useG95": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+                {
+          "description": "Probing G54",
+          "inputFolder": "milling",
+          "suffix": "_g54",
+          "properties": {
+            "useG54x4": true
+          },
+          "input": [
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Partial Features",
+            "Probe Geometry on PCD"
+          ]
+        }
+      ]
+    }
+  ]
+}

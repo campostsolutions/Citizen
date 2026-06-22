@@ -1,0 +1,50 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "mach3 turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {
+            "useCycles": true
+          },
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning 2 Axis"
+          ]
+        }
+      ]
+    }
+  ]
+}

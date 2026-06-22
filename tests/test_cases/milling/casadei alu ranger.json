@@ -1,0 +1,38 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "casadei alu ranger",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "optionalStop": true,
+            "useToolPath": true,
+            "useRadius": true,
+            "useRestart": true,
+            "ignoreCoolant": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

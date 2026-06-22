@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON-Driven Citizen Machinery Selector & Settings</title>
+  <style>
+    :root {
+      --primary: #4a90e2;
+      --bg-light: #f5f7fa;
+      --bg-white: #ffffff;
+      --txt: #333333;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+      background: var(--bg-light);
+      color: var(--txt);
+      padding: 20px;
+    }
+    .gear-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.gear-button:hover {
+  background: #357abd;
+}
+    .styled-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-left: 10px;
+    }
+.styled-btn:hover {
+  background: #357abd;
+}
+    .tabs {
+      display: flex;
+      gap: 10px;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: var(--txt);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .tabs button:hover { color: var(--primary); }
+    .tabs button.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+    }
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      background: var(--bg-white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tabcontent:first-of-type { display: block; }
+    .tabcontent table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .tabcontent td {
+      flex: 0 0 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--bg-white);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      padding: 10px;
+    }
+    .tabcontent td div {
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    td img {
+      width: 100%;
+      border-radius: 6px;
+      border: 3px solid transparent;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    td img:hover { transform: scale(1.05); }
+    td img.selected { border-color: var(--primary); }
+
+    form { max-width: 800px; margin: auto; }
+    fieldset {
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: var(--bg-white);
+    }
+    legend { padding: 0 8px; font-weight: 600; }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    label { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+    input[type="radio"],
+    input[type="checkbox"] { width: 16px; height: 16px; }
+    input[type="number"],
+    textarea {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 14px;
+    }
+    textarea { resize: vertical; width: 100%; }
+    details {
+      margin-top: 20px;
+      background: var(--bg-white);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    summary {
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      outline: none;
+    }
+    summary::marker { display: none; }
+    details[open] summary { background: var(--bg-light); }
+    details > fieldset {
+      margin: 0; border: none; padding: 16px;
+    }
+    button[type="submit"] {
+      margin-top: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover { background: #357abd; }
+    
+  </style>
+
+</head>
+<body>
+
+  <h2 style="text-align: left;">Select Your Machine & Configure Output</h2>
+  <form id="imageForm" action="#" method="post">
+    <div class="tabs" id="tabsContainer"></div>
+    <div id="tabContents"></div>
+    <div id="formFields"></div>
+    <input type="hidden" name="selectedImage" id="selectedImage">
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+  
+    
+  </form>
+
+  <button id="gearBtn" class="gear-button" title="Configure Machines">
+  ⚙️
+</button>
+<input type="file" id="machineFileInput" accept=".txt" style="display: none;">
+
+  <script>
+const gearBtn = document.getElementById('gearBtn');
+const fileInput = document.getElementById('machineFileInput');
+
+gearBtn.addEventListener('click', () => fileInput.click());
+
+fileInput.addEventListener('change', () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    const fileText = reader.result;
+    localStorage.setItem('machinesData', fileText);
+    parseMachineText(fileText);
+  };
+  reader.readAsText(file);
+});
+
+fileInput.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+
+  reader.onload = () => {
+  const fileText = reader.result;
+  localStorage.setItem('machinesData', fileText); // Save to localStorage
+  parseMachineText(fileText);
+  
+};
+    const lines = reader.result.split('\n').map(l => l.trim()).filter(Boolean);
+
+    // Reset tabs
+    config.tabs = [];
+
+    const tabMap = {};
+
+    lines.forEach(line => {
+      const [tabId, label, src, value] = line.split('|');
+      if (!tabMap[tabId]) {
+        tabMap[tabId] = { id: tabId, label: tabId, images: [] };
+        config.tabs.push(tabMap[tabId]);
+      }
+      tabMap[tabId].images.push({ label, src: src.replace(/\\/g, '/'), value });
+    });
+
+    rebuildTabsAndGalleries();
+  };
+  reader.readAsText(file);
+});
+    // === 1. JSON config populated with Citizen Machinery series & models ===
+    const config = {
+      
+      tabs: [
+        {
+          id: "L10Series", label: "L10 Series",
+          images: [
+            { label: "L12 VII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L12.jpg", value: "L12-VII" }
+          ]
+        },
+        {
+          id: "L20Series", label: "L20 Series",
+          images: [
+            { label: "L220 VIII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L220-VIII.jpg", value: "L220-VII" },
+            { label: "L220 X", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L20X.jpg", value: "L220-X" },
+            { label: "L220 XII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L20-XII.jpg", value: "L220-XII" }
+          ]
+        },
+        {
+          id: "L32Series", label: "L32 Series",
+          images: [
+            { label: "L32 VIII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L32-XII.jpg", value: "L32-VIII" },
+            { label: "L32 X", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L32-XII.jpg", value: "L32-X" },
+            { label: "L32 XII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L32-XII.jpg", value: "L32-XII" }
+          ]
+        },
+       {
+          id: "L320Series", label: "L320 Series",
+          images: [
+            { label: "L320 VIII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L220-VIII.jpg", value: "L320-VIII" },
+            { label: "L320 X", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L220-VIII.jpg", value: "L320-X" },
+            { label: "L320 XII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L220-VIII.jpg", value: "L320-XII" },
+            { label: "L320 XII B5", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\L220-VIII.jpg", value: "L320-XIIB5" }
+          ]
+        },
+        {
+          id: "MSeries", label: "M Series",
+          images: [
+            { label: "M232 III", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M232-III.jpg", value: "M232III" },
+            { label: "M316 III", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M316-III.jpg", value: "M316III" },
+            { label: "M332 III", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M332-III.jpg", value: "M332III" },
+            { label: "M432", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M432.jpg", value: "M432VII" },
+            { label: "M532VII", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M532.jpg", value: "M532VIII" }
+          ]
+        },
+        {
+          id: "Miyano", label: "Miyano",
+          images: [
+            {label: "BNA GTY", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNA GTY.jpg", value: "BNAGTY"},
+            {label: "BNA C", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNA-C.jpg", value: "BNAC"},
+            {label: "BNA DHY", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNA-DHY.jpg", value: "BNADHY"},
+            {label: "BNA SY5", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNASY5.jpg", value: "BNASY5"},
+            {label: "BNE MSY", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNE MSY.jpg", value: "BNEMSY"},
+            {label: "BNE MYY", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNE MSY.jpg", value: "BNJMYY"},
+            {label: "BNJ SY6", src: "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\BNJ SY6.jpg", value: "BNJSY6"}
+
+          ]
+        }
+      ],
+      form: {
+        fields: [
+          {
+            type: "fieldset",
+            label: "Output Units",
+            elements: [
+              { type: "radio", label: "MM", name: "outputUnits", value: "mm", checked: true },
+              { type: "radio", label: "IN", name: "outputUnits", value: "in" }
+            ]
+          },
+          {
+            type: "collapsible",
+            
+            label: "Post Properties",
+            elements: [
+              { type: "checkbox", label: "Use sequence numbers", name: "useSequence" },
+              { type: "checkbox", label: "Output Code as Sub Programs", name: "outputSubprogs" },
+              { type: "checkbox", label: "Optional stop", name: "optionalStop" },
+              { type: "checkbox", label: "Radius Arcs", name: "radiusArcs" },
+              { type: "checkbox", label: "Parametric Feed", name: "parametricFeed" },
+              { type: "checkbox", label: "Leave Spindles Running", name: "leaveSpindles" },
+              { type: "checkbox", label: "G50 on Gang Driven", name: "g50Gang" },
+              { type: "checkbox", label: "Increase B-axis stroke", name: "increaseBStroke" },
+              {
+                type: "number", label: "Sub Spindle Phase Angle",
+                name: "subPhaseAngle", step: 0.01, placeholder: "e.g. 45.0"
+              },
+              {
+                type: "number", label: "Start sequence number",
+                name: "startSeqNum", step: 1, placeholder: "e.g. 10"
+              },
+              {
+                type: "number", label: "Sequence number increment",
+                name: "seqIncrement", step: 1, placeholder: "e.g. 1"
+              },
+              {
+                type: "number", label: "Max spindle speed",
+                name: "maxSpindleSpeed", step: 1, placeholder: "e.g. 5000"
+              }
+            ]
+          
+          },
+          {
+            type: "submit",
+            label: "Submit"
+            
+          }
+        ]
+        
+      }
+      
+    };
+
+    // === 2. Build Tabs & Galleries ===
+    const tabsContainer = document.getElementById('tabsContainer');
+    const tabContents   = document.getElementById('tabContents');
+
+    config.tabs.forEach((tab, idx) => {
+      // create button
+      const btn = document.createElement('button');
+      btn.type = 'button';              // ← Prevents form submission
+      btn.className = 'tablinks' + (idx ? '' : ' active');
+      btn.textContent = tab.label;
+      btn.onclick = e => openTab(e, tab.id);
+      tabsContainer.appendChild(btn);
+
+      // create pane
+      const pane = document.createElement('div');
+      pane.id        = tab.id;
+      pane.className = 'tabcontent';
+      if (idx === 0) pane.style.display = 'block';
+
+     const table = document.createElement('table');
+tab.images.forEach(imgCfg => {
+  const cell = document.createElement('td');
+  const img  = document.createElement('img');
+  img.src = imgCfg.src.replace(/\\/g, '/');
+  img.alt = imgCfg.label;
+  img.dataset.value = imgCfg.value;
+  img.dataset.tab = tab.id;
+  img.onclick = () => selectImage(img);
+  const cap  = document.createElement('div');
+  cap.textContent = imgCfg.label;
+  cell.append(img, cap);
+  table.appendChild(cell);
+  const savedMachines = localStorage.getItem('machinesData');
+if (savedMachines) {
+  parseMachineText(savedMachines);
+}
+});
+pane.appendChild(table);
+      tabContents.appendChild(pane);
+    });
+
+    // === 3. Build the Rest of the Form ===
+    const formFields = document.getElementById('formFields');
+    config.form.fields.forEach(field => {
+      if (field.type === 'fieldset') {
+        
+        const fs = document.createElement('fieldset');
+        fs.innerHTML = `<legend>${field.label}</legend>`;
+        field.elements.forEach(el => {
+          const wrap = document.createElement('div');
+          wrap.className = 'form-row';
+          if (el.type === 'radio' || el.type === 'checkbox') {
+            wrap.innerHTML = `<label><input type="${el.type}" name="${el.name}" value="${el.value || ''}" ${el.checked?'checked':''}> ${el.label}</label>`;
+          } else if (el.type === 'number') {
+            wrap.innerHTML = `<label>${el.label}: <input type="number" name="${el.name}" step="${el.step}" placeholder="${el.placeholder}"></label>`;
+          }
+          fs.appendChild(wrap);
+        });
+        formFields.appendChild(fs);
+
+      } else if (field.type === 'collapsible') {
+        const det = document.createElement('details');
+        det.id = 'postProperties';
+
+        det.innerHTML = `<summary>${field.label}</summary>`;
+        const innerFs = document.createElement('fieldset');
+        field.elements.forEach(el => {
+          const wrap = document.createElement('div');
+          wrap.className = 'form-row';
+          const hideForMiyano = ['g50Gang','increaseBStroke', 'subPhaseAngle']; // names of fields to hide
+
+          if (el.type === 'checkbox') {
+            if (hideForMiyano.includes(el.name)) wrap.classList.add('miyano-hide');
+            wrap.innerHTML = `<label><input type="checkbox" name="${el.name}"> ${el.label}</label>`;
+          } else if (el.type === 'number') {
+            if (hideForMiyano.includes(el.name)) wrap.classList.add('miyano-hide');
+            wrap.innerHTML = `<label>${el.label}: <input type="number" name="${el.name}" step="${el.step}" placeholder="${el.placeholder}"></label>`;
+          }
+          innerFs.appendChild(wrap);
+        });
+        
+        det.appendChild(innerFs);
+        formFields.appendChild(det);
+
+      } else if (field.type === 'textarea') {
+        const div = document.createElement('div');
+        div.className = 'form-row';
+        div.innerHTML = `<label><strong>${field.label}:</strong></label><br>
+                         <textarea name="${field.name}" rows="${field.rows}" placeholder="${field.placeholder}"></textarea>`;
+        formFields.appendChild(div);
+
+      } else if (field.type === 'submit') {
+        const btn = document.createElement('button');
+        btn.type = 'submit';
+        btn.textContent = field.label;
+        
+        formFields.appendChild(btn);
+      }
+      
+    });
+
+    // === 4. Tab + Image Selection Logic ===
+  function openTab(evt, tabId) {
+    document.querySelectorAll('.tabcontent').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tablinks').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).style.display = 'block';
+    evt.currentTarget.classList.add('active');
+    clearSelection();
+
+    // Collapse Post Properties when a series/tab is selected
+    const postProps = document.getElementById('postProperties');
+    if (postProps) postProps.removeAttribute('open');
+  }
+function parseMachineText(text) {
+  const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
+  config.tabs = [];
+  const tabMap = {};
+
+  lines.forEach(line => {
+    const [tabId, label, src, value] = line.split('|');
+    if (!tabMap[tabId]) {
+      tabMap[tabId] = { id: tabId, label: tabId, images: [] };
+      config.tabs.push(tabMap[tabId]);
+    }
+    tabMap[tabId].images.push({ label, src: src.replace(/\\/g, '/'), value });
+  });
+
+  rebuildTabsAndGalleries();
+}
+function rebuildTabsAndGalleries() {
+  const tabsContainer = document.getElementById('tabsContainer');
+  const tabContents = document.getElementById('tabContents');
+  tabsContainer.innerHTML = '';
+  tabContents.innerHTML = '';
+
+  config.tabs.forEach((tab, idx) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tablinks' + (idx ? '' : ' active');
+    btn.textContent = tab.label;
+    btn.onclick = e => openTab(e, tab.id);
+    tabsContainer.appendChild(btn);
+
+    const pane = document.createElement('div');
+    pane.id = tab.id;
+    pane.className = 'tabcontent';
+    if (idx === 0) pane.style.display = 'block';
+
+    const table = document.createElement('table');
+    tab.images.forEach(imgCfg => {
+      const cell = document.createElement('td');
+      const img = document.createElement('img');
+      img.src = imgCfg.src.replace(/\\/g, '/');
+      img.alt = imgCfg.label;
+      img.dataset.value = imgCfg.value;
+      img.dataset.tab = tab.id;
+      img.onclick = () => selectImage(img);
+      const cap = document.createElement('div');
+      cap.textContent = imgCfg.label;
+      cell.append(img, cap);
+      table.appendChild(cell);
+    });
+
+    pane.appendChild(table);
+    tabContents.appendChild(pane);
+  });
+}
+
+    function handleMiyanoFields(isMiyano) {
+  document.querySelectorAll('.miyano-hide').forEach(el => {
+    el.style.display = isMiyano ? 'none' : 'flex'; // 'flex' to restore form-row layout
+  });
+}
+
+  // Optionally collapse or open the post settings
+  const postDetails = document.querySelector('details');
+  if (postDetails) {
+    if (isMiyano) postDetails.removeAttribute('open');
+    else postDetails.setAttribute('open', '');
+  }
+
+
+function selectImage(img) {
+  clearSelection();
+  img.classList.add('selected');
+  document.getElementById('selectedImage').value = img.dataset.value;
+
+  const isMiyano = img.dataset.tab === 'Miyano';
+  handleMiyanoFields(isMiyano);
+
+  // Always expand the Post Properties section
+  const postProps = document.getElementById('postProperties');
+  if (postProps) postProps.setAttribute('open', '');
+}
+    function clearSelection() {
+      document.querySelectorAll('td img').forEach(i => i.classList.remove('selected'));
+      document.getElementById('selectedImage').value = '';
+    }
+    document.getElementById('imageForm').addEventListener('submit', e => {
+      if (!document.getElementById('selectedImage').value) {
+        alert('Please select a machine before submitting.');
+        e.preventDefault();
+      }
+    });
+
+    
+  </script>
+
+</body>
+</html>

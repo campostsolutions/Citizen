@@ -1,0 +1,36 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "servo2",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useActiveSpindle": false,
+            "useCoolant": false,
+            "useCycles": false
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

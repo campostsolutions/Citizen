@@ -1,0 +1,68 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "mitsubishi",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "preloadTool": false,
+            "useRadius": true,
+            "toolChangeOrder": "M06Txx"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table_NoTCP.mch"
+        },
+        {
+          "description": "4-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous"
+          ],
+          "machine": "tests/machine/A_table_NoTCP_Inverse_time.mch"
+        }
+      ]
+    }
+  ]
+}

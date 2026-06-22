@@ -1,0 +1,68 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "fanuc inspection",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_inspection",
+          "properties": {
+            "commissioningMode": true,
+            "probeOnCommand": "M74",
+            "probeOffCommand": "M73",
+            "probeCalibratedRadius": 1,
+            "probeEccentricityX": 2,
+            "probeEccentricityY": 3
+          },
+          "input": [
+            "Inspection 3x single",
+            "Inspection 3x",
+            "Inspection 5x"
+          ]
+        },
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_liveConnection",
+          "properties": {
+            "commissioningMode": false,
+            "probeOnCommand": "M74",
+            "probeOffCommand": "M73",
+            "probeCalibratedRadius": 1,
+            "probeEccentricityX": 2,
+            "probeEccentricityY": 3,
+            "useLiveConnection": true
+          },
+          "input": [
+            "Part Alignment",
+            "Pattern 2D Linear No Compensation",
+            "Probe Geometry"
+          ]
+        },
+        {
+          "description": "Inspection",
+          "inputFolder": "milling",
+          "suffix": "_liveConnection_AC_Machine",
+          "properties": {
+            "commissioningMode": false,
+            "probeOnCommand": "M74",
+            "probeOffCommand": "M73",
+            "probeCalibratedRadius": 1,
+            "probeEccentricityX": 2,
+            "probeEccentricityY": 3,
+            "useLiveConnection": true
+          },
+          "input": [
+            "Part Alignment",
+            "Inspection 5x"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<template-document xmlns="http://www.hsmworks.com/namespace/hsmworks/document/template" version="1.0">
+
+  <template description="START GROUP" strategy="manual" unit="millimeters">
+    <parameter expression="false" name="advancedMode"/>
+    <parameter expression="false" name="betaMode"/>
+    <parameter expression="false" name="alphaMode"/>
+    <parameter expression="false" name="isXpress"/>
+    <parameter expression="true" name="licenseMultiaxis"/>
+    <parameter expression="true" name="license3D"/>
+    <parameter expression="true" name="metric"/>
+    <parameter expression="true" name="isAssemblyDocument"/>
+    <parameter expression="'operation'" name="context"/>
+    <parameter expression="'manual'" name="strategy"/>
+    <parameter expression="''" name="operation_description"/>
+    <parameter expression="0.0" name="surfaceZHigh"/>
+    <parameter expression="-7.1" name="surfaceZLow"/>
+    <parameter expression="-6.75" name="surfaceXLow"/>
+    <parameter expression="6.75" name="surfaceXHigh"/>
+    <parameter expression="-18.0000000000001" name="surfaceYLow"/>
+    <parameter expression="18.0000000000001" name="surfaceYHigh"/>
+    <parameter expression="0.1" name="stockZHigh"/>
+    <parameter expression="-7.1" name="stockZLow"/>
+    <parameter expression="-6.75" name="stockXLow"/>
+    <parameter expression="6.75" name="stockXHigh"/>
+    <parameter expression="-18.0000000000001" name="stockYLow"/>
+    <parameter expression="18.0000000000001" name="stockYHigh"/>
+    <parameter expression="false" name="associatedView"/>
+    <parameter expression="false" name="tab_manualNC"/>
+    <parameter expression="true" name="group_manualNC"/>
+    <parameter expression="'action'" name="manualType"/>
+    <parameter expression="''" name="comment"/>
+    <parameter expression="'STARTGROUP'" name="action"/>
+    <parameter expression="''" name="message"/>
+    <parameter expression="0s" name="dwell"/>
+  </template>
+
+</template-document>

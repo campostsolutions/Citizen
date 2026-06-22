@@ -1,0 +1,60 @@
+
+:1234;
+'mycomment';
+'Machine';
+'  vendor: Autodesk';
+'  description: Generic 5-axis AC (table-table)';
+'T3 D=0.2012 CR=0. TAPER=118deg - drill';
+G90G44G75G17
+G70
+'-Attention- Property Safe Retracts is set to Clearance Height.';
+'Ensure the clearance height will clear the part and or fixtures.';
+'Raise the Z-axis to a safe height before starting the program.';
+'Drill44';
+T3M6
+S5000M3
+G90G44G17
+G0A30.C0.
+M8
+G0X0.0773Y-0.7111
+Z1.1262
+G0Z0.7262
+G81X0.0773Y-0.7111Z1.0918F15.75
+G80
+G0Z1.1262
+'Drill44 (2)';
+G0A30.C90.
+G0Z1.6183
+X0.0003Y-1.5634
+Z1.2183
+G81X0.0003Y-1.5634Z1.1083F15.75
+G80
+G0Z1.6183
+'Drill44 (3)';
+G0A30.C180.
+G0Z1.1262
+X0.0158Y-0.7121
+Z0.7262
+G81X0.0158Y-0.7121Z1.1113F15.75
+G80
+G0Z1.1262
+'Drill44 (4)';
+G0A30.C270.
+G0Z1.6183
+X-0.1061Y-1.5645
+Z1.2183
+G81X-0.1061Y-1.5645Z1.1113F15.75
+G80
+G0Z1.6183
+'Drill44 (5)';
+G0A-22.208C225.
+G0X-0.6968Y1.6266
+Z1.4256
+Z1.0256
+G81X-0.6968Y1.6266Z1.1642F15.75
+G80
+G0Z1.4256
+M9
+G0A0.C0.
+M2
+E

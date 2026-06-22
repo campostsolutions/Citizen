@@ -1,0 +1,28 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "ultimaker",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {
+            "writeDate": false,
+            "extruder1Material": "Ultimaker ABS",
+            "extruder1Color": "Black",
+            "extruder2Material": "Generic Breakaway",
+            "extruder2Color": "Generic"
+          },
+          "input": [
+            "fff_1extruder",
+            "fff_2extruders"
+          ]
+        }
+      ]
+    }
+  ]
+}

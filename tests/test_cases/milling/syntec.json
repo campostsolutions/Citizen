@@ -1,0 +1,138 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "syntec",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "preloadTool": false,
+            "useRadius": true,
+            "useSmoothing": "9999",
+            "usPitchForTapping": true,
+            "useG95": true,
+            "safePositionMethod": "G53"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_safestart",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Safe start",
+          "inputFolder": "milling",
+          "suffix": "_safestart",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns_safestart",
+          "properties": {
+            "safeStartAllOperations": true
+          },
+          "input": [
+            "Pattern Same"
+          ]
+        }
+      ]
+    }
+  ]
+}

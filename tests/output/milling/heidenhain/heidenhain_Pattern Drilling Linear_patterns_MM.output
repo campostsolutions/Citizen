@@ -1,0 +1,1476 @@
+BEGIN PGM 1234 MM
+;mycomment
+BLK FORM 0.1 Z X-50 Y-25 Z-50
+BLK FORM 0.2 X+50 Y+25 Z+1
+;-------------------------------------
+;T2 D=+9.525 CR=+0 - ZMIN=-5 - flat end mill
+;T3 D=+5.11 CR=+0 TAPER=118deg - ZMIN=-16.535 - drill
+;T4 D=+6.35 CR=+0 - ZMIN=-14 - right hand tap
+;T5 D=+6.35 CR=+0 - ZMIN=-14 - left hand tap
+;T6 D=+5.08 CR=+0 - ZMIN=-14 - reamer
+;T7 D=+6.35 CR=+0 TAPER=90deg - ZMIN=-0.2 - spot drill
+;-------------------------------------
+TOOL CALL Z ;SET TOOL AXIS FOR M140
+L M140 MB MAX
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL 3 Z S5000
+TOOL DEF 4
+L M140 MB MAX
+M3
+LBL 1
+CYCL DEF 247 DATUM SETTING ~
+  Q339=1 ; DATUM NUMBER
+LBL 0
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CYCL DEF 32.0 TOLERANCE
+CYCL DEF 32.1
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+;-------------------------------------
+* - Rapid out (5)
+TOOL CALL Z S5000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 100
+;-------------------------------------
+* - Dwell and rapid out (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 101
+;-------------------------------------
+* - Chip breaking (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 102
+;-------------------------------------
+* - Deep drilling (5)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 103
+;-------------------------------------
+* - Break-through drilling (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 104
+;-------------------------------------
+* - Guided deep drilling (4)
+TOOL CALL Z S3000
+M3
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 105
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Tap (3)
+M5
+M1
+TOOL CALL 4 Z S1000
+TOOL DEF 5
+L M140 MB MAX
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+;-------------------------------------
+* - Tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 106
+;-------------------------------------
+* - Right tap (3)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 107
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Left tap (2)
+M5
+M1
+TOOL CALL 5 Z S1000
+TOOL DEF 6
+L M140 MB MAX
+M4
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+;-------------------------------------
+* - Left tap (2)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 108
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Reaming (4)
+M5
+M1
+TOOL CALL 6 Z S2000
+TOOL DEF 3
+L M140 MB MAX
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+;-------------------------------------
+* - Reaming (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 109
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Boring (4)
+M5
+M1
+TOOL CALL 3 Z S5000
+TOOL DEF 2
+L M140 MB MAX
+M3
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X-25 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X-25 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X-25 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+102 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+102 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+102 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+229 Y+10 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+229 Y+111.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+;-------------------------------------
+* - Boring (4)
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 110
+;-------------------------------------
+* - Stop boring
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 111
+;-------------------------------------
+* - Fine boring
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 112
+;-------------------------------------
+* - Back boring
+CALL LBL 1 ;DATUM
+L X+229 Y+213.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 113
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Circular mill (2)
+M5
+M1
+TOOL CALL 2 Z S5000
+TOOL DEF 7
+L M140 MB MAX
+M3
+CALL LBL 1 ;DATUM
+L X+30 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+M8
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+30 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X-30 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+30 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+30 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X-30 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+30 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+30 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X-46.2 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X-30 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+97 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+97 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+157 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+80.8 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+97 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y+68.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+224 Y-8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y+169.8 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+224 Y+93.6 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+284 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Circular mill (2)
+CALL LBL 1 ;DATUM
+L X+207.8 Y+271.4 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 114
+;-------------------------------------
+* - Thread mill (2)
+CALL LBL 1 ;DATUM
+L X+224 Y+195.2 R0 FMAX
+L Z+16 R0 FMAX
+CALL LBL 115
+M9
+L M140 MB MAX
+;-------------------------------------
+* - Rapid movement test (4)
+M5
+M1
+TOOL CALL 7 Z S6000
+TOOL DEF 3
+L M140 MB MAX
+M3
+CALL LBL 1 ;DATUM
+L X-43.536 Y+18.47 R0 FMAX
+L Z+9.9 R0 FMAX
+M8
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X-43.536 Y+120.07 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X-43.536 Y+221.67 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+83.464 Y+18.47 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+83.464 Y+120.07 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+83.464 Y+221.67 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+210.464 Y+18.47 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+210.464 Y+120.07 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+;-------------------------------------
+* - Rapid movement test (4)
+CALL LBL 1 ;DATUM
+L X+210.464 Y+221.67 R0 FMAX
+L Z+9.9 R0 FMAX
+CALL LBL 116
+M9
+M5
+L M140 MB MAX
+M30
+
+LBL 100 ;Rapid out (5)
+CYCL DEF 200 DRILLING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=+16.535 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 101 ;Dwell and rapid out (4)
+CYCL DEF 200 DRILLING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=+16.535 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 102 ;Chip breaking (5)
+CYCL DEF 203 UNIVERSAL DRILLING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=+1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q212=+0.1 ;DECREMENT ~
+  Q213=5 ;BREAKS ~
+  Q205=+0.5 ;MIN. PLUNGING DEPTH ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=MAX ;RETRACTION FEED RATE ~
+  Q256=+0.102 ;DIST. FOR CHIP BRKNG
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 103 ;Deep drilling (5)
+CYCL DEF 200 DRILLING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q202=+1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 104 ;Break-through drilling (4)
+L IZ+10 FMAX
+L IZ-10 FMAX
+L IZ-1 FMAX
+L IZ-16.425 F400
+TOOL CALL Z S3000
+L IZ-5.11 F500
+TOOL CALL Z S5000
+L IZ+21.535 F1000
+L IZ+1 FMAX
+L IX+50 FMAX
+L IZ-1 FMAX
+L IZ-16.425 F400
+TOOL CALL Z S3000
+L IZ-5.11 F500
+TOOL CALL Z S5000
+L IZ+21.535 F1000
+L IZ+1 FMAX
+L IZ+10 FMAX
+LBL 0
+
+LBL 105 ;Guided deep drilling (4)
+CYCL DEF 241 SINGLE-FLUTED DEEP-HOLE DRILLING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-16.535 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q379=+5.11 ;STARTING POINT ~
+  Q253=500 ;F PRE-POSITIONING ~
+  Q208=1000 ;RETRACT FEED RATE ~
+  Q426=3 ;DIR. OF SPINDLE ROT. ~
+  Q427=3000 ;ENTRY EXIT SPEED ~
+  Q428=5000 ;DRILLING SPEED ~
+  Q429=8 ;COOLANT ON ~
+  Q430=9 ;COOLANT OFF ~
+  Q435=+0 ;DWELL DEPTH
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 106 ;Tap (3)
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=+1.27 ;THREAD PITCH ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 107 ;Right tap (3)
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=+1.27 ;THREAD PITCH ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 108 ;Left tap (2)
+CYCL DEF 207 RIGID TAPPING NEW ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q239=-1.27 ;THREAD PITCH ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 109 ;Reaming (4)
+CYCL DEF 201 REAMING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-14 ;DEPTH ~
+  Q206=200 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=500 ;RETRACTION FEED RATE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 110 ;Boring (4)
+CYCL DEF 202 BORING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-15 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=1000 ;RETRACTION FEED RATE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q214=0 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 111 ;Stop boring
+CYCL DEF 202 BORING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-15 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=MAX ;RETRACTION FEED RATE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q214=0 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 112 ;Fine boring
+CYCL DEF 202 BORING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q201=-15 ;DEPTH ~
+  Q206=400 ;FEED RATE FOR PLUNGING ~
+  Q211=0 ;DWELL AT BOTTOM ~
+  Q208=MAX ;RETRACTION FEED RATE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q214=1 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 113 ;Back boring
+CYCL DEF 204 BACK BORING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q249=+0.2 ;DEPTH REDUCTION ~
+  Q250=+15 ;MATERIAL THICKNESS ~
+  Q251=+0.013 ;OFF-CENTER DISTANCE ~
+  Q252=+0 ;TOOL EDGE HEIGHT ~
+  Q253=MAX ;F PRE-POSITIONING ~
+  Q254=400 ;F COUNTERBORING ~
+  Q255=0 ;DWELL AT BOTTOM ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q214=1 ;DISENGAGING DIRECTION ~
+  Q336=0 ;ANGLE OF SPINDLE
+L FMAX M99
+L IX+50 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 114 ;Circular mill (2)
+CYCL DEF 252 CIRCULAR POCKET ~
+  Q215=1 ;MACHINE OPERATION ~
+  Q223=+19.05 ;CIRCLE DIAMETER ~
+  Q368=+0 ;FINISHING ALLOWANCE FOR SIDE ~
+  Q207=1000 ;FEED RATE FOR MILLING ~
+  Q351=+1 ;CLIMB OR UP-CUT ~
+  Q201=-5 ;DEPTH ~
+  Q202=+2 ;INFEED DEPTH ~
+  Q369=+0 ;FINISHING ALLOWANCE FOR FLOOR ~
+  Q206=500 ;FEED RATE FOR PLUNGING ~
+  Q338=0 ;INFEED FOR FINISHING ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q370=0.42 ;TOOL PATH OVERLAP ~
+  Q366=0 ;PLUNGING ~
+  Q385=1000 ;FEED RATE FOR FINISHING
+L FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 115 ;Thread mill (2)
+CYCL DEF 262 THREAD MILLING ~
+  Q335=+19.05 ;NOMINAL DIAMETER ~
+  Q239=+0.8 ;PITCH ~
+  Q201=-5 ;THREAD DEPTH ~
+  Q355=+1 ;THREADS PER STEP ~
+  Q253=1000 ;F PRE-POSITIONING ~
+  Q351=+1 ;CLIMB OR UP-CUT ~
+  Q200=+5 ;SET-UP CLEARANCE ~
+  Q203=+0 ;SURFACE COORDINATE ~
+  Q204=+6 ;2ND SET-UP CLEARANCE ~
+  Q207=1000 ;FEED RATE FOR MILLING
+L FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+LBL 116 ;Rapid movement test (4)
+CYCL DEF 200 DRILLING ~
+  Q200=+0 ;SET-UP CLEARANCE ~
+  Q201=-0.1 ;DEPTH ~
+  Q206=333 ;FEED RATE FOR PLUNGING ~
+  Q202=+0.1 ;INFEED DEPTH ~
+  Q210=0 ;DWELL AT TOP ~
+  Q203=-0.1 ;SURFACE COORDINATE ~
+  Q204=+0 ;2ND SET-UP CLEARANCE ~
+  Q211=0 ;DWELL AT BOTTOM
+L FMAX M99
+L IX+43.459 IY-37.006 FMAX M99
+L IZ+10 FMAX
+LBL 0
+
+END PGM 1234 MM

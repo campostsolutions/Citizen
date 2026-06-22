@@ -1,0 +1,201 @@
+﻿
+# !File ;
+# mycomment
+ 
+# Machine
+#   vendor: DATRON
+#   model: NEXT with DST
+#   description: DATRON NEXT Control with additional DST
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Metric" @
+
+@ ToolDescription : "Name":"3_Drill_D511_myTool3", "Category":"Drill", "ArticleNr":"", "ToolNumber":3, "Vendor":"", "Diameter":5.11, "TipAngle":118, "TipDiameter":0, "FluteLength":25, "CornerRadius":0, "ShoulderLength":30, "ShoulderDiameter":5.11, "BodyLength":40, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":5.11, "OverallLength":50.22 @
+
+# Workpiece dimensions
+# min:      X: -50.000; Y: -25.000; Z: -50.000
+# max:      X: +50.000; Y: +25.000; Z: +1.000
+# Part size X: +100.000; Y: +50.000; Z: +51.000
+@ WorkpieceGeometry : "MinEdge":{"X":-50.000,"Y":-25.000,"Z":-50.000},"MaxEdge":{"X":+50.000,"Y":+25.000,"Z":+1.000} @
+
+sequence SEQUENCE_Drill44_drilling_1
+sequence SEQUENCE_Drill442_drilling_2
+sequence SEQUENCE_Drill443_drilling_3
+sequence SEQUENCE_Drill444_drilling_4
+sequence SEQUENCE_Drill445_drilling_5
+
+using Base
+using Rtcp
+
+
+
+export program Main #  1234 MM
+  Absolute
+  MultiAxisMode On
+  Operation_Drill44_drilling_1
+  Operation_Drill442_drilling_2
+  Operation_Drill443_drilling_3
+  Operation_Drill444_drilling_4
+  Operation_Drill445_drilling_5
+  SpraySystem Off
+  MultiAxisMode Off
+  Rtcp Off
+  MoveToSafetyPosition
+  Rapid A=0 C=0
+  Spindle Off
+  MoveToParkPosition
+endprogram # 1234 MM
+
+# Operation Time: 3s
+program Operation_Drill44_drilling_1
+  BeginBlock name="Drill44_drilling_1"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  MoveToSafetyPosition
+  Rapid A=30 C=0
+  Rtcp On
+  SafeZHeightForWorkpiece=28.60603
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Drill44_drilling_1 
+  EndBlock
+endprogram # Operation_Drill44_drilling_1
+
+# Operation Time: 3s
+program Operation_Drill442_drilling_2
+  BeginBlock name="Drill442_drilling_2"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  MoveToSafetyPosition
+  Rapid A=30 C=90
+  Rtcp On
+  SafeZHeightForWorkpiece=41.10603
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Drill442_drilling_2 
+  EndBlock
+endprogram # Operation_Drill442_drilling_2
+
+# Operation Time: 3s
+program Operation_Drill443_drilling_3
+  BeginBlock name="Drill443_drilling_3"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  MoveToSafetyPosition
+  Rapid A=30 C=-180
+  Rtcp On
+  SafeZHeightForWorkpiece=28.60603
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Drill443_drilling_3 
+  EndBlock
+endprogram # Operation_Drill443_drilling_3
+
+# Operation Time: 3s
+program Operation_Drill444_drilling_4
+  BeginBlock name="Drill444_drilling_4"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  MoveToSafetyPosition
+  Rapid A=30 C=-90
+  Rtcp On
+  SafeZHeightForWorkpiece=41.10603
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Drill444_drilling_4 
+  EndBlock
+endprogram # Operation_Drill444_drilling_4
+
+# Operation Time: 3s
+program Operation_Drill445_drilling_5
+  BeginBlock name="Drill445_drilling_5"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  MoveToSafetyPosition
+  Rapid A=22.20765 C=45
+  Rtcp On
+  SafeZHeightForWorkpiece=36.21041
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Drill445_drilling_5 
+  EndBlock
+endprogram # Operation_Drill445_drilling_5
+
+end
+# ##########################################################
+   
+$$$ SEQUENCE_Drill44_drilling_1
+Spindle On
+PrePositioning X=1.96435 Y=-18.06286 Z=28.60603
+Rapid X=1.96435 Y=-18.06286 Z=18.44603
+Drill depth=18.55471 strokeRapidZ=4.09808 strokeCuttingZ=5.08
+Rapid Z=28.60603
+ToolCompensation Off
+PathCorrection Off
+Rtcp Off
+   
+$$$ SEQUENCE_Drill442_drilling_2
+Spindle On
+PrePositioning X=0.00802 Y=-39.71162 Z=41.10603
+Rapid X=0.00802 Y=-39.71162 Z=30.94603
+Drill depth=18.9738 strokeRapidZ=4.09808 strokeCuttingZ=5.08
+Rapid Z=41.10603
+ToolCompensation Off
+PathCorrection Off
+Rtcp Off
+   
+$$$ SEQUENCE_Drill443_drilling_3
+Spindle On
+PrePositioning X=0.40098 Y=-18.08764 Z=28.60603
+Rapid X=0.40098 Y=-18.08764 Z=18.44603
+Drill depth=19.05 strokeRapidZ=4.09808 strokeCuttingZ=5.08
+Rapid Z=28.60603
+ToolCompensation Off
+PathCorrection Off
+Rtcp Off
+   
+$$$ SEQUENCE_Drill444_drilling_4
+Spindle On
+PrePositioning X=-2.69439 Y=-39.73846 Z=41.10603
+Rapid X=-2.69439 Y=-39.73846 Z=30.94603
+Drill depth=19.05 strokeRapidZ=4.09808 strokeCuttingZ=5.08
+Rapid Z=41.10603
+ToolCompensation Off
+PathCorrection Off
+Rtcp Off
+   
+$$$ SEQUENCE_Drill445_drilling_5
+Spindle On
+PrePositioning X=17.69873 Y=-41.31671 Z=36.21041
+Rapid X=17.69873 Y=-41.31671 Z=26.05041
+Drill depth=19.05 strokeRapidZ=5.44169 strokeCuttingZ=5.08
+Rapid Z=36.21041
+ToolCompensation Off
+PathCorrection Off
+Rtcp Off
+

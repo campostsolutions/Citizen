@@ -1,0 +1,183 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "brother speedio",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useRadius": true,
+            "smoothingMode": "A",
+            "useSmoothing": "9999",
+            "washdownCoolant": "always"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Smoothing options",
+          "inputFolder": "milling",
+          "suffix": "_smoothing",
+          "properties": {
+            "smoothingMode": "M298",
+            "useSmoothing": "3"
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Multi-axis",
+          "inputFolder": "milling",
+          "suffix": "_aaxis",
+          "properties": {
+            "hasAAxis": true,
+            "useTiltedWorkplane": false
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simple",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "description": "Trunnion",
+          "inputFolder": "milling",
+          "suffix": "_trunnion",
+          "properties": {
+            "useTrunnion": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Trunnion",
+          "inputFolder": "milling",
+          "suffix": "_g68",
+          "properties": {
+            "useTiltedWorkplane": true,
+            "useTrunnion": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Trunnion",
+          "inputFolder": "milling",
+          "suffix": "_TCP",
+          "properties": {},
+          "input": [
+            "5x Simultaneous"
+          ],
+          "machine": "machines/subtractive/brother/brother u500xd1.mch"
+        },
+        {
+          "description": "Inverse Time",
+          "inputFolder": "milling",
+          "suffix": "_inverse",
+          "properties": {
+            "hasAAxis": true,
+            "useInverseTime": true
+          },
+          "input": [
+            "A-axis Simple"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "_trunnion",
+          "properties": {
+            "useTrunnion": true
+          },
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Partial Features",
+            "Probe Geometry on PCD"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "_Blum",
+          "properties": {
+            "probingType": "Blum"
+          },
+          "input": [
+            "Probing Simple",
+            "Probing Outer Corner"
+          ]
+        }
+      ]
+    }
+  ]
+}

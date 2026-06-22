@@ -1,0 +1,55 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "boxford turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "useCycles": false,
+            "safePositionStyle": "singleLineXZ",
+            "optionalStop": false,
+            "o8": true,
+            "useRadius": true,
+            "useParametricFeed": true,
+            "homePositionX": "5in",
+            "homePositionZ": "7in",
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading Cycle",
+            "Slant Threading Cycle"
+          ]
+        }
+      ]
+    }
+  ]
+}

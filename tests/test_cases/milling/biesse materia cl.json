@@ -1,0 +1,51 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "biesse materia cl",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "writeDateAndTime": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "TCPType": 4,
+            "writeDateAndTime": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "writeDateAndTime": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        }
+      ]
+    }
+  ]
+}

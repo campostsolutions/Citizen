@@ -1,0 +1,71 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "tormach pathpilot turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "writeHeader": false
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "writeHeader": false
+          },
+          "input": [
+            "Straight Threading",
+            "Slant Threading",
+            "Straight Threading Cycle"
+          ]
+        },
+        {
+          "description": "Tapping",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "writeHeader": false
+          },
+          "input": [
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_options",
+          "properties": {
+            "writeHeader": false,
+            "optionalStopOperation": true,
+            "useRadius": true,
+            "showNotes": true,
+            "useParkPosition": true,
+            "useG30Z": true,
+            "useCoolant": false,
+            "tappingSpeed": 0.02,
+            "approachStyle": "singleLineXZ"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles",
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        }
+      ]
+    }
+  ]
+}

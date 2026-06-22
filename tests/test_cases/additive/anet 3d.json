@@ -1,0 +1,36 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "anet 3d",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "_a8",
+          "properties": {
+            "printerModel": "a8",
+            "meshLeveling": true
+		      },
+          "input": [
+            "fff_1extruder"
+          ]
+        },
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "_a6",
+          "properties": {
+            "printerModel": "a6",
+            "meshLeveling": false
+		      },
+          "input": [
+            "fff_1extruder"
+          ]
+        }
+      ]
+    }
+  ]
+}

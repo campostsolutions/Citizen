@@ -1,0 +1,38 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "roeders rms6",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "material": "steel",
+            "cleanAir": false,
+            "connectingRadius": 1,
+            "preloadTool": true,
+            "allowArcs": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "felder f4 integrate",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Router 2D",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "ISO output",
+          "inputFolder": "milling",
+          "suffix": "_iso",
+          "properties": {
+            "isoOnly": true,
+            "isoCircular": true
+          },
+          "input": [
+            "Router 2D",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Saw operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Saw 6 Sides",
+            "Saw 4 Sides"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Router 6 Sides",
+            "Router 3+2",
+            "Router 5-axis"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "safeRetractDistance": 300,
+            "ignoreSawLeadIn": false,
+            "shiftOrigin": false
+          },
+          "input": [
+            "Router 2D",
+            "Saw 4 Sides"
+          ]
+        }
+      ]
+    }
+  ]
+}

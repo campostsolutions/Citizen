@@ -1,0 +1,30 @@
+; %_N_1234_MPF
+; mycomment
+; T4 D=6.35 CR=0 - ZMIN=-14 - right hand tap
+G54
+G17 G710 G90 G94
+WORKPIECE(,"",,"BOX",112,1,-50,,50,25,-50,-25)
+G64
+G0 SUPA Z0 D0
+
+MSG ("Tap with chip breaking")
+T4
+M6
+D1
+S1000 M3
+G17 G90 G94
+G54
+G0 X25 Y10
+G0 Z16
+M8
+G17
+MCALL CYCLE84(6, 0, 5, -14, , 0, 3, , 1.27, 0, 1000, 1000, 0, 1, , 1, 3, 0.5, , , , 0, 0, 1001002)
+X25 Y10
+MCALL
+G0 Z16
+
+M9
+M5
+G0 SUPA Z0 D0
+D1
+M30

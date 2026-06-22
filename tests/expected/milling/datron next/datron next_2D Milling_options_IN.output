@@ -1,0 +1,289 @@
+﻿
+# !File ;
+# mycomment
+ 
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Imperial" @
+
+@ ToolDescription : "Name":"1_MillingFace_myToolComment_D2_myTool1_myToolProductID", "Category":"MillingFace", "ArticleNr":"myToolProductID", "ToolNumber":1, "Vendor":"myToolVendor", "Diameter":2, "TipAngle":0, "TipDiameter":0, "FluteLength":0.19685, "CornerRadius":0, "ShoulderLength":0.7874, "ShoulderDiameter":2, "BodyLength":1.9685, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":1.5748, "OverallLength":5.1181 @
+@ ToolDescription : "Name":"2_MillingEndFlat_D0375_myTool2", "Category":"MillingEndFlat", "ArticleNr":"", "ToolNumber":2, "Vendor":"", "Diameter":0.375, "TipAngle":0, "TipDiameter":0, "FluteLength":0.62992, "CornerRadius":0, "ShoulderLength":0.94488, "ShoulderDiameter":0.375, "BodyLength":1.5748, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":0.375, "OverallLength":2.3248 @
+
+# Workpiece dimensions
+# min:      X: -1.9685; Y: -0.9843; Z: -1.9685
+# max:      X: +1.9685; Y: +0.9843; Z: +0.0394
+# Part size X: +3.9370; Y: +1.9685; Z: +2.0079
+@ WorkpieceGeometry : "MinEdge":{"X":-1.9685,"Y":-0.9843,"Z":-1.9685},"MaxEdge":{"X":+1.9685,"Y":+0.9843,"Z":+0.0394} @
+
+sequence SEQUENCE_2D_Face__1
+sequence SEQUENCE_2D_Contour__2
+sequence SEQUENCE_2D_Contourwithcompensationleft__3
+sequence SEQUENCE_2D_Contourwithcompensationright__4
+sequence SEQUENCE_2D_Bore__5
+
+using Base
+
+Cutting:number
+Finish:number
+Plunge:number
+Transition:number
+Entry:number
+Exit:number
+
+
+export program Main #  1234 INCH
+  Absolute
+  Operation_2D_Face__1
+  Operation_2D_Contour__2
+  Operation_2D_Contourwithcompensationleft__3
+  Operation_2D_Contourwithcompensationright__4
+  Operation_2D_Bore__5
+  MoveToSafetyPosition
+endprogram # 1234 INCH
+
+# Operation Time: 22s
+# ZMIN = 0
+program Operation_2D_Face__1
+  BeginBlock name="2D_Face__1"
+  LoadWcs name="1"
+  Smoothing Off
+  SafeZHeightForWorkpiece=0.62992
+  Tool name="1_MillingFace_myToolComment_D2_myTool1_myToolProductID" newRpm=5000 skipRestoring
+  Cutting = 39.37 # in/min!
+  Finish = 39.37 # in/min!
+  Plunge = 19.68 # in/min!
+  Transition = 39.37 # in/min!
+  SEQUENCE_2D_Face__1 Cutting=Cutting Finish=Finish Plunge=Plunge Transition=Transition
+  EndBlock
+endprogram # Operation_2D_Face__1
+
+# Operation Time: 20s
+# ZMIN = -0.3937
+program Operation_2D_Contour__2
+  BeginBlock name="2D_Contour__2"
+  LoadWcs name="1"
+  Smoothing Off
+  SafeZHeightForWorkpiece=0.62992
+  Tool name="2_MillingEndFlat_D0375_myTool2" newRpm=5000 skipRestoring
+  Finish = 39.37 # in/min!
+  Entry = 39.37 # in/min!
+  Exit = 39.37 # in/min!
+  Plunge = 19.68 # in/min!
+  SEQUENCE_2D_Contour__2 Finish=Finish Entry=Entry Exit=Exit Plunge=Plunge
+  EndBlock
+endprogram # Operation_2D_Contour__2
+
+# Operation Time: 20s
+# ZMIN = -0.3937
+program Operation_2D_Contourwithcompensationleft__3
+  BeginBlock name="2D_Contourwithcompensationleft__3"
+  LoadWcs name="1"
+  Smoothing Off
+  SafeZHeightForWorkpiece=0.62992
+  PathOffset = 0
+  Tool name="2_MillingEndFlat_D0375_myTool2" newRpm=5000 skipRestoring
+  Finish = 39.37 # in/min!
+  Entry = 39.37 # in/min!
+  Exit = 39.37 # in/min!
+  Plunge = 19.68 # in/min!
+  SEQUENCE_2D_Contourwithcompensationleft__3 Finish=Finish Entry=Entry Exit=Exit Plunge=Plunge
+  EndBlock
+endprogram # Operation_2D_Contourwithcompensationleft__3
+
+# Operation Time: 20s
+# ZMIN = -0.3937
+program Operation_2D_Contourwithcompensationright__4
+  BeginBlock name="2D_Contourwithcompensationright__4"
+  LoadWcs name="1"
+  Smoothing Off
+  SafeZHeightForWorkpiece=0.62992
+  PathOffset = 0
+  Tool name="2_MillingEndFlat_D0375_myTool2" newRpm=5000 skipRestoring
+  Finish = 39.37 # in/min!
+  Entry = 39.37 # in/min!
+  Exit = 39.37 # in/min!
+  Plunge = 19.68 # in/min!
+  SEQUENCE_2D_Contourwithcompensationright__4 Finish=Finish Entry=Entry Exit=Exit Plunge=Plunge
+  EndBlock
+endprogram # Operation_2D_Contourwithcompensationright__4
+
+# Operation Time: 6s
+# ZMIN = -0.19685
+program Operation_2D_Bore__5
+  BeginBlock name="2D_Bore__5"
+  LoadWcs name="1"
+  Smoothing Off
+  SafeZHeightForWorkpiece=0.62992
+  Tool name="2_MillingEndFlat_D0375_myTool2" newRpm=5000 skipRestoring
+  Cutting = 39.37 # in/min!
+  Entry = 39.37 # in/min!
+  Exit = 39.37 # in/min!
+  SEQUENCE_2D_Bore__5 Cutting=Cutting Entry=Entry Exit=Exit
+  EndBlock
+endprogram # Operation_2D_Bore__5
+
+end
+# ##########################################################
+   
+$$$ SEQUENCE_2D_Face__1
+Spindle On
+PrePositioning X=3.14961 Y=-0.975 Z=0.62992
+Rapid Z=0.23622
+Feed=Plunge
+Line Z=0
+Feed=Finish
+Line X=-3.14961
+Feed=Transition
+Arc CW X=-3.58151 Y=-0.22692 dX=0 dY=0.49872
+Arc CW X=-3.14961 Y=0.02244 dX=0.4319 dY=-0.24936
+Feed=Finish
+Line X=3.14961
+Rapid Z=0.62992
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_2D_Contour__2
+Spindle On
+PrePositioning X=-0.375 Y=1.21506 Z=0.62992
+Rapid Z=0.23622
+Feed=Plunge
+Line Z=0.07874
+Line Z=-0.3937
+Feed=Entry
+Line Y=1.21112
+Arc CCW X=-0.21752 Y=1.05364 dX=0.15748 dY=0
+Feed=Finish
+Line X=1.53543
+Arc CW X=2.03789 Y=0.55118 dX=0 dY=-0.50246
+Line Y=-0.86614
+Arc CW X=1.85039 Y=-1.05364 dX=-0.1875 dY=0
+Line X=-1.65354
+Arc CW X=-2.03789 Y=-0.66929 dX=0 dY=0.38435
+Line Y=0.86614
+Arc CW X=-1.85039 Y=1.05364 dX=0.1875 dY=0
+Line X=-0.21752
+Feed=Exit
+Arc CCW X=-0.06004 Y=1.21112 dX=0 dY=0.15748
+Line Y=1.21506
+Rapid Z=0.62992
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_2D_Contourwithcompensationleft__3
+Spindle On
+PrePositioning X=-0.40192 Y=1.19444 Z=0.62992
+Rapid Z=0.23622
+Feed=Plunge
+Line Z=0.07874
+Line Z=-0.3937
+ToolCompensation Left
+PathCorrection Left
+Feed=Entry
+Line X=-0.60817 Y=1.1905
+Arc CCW X=-0.28381 Y=0.86614 dX=0.32436 dY=0
+Feed=Finish
+Line X=1.53543
+Arc CW X=1.85039 Y=0.55118 dX=0 dY=-0.31496
+Line Y=-0.86614
+Line X=-1.65354
+Arc CW X=-1.85039 Y=-0.66929 dX=0 dY=0.19685
+Line Y=0.86614
+Line X=-0.28381
+Feed=Exit
+Arc CCW X=0.04055 Y=1.1905 dX=0 dY=0.32436
+ToolCompensation Off
+PathCorrection Off
+Line X=-0.1657 Y=1.19444
+Rapid Z=0.62992
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_2D_Contourwithcompensationright__4
+Spindle On
+PrePositioning X=-0.1657 Y=1.19444 Z=0.62992
+Rapid Z=0.23622
+Feed=Plunge
+Line Z=0.07874
+Line Z=-0.3937
+ToolCompensation Right
+PathCorrection Right
+Feed=Entry
+Line X=0.04055 Y=1.1905
+Arc CW X=-0.28381 Y=0.86614 dX=-0.32436 dY=0
+Feed=Finish
+Line X=-1.85039
+Line Y=-0.66929
+Arc CCW X=-1.65354 Y=-0.86614 dX=0.19685 dY=0
+Line X=1.85039
+Line Y=0.55118
+Arc CCW X=1.53543 Y=0.86614 dX=-0.31496 dY=0
+Line X=-0.28381
+Feed=Exit
+Arc CW X=-0.60817 Y=1.1905 dX=0 dY=0.32436
+ToolCompensation Off
+PathCorrection Off
+Line X=-0.40192 Y=1.19444
+Rapid Z=0.62992
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_2D_Bore__5
+Spindle On
+PrePositioning X=1.19513 Y=-0.35246 Z=0.62992
+Rapid Z=0.07874
+Feed=Entry
+Line Z=0.0375
+Line X=1.1954 Z=0.03298
+Line X=1.19622 Z=0.02853
+Line X=1.19756 Z=0.0242
+Line X=1.19942 Z=0.02007
+Line X=1.20177 Z=0.0162
+Line X=1.20456 Z=0.01263
+Line X=1.20776 Z=0.00943
+Line X=1.21133 Z=0.00664
+Line X=1.2152 Z=0.0043
+Line X=1.21933 Z=0.00244
+Line X=1.22365 Z=0.00109
+Line X=1.22811 Z=0.00027
+Line X=1.23263 Z=0
+Line X=1.25138
+Arc CCW X=1.28888 Y=-0.31496 dX=0 dY=0.0375
+Feed=Cutting
+Arc CCW X=1.12721 Y=-0.22162 Z=-0.01312 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 Z=-0.02625 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 Z=-0.03937 dX=0.05389 dY=0.09334
+Arc CCW X=1.12721 Y=-0.22162 Z=-0.05249 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 Z=-0.06562 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 Z=-0.07874 dX=0.05389 dY=0.09334
+Arc CCW X=1.12721 Y=-0.22162 Z=-0.09186 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 Z=-0.10499 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 Z=-0.11811 dX=0.05389 dY=0.09334
+Arc CCW X=1.12721 Y=-0.22162 Z=-0.13123 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 Z=-0.14436 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 Z=-0.15748 dX=0.05389 dY=0.09334
+Arc CCW X=1.12721 Y=-0.22162 Z=-0.1706 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 Z=-0.18373 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 Z=-0.19685 dX=0.05389 dY=0.09334
+Arc CCW X=1.12721 Y=-0.22162 dX=-0.10778 dY=0
+Arc CCW Y=-0.4083 dX=0.05389 dY=-0.09334
+Arc CCW X=1.28888 Y=-0.31496 dX=0.05389 dY=0.09334
+Feed=Exit
+Arc CCW X=1.25138 Y=-0.27746 dX=-0.0375 dY=0
+Line X=1.23263
+Line X=1.22811 Z=-0.19658
+Line X=1.22365 Z=-0.19576
+Line X=1.21933 Z=-0.19441
+Line X=1.2152 Z=-0.19255
+Line X=1.21133 Z=-0.19021
+Line X=1.20776 Z=-0.18742
+Line X=1.20456 Z=-0.18422
+Line X=1.20177 Z=-0.18065
+Line X=1.19942 Z=-0.17678
+Line X=1.19756 Z=-0.17265
+Line X=1.19622 Z=-0.16832
+Line X=1.1954 Z=-0.16387
+Line X=1.19513 Z=-0.15935
+Rapid Z=0.62992
+ToolCompensation Off
+PathCorrection Off
+

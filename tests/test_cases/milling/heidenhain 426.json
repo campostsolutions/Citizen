@@ -1,0 +1,207 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "heidenhain 426",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "_chiptap",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "preloadTool": false,
+            "safePositionMethod": "M92",
+            "useM140": false,
+            "useM06": true,
+            "structureComments": false
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles",
+            "Boring Cycles",
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "tool as name",
+          "inputFolder": "milling",
+          "suffix": "_toolAsName",
+          "properties": {
+            "toolAsName": true
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_headTable machine",
+          "properties": {
+            "usePlane": "true"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/BC_head_table.mch"
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_headTable machine NoTCP",
+          "properties": {
+            "usePlane": "true"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/BC_head_table_NoTCP.mch"
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_usePlaneTrue",
+          "properties": {
+            "usePlane": "true"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_usePlaneNone",
+          "properties": {
+            "usePlane": "none"
+          },
+          "input": [
+            "5x 3+2"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_tcp",
+          "properties": {
+            "usePlane": "true",
+            "useFunctionTCPM": true,
+            "preferredTilt": 1
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing No Corner",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probing AC_machine",
+          "inputFolder": "milling",
+          "suffix": "_AC",
+          "properties": {},
+          "input": [
+            "X Angular Probing",
+            "Y Angular Probing"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        }
+      ]
+    }
+  ]
+}

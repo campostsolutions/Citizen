@@ -1,0 +1,31 @@
+
+                <!DOCTYPE html>
+                <html>
+                <head><title>Simple Test</title></head>
+                <body>
+                    <h2>Simple Test</h2>
+                    <button onclick="sendTest()">Send Test</button>
+                    <div id="debug"></div>
+                    <script>
+                    function sendTest() {
+                        document.getElementById('debug').innerHTML = 'Sending test...';
+                        if (window.adsk && window.adsk.fusionSendData) {
+                            try {
+                                const testData = {
+                                    selectedImage: 'L12-VII',
+                                    outputUnits: 'mm',
+                                    test: true
+                                };
+                                window.adsk.fusionSendData(JSON.stringify(testData));
+                                document.getElementById('debug').innerHTML = 'Test sent successfully';
+                            } catch (e) {
+                                document.getElementById('debug').innerHTML = 'Error: ' + e.message;
+                            }
+                        } else {
+                            document.getElementById('debug').innerHTML = 'window.adsk not available';
+                        }
+                    }
+                    </script>
+                </body>
+                </html>
+                

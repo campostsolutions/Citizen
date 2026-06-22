@@ -1,0 +1,32 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "wazer",
+      "outputFolder": "jet",
+      "testCases": [
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Waterjet"
+          ]
+        },
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "_options",
+          "properties": {
+            "material": "Aluminum6061"
+          },
+          "input": [
+            "Waterjet"
+          ]
+        }
+      ]
+    }
+  ]
+}

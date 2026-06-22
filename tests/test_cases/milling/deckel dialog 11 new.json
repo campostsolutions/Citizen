@@ -1,0 +1,39 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "deckel dialog 11 new",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "programName": 99
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "programName": 99,
+            "useToolNumberForCompensation": false,
+            "scale": false,
+            "useG0Star2": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

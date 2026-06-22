@@ -1,0 +1,60 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "acramatic 850sx turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading"
+          ]
+        },
+        {
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_misc",
+          "properties": {
+            "safeRetractMethod": "Smart",
+            "optionalStop": false,
+            "useRadius": false,
+            "retractRateMultiplier": 0.8,
+            "homePositionX": 1,
+            "homePositionZ": 2,
+            "approachStyle": "singleLineXZ"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

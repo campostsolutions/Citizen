@@ -1,0 +1,36 @@
+[1234]
+[mycomment]
+[MATERIAL THICKNESS = Z50.]
+[Machine]
+[  model: A-axis]
+[  description: A-axis Table]
+[T3  drill  DIAMETER = 5.11   TAPER=118deg]
+G90
+G22
+G53
+[Drill42]
+[T3  drill  DIAMETER = 5.11  ]
+T3
+S5000
+M3
+G0 A-120.
+F400 Z
+G0 X-48.3 Y0.
+G43
+G0 Z40.24
+G0 Z30.08
+G81 X-48.3 Y0. Z5. R30.08
+G80
+G0 Z40.24
+G53
+[Drill43]
+G0 A-240.
+G0 X-48.3 Y0.
+G0 Z40.24
+G0 Z30.08
+G81 X-48.3 Y0. Z5. R30.08
+G80
+G0 Z40.24
+M5
+G53
+G0 A0.

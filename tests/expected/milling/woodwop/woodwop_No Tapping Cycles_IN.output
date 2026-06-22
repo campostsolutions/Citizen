@@ -1,0 +1,253 @@
+\ 1234
+\ mycomment
+[H
+VERSION="4.0"
+INCH="0"
+MAT="WEEKE"
+OP="1"
+FM="1"
+FW="0"
+
+[001
+i="25.4"
+KM="Inch conversion"
+L="100"
+KM="Part Length"
+W="50"
+KM="Part Width"
+SL="100"
+KM="Stock Length"
+SW="50"
+KM="Stock Width"
+T="51"
+KM="Stock Height"
+POX="0"
+KM="Part Offset X"
+POY="0"
+KM="Part Offset Y"
+X="0"
+KM=""
+Y="0"
+KM=""
+
+<100 \WerkStck\
+LA="L"
+BR="W"
+DI="T"
+FNX="POX"
+FNY="POY"
+RL="SL"
+RB="SW"
+
+[K
+<00 \Koordinatensystem\
+NR="F0"
+XP="0"
+XF="1"
+YP="0"
+YF="1"
+ZP="0"
+ZF="1"
+D1="0"
+KI="0"
+D2="0"
+MI="0"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+ZT="1"
+RM="@0.1022"
+VW="0"
+BM="BMR"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+ZT="1"
+RM="@0.1022"
+VW="0"
+BM="BMR"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+ZT="1"
+RM="5"
+VW="0"
+BM="BMR"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+ZT="1"
+RM="5"
+VW="0"
+BM="BMR"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LSL"
+TI="16.5352"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LS"
+TI="14"
+TNO="6"
+F_="0.2"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LS"
+TI="14"
+TNO="6"
+F_="0.2"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LS"
+TI="15"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LS"
+TI="15"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="25"
+YA="35"
+ZA="50"
+BM="LS"
+TI="15"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="75"
+YA="35"
+ZA="50"
+BM="LS"
+TI="15"
+TNO="3"
+F_="0.4"
+
+<102 \BohrVert\
+XA="6.4641"
+YA="43.5359"
+ZA="49.9"
+BM="LS"
+TI="0.1"
+TNO="7"
+F_="0.333"
+
+<102 \BohrVert\
+XA="50"
+YA="6.4641"
+ZA="49.9"
+BM="LS"
+TI="0.1"
+TNO="7"
+F_="0.333"
+
+<101 \Kommentar\
+KM="1234"
+KM="mycomment"
+KAT="Kommentar"
+MNM="Kommentar"
+!

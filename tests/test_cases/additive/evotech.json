@@ -1,0 +1,22 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "evotech",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": { "chamberTemperature" : 100
+          },
+          "input": [
+            "fff_1extruder",
+            "fff_2extruders"
+          ]
+        }
+      ]
+    }
+  ]
+}

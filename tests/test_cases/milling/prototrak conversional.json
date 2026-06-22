@@ -1,0 +1,37 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "prototrak conversional",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Bore",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "preloadTool": false,
+            "useG90": true,
+            "connectingRadius": 1,
+            "useZAxis": true
+          },
+          "input": [
+            "2D No Bore",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

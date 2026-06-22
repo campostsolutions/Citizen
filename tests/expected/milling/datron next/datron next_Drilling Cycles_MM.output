@@ -1,0 +1,933 @@
+﻿
+# !File ;
+# mycomment
+ 
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Metric" @
+
+@ ToolDescription : "Name":"3_Drill_D511_myTool3", "Category":"Drill", "ArticleNr":"", "ToolNumber":3, "Vendor":"", "Diameter":5.11, "TipAngle":118, "TipDiameter":0, "FluteLength":25, "CornerRadius":0, "ShoulderLength":30, "ShoulderDiameter":5.11, "BodyLength":40, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":5.11, "OverallLength":50.22 @
+@ ToolDescription : "Name":"4_TapRightHand_D635_myTool4", "Category":"TapRightHand", "ArticleNr":"", "ToolNumber":4, "Vendor":"", "Diameter":6.35, "TipAngle":0, "TipDiameter":0, "FluteLength":10, "CornerRadius":0, "ShoulderLength":15, "ShoulderDiameter":6.35, "BodyLength":25, "NumberOfFlutes":3, "ThreadPitch":1.27, "ShaftDiameter":6.35, "OverallLength":37.7 @
+@ ToolDescription : "Name":"5_TapLeftHand_D635_myTool5", "Category":"TapLeftHand", "ArticleNr":"", "ToolNumber":5, "Vendor":"", "Diameter":6.35, "TipAngle":0, "TipDiameter":0, "FluteLength":10, "CornerRadius":0, "ShoulderLength":15, "ShoulderDiameter":6.35, "BodyLength":25, "NumberOfFlutes":3, "ThreadPitch":1.27, "ShaftDiameter":6.35, "OverallLength":37.7 @
+@ ToolDescription : "Name":"6_Reamer_D508_myTool6", "Category":"Reamer", "ArticleNr":"", "ToolNumber":6, "Vendor":"", "Diameter":5.08, "TipAngle":0, "TipDiameter":0, "FluteLength":10, "CornerRadius":0, "ShoulderLength":15, "ShoulderDiameter":5.08, "BodyLength":25, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":5.08, "OverallLength":35.16 @
+@ ToolDescription : "Name":"7_DrillSpot_D635_myTool7", "Category":"DrillSpot", "ArticleNr":"", "ToolNumber":7, "Vendor":"", "Diameter":6.35, "TipAngle":90, "TipDiameter":0, "FluteLength":12, "CornerRadius":0, "ShoulderLength":18, "ShoulderDiameter":6.35, "BodyLength":30, "NumberOfFlutes":3, "ThreadPitch":0, "ShaftDiameter":6.35, "OverallLength":42.7 @
+
+# Workpiece dimensions
+# min:      X: -50.000; Y: -25.000; Z: -50.000
+# max:      X: +50.000; Y: +25.000; Z: +1.000
+# Part size X: +100.000; Y: +50.000; Z: +51.000
+@ WorkpieceGeometry : "MinEdge":{"X":-50.000,"Y":-25.000,"Z":-50.000},"MaxEdge":{"X":+50.000,"Y":+25.000,"Z":+1.000} @
+
+sequence SEQUENCE_Rapidout_drilling_1
+sequence SEQUENCE_Dwellandrapidout_counter_boring_2
+sequence SEQUENCE_Chipbreaking_chip_breaking_3
+sequence SEQUENCE_Deepdrilling_deep_drilling_4
+sequence SEQUENCE_Break_throughdrilling_break_through_drilling_5
+sequence SEQUENCE_Guideddeepdrilling_gun_drilling_6
+sequence SEQUENCE_Tap_tapping_7
+sequence SEQUENCE_Lefttap_left_tapping_8
+sequence SEQUENCE_Righttap_right_tapping_9
+sequence SEQUENCE_Reaming_reaming_10
+sequence SEQUENCE_Boring_boring_11
+sequence SEQUENCE_BoringRetractFeed_boring_12
+sequence SEQUENCE_Rapidmovementtest_drilling_13
+
+using Base
+
+
+
+export program Main #  1234 MM
+  Absolute
+  Operation_Rapidout_drilling_1
+  Operation_Dwellandrapidout_counter_boring_2
+  Operation_Chipbreaking_chip_breaking_3
+  Operation_Deepdrilling_deep_drilling_4
+  Operation_Break_throughdrilling_break_through_drilling_5
+  Operation_Guideddeepdrilling_gun_drilling_6
+  Operation_Tap_tapping_7
+  Operation_Lefttap_left_tapping_8
+  Operation_Righttap_right_tapping_9
+  Operation_Reaming_reaming_10
+  Operation_Boring_boring_11
+  Operation_BoringRetractFeed_boring_12
+  Operation_Rapidmovementtest_drilling_13
+  SpraySystem Off
+  Spindle Off
+  MoveToParkPosition
+endprogram # 1234 MM
+
+# Operation Time: 6s
+# ZMIN = -16.53519
+program Operation_Rapidout_drilling_1
+  BeginBlock name="Rapidout_drilling_1"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=400
+  SEQUENCE_Rapidout_drilling_1 
+  EndBlock
+endprogram # Operation_Rapidout_drilling_1
+
+# Operation Time: 6s
+# ZMIN = -16.53519
+program Operation_Dwellandrapidout_counter_boring_2
+  BeginBlock name="Dwellandrapidout_counter_boring_2"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter counter-boring cycle
+  SEQUENCE_Dwellandrapidout_counter_boring_2 
+  EndBlock
+endprogram # Operation_Dwellandrapidout_counter_boring_2
+
+# Operation Time: 8s
+# ZMIN = -16.53519
+program Operation_Chipbreaking_chip_breaking_3
+  BeginBlock name="Chipbreaking_chip_breaking_3"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter chip-breaking cycle
+  SetFeedTechnology plunge=400 roughing=400
+  infeedZ = 1
+  SEQUENCE_Chipbreaking_chip_breaking_3 infeedZ=infeedZ
+  EndBlock
+endprogram # Operation_Chipbreaking_chip_breaking_3
+
+# Operation Time: 7s
+# ZMIN = -16.53519
+program Operation_Deepdrilling_deep_drilling_4
+  BeginBlock name="Deepdrilling_deep_drilling_4"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter deep-drilling cycle
+  SEQUENCE_Deepdrilling_deep_drilling_4 
+  EndBlock
+endprogram # Operation_Deepdrilling_deep_drilling_4
+
+# Operation Time: 6s
+# ZMIN = -16.53519
+program Operation_Break_throughdrilling_break_through_drilling_5
+  BeginBlock name="Break_throughdrilling_break_through_drilling_5"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter break-through-drilling cycle
+  SEQUENCE_Break_throughdrilling_break_through_drilling_5 
+  EndBlock
+endprogram # Operation_Break_throughdrilling_break_through_drilling_5
+
+# Operation Time: 6s
+# ZMIN = -16.53519
+program Operation_Guideddeepdrilling_gun_drilling_6
+  BeginBlock name="Guideddeepdrilling_gun_drilling_6"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=3000 skipRestoring
+  # Parameter gun-drilling cycle
+  SEQUENCE_Guideddeepdrilling_gun_drilling_6 
+  EndBlock
+endprogram # Operation_Guideddeepdrilling_gun_drilling_6
+
+# Operation Time: 1s
+# ZMIN = -14
+program Operation_Tap_tapping_7
+  BeginBlock name="Tap_tapping_7"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="4_TapRightHand_D635_myTool4" newRpm=1000 skipRestoring
+  # Parameter tapping cycle
+  SEQUENCE_Tap_tapping_7 
+  EndBlock
+endprogram # Operation_Tap_tapping_7
+
+# Operation Time: 1s
+# ZMIN = -14
+program Operation_Lefttap_left_tapping_8
+  BeginBlock name="Lefttap_left_tapping_8"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="5_TapLeftHand_D635_myTool5" newRpm=1000 skipRestoring
+  # Parameter left-tapping cycle
+  SEQUENCE_Lefttap_left_tapping_8 
+  EndBlock
+endprogram # Operation_Lefttap_left_tapping_8
+
+# Operation Time: 1s
+# ZMIN = -14
+program Operation_Righttap_right_tapping_9
+  BeginBlock name="Righttap_right_tapping_9"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="4_TapRightHand_D635_myTool4" newRpm=1000 skipRestoring
+  # Parameter right-tapping cycle
+  SEQUENCE_Righttap_right_tapping_9 
+  EndBlock
+endprogram # Operation_Righttap_right_tapping_9
+
+# Operation Time: 22s
+# ZMIN = -14
+program Operation_Reaming_reaming_10
+  BeginBlock name="Reaming_reaming_10"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="6_Reamer_D508_myTool6" newRpm=2000 skipRestoring
+  # Parameter reaming cycle
+  SEQUENCE_Reaming_reaming_10 
+  EndBlock
+endprogram # Operation_Reaming_reaming_10
+
+# Operation Time: 12s
+# ZMIN = -15
+program Operation_Boring_boring_11
+  BeginBlock name="Boring_boring_11"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter boring cycle
+  SEQUENCE_Boring_boring_11 
+  EndBlock
+endprogram # Operation_Boring_boring_11
+
+# Operation Time: 12s
+# ZMIN = -15
+program Operation_BoringRetractFeed_boring_12
+  BeginBlock name="BoringRetractFeed_boring_12"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=16
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="3_Drill_D511_myTool3" newRpm=5000 skipRestoring
+  # Parameter boring cycle
+  SEQUENCE_BoringRetractFeed_boring_12 
+  EndBlock
+endprogram # Operation_BoringRetractFeed_boring_12
+
+# Operation Time: 0s
+# ZMIN = -0.2
+program Operation_Rapidmovementtest_drilling_13
+  BeginBlock name="Rapidmovementtest_drilling_13"
+  LoadWcs name="1"
+  Smoothing On allowedDeviation=0.012
+  Dynamic = 5
+  SafeZHeightForWorkpiece=9.9
+  SprayTechnology External
+  Coolant Alcohol
+  SpraySystem On
+  Tool name="7_DrillSpot_D635_myTool7" newRpm=6000 skipRestoring
+  # Parameter drilling cycle
+  SetFeedTechnology plunge=333.33
+  SEQUENCE_Rapidmovementtest_drilling_13 
+  EndBlock
+endprogram # Operation_Rapidmovementtest_drilling_13
+
+end
+# ##########################################################
+   
+$$$ SEQUENCE_Rapidout_drilling_1
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid X=-25 Y=10 Z=6
+Drill depth=16.53519 strokeRapidZ=1 strokeCuttingZ=5
+Rapid X=25 Y=10 Z=6
+Drill depth=16.53519 strokeRapidZ=1 strokeCuttingZ=5
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Dwellandrapidout_counter_boring_2
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Chipbreaking_chip_breaking_3
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Rapid Z=2
+Feed=400
+Line Z=-1
+Rapid Z=-0.8978
+Feed=400
+Line Z=-1.9
+Rapid Z=-1.7978
+Feed=400
+Line Z=-2.7
+Rapid Z=-2.5978
+Feed=400
+Line Z=-3.4
+Rapid Z=-3.2978
+Feed=400
+Line Z=-4
+Rapid Z=-3.8978
+Feed=400
+Line Z=-4.5
+Rapid Z=-4.3978
+Feed=400
+Line Z=-5
+Rapid Z=6
+Rapid Z=-3
+Feed=400
+Line Z=-5.5
+Rapid Z=-5.3978
+Feed=400
+Line Z=-6
+Rapid Z=-5.8978
+Feed=400
+Line Z=-6.5
+Rapid Z=-6.3978
+Feed=400
+Line Z=-7
+Rapid Z=-6.8978
+Feed=400
+Line Z=-7.5
+Rapid Z=-7.3978
+Feed=400
+Line Z=-8
+Rapid Z=-7.8978
+Feed=400
+Line Z=-8.5
+Rapid Z=-8.3978
+Feed=400
+Line Z=-9
+Rapid Z=-8.8978
+Feed=400
+Line Z=-9.5
+Rapid Z=-9.3978
+Feed=400
+Line Z=-10
+Rapid Z=6
+Rapid Z=-8
+Feed=400
+Line Z=-10.5
+Rapid Z=-10.3978
+Feed=400
+Line Z=-11
+Rapid Z=-10.8978
+Feed=400
+Line Z=-11.5
+Rapid Z=-11.3978
+Feed=400
+Line Z=-12
+Rapid Z=-11.8978
+Feed=400
+Line Z=-12.5
+Rapid Z=-12.3978
+Feed=400
+Line Z=-13
+Rapid Z=-12.8978
+Feed=400
+Line Z=-13.5
+Rapid Z=-13.3978
+Feed=400
+Line Z=-14
+Rapid Z=-13.8978
+Feed=400
+Line Z=-14.5
+Rapid Z=-14.3978
+Feed=400
+Line Z=-15
+Rapid Z=6
+Rapid Z=-13
+Feed=400
+Line Z=-15.5
+Rapid Z=-15.3978
+Feed=400
+Line Z=-16
+Rapid Z=-15.8978
+Feed=400
+Line Z=-16.5
+Rapid Z=-16.3978
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Rapid Z=2
+Feed=400
+Line Z=-1
+Rapid Z=-0.8978
+Feed=400
+Line Z=-1.9
+Rapid Z=-1.7978
+Feed=400
+Line Z=-2.7
+Rapid Z=-2.5978
+Feed=400
+Line Z=-3.4
+Rapid Z=-3.2978
+Feed=400
+Line Z=-4
+Rapid Z=-3.8978
+Feed=400
+Line Z=-4.5
+Rapid Z=-4.3978
+Feed=400
+Line Z=-5
+Rapid Z=6
+Rapid Z=-3
+Feed=400
+Line Z=-5.5
+Rapid Z=-5.3978
+Feed=400
+Line Z=-6
+Rapid Z=-5.8978
+Feed=400
+Line Z=-6.5
+Rapid Z=-6.3978
+Feed=400
+Line Z=-7
+Rapid Z=-6.8978
+Feed=400
+Line Z=-7.5
+Rapid Z=-7.3978
+Feed=400
+Line Z=-8
+Rapid Z=-7.8978
+Feed=400
+Line Z=-8.5
+Rapid Z=-8.3978
+Feed=400
+Line Z=-9
+Rapid Z=-8.8978
+Feed=400
+Line Z=-9.5
+Rapid Z=-9.3978
+Feed=400
+Line Z=-10
+Rapid Z=6
+Rapid Z=-8
+Feed=400
+Line Z=-10.5
+Rapid Z=-10.3978
+Feed=400
+Line Z=-11
+Rapid Z=-10.8978
+Feed=400
+Line Z=-11.5
+Rapid Z=-11.3978
+Feed=400
+Line Z=-12
+Rapid Z=-11.8978
+Feed=400
+Line Z=-12.5
+Rapid Z=-12.3978
+Feed=400
+Line Z=-13
+Rapid Z=-12.8978
+Feed=400
+Line Z=-13.5
+Rapid Z=-13.3978
+Feed=400
+Line Z=-14
+Rapid Z=-13.8978
+Feed=400
+Line Z=-14.5
+Rapid Z=-14.3978
+Feed=400
+Line Z=-15
+Rapid Z=6
+Rapid Z=-13
+Feed=400
+Line Z=-15.5
+Rapid Z=-15.3978
+Feed=400
+Line Z=-16
+Rapid Z=-15.8978
+Feed=400
+Line Z=-16.5
+Rapid Z=-16.3978
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Deepdrilling_deep_drilling_4
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Rapid Z=2
+Feed=400
+Line Z=-1
+Rapid Z=5
+Rapid Z=1
+Feed=400
+Line Z=-1.9
+Rapid Z=5
+Rapid Z=0.1
+Feed=400
+Line Z=-2.7
+Rapid Z=5
+Rapid Z=-0.7
+Feed=400
+Line Z=-3.4
+Rapid Z=5
+Rapid Z=-1.4
+Feed=400
+Line Z=-4
+Rapid Z=5
+Rapid Z=-2
+Feed=400
+Line Z=-4.5
+Rapid Z=5
+Rapid Z=-2.5
+Feed=400
+Line Z=-5
+Rapid Z=5
+Rapid Z=-3
+Feed=400
+Line Z=-5.5
+Rapid Z=5
+Rapid Z=-3.5
+Feed=400
+Line Z=-6
+Rapid Z=5
+Rapid Z=-4
+Feed=400
+Line Z=-6.5
+Rapid Z=5
+Rapid Z=-4.5
+Feed=400
+Line Z=-7
+Rapid Z=5
+Rapid Z=-5
+Feed=400
+Line Z=-7.5
+Rapid Z=5
+Rapid Z=-5.5
+Feed=400
+Line Z=-8
+Rapid Z=5
+Rapid Z=-6
+Feed=400
+Line Z=-8.5
+Rapid Z=5
+Rapid Z=-6.5
+Feed=400
+Line Z=-9
+Rapid Z=5
+Rapid Z=-7
+Feed=400
+Line Z=-9.5
+Rapid Z=5
+Rapid Z=-7.5
+Feed=400
+Line Z=-10
+Rapid Z=5
+Rapid Z=-8
+Feed=400
+Line Z=-10.5
+Rapid Z=5
+Rapid Z=-8.5
+Feed=400
+Line Z=-11
+Rapid Z=5
+Rapid Z=-9
+Feed=400
+Line Z=-11.5
+Rapid Z=5
+Rapid Z=-9.5
+Feed=400
+Line Z=-12
+Rapid Z=5
+Rapid Z=-10
+Feed=400
+Line Z=-12.5
+Rapid Z=5
+Rapid Z=-10.5
+Feed=400
+Line Z=-13
+Rapid Z=5
+Rapid Z=-11
+Feed=400
+Line Z=-13.5
+Rapid Z=5
+Rapid Z=-11.5
+Feed=400
+Line Z=-14
+Rapid Z=5
+Rapid Z=-12
+Feed=400
+Line Z=-14.5
+Rapid Z=5
+Rapid Z=-12.5
+Feed=400
+Line Z=-15
+Rapid Z=5
+Rapid Z=-13
+Feed=400
+Line Z=-15.5
+Rapid Z=5
+Rapid Z=-13.5
+Feed=400
+Line Z=-16
+Rapid Z=5
+Rapid Z=-14
+Feed=400
+Line Z=-16.5
+Rapid Z=5
+Rapid Z=-14.5
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Rapid Z=2
+Feed=400
+Line Z=-1
+Rapid Z=5
+Rapid Z=1
+Feed=400
+Line Z=-1.9
+Rapid Z=5
+Rapid Z=0.1
+Feed=400
+Line Z=-2.7
+Rapid Z=5
+Rapid Z=-0.7
+Feed=400
+Line Z=-3.4
+Rapid Z=5
+Rapid Z=-1.4
+Feed=400
+Line Z=-4
+Rapid Z=5
+Rapid Z=-2
+Feed=400
+Line Z=-4.5
+Rapid Z=5
+Rapid Z=-2.5
+Feed=400
+Line Z=-5
+Rapid Z=5
+Rapid Z=-3
+Feed=400
+Line Z=-5.5
+Rapid Z=5
+Rapid Z=-3.5
+Feed=400
+Line Z=-6
+Rapid Z=5
+Rapid Z=-4
+Feed=400
+Line Z=-6.5
+Rapid Z=5
+Rapid Z=-4.5
+Feed=400
+Line Z=-7
+Rapid Z=5
+Rapid Z=-5
+Feed=400
+Line Z=-7.5
+Rapid Z=5
+Rapid Z=-5.5
+Feed=400
+Line Z=-8
+Rapid Z=5
+Rapid Z=-6
+Feed=400
+Line Z=-8.5
+Rapid Z=5
+Rapid Z=-6.5
+Feed=400
+Line Z=-9
+Rapid Z=5
+Rapid Z=-7
+Feed=400
+Line Z=-9.5
+Rapid Z=5
+Rapid Z=-7.5
+Feed=400
+Line Z=-10
+Rapid Z=5
+Rapid Z=-8
+Feed=400
+Line Z=-10.5
+Rapid Z=5
+Rapid Z=-8.5
+Feed=400
+Line Z=-11
+Rapid Z=5
+Rapid Z=-9
+Feed=400
+Line Z=-11.5
+Rapid Z=5
+Rapid Z=-9.5
+Feed=400
+Line Z=-12
+Rapid Z=5
+Rapid Z=-10
+Feed=400
+Line Z=-12.5
+Rapid Z=5
+Rapid Z=-10.5
+Feed=400
+Line Z=-13
+Rapid Z=5
+Rapid Z=-11
+Feed=400
+Line Z=-13.5
+Rapid Z=5
+Rapid Z=-11.5
+Feed=400
+Line Z=-14
+Rapid Z=5
+Rapid Z=-12
+Feed=400
+Line Z=-14.5
+Rapid Z=5
+Rapid Z=-12.5
+Feed=400
+Line Z=-15
+Rapid Z=5
+Rapid Z=-13
+Feed=400
+Line Z=-15.5
+Rapid Z=5
+Rapid Z=-13.5
+Feed=400
+Line Z=-16
+Rapid Z=5
+Rapid Z=-14
+Feed=400
+Line Z=-16.5
+Rapid Z=5
+Rapid Z=-14.5
+Feed=400
+Line Z=-16.53519
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Break_throughdrilling_break_through_drilling_5
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=400
+Line Z=-11.42522
+Rpm=3000
+Feed=500
+Line Z=-16.53519
+Rpm=5000
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=400
+Line Z=-11.42522
+Rpm=3000
+Feed=500
+Line Z=-16.53519
+Rpm=5000
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Guideddeepdrilling_gun_drilling_6
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=500
+Line Z=-5.10997
+Rpm=5000
+Feed=400
+Line Z=-16.53519
+Rpm=3000
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=500
+Line Z=-5.10997
+Rpm=5000
+Feed=400
+Line Z=-16.53519
+Rpm=3000
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Tap_tapping_7
+Spindle On
+PrePositioning X=25 Y=10 Z=16
+Rapid X=25 Y=10 Z=6
+ThreadCutting pitch=1.27 depth=14 strokeRapidZ=1 strokeCuttingZ=5 threadRpm=1000 direction=ThreadMillingDirection.RightHandThread
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Lefttap_left_tapping_8
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid X=-25 Y=10 Z=6
+ThreadCutting pitch=1.27 depth=14 strokeRapidZ=1 strokeCuttingZ=5 threadRpm=1000 direction=ThreadMillingDirection.LeftHandThread
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Righttap_right_tapping_9
+Spindle On
+PrePositioning X=25 Y=10 Z=16
+Rapid X=25 Y=10 Z=6
+ThreadCutting pitch=1.27 depth=14 strokeRapidZ=1 strokeCuttingZ=5 threadRpm=1000 direction=ThreadMillingDirection.RightHandThread
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Reaming_reaming_10
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=200
+Line Z=-14
+Line Z=5
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=200
+Line Z=-14
+Line Z=5
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Boring_boring_11
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=400
+Line Z=-15
+Line Z=5
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=400
+Line Z=-15
+Line Z=5
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_BoringRetractFeed_boring_12
+Spindle On
+PrePositioning X=-25 Y=10 Z=16
+Rapid Z=6
+Rapid Z=5
+Feed=400
+Line Z=-15
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid X=25
+Rapid Z=5
+Feed=400
+Line Z=-15
+Feed=1000
+Line Z=5
+Rapid Z=6
+Rapid Z=16
+ToolCompensation Off
+PathCorrection Off
+   
+$$$ SEQUENCE_Rapidmovementtest_drilling_13
+Spindle On
+PrePositioning X=-43.5359 Y=18.5359 Z=9.9
+Rapid X=-43.5359 Y=18.5359 Z=-0.1
+Drill depth=0.1 strokeRapidZ=0 strokeCuttingZ=0
+Rapid X=0 Y=-18.5359 Z=-0.1
+Drill depth=0.1 strokeRapidZ=0 strokeCuttingZ=0
+Rapid Z=9.9
+ToolCompensation Off
+PathCorrection Off
+

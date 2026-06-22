@@ -1,0 +1,228 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "doosan vmc fanuc",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "G28",
+            "homePositionCenter": true,
+            "useG95": true,
+            "preloadTool": false,
+            "optionalStop": false,
+            "o8": true,
+            "useRadius": true,
+            "forceIJK": true,
+            "usePitchForTapping": true,
+            "showSequenceNumbers": "toolChange"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Smoothing operations",
+          "inputFolder": "milling",
+          "suffix": "_smoothing",
+          "properties": {
+            "useSmoothing": "9999"
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_nano",
+          "properties": {
+            "useSmoothing": "9998"
+          },
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_5Axis",
+          "properties": {
+            "fifthAxis": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "5-axis Options",
+          "inputFolder": "milling",
+          "suffix": "_5Axis_options",
+          "properties": {
+            "fifthAxis": true,
+            "useTiltedWorkplane": true,
+            "useRotaryScale": true
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rigid",
+          "properties": {
+            "useRigidTapping": "without"
+          },
+          "input": [
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_rotarysubs",
+          "properties": {
+            "fifthAxis": true,
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "AC-Pattern"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_A",
+          "properties": {
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ],
+          "machine": "tests/machine/A_table_NoTCP.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_A_options",
+          "properties": {
+            "useRotaryScale": true
+          },
+          "input": [
+            "A-axis 3+2",
+            "A-axis Simultaneous",
+            "A-axis Drilling"
+          ],
+          "machine": "tests/machine/A_table_NoTCP.mch"
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probing G54",
+          "inputFolder": "milling",
+          "suffix": "_g54",
+          "properties": {
+            "useG54x4": true
+          },
+          "input": [
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probing AC_machine",
+          "inputFolder": "milling",
+          "suffix": "_AC",
+          "properties": {
+            "fifthAxis": true
+          },
+          "input": [
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular",
+            "Probe Partial Features",
+            "Probe Geometry on PCD"
+          ]
+        }
+      ]
+    }
+  ]
+}

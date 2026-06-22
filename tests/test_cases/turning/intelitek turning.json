@@ -1,0 +1,50 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "intelitek turning",
+      "outputFolder": "turning",
+      "testCases": [
+        {
+          "description": "Standard turning operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Straight Threading Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_option",
+          "properties": {
+            "useCoolant": true,
+            "useG28": false,
+            "homePositionX": 2,
+            "homePositionZ": 1,
+            "approachStyle": "ZX"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "Axial Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

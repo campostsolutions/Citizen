@@ -1,0 +1,47 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "tormach jet",
+      "outputFolder": "milljet",
+      "testCases": [
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Waterjet",
+            "Waterjet Compensation",
+            "Waterjet Etch"
+          ]
+        },
+        {
+          "description": "Standard plasma operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Plasma",
+            "Plasma Compensation"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "jet",
+          "suffix": "_options",
+          "properties": {
+            "allowHeadSwitches": false,
+            "useRetracts": false,
+            "enableAutoFS": false
+          },
+          "input": [
+            "Plasma",
+            "Plasma Etch"
+          ]
+        }
+      ]
+    }
+  ]
+}

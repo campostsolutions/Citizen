@@ -1,0 +1,24 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "dynamyte",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "programName": 99
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

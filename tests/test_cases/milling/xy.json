@@ -1,0 +1,22 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "xy",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

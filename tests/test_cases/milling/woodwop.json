@@ -1,0 +1,161 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "woodwop",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "machineModel": "HOMAG",
+            "doAllDrillingFirst": false,
+            "freeMotionParkPosition": 2,
+            "freeMotionAdditional": 1,
+            "shiftOrigin": false,
+            "useSmoothing": false,
+            "useBoreFeeds": false,
+            "stockDefinition": "offset",
+            "useComments": false,
+            "startSubroutine": "OUNCVK40"
+          },
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "ISO Output",
+          "inputFolder": "milling",
+          "suffix": "_iso",
+          "properties": {
+            "isoOnly": true
+          },
+          "input": [
+            "2D Milling",
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "5-axis operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "description": "5-axis options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useSmoothing": false,
+            "homePositionZ": 85,
+            "shiftOrigin": false,
+            "abcToler": 0.02
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "description": "Router sides",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "machineModel": "CF-HOMAG"
+          },
+          "input": [
+            "Router 2D",
+            "Router 4 Sides",
+            "Router 6 Sides",
+            "Router 3+2"
+          ]
+        },
+        {
+          "description": "Router polygon",
+          "inputFolder": "milling",
+          "suffix": "_polygon",
+          "properties": {
+            "verticalContourMode": "polygon"
+          },
+          "input": [
+            "Router 2D",
+            "Router 4 Sides",
+            "Router 6 Sides",
+            "Router 3+2"
+          ]
+        },
+        {
+          "description": "Saw operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "sawMode": "groove"
+          },
+          "input": [
+            "Saw 6 Sides"
+          ]
+        },
+        {
+          "description": "Saw operation options",
+          "inputFolder": "milling",
+          "suffix": "_sawmisc",
+          "properties": {
+            "sawMode": "contour"
+          },
+          "input": [
+            "Saw 6 Sides",
+            "Saw 4 Sides"
+          ]
+        },
+        {
+          "description": "Upper right origin",
+          "inputFolder": "milling",
+          "suffix": "_upper_right",
+          "properties": {
+            "wcsOrigin": "02"
+          },
+          "input": [
+            "Router 2D",
+            "Router Horizontal Drilling",
+            "Router 6 Sides",
+            "Router 3+2",
+            "Saw 6 Sides"
+          ]
+        },
+        {
+          "description": "Saw Upper right origin",
+          "inputFolder": "milling",
+          "suffix": "_saw_upper",
+          "properties": {
+            "wcsOrigin": "02",
+            "sawMode": "contour"
+          },
+          "input": [
+            "Saw 6 Sides",
+            "Saw 4 Sides"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<template-document xmlns="http://www.hsmworks.com/namespace/hsmworks/document/template" version="1.0">
+
+  <template description="Manual NC1 (2)" strategy="manual" unit="millimeters">
+    <tool type="unspecified" unit="millimeters" version="1.1">
+      <nc break-control="0" diameter-offset="0" length-offset="0" live-tool="1" manual-tool-change="0" number="0" turret="0"/>
+      <coolant mode="disabled"/>
+      <material name="unspecified"/>
+      <motion clockwise="yes" cutting-feedrate="0" entry-feedrate="0" exit-feedrate="0" feed-mode="per-minute" plunge-feedrate="0" ramp-feedrate="0" ramp-spindle-rpm="0" retract-feedrate="0" spindle-rpm="0"/>
+    </tool>
+    <parameter expression="'action'" name="manualType"/>
+    <parameter expression="''" name="comment"/>
+    <parameter expression="'USEPOLARMODE'" name="action"/>
+    <parameter expression="''" name="message"/>
+    <parameter expression="0s" name="dwell"/>
+  </template>
+
+</template-document>

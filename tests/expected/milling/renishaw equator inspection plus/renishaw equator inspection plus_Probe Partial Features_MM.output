@@ -1,0 +1,59 @@
+DMISMN/'1234 MYCOMMENT',05.2
+FILNAM/'1234 MYCOMMENT',05.2
+$$ =============================================================================
+$$ T1 D=5. CR=2.5 - ZMIN=-25. - PROBE
+$$ TURN OFF GAUGE COMPARISON OPERATION AT THE START OF THE PROGRAM
+COMPARE/OFF
+$$ SET UNITS AND DECIMAL PLACES TO METRIC
+UNITS/MM,ANGDEC
+DECPL/ALL,3
+$$ ACTIVATE MACHINE COORDINATE SYSTEM
+D(machine_coordinate_system)=DATSET/MCS
+$$ -----------------------------------------------------------------------------
+$$ RECALL INSPECTION LIBRARY OF DMIS MACROS
+$$ -----------------------------------------------------------------------------
+XTERN
+EXTFIL/DMIS,'C:\Renishaw\Programs\Inspection+ for Renishaw Equator\MACROLibrary\Inspection+ macros for Renishaw Equator - Fanuc mill style.DMI'
+ENDXTN
+CALL/EXTERN,DMIS,M(Retract_to_clearance),Z
+$$ -----------------------------------------------------------------------------
+$$ PARTIAL HOLE
+$$ =============================================================================
+CALL/EXTERN,DMIS,M(Turn_probe_on_9832),,SCANNING
+CALL/EXTERN,DMIS,M(Recall_WCS),G54
+WKPLAN/XYPLAN
+CALL/EXTERN,DMIS,M(Protected_position_9810),40.,140.,206.
+CALL/EXTERN,DMIS,M(Protected_position_9810),40.,140.,56.
+CALL/EXTERN,DMIS,M(Protected_position_9810),40.,140.,-25.
+CALL/EXTERN,DMIS,M(Partial_bore_boss_measurement_9823),40.,140.,0,60.,-180.,-60.,39.9,1.,2.,0,10.,H1.M2.T2.V0.W1.0
+GOTO/ZAXIS,58.5
+CALL/EXTERN,DMIS,M(Protected_position_9810),40.,140.,206.
+$$ -----------------------------------------------------------------------------
+$$ PARTIAL BOSS
+$$ =============================================================================
+WKPLAN/XYPLAN
+CALL/EXTERN,DMIS,M(Protected_position_9810),140.,140.,206.
+CALL/EXTERN,DMIS,M(Protected_position_9810),140.,140.,56.
+CALL/EXTERN,DMIS,M(Partial_bore_boss_measurement_9823),140.,140.,61.,60.,180.,-60.,40.1,1.,2.,0,10.,H1.M2.T2.V0.W1.0
+GOTO/ZAXIS,58.5
+CALL/EXTERN,DMIS,M(Protected_position_9810),140.,140.,206.
+$$ -----------------------------------------------------------------------------
+$$ PARTIAL HOLE WITH ISLAND
+$$ =============================================================================
+WKPLAN/XYPLAN
+CALL/EXTERN,DMIS,M(Protected_position_9810),440.,140.,206.
+CALL/EXTERN,DMIS,M(Protected_position_9810),440.,140.,56.
+CALL/EXTERN,DMIS,M(Protected_position_9810),440.,140.,-25.
+CALL/EXTERN,DMIS,M(Partial_bore_boss_measurement_9823),440.,140.,0,-120.,0.,120.,39.9,1.,2.-10.10.,H1.M2.T2.V0.W1.0
+GOTO/ZAXIS,58.5
+CALL/EXTERN,DMIS,M(Protected_position_9810),440.,140.,206.
+
+CALL/EXTERN,DMIS,M(Turn_probe_off_9833)
+
+CALL/EXTERN,DMIS,M(Retract_to_clearance),Z
+CALL/EXTERN,DMIS,M(Retract_to_clearance),XY
+$$ -----------------------------------------------------------------------------
+$$ END THE PROGRAM
+$$ =============================================================================
+ERROR/OFF
+ENDFIL

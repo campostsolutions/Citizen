@@ -1,0 +1,117 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "dmg ctx 800 beta tc",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {
+            "showSequenceNumbers":"toolChange"
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Standard Mill/Turn operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Mill Turn Modes",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "turning",
+          "suffix": "_misc",
+          "properties": {
+            "useRadius": true,
+            "useCycles": false,
+            "gotChipConveyor": true,
+            "toolAsName": false,
+            "useShortestDirection": false
+          },
+          "input": [
+            "Turning 2 Axis",
+            "SFM Spindle Speed",
+            "Axial Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "millturn",
+          "suffix": "_misc",
+          "properties": {
+            "useRadius": true,
+            "useCycles": false,
+            "gotChipConveyor": true,
+            "toolAsName": false,
+            "useYAxisForDrilling": true,
+            "useShortestDirection": false
+          },
+          "input": [
+            "Axial Milling Cycles",
+            "Z-axis Drilling Cycles",
+            "Mill Turn Polar",
+            "Mill Turn XZC",
+            "Mill Turn Axial",
+            "Radial Drilling Cycles",
+            "Radial Wrapped"
+          ]
+        },
+        {
+          "description": "Threading operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Straight Threading",
+            "Slant Threading"
+          ]
+        },
+        {
+          "description": "Tapping operations",
+          "inputFolder": "turning",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Axial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Radial Tapping operations",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Radial Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Roughing Canned Cycles",
+          "inputFolder": "turning",
+          "suffix": "_cycles",
+          "properties": {},
+          "input": [
+            "Turning Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

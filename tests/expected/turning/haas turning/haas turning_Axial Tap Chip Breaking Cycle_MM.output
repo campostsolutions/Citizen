@@ -1,0 +1,27 @@
+%
+O1234 (MYCOMMENT)
+G98 G18
+G21
+M31
+G53 G0 X0.
+G53 G0 Z0.
+
+(Axial Tap with chip breaking)
+T606
+M22
+G97 S500 M3
+G98 G18
+G54
+M8
+G0 X0. Z16.
+G0 Z6.
+G84 X0. Z-19.09 R5. P0 Q1. F635.
+G80
+Z16.
+
+M9
+M33
+G53 G0 X0.
+G53 G0 Z0.
+M30
+%

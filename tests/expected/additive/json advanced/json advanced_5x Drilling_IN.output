@@ -1,0 +1,1106 @@
+{
+  "name": "1234",
+  "unit": "in",
+  "setups": [
+    {
+      "name": "Setup for Metric tools: milling",
+      "operations": [
+        {
+          "name": "Drill44",
+          "location": "Setups\\Setup for Metric tools: milling\\5x Drilling\\Drill44",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "subtractive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing drilling checksurface "
+            }
+          ],
+          "tool": {
+            "name": "myTool3",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "drill"
+              },
+              {
+                "name": "diameter",
+                "value": 0.2012
+              },
+              {
+                "name": "length",
+                "value": 1.5748
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": 0.0773,
+              "y": -1.179,
+              "z": 0.6198,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -1.179,
+              "z": 0.6198,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -0.979,
+              "z": 0.2734,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -0.8983,
+              "z": 0.1336,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -0.4331,
+              "z": -0.6722,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 15.748
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -0.979,
+              "z": 0.2734,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 0.0773,
+              "y": -1.179,
+              "z": 0.6198,
+              "i": 0,
+              "j": -0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Drill44 (2)",
+          "location": "Setups\\Setup for Metric tools: milling\\5x Drilling\\Drill44 (2)",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "subtractive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing drilling checksurface "
+            }
+          ],
+          "tool": {
+            "name": "myTool3",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "drill"
+              },
+              {
+                "name": "diameter",
+                "value": 0.2012
+              },
+              {
+                "name": "length",
+                "value": 1.5748
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": 2.1632,
+              "y": 0.0003,
+              "z": 0.6198,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 2.1632,
+              "y": 0.0003,
+              "z": 0.6198,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.9632,
+              "y": 0.0003,
+              "z": 0.2734,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.8825,
+              "y": 0.0003,
+              "z": 0.1337,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.409,
+              "y": 0.0003,
+              "z": -0.6865,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 15.748
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.9632,
+              "y": 0.0003,
+              "z": 0.2734,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 2.1632,
+              "y": 0.0003,
+              "z": 0.6198,
+              "i": 0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Drill44 (3)",
+          "location": "Setups\\Setup for Metric tools: milling\\5x Drilling\\Drill44 (3)",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "subtractive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing drilling checksurface "
+            }
+          ],
+          "tool": {
+            "name": "myTool3",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "drill"
+              },
+              {
+                "name": "diameter",
+                "value": 0.2012
+              },
+              {
+                "name": "length",
+                "value": 1.5748
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -0.0158,
+              "y": 1.1798,
+              "z": 0.6193,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 1.1798,
+              "z": 0.6193,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 0.9798,
+              "z": 0.2729,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 0.8991,
+              "z": 0.1331,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 0.4241,
+              "z": -0.6896,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 15.748
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 0.9798,
+              "z": 0.2729,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -0.0158,
+              "y": 1.1798,
+              "z": 0.6193,
+              "i": 0,
+              "j": 0.5,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Drill44 (4)",
+          "location": "Setups\\Setup for Metric tools: milling\\5x Drilling\\Drill44 (4)",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "subtractive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing drilling checksurface "
+            }
+          ],
+          "tool": {
+            "name": "myTool3",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "drill"
+              },
+              {
+                "name": "diameter",
+                "value": 0.2012
+              },
+              {
+                "name": "length",
+                "value": 1.5748
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": -2.1641,
+              "y": 0.1061,
+              "z": 0.6193,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -2.1641,
+              "y": 0.1061,
+              "z": 0.6193,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -1.9641,
+              "y": 0.1061,
+              "z": 0.2729,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -1.8834,
+              "y": 0.1061,
+              "z": 0.1331,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -1.4084,
+              "y": 0.1061,
+              "z": -0.6896,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 15.748
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -1.9641,
+              "y": 0.1061,
+              "z": 0.2729,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": -2.1641,
+              "y": 0.1061,
+              "z": 0.6193,
+              "i": -0.5,
+              "j": 0,
+              "k": 0.866,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Drill44 (5)",
+          "location": "Setups\\Setup for Metric tools: milling\\5x Drilling\\Drill44 (5)",
+          "parameters": [
+            {
+              "name": "technology",
+              "value": "subtractive"
+            },
+            {
+              "name": "strategy",
+              "value": "roughing drilling checksurface "
+            }
+          ],
+          "tool": {
+            "name": "myTool3",
+            "parameters": [
+              {
+                "name": "type",
+                "value": "drill"
+              },
+              {
+                "name": "diameter",
+                "value": 0.2012
+              },
+              {
+                "name": "length",
+                "value": 1.5748
+              },
+              {
+                "name": "number",
+                "value": 3
+              }
+            ]
+          },
+          "targets": [
+            {
+              "x": 1.9386,
+              "y": -0.9532,
+              "z": 0.705,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.9386,
+              "y": -0.9532,
+              "z": 0.705,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.8317,
+              "y": -0.8463,
+              "z": 0.3347,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.7744,
+              "y": -0.789,
+              "z": 0.1364,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.5205,
+              "y": -0.5351,
+              "z": -0.7432,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 15.748
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.8317,
+              "y": -0.8463,
+              "z": 0.3347,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "cut"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            },
+            {
+              "x": 1.9386,
+              "y": -0.9532,
+              "z": 0.705,
+              "i": 0.2673,
+              "j": -0.2673,
+              "k": 0.9258,
+              "parameters": [
+                {
+                  "name": "movetype",
+                  "value": "rapid"
+                },
+                {
+                  "name": "E",
+                  "value": 0
+                },
+                {
+                  "name": "feed",
+                  "value": 1000
+                },
+                {
+                  "name": "spindle",
+                  "value": 5000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

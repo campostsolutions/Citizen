@@ -1,0 +1,62 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "heidenhain iso",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useRadius": true,
+            "useM140": true,
+            "cycleFormat": "new"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Only Cycles",
+            "Boring Cycles",
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "preloadTool": true,
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

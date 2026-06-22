@@ -1,0 +1,35 @@
+(1234)
+(mycomment)
+(Machine)
+(  model: A-axis)
+(  description: A-axis Table)
+(T3 D=0.2012 CR=0 TAPER=118deg - drill)
+G90
+G98
+G70
+(-Attention- Property Safe Retracts is set to Clearance Height.)
+(Ensure the clearance height will clear the part and or fixtures.)
+(Raise the Z-axis to a safe height before starting the program.)
+(Drill42)
+G00 W-120.
+M08
+G00 Z1.5843
+X-1.9016 Y0
+S5000 M03
+G00 Z1.1843
+G81 X-1.9016 Y0 Z0.1969 R1.1843 F15.75
+G80
+Z1.5843
+(Drill43)
+G00 W-240.
+G00 Z1.5843
+X-1.9016 Y0
+Z1.1843
+G81 X-1.9016 Y0 Z0.1969 R1.1843 F15.75
+G80
+Z1.5843
+M09
+M05
+G00 W0.
+X0 Y0
+M30

@@ -1,0 +1,55 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "yaskawa motoman robotics",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "nameLimitation": false,
+            "useSubfolder": false,
+            "writeDateAndTime": false
+          },
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "nameLimitation": false,
+            "useSubfolder": false,
+            "writeDateAndTime": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simultaneous",
+            "5x Drilling Simple"
+          ]
+        },
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {
+            "nameLimitation": false,
+            "useSubfolder": false,
+            "writeDateAndTime": false
+          },
+          "input": [
+            "fff_1extruder",
+            "fff_2extruders"
+          ]
+        }
+      ]
+    }
+  ]
+}

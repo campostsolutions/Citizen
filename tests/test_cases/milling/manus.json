@@ -1,0 +1,67 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "manus",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_safestart",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_rewind",
+          "properties": {},
+          "input": [
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_NoTCP",
+          "properties": {},
+          "input": [
+            "5x Simultaneous"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {},
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Same"
+          ]
+        }
+      ]
+    }
+  ]
+}

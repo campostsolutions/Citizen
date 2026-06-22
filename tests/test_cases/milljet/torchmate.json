@@ -1,0 +1,49 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "torchmate",
+      "outputFolder": "milljet",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "useRadius": true,
+            "dwellInSeconds": false,
+            "useWorkOffsets": false,
+            "useZAxis": true,
+            "useCoolant": false,
+            "useToolCall": false,
+            "useM30": false
+          },
+          "input": [
+            "2D Milling",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Standard waterjet operations",
+          "inputFolder": "jet",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Plasma Compensation",
+            "Plasma Etch"
+          ]
+        }
+      ]
+    }
+  ]
+}

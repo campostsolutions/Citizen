@@ -1,0 +1,46 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "multicam",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling Wear Comp",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "feedrateTimeUnit": "seconds",
+            "useSpindleDirection": true,
+            "retractZlevel": -15
+          },
+          "input": [
+            "2D Milling Wear Comp",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_useCycles",
+          "properties": {
+            "useCycles": false
+          },
+          "input": [
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

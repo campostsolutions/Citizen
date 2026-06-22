@@ -1,0 +1,247 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "siemens-840d",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D Milling",
+            "Drilling Cycles",
+            "Boring Cycles"
+          ]
+        },
+        {
+          "description": "Tapping Cycles",
+          "inputFolder": "milling",
+          "suffix": "_chiptap",
+          "properties": {},
+          "input": [
+            "Tap Chip Breaking Cycle"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "toolAsName": true,
+            "useSmoothing": "9999",
+            "useTOFFR": true,
+            "safePositionMethod": "SUPAVariables"
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "Parametric feeds",
+          "inputFolder": "milling",
+          "suffix": "_parametric",
+          "properties": {
+            "useParametricFeed": true
+          },
+          "input": [
+            "2D Milling",
+            "Drilling Cycles"
+          ]
+        },
+        {
+          "description": "5-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "5-axis Operations options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "useTiltedWorkplane": false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_rewind",
+          "properties": {},
+          "input": [
+            "5x Simultaneous"
+          ],
+          "machine": "tests/machine/AC_table_table_nonCyclic.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_AC_NoTCP",
+          "properties": {
+            "useIncreasedDecimals": false,
+            "useGrouping": true,
+            "cycle800RetractMethod": 2
+          },
+          "input": [
+            "5x Simultaneous"
+          ],
+          "machine": "tests/machine/AC_table_table_NoTCP.mch"
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_57",
+          "properties": {
+            "cycle800Mode": "57",
+            "cycle800SwivelDataRecord": "Test"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_39",
+          "properties": {
+            "cycle800Mode": "39"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_45",
+          "properties": {
+            "cycle800Mode": "45"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_30",
+          "properties": {
+            "cycle800Mode": "30"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_54",
+          "properties": {
+            "cycle800Mode": "54"
+          },
+          "input": [
+            "5x 3+2",
+            "5x Drilling"
+          ]
+        },
+        {
+          "description": "Subprograms",
+          "inputFolder": "milling",
+          "suffix": "_subprograms",
+          "properties": {
+            "useSubroutines": "allOperations"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_patterns",
+          "properties": {
+            "useSubroutines": "patterns"
+          },
+          "input": [
+            "Pattern 2D Linear",
+            "Pattern Drilling Linear",
+            "Pattern Same"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_cyclesubs",
+          "properties": {
+            "useSubroutines": "cycles"
+          },
+          "input": [
+            "Cycle Subprograms"
+          ]
+        },
+        {
+          "description": "Probing",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probing No Corner",
+            "X Angular Probing",
+            "Y Angular Probing"
+          ]
+        },
+        {
+          "description": "Probe Geometry",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "Probe Geometry No Corner",
+            "Probe Geometry X Angular",
+            "Probe Geometry Y Angular"
+          ]
+        },
+        {
+          "description": "Machine Configuration",
+          "inputFolder": "milling",
+          "suffix": "_ac_machine",
+          "properties": {
+            "cycle800Mode": "192",
+            "cycle800SwivelDataRecord": "rotaryAngles",
+            "useShortestDirection" : false
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple",
+            "5x Drilling"
+          ],
+          "machine": "tests/machine/AC_table_table.mch"
+        },
+        {
+          "description": "Machine Configuration",
+          "inputFolder": "milling",
+          "suffix": "_bc_head_table_machine",
+          "properties": {
+          },
+          "input": [
+            "5x 3+2",
+            "5x Simple"
+          ],
+          "machine": "tests/machine/BC_head_table.mch"
+        }
+      ]
+    }
+  ]
+}

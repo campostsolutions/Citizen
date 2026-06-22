@@ -1,0 +1,522 @@
+﻿
+# !File ;
+# mycomment
+ 
+module CamGeneratedModule
+ 
+@ MeasuringSystem = "Metric" @
+
+# Workpiece dimensions
+# min:      X: -11.000; Y: -11.000; Z: -40.000
+# max:      X: +491.000; Y: +491.000; Z: +51.000
+# Part size X: +502.000; Y: +502.000; Z: +91.000
+@ WorkpieceGeometry : "MinEdge":{"X":-11.000,"Y":-11.000,"Z":-40.000},"MaxEdge":{"X":+491.000,"Y":+491.000,"Z":+51.000} @
+
+using Base
+import Math
+import String
+
+
+enumeration direction (positive, negative)
+
+export program Main #  1234 MM
+  Absolute
+  Operation_X_probing__1
+  Operation_Y_probingWCSoverride2__2
+  Operation_Z_probingWCSoverride2__3
+  Operation_X_channel__4
+  Operation_Y_channelWCSoverride7__5
+  Operation_X_wall__6
+  Operation_Y_wall__7
+  Operation_XY_innercorner__8
+  Operation_XY_innercorner___9
+  Operation_XY_innercorner___10
+  Operation_XY_innercorner____11
+  Operation_XY_outercorner__12
+  Operation_XY_outercorner___13
+  Operation_XY_outercorner___14
+  Operation_XY_outercorner____15
+  Operation_Circularhole__16
+  Operation_Rectangularhole__17
+  Operation_Circularboss__18
+  Operation_Rectangularboss__19
+  Operation_Circlularholewithisland__20
+  Operation_Rectangularholewithisland__21
+  SpraySystem Off
+  Spindle Off
+  MoveToParkPosition
+endprogram # 1234 MM
+
+# ZMIN = -5
+program Operation_X_probing__1
+  BeginBlock name="X_probing__1"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=0 Y=40 Z=56
+  EdgeMeasureV2 XPositive searchDistance=10 skipZMeasure retractDistance=56 measureZOffset=-2.5 originXShift=0
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_X_probing__1
+
+# ZMIN = -5
+program Operation_Y_probingWCSoverride2__2
+  BeginBlock name="Y_probingWCSoverride2__2"
+  LoadWcs name="2"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=40 Y=0 Z=56
+  EdgeMeasureV2 YPositive searchDistance=10 skipZMeasure retractDistance=56 measureZOffset=-2.5 originYShift=0
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Y_probingWCSoverride2__2
+
+# ZMIN = 0
+program Operation_Z_probingWCSoverride2__3
+  BeginBlock name="Z_probingWCSoverride2__3"
+  LoadWcs name="2"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=40 Y=40 Z=56
+  SurfaceMeasure  originZShift=0
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Z_probingWCSoverride2__3
+
+# ZMIN = -5
+program Operation_X_channel__4
+  BeginBlock name="X_channel__4"
+  LoadWcs name="8"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=240 Y=240 Z=56
+  SymmetryAxisMeasure width=40 searchDistance=7 measureZOffset=-2.5 Inside YAligned skipZMeasure retractDistance=56 originXShift=-240
+  SaveWcs name="8"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_X_channel__4
+
+# ZMIN = -5
+program Operation_Y_channelWCSoverride7__5
+  BeginBlock name="Y_channelWCSoverride7__5"
+  LoadWcs name="7"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=140 Y=240 Z=56
+  SymmetryAxisMeasure width=40 searchDistance=7 measureZOffset=-2.5 Inside XAligned skipZMeasure retractDistance=56 originYShift=-240
+  SaveWcs name="8"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Y_channelWCSoverride7__5
+
+# ZMIN = -5
+program Operation_X_wall__6
+  BeginBlock name="X_wall__6"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=335 Y=240 Z=56
+  measResult = SymmetryAxisMeasure width=50 searchDistance=7 measureZOffset=-2.5 Outside YAligned skipZMeasure retractDistance=56 originXShift=-335
+  ProbeActions measResult=measResult sizeTolerance=1 positionTolerance=2 expectedXPos=335 expectedDimensionX=50
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_X_wall__6
+
+# ZMIN = -5
+program Operation_Y_wall__7
+  BeginBlock name="Y_wall__7"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=40 Y=240 Z=56
+  SymmetryAxisMeasure width=40 searchDistance=6 measureZOffset=-2.5 Outside XAligned skipZMeasure retractDistance=56 originYShift=-240
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Y_wall__7
+
+# ZMIN = -5
+program Operation_XY_innercorner__8
+  BeginBlock name="XY_innercorner__8"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=330 Y=30 Z=56
+  CornerMeasure BackRight Inside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-330 originYShift=-30
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_innercorner__8
+
+# ZMIN = -5
+program Operation_XY_innercorner___9
+  BeginBlock name="XY_innercorner___9"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=330 Y=50 Z=56
+  CornerMeasure FrontRight Inside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-330 originYShift=-50
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_innercorner___9
+
+# ZMIN = -5
+program Operation_XY_innercorner___10
+  BeginBlock name="XY_innercorner___10"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=350 Y=30 Z=56
+  CornerMeasure BackLeft Inside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-350 originYShift=-30
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_innercorner___10
+
+# ZMIN = -5
+program Operation_XY_innercorner____11
+  BeginBlock name="XY_innercorner____11"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=350 Y=50 Z=56
+  CornerMeasure FrontLeft Inside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-350 originYShift=-50
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_innercorner____11
+
+# ZMIN = -5
+program Operation_XY_outercorner__12
+  BeginBlock name="XY_outercorner__12"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=330 Y=0 Z=56
+  CornerMeasure FrontLeft Outside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-330 originYShift=0
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_outercorner__12
+
+# ZMIN = -5
+program Operation_XY_outercorner___13
+  BeginBlock name="XY_outercorner___13"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=330 Y=80 Z=56
+  CornerMeasure BackLeft Outside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-330 originYShift=-80
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_outercorner___13
+
+# ZMIN = -5
+program Operation_XY_outercorner___14
+  BeginBlock name="XY_outercorner___14"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=350 Y=0 Z=56
+  CornerMeasure FrontRight Outside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-350 originYShift=0
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_outercorner___14
+
+# ZMIN = -5
+program Operation_XY_outercorner____15
+  BeginBlock name="XY_outercorner____15"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=350 Y=80 Z=56
+  CornerMeasure BackRight Outside xMeasureYOffset=10 yMeasureXOffset=10 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 forceSafeHeight skipZMeasure retractDistance=56 originXShift=-350 originYShift=-80
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_XY_outercorner____15
+
+# ZMIN = -25
+program Operation_Circularhole__16
+  BeginBlock name="Circularhole__16"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=40 Y=140 Z=56
+  CircleMeasure diameter=80 searchDistance=5 measureZPos=-22.5 Inside skipZMeasure retractDistance=56 originXShift=-40 originYShift=-140
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Circularhole__16
+
+# ZMIN = -25
+program Operation_Rectangularhole__17
+  BeginBlock name="Rectangularhole__17"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=140 Y=40 Z=56
+  RectangleMeasure dimensionX=80 dimensionY=80 searchDistance=8 xMeasureZOffset=-22.5 yMeasureZOffset=-22.5 Inside Center skipZMeasure retractDistance=56 originXShift=-140 originYShift=-40
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Rectangularhole__17
+
+# ZMIN = -5
+program Operation_Circularboss__18
+  BeginBlock name="Circularboss__18"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=140 Y=140 Z=56
+  CircleMeasure diameter=80 searchDistance=6 measureZPos=-2.5 Outside skipZMeasure retractDistance=56 originXShift=-140 originYShift=-140
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Circularboss__18
+
+# ZMIN = -5
+program Operation_Rectangularboss__19
+  BeginBlock name="Rectangularboss__19"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=335 Y=240 Z=56
+  RectangleMeasure dimensionX=50 dimensionY=80 searchDistance=10 xMeasureZOffset=-2.5 yMeasureZOffset=-2.5 Outside Center skipZMeasure retractDistance=56 originXShift=-335 originYShift=-240
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Rectangularboss__19
+
+# ZMIN = -25
+program Operation_Circlularholewithisland__20
+  BeginBlock name="Circlularholewithisland__20"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=440 Y=140 Z=56
+  CircleMeasure diameter=80 searchDistance=10 measureZPos=-22.5 Inside forceSafeHeight skipZMeasure retractDistance=56 originXShift=-440 originYShift=-140
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  EndBlock
+endprogram # Operation_Circlularholewithisland__20
+
+# ZMIN = -25
+program Operation_Rectangularholewithisland__21
+  BeginBlock name="Rectangularholewithisland__21"
+  LoadWcs name="1"
+  Smoothing Off
+  Dynamic = 5
+  SafeZHeightForWorkpiece=66
+  Spindle Off
+  PrepareXyzSensor
+  PrePositioning X=440 Y=240 Z=56
+  RectangleMeasure dimensionX=80 dimensionY=80 searchDistance=10 xMeasureZOffset=-22.5 yMeasureZOffset=-22.5 Inside Center forceSafeHeight skipZMeasure retractDistance=56 originXShift=-440 originYShift=-240
+  SaveWcs name="1"
+  ToolCompensation Off
+  PathCorrection Off
+  UnprepareXyzSensor
+  EndBlock
+endprogram # Operation_Rectangularholewithisland__21
+
+program ProbeActions(
+  measResult:MeasuringDataWithInfo
+  optional expectedDimensionX:number
+  optional expectedDimensionY:number
+  optional expectedXPos:number
+  optional expectedYPos:number
+  optional expectedZPos:number  
+  optional positionTolerance:number    
+  optional angleTolerance:number
+  optional sizeTolerance:number)
+
+  outOfDimension=""
+
+  # Tolerance check
+  if sizeTolerance hasvalue 
+    
+    if expectedDimensionX hasvalue  
+        if Math::Abs(expectedDimensionX - measResult.DimensionX) > sizeTolerance 
+            outOfDimension = outOfDimension + GetToleranceLine(
+                name="DimensionX"
+                ref=expectedDimensionX
+                measure=measResult.DimensionX
+                tol=sizeTolerance)        
+        endif
+    endif
+    if expectedDimensionY hasvalue
+        if Math::Abs(expectedDimensionY - measResult.DimensionY) > sizeTolerance 
+            outOfDimension = outOfDimension + GetToleranceLine(
+                name="DimensionY"
+                ref=expectedDimensionY
+                measure=measResult.DimensionY
+                tol=sizeTolerance)        
+        endif
+    endif
+    
+    if expectedXPos hasvalue
+        if Math::Abs(expectedXPos - measResult.MeasuredPosition.X) > sizeTolerance
+            outOfDimension = outOfDimension + GetToleranceLine(
+                name="Position X"
+                ref=expectedXPos
+                measure=measResult.MeasuredPosition.X
+                tol=sizeTolerance)              
+        endif
+    endif
+    if expectedYPos hasvalue
+        if Math::Abs(expectedYPos - measResult.MeasuredPosition.Y) > sizeTolerance
+            outOfDimension = outOfDimension + GetToleranceLine(
+                name="Position Y"
+                ref=expectedYPos
+                measure=measResult.MeasuredPosition.Y
+                tol=sizeTolerance)              
+        endif
+    endif
+    if expectedZPos hasvalue
+        if Math::Abs(expectedZPos - measResult.MeasuredPosition.Z) > sizeTolerance
+            outOfDimension = outOfDimension + GetToleranceLine(
+                name="Position Z"
+                ref=expectedZPos
+                measure=measResult.MeasuredPosition.Z
+                tol=sizeTolerance)              
+        endif
+    endif    
+  endif
+  
+  # Angle check
+  if angleTolerance hasvalue
+      if measResult.MeasuredTransformation.RotationZ > angleTolerance
+         Dialog message="Angle out of tolerance" caption="Angle out of tolerance" Error        
+      endif
+  endif
+  
+  # Position
+  if positionTolerance hasvalue
+    isOutOfTolerance: boolean
+    if expectedXPos hasvalue
+        isOutOfTolerance = Math::Abs(expectedXPos - measResult.MeasuredPosition.X) > positionTolerance        
+    endif
+    if expectedYPos hasvalue
+        isOutOfTolerance = Math::Abs(expectedYPos - measResult.MeasuredPosition.Y) > positionTolerance  
+    endif
+    if expectedZPos hasvalue
+        isOutOfTolerance = Math::Abs(expectedZPos - measResult.MeasuredPosition.Z) > positionTolerance  
+    endif  
+    if isOutOfTolerance
+        Dialog message="Position out of tolerance" caption="Position out of tolerance" Error
+    endif
+  endif  
+  
+  if outOfDimension <> ""
+    resultHeader = "|Element|ref|measured|tolerance|
+|--|--|--|--|
+"
+    message = resultHeader + outOfDimension
+    message = message + "Continue program?"
+    diagResult = Dialog message=message caption="Geometry out of tolerance" Error enableMarkdown Yes No
+    if diagResult == DialogResult.No
+        exit
+    endif
+  endif
+endprogram
+
+program GetToleranceLine name:string ref:number measure:number tol:number returns string
+    resultRow = String::StringFormat(
+        baseString="|{0}|{1:f3}|{2:f3}|{3:f3}|
+"
+        p0=name
+        p1=ref
+        p2=measure
+        p3=tol)
+    return resultRow
+endprogram
+
+end
+# ##########################################################

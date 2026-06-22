@@ -1,0 +1,27 @@
+%
+(MYCOMMENT)
+(G-code output for Universal Robots' Remote TCP & Toolpath URCap)
+(Compatible with Polyscope 5.11.4 and above)
+N1 G90
+N2 G21
+(Spindle Speed      = 5000 RPM)
+(Tool               = 2)
+(Toolpath name      = 2D_Face_left)
+(Head angle         = 30 deg)
+N3 G00 X-54.817 Y-31.488 Z15.539 A-16.102114 B-24.583892 C37.58909
+(First Toolpath Point)
+N4 X-49.817 Y-31.488 Z6.879 A-16.102114 B-24.583892 C37.58909
+(Plunge Move Starts)
+N5 G01 X-45.744 Y-31.488 Z-0.175 A-16.102114 B-24.583892 C37.58909 F499.999
+(Lead In Move Starts)
+N6 X-45.407 Y-31.209 Z-0.758 A-16.102114 B-24.583892 C37.58909 F1000.001
+N7 X-45.268 Y-30.536 Z-1. A-16.102114 B-24.583892 C37.58909
+(Cutting Move Starts)
+N8 X-45.268 Y32. Z-1. A-16.102114 B-24.583892 C37.58909
+(Lead Out Move Starts)
+N9 X-45.407 Y32.674 Z-0.758 A-16.102114 B-24.583892 C37.58909
+N10 X-45.744 Y32.952 Z-0.175 A-16.102114 B-24.583892 C37.58909
+(Rapid Move Starts)
+N11 G00 X-54.817 Y32.952 Z15.539 A-16.102114 B-24.583892 C37.58909 F1000
+N12 M30
+%

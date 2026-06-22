@@ -1,0 +1,34 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "carvey",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_misc",
+          "properties": {
+            "safePositionMethod": "G28"
+          },
+          "input": [
+            "2D No Compensation",
+            "No Tapping Cycles"
+          ]
+        }
+      ]
+    }
+  ]
+}

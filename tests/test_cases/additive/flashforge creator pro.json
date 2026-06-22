@@ -1,0 +1,24 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "flashforge creator pro",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {
+            "relativeExtrusion" : true
+          },          
+          "input": [
+            "fff_1extruder",
+            "fff_2extruders"
+          ]
+        }
+      ]
+    }
+  ]
+}

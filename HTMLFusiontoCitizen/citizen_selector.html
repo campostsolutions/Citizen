@@ -1,0 +1,391 @@
+
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Citizen Machine Selector</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 5px; background: #f5f7fa; margin: 0; height: 100vh; overflow: hidden; }
+                        .container { max-width: 100%; margin: 0 auto; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); height: calc(100vh - 10px); overflow: hidden; display: flex; flex-direction: column; }
+                        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-shrink: 0; }
+                        .gear-button { 
+                            background: transparent; 
+                            color: #4a90e2; 
+                            border: none; 
+                            font-size: 14px; 
+                            padding: 5px 8px; 
+                            border-radius: 50%; 
+                            cursor: pointer; 
+                            box-shadow: none;
+                        }
+                        .gear-button:hover { background: #f0f0f0; }
+                        .tabs { display: flex; gap: 6px; border-bottom: 2px solid #4a90e2; margin-bottom: 10px; flex-shrink: 0; }
+                        .tab { background: none; border: none; padding: 6px 12px; cursor: pointer; font-size: 12px; }
+                        .tab.active { color: #4a90e2; border-bottom: 3px solid #4a90e2; }
+                        .tabcontent { display: none; }
+                        .tabcontent.active { display: block; }
+                        .machine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin: 8px 0; flex: 1; overflow-y: auto; max-height: 300px; }
+                        .machine-btn { padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 10px; }
+                        .machine-btn:hover { background: #357abd; }
+                        .machine-btn.selected { background: #357abd; border: 2px solid #2c5aa0; }
+                        .form-section { margin: 8px 0; padding: 6px; border: 1px solid #ddd; border-radius: 4px; flex-shrink: 0; }
+                        .form-row { margin: 3px 0; }
+                        .form-row label { display: block; margin-bottom: 1px; font-weight: bold; font-size: 11px; }
+                        .submit-btn { background: #4a90e2; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; flex-shrink: 0; }
+                        .submit-btn:hover { background: #357abd; }
+                        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+                        h1 { font-size: 18px; margin: 0; }
+                        h3 { font-size: 13px; margin: 6px 0; }
+                        input[type="number"] { width: 80px; font-size: 11px; }
+                        input[type="checkbox"], input[type="radio"] { margin-right: 4px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <h1>Citizen Machine Selector</h1>
+                            <button class="gear-button" onclick="refreshMachines()" title="Refresh Machine List">⚙️</button>
+                        </div>
+                        
+                        <!-- Tabs -->
+                        <div class="tabs" id="tabsContainer">
+                            <!-- Tabs will be generated here -->
+                        </div>
+                        
+                        <!-- Tab Contents -->
+                        <div id="tabContents">
+                            <!-- Tab contents will be generated here -->
+                        </div>
+                        
+                        <!-- Form -->
+                        <form id="machineForm">
+                            <input type="hidden" id="selectedImage" name="selectedImage" value="">
+                            
+                            <div class="form-section">
+                                <h3>Output Units</h3>
+                                <div class="form-row">
+                                    <label><input type="radio" name="outputUnits" value="mm" checked> MM</label>
+                                    <label><input type="radio" name="outputUnits" value="in"> IN</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section" id="postPropertiesSection" style="display: none;">
+                                <h3>Post Properties</h3>
+                                
+                                <!-- Citizen-specific options -->
+                                <div id="citizenOptions" style="display: none;">
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="useSequence"> Use sequence numbers</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="optionalStop" checked> Optional stop</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="parametricFeed"> Parametric Feed</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="g50Gang"> G50 on Gang Driven</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="increaseBStroke"> Increase B-axis stroke</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Sub Spindle Phase Angle: <input type="number" name="subPhaseAngle" step="0.01" placeholder="e.g. 45.0"></label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Miyano-specific options -->
+                                <div id="miyanoOptions" style="display: none;">
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="useSequence"> Use sequence numbers</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="optionalStop" checked> Optional stop</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="parametricFeed"> Parametric Feed</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn" id="submitBtn">Post</button>
+                        </form>
+                    </div>
+                    
+                    <script>
+                        // Machine data embedded from Python
+                        const machineData = [{"series": "L10Series", "label": "L12-VII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L12.jpg", "value": "L12-VII"}, {"series": "L20Series", "label": "L220-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L220-XII"}, {"series": "L20Series", "label": "L32-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg", "value": "L32-VIII"}, {"series": "L20Series", "label": "L32-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg", "value": "L32-X"}, {"series": "L20Series", "label": "L32-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L20X.jpg", "value": "L32-XII"}, {"series": "L20Series", "label": "L212-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L12X.jpg", "value": "L212-X"}, {"series": "L20Series", "label": "L220-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220-VIII.jpg", "value": "L220-VIII"}, {"series": "L300Series", "label": "L320-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-XII"}, {"series": "L300Series", "label": "L320-XIIB5", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-XIIB5"}, {"series": "L300Series", "label": "L320-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-VIII"}, {"series": "L300Series", "label": "L320-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-X"}, {"series": "MSeries", "label": "M316 III", "imagePath": "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M232-III.jpg", "value": "M316"}, {"series": "MSeries", "label": "M232 III", "imagePath": "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M232-III.jpg", "value": "M232III"}, {"series": "Miyano", "label": "BNE MYY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/BNE MYY.jpg", "value": "BNE"}, {"series": "Miyano", "label": "ABX SYY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/ABX-SYY.jpg", "value": "ABXSYY"}, {"series": "Miyano", "label": "BNA GTY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/BNA GTY.jpg", "value": "BNAGTY"}];
+                        
+                        // Function to build tabs and machine grids
+                        function buildMachineInterface() {
+                            const tabsContainer = document.getElementById('tabsContainer');
+                            const tabContents = document.getElementById('tabContents');
+                            
+                            if (!tabsContainer || !tabContents) {
+                                return;
+                            }
+                            
+                            // Clear existing content
+                            tabsContainer.innerHTML = '';
+                            tabContents.innerHTML = '';
+                            
+                            // Group machines by series
+                            const seriesGroups = {};
+                            machineData.forEach(machine => {
+                                if (!seriesGroups[machine.series]) {
+                                    seriesGroups[machine.series] = [];
+                                }
+                                seriesGroups[machine.series].push(machine);
+                            });
+                            
+                            // Create tabs and content
+                            let firstTab = true;
+                            Object.keys(seriesGroups).forEach(seriesName => {
+                                // Create tab button
+                                const tabButton = document.createElement('button');
+                                tabButton.className = 'tab' + (firstTab ? ' active' : '');
+                                tabButton.textContent = seriesName.replace('Series', ' Series');
+                                tabButton.onclick = (e) => showTab(seriesName, e);
+                                tabsContainer.appendChild(tabButton);
+                                
+                                // Create tab content
+                                const tabContent = document.createElement('div');
+                                tabContent.id = seriesName;
+                                tabContent.className = 'tabcontent' + (firstTab ? ' active' : '');
+                                
+                                const machineGrid = document.createElement('div');
+                                machineGrid.className = 'machine-grid';
+                                
+                                seriesGroups[seriesName].forEach(machine => {
+                                    const cell = document.createElement('td');
+                                    cell.style.cssText = 'flex: 0 0 120px; display: flex; flex-direction: column; align-items: center; background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); padding: 8px; cursor: pointer; border: 2px solid transparent;';
+                                    
+                                    if (machine.imagePath && machine.imagePath.trim() !== '') {
+                                        // Try to use image
+                                        const img = document.createElement('img');
+                                        img.src = machine.imagePath.replace(/\\/g, '/');
+                                        img.alt = machine.label;
+                                        img.style.cssText = 'width: 80px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer;';
+                                        img.dataset.value = machine.value;
+                                        img.dataset.tab = seriesName;
+                                        img.onclick = () => selectImage(img);
+                                        img.onerror = function() {
+                                            // Replace with button if image fails
+                                            const btn = document.createElement('button');
+                                            btn.textContent = machine.label;
+                                            btn.style.cssText = 'width: 100%; padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;';
+                                            btn.dataset.value = machine.value;
+                                            btn.dataset.tab = seriesName;
+                                            btn.onclick = () => selectMachine(btn);
+                                            cell.innerHTML = '';
+                                            cell.appendChild(btn);
+                                        };
+                                        
+                                        const cap = document.createElement('div');
+                                        cap.textContent = machine.label;
+                                        cap.style.cssText = 'margin-top: 4px; font-size: 11px; text-align: center;';
+                                        cell.appendChild(img);
+                                        cell.appendChild(cap);
+                                    } else {
+                                        // Use button if no image path
+                                        const btn = document.createElement('button');
+                                        btn.textContent = machine.label;
+                                        btn.style.cssText = 'width: 100%; padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;';
+                                        btn.dataset.value = machine.value;
+                                        btn.dataset.tab = seriesName;
+                                        btn.onclick = () => selectMachine(btn);
+                                        cell.appendChild(btn);
+                                    }
+                                    
+                                    machineGrid.appendChild(cell);
+                                });
+                                
+                                tabContent.appendChild(machineGrid);
+                                tabContents.appendChild(tabContent);
+                                
+                                firstTab = false;
+                            });
+                        }
+                        
+                        // Function to show tab
+                        function showTab(tabName, event) {
+                            // Hide all tab contents
+                            const tabContents = document.querySelectorAll('.tabcontent');
+                            tabContents.forEach(content => content.classList.remove('active'));
+                            
+                            // Remove active class from all tabs
+                            const tabs = document.querySelectorAll('.tab');
+                            tabs.forEach(tab => tab.classList.remove('active'));
+                            
+                            // Show selected tab content
+                            const selectedTab = document.getElementById(tabName);
+                            if (selectedTab) selectedTab.classList.add('active');
+                            
+                            // Add active class to clicked tab
+                            if (event) event.target.classList.add('active');
+                            
+                            // Clear machine selection when changing tabs
+                            clearSelection();
+                        }
+                        
+                        // Function to select machine
+                        function selectMachine(btn) {
+                            clearSelection();
+                            btn.style.background = '#357abd';
+                            document.getElementById('selectedImage').value = btn.dataset.value;
+                            showPostProperties();
+                            // Re-enable button when machine is selected (in case it was stuck)
+                            enablePostButton();
+                        }
+                        
+                        // Function to select image
+                        function selectImage(img) {
+                            clearSelection();
+                            img.style.border = '2px solid #357abd';
+                            document.getElementById('selectedImage').value = img.dataset.value;
+                            showPostProperties();
+                            // Re-enable button when machine is selected (in case it was stuck)
+                            enablePostButton();
+                        }
+                        
+                        // Function to show post properties
+                        function showPostProperties() {
+                            const postSection = document.getElementById('postPropertiesSection');
+                            const citizenOptions = document.getElementById('citizenOptions');
+                            const miyanoOptions = document.getElementById('miyanoOptions');
+                            
+                            if (postSection) {
+                                postSection.style.display = 'block';
+                                
+                                // Determine machine type and show appropriate options
+                                const selectedMachine = document.getElementById('selectedImage').value;
+                                if (selectedMachine) {
+                                    if (selectedMachine.includes('BNA') || selectedMachine.includes('BNE') || selectedMachine.includes('BNJ') || selectedMachine.includes('ABX')) {
+                                        // Miyano machine
+                                        if (citizenOptions) citizenOptions.style.display = 'none';
+                                        if (miyanoOptions) miyanoOptions.style.display = 'block';
+                                    } else {
+                                        // Citizen machine
+                                        if (citizenOptions) citizenOptions.style.display = 'block';
+                                        if (miyanoOptions) miyanoOptions.style.display = 'none';
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // Function to clear selection
+                        function clearSelection() {
+                            document.querySelectorAll('td button').forEach(btn => btn.style.background = '#4a90e2');
+                            document.querySelectorAll('td img').forEach(img => img.style.border = 'none');
+                            document.getElementById('selectedImage').value = '';
+                            
+                            // Hide post properties when no machine is selected
+                            const postSection = document.getElementById('postPropertiesSection');
+                            if (postSection) {
+                                postSection.style.display = 'none';
+                            }
+                        }
+                        
+                        // Function to refresh machines (will reload the palette)
+                        function refreshMachines() {
+                            if (window.adsk) {
+                                window.adsk.fusionSendData(JSON.stringify({"action": "refresh"}));
+                            }
+                        }
+                        
+                        // Simple button control functions
+                        function disablePostButton() {
+                            const submitBtn = document.getElementById('submitBtn');
+                            if (submitBtn) {
+                                submitBtn.disabled = true;
+                                submitBtn.textContent = 'Processing...';
+                            }
+                        }
+                        
+                        function enablePostButton() {
+                            const submitBtn = document.getElementById('submitBtn');
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.textContent = 'Post';
+                            }
+                        }
+                        
+                        // Form submission
+                        document.getElementById('machineForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            
+                            const selectedMachine = document.getElementById('selectedImage').value;
+                            if (!selectedMachine) {
+                                alert('Please select a machine before submitting.');
+                                return;
+                            }
+                            
+                            // Disable the button
+                            disablePostButton();
+                            
+                            // Collect form data
+                            const formData = new FormData(this);
+                            const formValues = {};
+                            
+                            for (let [key, value] of formData.entries()) {
+                                formValues[key] = value;
+                            }
+                            
+                            // Send data to Python backend
+                            if (window.adsk) {
+                                window.adsk.fusionSendData(JSON.stringify(formValues));
+                            } else {
+                                alert('Fusion 360 API not available.');
+                                enablePostButton();
+                            }
+                        });
+                        
+
+                        
+                        // Handle completion messages from Python - removed to prevent initialization issues
+                        
+                        // Initialize on page load
+                        document.addEventListener('DOMContentLoaded', function() {
+                            buildMachineInterface();
+                            // Ensure button is enabled when page loads
+                            enablePostButton();
+                        });
+                    </script>
+                </body>
+                </html>
+                

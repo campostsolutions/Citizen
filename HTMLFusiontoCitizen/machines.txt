@@ -1,0 +1,20 @@
+L10Series|L12-VII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L12.jpg|L12-VIII
+L20Series|L212-X|C:/Program Files (x86)/Alkart CNC Wizard/icons/L12X.jpg|L212-X
+L20Series|L220-VIII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220-VIII.jpg|L220-VIII
+L20Series|L220-X|C:/Program Files (x86)/Alkart CNC Wizard/icons/L20X.jpg|L220-X
+L20Series|L220-XII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg|L220-XII
+L20Series|L32-VIII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg|L32-VIII
+L20Series|L32-X|C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg|L32-X
+L20Series|L32-XII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L20X.jpg|L32-XII
+L300Series|L320-VIII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg|L320-VIII
+L300Series|L320-X|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg|L320-X
+L300Series|L320-XII|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg|L320-XII
+L300Series|L320-XIIB5|C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg|L320-XIIB5
+Miyano|BNA GTY|C:/Program Files (x86)/Alkart CNC Wizard/icons/BNA GTY.jpg|BNAGTY
+Miyano|BNJ SY6|C:/Program Files (x86)/Alkart CNC Wizard/icons/BNJ SY6.jpg|BNJSY6
+Miyano|BNE MYY|C:/Program Files (x86)/Alkart CNC Wizard/icons/BNE MYY.jpg|BNEMYY
+Miyano|ABX SYY|C:/Program Files (x86)/Alkart CNC Wizard/icons/ABX-SYY.jpg|ABXSYY
+
+L10Series|L12 VII|C:\Program Files (x86)\Alkart CNC Wizard\icons\L12.jpg|L12-VII
+L20Series|L220 VIII|C:\Program Files (x86)\Alkart CNC Wizard\icons\L220-VIII.jpg|L220-VII
+MSeries|M232 III|C:\Program Files (x86)\Alkart CNC Wizard\icons\M232-III.jpg|M232III

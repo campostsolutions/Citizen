@@ -1,0 +1,216 @@
+;(1234)
+;(mycomment)
+;(T3 D=5.11 CR=0. TAPER=118deg - ZMIN=-16.535 - drill)
+;(T4 D=6.35 CR=0. - ZMIN=-14. - right hand tap)
+;(T5 D=6.35 CR=0. - ZMIN=-14. - left hand tap)
+;(T6 D=5.08 CR=0. - ZMIN=-14. - reamer)
+;(T7 D=6.35 CR=0. TAPER=90deg - ZMIN=-0.2 - spot drill)
+G0 G17 G30 G40 G45 G72 G75 G80 G90 G96
+G71
+;(-Attention- Property Safe Retracts is set to Clearance Height.)
+;(Ensure the clearance height will clear the part and or fixtures.)
+;(Raise the Z-axis to a safe height before starting the program.)
+;(Rapid out)
+T3 M6
+S5000 M3
+G17 G90 G94
+G54
+M8
+G0 X-25. Y10.
+Z16.
+G0 Z6.
+G81 X-25. Y10. Z22.535 F400.
+G80
+G0 Z6.
+G81 X25. Y10. Z22.535 F400.
+G80
+G0 Z16.
+;(Dwell and rapid out)
+G0 X-25. Y10.
+Z16.
+Z6.
+G81 X-25. Y10. Z22.535 F400.
+G80
+G0 Z6.
+G81 X25. Y10. Z22.535 F400.
+G80
+G0 Z16.
+;(Chip breaking)
+G0 X-25. Y10.
+Z16.
+Z6.
+G87 X-25. Y10. Z22.535 Z1. F400.
+G80
+G0 Z6.
+G87 X25. Y10. Z22.535 Z1. F400.
+G80
+G0 Z16.
+;(Deep drilling)
+G0 X-25. Y10.
+Z16.
+Z6.
+G83 X-25. Y10. Z22.535 Z1. F400.
+G80
+G0 Z6.
+G83 X25. Y10. Z22.535 Z1. F400.
+G80
+G0 Z16.
+;(Break-through drilling)
+G0 X-25. Y10.
+Z16.
+Z6.
+Z5.
+G1 Z-11.425 F400.
+S3000
+Z-16.535 F500.
+S5000
+Z5. F1000.
+G0 Z6.
+X25.
+Z5.
+G1 Z-11.425 F400.
+S3000
+Z-16.535 F500.
+S5000
+Z5. F1000.
+G0 Z6.
+Z16.
+;(Guided deep drilling)
+S3000 M3
+G0 X-25. Y10.
+Z16.
+Z6.
+Z5.
+G1 Z-5.11 F500.
+S5000
+Z-16.535 F400.
+S3000
+Z5. F1000.
+G0 Z6.
+X25.
+Z5.
+G1 Z-5.11 F500.
+S5000
+Z-16.535 F400.
+S3000
+Z5. F1000.
+G0 Z6.
+Z16.
+;(Tap)
+M9
+M1
+T4 M6
+S1000 M3
+G17 G90 G94
+G54
+M8
+G0 X25. Y10.
+Z16.
+G0 Z6.
+M29
+G95 G84 X25. Y10. Z20. F1.27
+G80
+M28
+G94
+G0 Z16.
+;(Left tap)
+M9
+M1
+T5 M6
+S1000 M4
+G17 G90 G94
+G54
+M8
+G0 X-25. Y10.
+Z16.
+G0 Z6.
+M29
+G95 G84 X-25. Y10. Z20. F1.27
+G80
+M28
+G94
+G0 Z16.
+;(Right tap)
+M9
+M1
+T4 M6
+S1000 M3
+G17 G90 G94
+G54
+M8
+G0 X25. Y10.
+Z16.
+G0 Z6.
+M29
+G95 G84 X25. Y10. Z20. F1.27
+G80
+M28
+G94
+G0 Z16.
+;(Reaming)
+M9
+M1
+T6 M6
+S2000 M3
+G17 G90 G94
+G54
+M8
+G0 X-25. Y10.
+Z16.
+G0 Z6.
+G85 X-25. Y10. Z20. F200.
+G80
+G0 Z6.
+G85 X25. Y10. Z20. F200.
+G80
+G0 Z16.
+;(Boring)
+M9
+M1
+T3 M6
+S5000 M3
+G17 G90 G94
+G54
+M8
+G0 X-25. Y10.
+Z16.
+G0 Z6.
+G85 X-25. Y10. Z21. F400.
+G80
+G0 Z6.
+G85 X25. Y10. Z21. F400.
+G80
+G0 Z16.
+;(Boring Retract Feed)
+G0 X-25. Y10.
+Z16.
+Z6.
+Z5.
+G1 Z-15. F400.
+Z5. F1000.
+G0 Z6.
+X25.
+Z5.
+G1 Z-15. F400.
+Z5. F1000.
+G0 Z6.
+Z16.
+;(Rapid movement test)
+M9
+M1
+T7 M6
+S6000 M3
+G17 G90 G94
+G54
+M8
+G0 X-43.536 Y18.536
+Z9.9
+G0 Z-0.1
+G81 X-43.536 Y18.536 Z0.1 F333.3
+X0. Y-18.536
+G80
+Z9.9
+M9
+M5
+G90
+M22

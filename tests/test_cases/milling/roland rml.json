@@ -1,0 +1,66 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "roland rml",
+      "outputFolder": "milling",
+      "testCases": [
+        {
+          "description": "Standard milling operations",
+          "inputFolder": "milling",
+          "suffix": "",
+          "properties": {
+            "useToolCall": true,
+            "machineModel": "mdx-40"
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "Miscellaneous options",
+          "inputFolder": "milling",
+          "suffix": "_options",
+          "properties": {
+            "machineModel": "mdx-40",
+            "useToolCall": true,
+            "spindleSpeedInRPM": true
+          },
+          "input": [
+            "2D No Compensation",
+            "Drilling Only Cycles"
+          ]
+        },
+        {
+          "description": "4-axis Operations",
+          "inputFolder": "milling",
+          "suffix": "_A",
+          "properties": {
+            "rotaryTableAxis": "x",
+            "machineModel": "mdx-40",
+            "useToolCall": true
+          },
+          "input": [
+            "A-axis 3+2 Same Tool",
+            "A-axis Drilling"
+          ]
+        },
+        {
+          "inputFolder": "milling",
+          "suffix": "_B",
+          "properties": {
+            "rotaryTableAxis": "-y",
+            "machineModel": "mdx-40",
+            "useToolCall": true
+          },
+          "input": [
+            "B-axis 3+2 Same Tool",
+            "B-axis Drilling"
+          ]
+        }
+      ]
+    }
+  ]
+}

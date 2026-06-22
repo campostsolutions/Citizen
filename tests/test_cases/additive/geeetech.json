@@ -1,0 +1,32 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "geeetech",
+      "outputFolder": "additive",
+      "testCases": [
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "fff_1extruder"
+          ]
+        },
+        {
+          "description": "Standard additive operations",
+          "inputFolder": "additive",
+          "suffix": "_bedprobing",
+          "properties": {
+            "bedProbe": true
+          },
+          "input": [
+            "fff_1extruder"
+          ]
+        }        
+      ]
+    }
+  ]
+}
