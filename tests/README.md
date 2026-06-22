@@ -29,77 +29,46 @@ tests/
 
 ## Quick Start
 
-### Baseline Workflow (Recommended)
+### Option A: Test Without Fusion 360 (Recommended for Development)
 
-This approach establishes a baseline from your first set of outputs, then tracks changes.
+Generate synthetic test data locally and test the full workflow:
 
-#### Step 1: Generate NC Code
-
-Using Fusion 360:
-1. Open a test part from `Parts/` folder
-2. Select "Output to Citizen" from CAM Actions
-3. Generate NC code and save to `tests/output/` directory
-   - Format: `<part_name>_<machine_name>_<operation_type>.nc`
-
-#### Step 2: Run Tests
-
-**Simple one-command test:**
 ```bash
-cd tests
-python quick_test.py
-# or on Windows: run_tests.bat
-```
+# Step 1: Generate synthetic test data
+python generate_test_data.py --count 10
 
-**First run** - establishes baseline from current outputs:
-```bash
+# Step 2: Establish baseline
 python baseline_manager.py --establish
+
+# Step 3: Run tests
+python quick_test.py
+# Output: "All tests PASS - outputs match baseline!"
 ```
 
-**Subsequent runs** - compares against baseline:
+This is perfect for:
+- Testing the testing infrastructure itself
+- CI/CD pipelines (no Fusion 360 needed)
+- Development and debugging without CAD files
+- Quick validation before using Fusion 360
+
+### Option B: Test With Actual Fusion 360 Outputs (Production Testing)
+
+Generate real NC code in Fusion 360, then test locally:
+
 ```bash
+# Step 1: In Fusion 360, generate NC code and save to tests/output/
+
+# Step 2: Establish baseline from real outputs
+python baseline_manager.py --establish
+
+# Step 3: Run tests locally
+python quick_test.py
+
+# Step 4: After modifying posts, regenerate in Fusion 360, then:
 python baseline_manager.py --compare
-```
-
-#### Step 3: Review Results
-
-- ✓ **Match** - Output matches baseline (no changes)
-- ⚠ **Changed** - Output differs from baseline
-- ✨ **New** - New output not in baseline yet
-
-#### Step 4: Accept Changes (if needed)
-
-Update baseline with new outputs:
-```bash
-# Accept all changes
+# Review changes, then accept if correct:
 python baseline_manager.py --accept-all
-
-# Accept specific file
-python baseline_manager.py --accept "Qatest-Mill"
 ```
-
-### Alternative: Detailed Test Discovery
-
-For comprehensive analysis without baseline tracking:
-
-```bash
-python test_runner.py
-```
-
-This will:
-- List all 20+ post processors
-- Verify post syntax
-- Discover all test parts (11 CAM files)
-- Generate detailed `TEST_REPORT.md`
-
-### Alternative: Validate Against Expected Outputs
-
-Compare with pre-existing expected outputs:
-
-```bash
-python validate_outputs.py
-```
-
-Generates HTML report with detailed comparisons.
 
 ## Available Post Processors
 
@@ -304,6 +273,13 @@ test:
 
 ## Command Reference
 
+### Generate Test Data (Without Fusion 360)
+```bash
+python generate_test_data.py                # Generate 10 synthetic test files
+python generate_test_data.py --count 20     # Generate 20 test files
+python generate_test_data.py --clear        # Clear output/ and generate fresh
+```
+
 ### Quick Test (One Command)
 ```bash
 python quick_test.py              # Simple pass/fail comparison
@@ -325,11 +301,30 @@ python baseline_manager.py --establish --force   # Force overwrite baseline
 ```bash
 python test_runner.py             # Discover posts and parts, syntax check
 python validate_outputs.py        # Validate against expected/ (HTML report)
+python populate_test_data.py      # Use expected/ files as test data
 ```
 
 ## Examples
 
-### Workflow 1: First Time Setup
+### Workflow 1: Quick Local Test (No Fusion 360 Needed)
+
+Perfect for CI/CD, development, or testing the infrastructure:
+
+```bash
+# Generate synthetic test data
+python generate_test_data.py --count 15
+
+# Establish baseline
+python baseline_manager.py --establish
+
+# Run test - should show all PASS
+python quick_test.py
+
+# Output:
+#  ✓ All tests PASS - outputs match baseline!
+```
+
+### Workflow 2: Testing After Post Processor Changes
 
 ```bash
 # Generate outputs in Fusion 360, save to output/
