@@ -90,7 +90,7 @@ gangCrossWorking = {
 gangBaxisDriven = {
   toolpost    : "gangBaxisDriven",
   encoder     : 3,
-  spindleOnCW : 8 0,
+  spindleOnCW : 80,
   spindleOnCCW: 81,
   spindleOff  : 82,
   safetyVal   : "X#100450",
