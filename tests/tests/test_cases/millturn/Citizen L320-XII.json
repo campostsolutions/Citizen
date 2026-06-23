@@ -1,0 +1,22 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "Citizen L320-XII",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "L320-XII",
+          "inputFolder": "millturn",
+          "suffix": "_impellar",
+          "properties": {},
+          "input": [
+            "L320-XII"
+          ]
+        }
+        
+      ]
+    }
+  ]
+}

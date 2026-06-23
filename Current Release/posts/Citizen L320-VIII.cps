@@ -59,7 +59,7 @@ gangEndWorking = {
     toolpost: "gangEndWorking",
     encoder: { live: 3, static: 1 },
     spindleOnCW: { live: 80, static: 3 },
-    spindleOnCCW: { live: 81, static: 4 },
+    spindleOnCCW: { live: 81, static: 44 },
     spindleOff: { live: 82, static: 5 },
     safetyVal: "Z" + zFormat.format(toPreciseUnit(-1.0,MM)),
     fluctuation: { on: mFormat.format(96), off: mFormat.format(97) },
@@ -70,7 +70,7 @@ gangEndWorking = {
     prepositionOnToolChange: true,
     bAxis: false
 };
-
+ 
 gangCrossWorking = {
     toolpost: "gangCrossWorking",
     encoder: 3,
@@ -81,7 +81,7 @@ gangCrossWorking = {
     xScale: 2,
     yScale: -2,
     zScale: -1,
-    zDir: 1,
+    zDir: 1, 
     compLeft: 41,
     compRight: 42,
     g50Offset: 15,

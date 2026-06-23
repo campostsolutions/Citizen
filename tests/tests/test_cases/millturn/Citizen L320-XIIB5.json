@@ -1,0 +1,30 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "Citizen L320-XIIB5",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "L320-XII B5 impellar case",
+          "inputFolder": "millturn",
+          "suffix": "_impellar",
+          "properties": {},
+          "input": [
+            "L320_Impellar"
+          ]
+        },
+        {
+          "description": "L320-XII",
+          "inputFolder": "millturn",
+          "suffix": "",
+          "properties": {},
+          "input": [
+            "L320-XII"
+          ]
+        }
+      ]
+    }
+  ]
+}

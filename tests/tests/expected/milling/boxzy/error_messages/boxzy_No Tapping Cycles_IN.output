@@ -1,7 +1,0 @@
-Error: Failed while processing onOpen().
-Error: Please select millimeters as unit when post processing. Inch mode is not recommended by the BoXZY team.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Error: Failed to invoke function 'onOpen'.
-Error: Failed to invoke 'onOpen' in the post configuration.
-Error: Failed to execute configuration.
-Error: Failed to post process. See below for details.

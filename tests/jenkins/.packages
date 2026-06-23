@@ -1,0 +1,22 @@
+PACKAGE_PATH=packages
+STRICT=TRUE # treat warnings as errors
+
+USERNAME=hsm
+PASSWORD=ope**00
+
+SEARCH_URL=https://art-bobcat.autodesk.com/artifactory/team-hsmworks-generic/ # Santa Clara
+SEARCH_URL=https://art-hare.autodesk.com/artifactory/team-hsmworks-generic/ # Dublin
+SEARCH_URL=https://art-cougar.autodesk.com/artifactory/team-hsmworks-generic/ # Novi
+SEARCH_URL=https://art-lion.autodesk.com/artifactory/team-hsmworks-generic/ # Singapore
+SEARCH_URL=https://art-panda.autodesk.com/artifactory/team-hsmworks-generic # Shanghai
+SEARCH_URL=https://art-bear.autodesk.com/artifactory/team-hsmworks-generic # Carlstadt
+
+# override local settings in .packages_user
+#VERBOSE=TRUE # verbose mode
+#SILENT=TRUE # silent mode
+#FORCE=TRUE # force full download and install
+#IGNORE_OS=TRUE # for installing packages regardless of OS
+#SKIP_DOWNLOAD=TRUE # dont download cached packages
+#THOROUGH=TRUE # thorough check
+#COLORS=FALSE # color mode
+TIMEOUT=5 # remote connection timeout

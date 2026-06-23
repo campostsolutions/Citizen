@@ -1,0 +1,7 @@
+# Post processor library packages
+
+SET PACKAGE_PATH=packages
+
+# Update to the latest official release on a regular basis
+PACKAGE post/post-windows-vc142-v5.231.0_da71f73a.zip OS=windows DIGEST=sha256:bceaa34bfc42c8b943741e55edcf38b116ac7e2dc1c8f0432fc5cad96e02152c
+PACKAGE post/post-osx-10_15-v5.231.0_da71f73a.zip OS=osx DIGEST=sha256:7730dd57b4becfc70852e485389d8c883292906f0a9b8ce660afab8eec2d0523

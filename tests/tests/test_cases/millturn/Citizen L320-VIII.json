@@ -1,0 +1,21 @@
+{
+  "type": "testCases",
+  "version": 1,
+  "posts": [
+    {
+      "name": "Citizen L320-VIII",
+      "outputFolder": "millturn",
+      "testCases": [
+        {
+          "description": "Machine-specific QA MillTurn case",
+          "inputFolder": "millturn",
+          "suffix": "_qatest",
+          "properties": {},
+          "input": [
+            "L320-VIII"
+          ]
+        }
+      ]
+    }
+  ]
+}

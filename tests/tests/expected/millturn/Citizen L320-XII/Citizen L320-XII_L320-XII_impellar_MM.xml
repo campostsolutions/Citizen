@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Job>
+  <Name>3C40-548 ISS P07 LATEST V14 - LATEST ONE</Name>
+  <Unit>MM</Unit>
+  <StockLength>50.</StockLength>
+  <StockDiameter>31.75</StockDiameter>
+  <ModelImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\placeholder.png</ModelImage>
+  <Files>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8MM ROUGH10.nc</Location>
+      <Description>8MM ROUGH1</Description>
+      <OperationType>ADAPTIVE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\22.png</Image>
+        <Number>22</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8MM ROUGH 21.nc</Location>
+      <Description>8MM ROUGH 2</Description>
+      <OperationType>ADAPTIVE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\22.png</Image>
+        <Number>22</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8MM ROUGH MILL TOP2.nc</Location>
+      <Description>8MM ROUGH MILL TOP</Description>
+      <OperationType>ADAPTIVE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\7.png</Image>
+        <Number>7</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8MM ROUGH 16.2MM BORE3.nc</Location>
+      <Description>8MM ROUGH 16.2MM BORE</Description>
+      <OperationType>BORE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\7.png</Image>
+        <Number>7</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8MM ROUGHT 17.3MM BORE4.nc</Location>
+      <Description>8MM ROUGHT 17.3MM BORE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\7.png</Image>
+        <Number>7</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\21.7X1 SAW FRONT5.nc</Location>
+      <Description>21.7X1 SAW FRONT</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH FLANGE6.nc</Location>
+      <Description>6MM FINISH FLANGE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH OUTER PROFILE7.nc</Location>
+      <Description>6MM FINISH OUTER PROFILE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINIISH OUTER PROFILE 28.nc</Location>
+      <Description>6MM FINIISH OUTER PROFILE 2</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH 3.4 ANGLED RAD 9.nc</Location>
+      <Description>6MM FINISH 3.4 ANGLED RAD </Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH SIDE FACE10.nc</Location>
+      <Description>6MM FINISH SIDE FACE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FRONT PROFILE11.nc</Location>
+      <Description>6MM FRONT PROFILE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH 16MM BORE12.nc</Location>
+      <Description>6MM FINISH 16MM BORE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH 17.3MM BORE13.nc</Location>
+      <Description>6MM FINISH 17.3MM BORE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM FINISH TOP FACE14.nc</Location>
+      <Description>6MM FINISH TOP FACE</Description>
+      <OperationType>PATH3D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\6MM TOP OF FLANG FINISH15.nc</Location>
+      <Description>6MM TOP OF FLANG FINISH</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\12.png</Image>
+        <Number>12</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\ 21.7X1 SAW  FLANGE GROOVE16.nc</Location>
+      <Description> 21.7X1 SAW  FLANGE GROOVE</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.7MM UNDERCUT TOP17.nc</Location>
+      <Description>9.7MM UNDERCUT TOP</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8.png</Image>
+        <Number>8</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.7MM UNDERCUT BOTTOM18.nc</Location>
+      <Description>9.7MM UNDERCUT BOTTOM</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\8.png</Image>
+        <Number>8</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\5MM SURFACE FRONT RAD 119.nc</Location>
+      <Description>5MM SURFACE FRONT RAD 1</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\23.png</Image>
+        <Number>23</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\5MM SURFACEF FRONT  RAD 320.nc</Location>
+      <Description>5MM SURFACEF FRONT  RAD 3</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\23.png</Image>
+        <Number>23</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\5MM SURFACE FRONT RAD 321.nc</Location>
+      <Description>5MM SURFACE FRONT RAD 3</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\23.png</Image>
+        <Number>23</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\5MM SURFACE FRONT RAD 222.nc</Location>
+      <Description>5MM SURFACE FRONT RAD 2</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\23.png</Image>
+        <Number>23</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\5MM SURFACE FRONT RAD 423.nc</Location>
+      <Description>5MM SURFACE FRONT RAD 4</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\23.png</Image>
+        <Number>23</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL524.nc</Location>
+      <Description>PARALLEL5</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\21.png</Image>
+        <Number>21</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL5 225.nc</Location>
+      <Description>PARALLEL5 2</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\21.png</Image>
+        <Number>21</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM MILL FRONT CUT OUT26.nc</Location>
+      <Description>2MM MILL FRONT CUT OUT</Description>
+      <OperationType>CONTOUR2D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM SURFACE 0.5RAD TOP27.nc</Location>
+      <Description>2MM SURFACE 0.5RAD TOP</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM SURFACE SIDE FACE28.nc</Location>
+      <Description>2MM SURFACE SIDE FACE</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL329.nc</Location>
+      <Description>PARALLEL3</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL3 230.nc</Location>
+      <Description>PARALLEL3 2</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM LEFT CHAMFER31.nc</Location>
+      <Description>2MM LEFT CHAMFER</Description>
+      <OperationType>PATH3D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM RIGHT CHAMFER32.nc</Location>
+      <Description>2MM RIGHT CHAMFER</Description>
+      <OperationType>PATH3D</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM SURFACE REMAINER CHAMFER33.nc</Location>
+      <Description>2MM SURFACE REMAINER CHAMFER</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM SURFACE FRONT CHAMFERS34.nc</Location>
+      <Description>2MM SURFACE FRONT CHAMFERS</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\2MM SURFACE BORE CHAMFER35.nc</Location>
+      <Description>2MM SURFACE BORE CHAMFER</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL436.nc</Location>
+      <Description>PARALLEL4</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PARALLEL4 237.nc</Location>
+      <Description>PARALLEL4 2</Description>
+      <OperationType>PARALLEL_NEW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\FLOW1238.nc</Location>
+      <Description>FLOW12</Description>
+      <OperationType>FLOW</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XII\9.png</Image>
+        <Number>9</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+  </Files>
+</Job>

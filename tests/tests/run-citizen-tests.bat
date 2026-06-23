@@ -5,6 +5,10 @@ REM Example: run-citizen-tests.bat "Citizen L320-VIII.cps"
 
 setlocal ENABLEDELAYEDEXPANSION
 
+set NO_PAUSE=
+echo %* | find /I "nopause" >nul
+if %ERRORLEVEL% EQU 0 set NO_PAUSE=nopause
+
 cd /d "%~dp0"
 
 REM Set up paths
@@ -58,7 +62,10 @@ echo ================================================================
 echo.
 
 REM Run the test
-call "%TESTS_DIR%\run-single.bat" "%POSTS_DIR%\%POST_NAME%"
+call "%TESTS_DIR%\run-single.bat" "%POSTS_DIR%\%POST_NAME%" "%NO_PAUSE%"
+set TEST_EXIT=%errorlevel%
+IF "%NO_PAUSE%" NEQ "nopause" (pause)
+if %TEST_EXIT% NEQ 0 (goto failed)
 
 REM Check results
 if exist "%TESTS_DIR%\output" (
@@ -71,4 +78,10 @@ if exist "%TESTS_DIR%\output" (
   )
 )
 
-pause
+IF "%NO_PAUSE%" NEQ "nopause" (pause)
+exit /b 0
+
+:failed
+echo Error detected, see error message above.
+IF "%NO_PAUSE%" NEQ "nopause" (pause)
+exit /b 1

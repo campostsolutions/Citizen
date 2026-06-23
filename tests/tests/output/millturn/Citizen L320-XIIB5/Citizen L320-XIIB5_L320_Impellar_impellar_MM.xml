@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Job>
+  <Name>LASTEST CMUK IMPELLAR TEST V10</Name>
+  <Unit>MM</Unit>
+  <StockLength>14.2</StockLength>
+  <StockDiameter>25.4</StockDiameter>
+  <ModelImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\placeholder.png</ModelImage>
+  <Files>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\ROUGH TURN DCMT11 0.40.nc</Location>
+      <Description>ROUGH TURN DCMT11 0.4 GROUPED OPERATIONS</Description>
+      <OperationType>TURNINGPROFILEROUGHING</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>turning</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2.png</Image>
+        <Number>2</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS3.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS4.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS5.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS6.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS7.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE ROUGH FINS8.nc</Location>
+      <Description>2MM BALLNOSE ROUGH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR9.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR10.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR11.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR12.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR13.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM BALLNOSE FINISH FLOOR14.nc</Location>
+      <Description>2MM BALLNOSE FINISH FLOOR</Description>
+      <OperationType>MODULEWORKS_GEODESIC</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\14.png</Image>
+        <Number>14</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS15.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS16.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS17.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS18.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS19.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\2MM FINISH FINS20.nc</Location>
+      <Description>2MM FINISH FINS</Description>
+      <OperationType>MODULEWORKS_SWARF</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-XIIB5\13.png</Image>
+        <Number>13</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+  </Files>
+</Job>

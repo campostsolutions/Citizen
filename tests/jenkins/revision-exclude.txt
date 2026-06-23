@@ -1,0 +1,12 @@
+# This file contains commit ranges for passing to git rev-list to exclude commits from the revision
+# enumeration.
+# A line of the form <commit A>..<commit B> lists all commits reachable from <commit B> that are not
+# also reachable from <commmit A>.
+
+# Old postprocessor/develop commits
+fff8d23e3686c6104c29af9d2deab21c48fea514..a15320f62f08fd98c7337ceef13b428da603663b
+565ace38b3578e142379519db7d6971cdd10b752..57115c00c97668737ad3a591f3bd4aaf924d9adf
+3dd341ccc6ce8cd59e30da071f537cc967aac29f..47d42cc36867f6aa9b285ff206c845a74e05d4cf
+
+# Current postprocessor/develop branch
+6c62b2afa7e90e58da72cbf209d03361d64c8216..origin/postprocessor/develop

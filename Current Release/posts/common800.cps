@@ -766,7 +766,7 @@ properties = {
   leaveSpindleRunning    : true,
   subroutineAll          : false,
   subSpindlePhaseAngle   : 0,
-  increaseBAxisStroke    : false
+  increaseBAxisStroke    : true
 };
 
 // user-defined property definitions

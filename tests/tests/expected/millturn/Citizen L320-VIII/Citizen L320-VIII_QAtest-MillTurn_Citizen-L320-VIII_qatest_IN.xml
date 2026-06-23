@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Job>
+  <Name>3C40-548 ISS P07 - L320</Name>
+  <Unit>IN</Unit>
+  <StockLength>1.9685</StockLength>
+  <StockDiameter>1.25</StockDiameter>
+  <ModelImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\placeholder.png</ModelImage>
+  <Files>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\8MM ROUGH MILL TOP0.nc</Location>
+      <Description>8MM ROUGH MILL TOP</Description>
+      <OperationType>ADAPTIVE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\7.png</Image>
+        <Number>7</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+    <File>
+      <Location>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\8MM ROUGH 16.2MM BORE1.nc</Location>
+      <Description>8MM ROUGH 16.2MM BORE</Description>
+      <OperationType>BORE</OperationType>
+      <Spindle>Main spindle</Spindle>
+      <MachiningType>live tool</MachiningType>
+      <Setup>MAIN SPINDLE</Setup>
+      <toolpathImage>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\PLACEHOLDER.PNG</toolpathImage>
+      <Tool>
+        <Image>D:\OneDrive - Cam Post Solutions Ltd\Citizen\tests\tests\output\millturn\Citizen L320-VIII\7.png</Image>
+        <Number>7</Number>
+        <Description>unspecified</Description>
+        <Turret>0</Turret>
+      </Tool>
+    </File>
+  </Files>
+</Job>
