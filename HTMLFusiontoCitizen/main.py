@@ -6,6 +6,7 @@ from os.path import isfile, join
 import sys
 import time
 import tempfile
+import ctypes
 
 # global variables
 global _get, selected_post, L1_posts, L2_posts, L3_posts, L320_posts, Miyano_posts, other_posts
@@ -20,6 +21,17 @@ Miyano_posts = []
 other_posts = []
 posts_fldr = None
 output_fldr = None
+palette_html_handler_registered = False
+last_submit_payload = None
+last_submit_time = 0.0
+post_request_in_progress = False
+last_post_request_time = 0.0
+last_export_message_time = 0.0
+addon_initialized = False
+startup_guard_pid = None
+startup_invocation_count = 0
+MACHINE_SELECTION_FILE = 'machine_visibility.json'
+MACHINE_DEFINITIONS_FILE = 'machines_config.json'
 
 def get_output_folder():
     """
@@ -43,9 +55,512 @@ def messageBox(text: str, title: object = None) -> object:
     ui.messageBox(text, title)
     return text
 
-def startApp(context):
-    global posts_fldr, output_fldr
+def center_palette_on_screen(palette, width=574, height=890):
+    try:
+        user32 = ctypes.windll.user32
+        screen_width = user32.GetSystemMetrics(0)
+        screen_height = user32.GetSystemMetrics(1)
+        x = max(0, int((screen_width - width) / 2))
+        y = max(0, int((screen_height - height) / 2))
+        palette.setPosition(x, y)
+    except Exception as err:
+        print(f"Palette centering skipped: {str(err)}")
 
+def get_resources_path():
+    return os.path.join(os.path.dirname(__file__), 'resources')
+
+def get_machines_file_path():
+    resources_path = get_resources_path()
+    resources_machines = os.path.join(resources_path, 'machines.txt')
+    root_machines = os.path.join(os.path.dirname(__file__), 'machines.txt')
+    if os.path.exists(resources_machines):
+        return resources_machines
+    return root_machines
+
+def get_machine_definitions_file_path():
+    return os.path.join(get_resources_path(), MACHINE_DEFINITIONS_FILE)
+
+def sanitize_machine_definitions(raw_machines):
+    sanitized = []
+    seen_values = set()
+
+    if not isinstance(raw_machines, list):
+        return sanitized
+
+    for entry in raw_machines:
+        if not isinstance(entry, dict):
+            continue
+
+        series = str(entry.get('series', '')).strip() or 'General'
+        label = str(entry.get('label', '')).strip()
+        value = str(entry.get('value', '')).strip()
+        image_path = str(entry.get('imagePath', '')).strip()
+
+        if not label and value:
+            label = value
+        if not value and label:
+            value = label
+        if not label or not value:
+            continue
+
+        dedupe_key = value.lower()
+        if dedupe_key in seen_values:
+            continue
+        seen_values.add(dedupe_key)
+
+        sanitized.append({
+            'series': series,
+            'label': label,
+            'value': value,
+            'imagePath': resolve_machine_image_path(image_path)
+        })
+
+    return sanitized
+
+def load_machine_definitions_from_json():
+    definitions_path = get_machine_definitions_file_path()
+    if not os.path.exists(definitions_path):
+        return None
+
+    try:
+        with open(definitions_path, 'r', encoding='utf-8') as definitions_file:
+            payload = json.load(definitions_file)
+            if isinstance(payload, dict):
+                raw_machines = payload.get('machines', [])
+            else:
+                raw_machines = payload
+            return sanitize_machine_definitions(raw_machines)
+    except Exception as err:
+        print(f"Failed to load machine definitions JSON: {str(err)}")
+        return None
+
+def save_machine_definitions(raw_machines):
+    sanitized = sanitize_machine_definitions(raw_machines)
+
+    try:
+        definitions_path = get_machine_definitions_file_path()
+        with open(definitions_path, 'w', encoding='utf-8') as definitions_file:
+            json.dump({'machines': sanitized}, definitions_file, indent=2)
+    except Exception as err:
+        print(f"Failed to save machine definitions JSON: {str(err)}")
+
+    return sanitized
+
+def resolve_machine_image_path(image_ref):
+    if not image_ref:
+        return ''
+
+    image_ref = str(image_ref).strip()
+    if not image_ref:
+        return ''
+
+    # Keep absolute paths untouched.
+    if os.path.isabs(image_ref):
+        return image_ref
+
+    resources_path = get_resources_path()
+    image_ref_forward = image_ref.replace('\\', '/').lstrip('./')
+    file_name = os.path.basename(image_ref_forward)
+
+    candidates = [
+        os.path.join(resources_path, image_ref_forward.replace('/', os.sep)),
+        os.path.join(resources_path, 'Machines', file_name),
+        os.path.join(resources_path, 'machines', file_name),
+    ]
+
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+
+    # Fallback to the likely location even if the file isn't present yet.
+    return os.path.join(resources_path, 'Machines', file_name)
+
+def read_machine_definitions():
+    json_machines = load_machine_definitions_from_json()
+    if json_machines is not None:
+        return json_machines
+
+    machines_path = get_machines_file_path()
+    machines = []
+    last_series = 'General'
+
+    if not os.path.exists(machines_path):
+        return machines
+
+    try:
+        with open(machines_path, 'r', encoding='utf-8') as machine_file:
+            for raw_line in machine_file:
+                line = raw_line.strip()
+                if not line or line.startswith('#'):
+                    continue
+
+                parts = [part.strip() for part in line.split('|') if part.strip()]
+                if len(parts) >= 3:
+                    series_name, label, image_ref = parts[0], parts[1], parts[2]
+                    value = parts[3] if len(parts) >= 4 else label
+                    last_series = series_name
+                elif len(parts) == 2:
+                    # Allow shorthand lines that inherit the previous series.
+                    label, image_ref = parts[0], parts[1]
+                    value = label
+                    series_name = last_series
+
+                    # If the shorthand row appears after a comment separator,
+                    # infer a better series from the machine label.
+                    if label.startswith('L1'):
+                        series_name = 'L10Series'
+                    elif label.startswith('L2') or label.startswith('L3'):
+                        series_name = 'L20Series'
+                    elif label.startswith('M') and ('MYY' not in label):
+                        series_name = 'MSeries'
+                else:
+                    continue
+
+                machines.append({
+                    'series': series_name,
+                    'label': label,
+                    'value': value,
+                    'imagePath': resolve_machine_image_path(image_ref)
+                })
+    except Exception as err:
+        print(f"Failed to read machine definitions: {str(err)}")
+
+    return machines
+
+def get_machine_selection_file_path():
+    return os.path.join(get_resources_path(), MACHINE_SELECTION_FILE)
+
+def list_machine_image_files():
+    resources_path = get_resources_path()
+    image_dirs = [
+        os.path.join(resources_path, 'Machines'),
+        os.path.join(resources_path, 'machines')
+    ]
+    valid_exts = {'.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp'}
+    files = []
+    seen = set()
+
+    for image_dir in image_dirs:
+        if not os.path.isdir(image_dir):
+            continue
+        try:
+            for name in os.listdir(image_dir):
+                file_path = os.path.join(image_dir, name)
+                if not os.path.isfile(file_path):
+                    continue
+                _, ext = os.path.splitext(name)
+                if ext.lower() not in valid_exts:
+                    continue
+                key = name.lower()
+                if key in seen:
+                    continue
+                seen.add(key)
+                files.append(name)
+        except Exception:
+            pass
+
+    files.sort(key=lambda v: v.lower())
+    return files
+
+def load_visible_machine_values(all_machines):
+    machine_values = [machine.get('value') for machine in all_machines if machine.get('value')]
+    selection_path = get_machine_selection_file_path()
+
+    if not os.path.exists(selection_path):
+        return machine_values
+
+    try:
+        with open(selection_path, 'r', encoding='utf-8') as selection_file:
+            payload = json.load(selection_file)
+            configured = payload.get('visibleMachines', []) if isinstance(payload, dict) else []
+    except Exception as err:
+        print(f"Failed to read machine visibility settings: {str(err)}")
+        return machine_values
+
+    valid_values = set(machine_values)
+    return [value for value in configured if value in valid_values]
+
+def save_visible_machine_values(visible_values, all_machines):
+    valid_ordered_values = [machine.get('value') for machine in all_machines if machine.get('value')]
+    valid_value_set = set(valid_ordered_values)
+
+    requested = visible_values if isinstance(visible_values, list) else []
+    sanitized = []
+    for value in valid_ordered_values:
+        if value in requested and value in valid_value_set:
+            sanitized.append(value)
+
+    try:
+        selection_path = get_machine_selection_file_path()
+        with open(selection_path, 'w', encoding='utf-8') as selection_file:
+            json.dump({'visibleMachines': sanitized}, selection_file, indent=2)
+    except Exception as err:
+        print(f"Failed to save machine visibility settings: {str(err)}")
+
+    return sanitized
+
+def get_machine_config_payload():
+    all_machines = read_machine_definitions()
+    visible_values = load_visible_machine_values(all_machines)
+    return {
+        'machines': all_machines,
+        'visibleMachines': visible_values,
+        'imageFiles': list_machine_image_files()
+    }
+
+def send_machine_config_to_palette(ui):
+    try:
+        palette = ui.palettes.itemById('citizenPalette')
+        if not palette:
+            return
+        payload = json.dumps(get_machine_config_payload())
+        palette.sendInfoToHTML('MACHINE_CONFIG', payload)
+    except Exception as err:
+        print(f"Failed to send machine configuration to palette: {str(err)}")
+
+def should_skip_duplicate_startup():
+    global startup_guard_pid
+    pid = os.getpid()
+    lock_path = os.path.join(tempfile.gettempdir(), 'citizen_addin_startup.lock')
+
+    # In-process guard.
+    if startup_guard_pid == pid:
+        return True
+
+    # Cross-invocation guard for the same Fusion process.
+    try:
+        if os.path.exists(lock_path):
+            with open(lock_path, 'r', encoding='ascii') as f:
+                lock_pid = f.read().strip()
+            if lock_pid == str(pid):
+                startup_guard_pid = pid
+                return True
+        with open(lock_path, 'w', encoding='ascii') as f:
+            f.write(str(pid))
+    except:
+        # If locking fails, continue instead of blocking startup.
+        pass
+
+    startup_guard_pid = pid
+    return False
+
+def remove_toolbar_control(ui, control_id):
+    try:
+        for panel in ui.allToolbarPanels:
+            try:
+                existing_control = panel.controls.itemById(control_id)
+                if existing_control:
+                    existing_control.deleteMe()
+            except:
+                pass
+    except:
+        pass
+
+def remove_citizen_toolbar_controls(ui):
+    def should_remove_control(control):
+        cid = ''
+        cmd_id = ''
+        cmd_name = ''
+        try:
+            cid = str(control.id)
+        except:
+            pass
+        try:
+            cmd_def = control.commandDefinition
+            if cmd_def:
+                cmd_id = str(cmd_def.id)
+                try:
+                    cmd_name = str(cmd_def.name)
+                except:
+                    pass
+        except:
+            pass
+
+        return (
+            cid in ['selectCitizenPostButtonControl', 'citizenPostProcessorV2Control']
+            or cid.startswith('selectCitizenPostButtonControl_')
+            or cmd_id in ['selectCitizenPost', 'citizenPostCommand', 'citizenPostProcessorV2']
+            or cmd_name == 'Output to Citizen'
+        )
+
+    def remove_from_controls(controls):
+        ids_to_remove = []
+        nested_collections = []
+
+        for control in controls:
+            try:
+                if should_remove_control(control):
+                    ids_to_remove.append(str(control.id))
+            except:
+                pass
+
+            # Recurse into dropdown-style controls.
+            try:
+                if hasattr(control, 'controls') and control.controls:
+                    nested_collections.append(control.controls)
+            except:
+                pass
+
+        for cid in ids_to_remove:
+            try:
+                ctrl = controls.itemById(cid)
+                if ctrl:
+                    ctrl.deleteMe()
+            except:
+                pass
+
+        for nested in nested_collections:
+            try:
+                remove_from_controls(nested)
+            except:
+                pass
+
+    try:
+        for panel in ui.allToolbarPanels:
+            try:
+                remove_from_controls(panel.controls)
+            except:
+                pass
+    except:
+        pass
+
+def remove_citizen_command_definitions(ui):
+    try:
+        cmd_defs = ui.commandDefinitions
+        if not cmd_defs:
+            return
+
+        # Remove known legacy/current/new IDs first.
+        for cmd_id in ['selectCitizenPost', 'citizenPostCommand', 'citizenPostProcessorV2']:
+            try:
+                cmd_def = cmd_defs.itemById(cmd_id)
+                if cmd_def:
+                    cmd_def.deleteMe()
+            except:
+                pass
+
+        # Also remove any lingering definitions by display name.
+        ids_to_remove = []
+        try:
+            for cmd_def in cmd_defs:
+                try:
+                    if str(cmd_def.name) == 'Output to Citizen':
+                        ids_to_remove.append(str(cmd_def.id))
+                except:
+                    pass
+        except:
+            pass
+
+        for cmd_id in ids_to_remove:
+            try:
+                cmd_def = cmd_defs.itemById(cmd_id)
+                if cmd_def:
+                    cmd_def.deleteMe()
+            except:
+                pass
+    except:
+        pass
+
+def has_citizen_button_or_command(ui):
+    try:
+        cmd_defs = ui.commandDefinitions
+        if cmd_defs and cmd_defs.itemById('selectCitizenPost'):
+            return True
+    except:
+        pass
+
+    try:
+        for panel in ui.allToolbarPanels:
+            try:
+                for control in panel.controls:
+                    try:
+                        cmd_def = control.commandDefinition
+                        if cmd_def and str(cmd_def.id) in ['selectCitizenPost', 'citizenPostCommand']:
+                            return True
+                        if cmd_def and str(cmd_def.name) == 'Output to Citizen':
+                            return True
+                    except:
+                        pass
+            except:
+                pass
+    except:
+        pass
+
+    return False
+
+def show_citizen_palette(ui):
+    global palette_html_handler_registered
+    # Get the HTML file path - use the citizen_selector.html in root folder
+    html_path = 'citizen_selector.html'
+    full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
+    if not os.path.exists(full_path):
+        html_path = 'resources/samplePage_fixed.html'
+        full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
+        if not os.path.exists(full_path):
+            html_path = 'resources/samplePage.html'
+            full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
+            if not os.path.exists(full_path):
+                ui.messageBox(f'HTML file not found: {full_path}', 'Error')
+                return
+
+    file_url = 'file:///' + full_path.replace('\\', '/')
+    alt_url = full_path.replace('\\', '/')
+
+    palette = ui.palettes.itemById('citizenPalette')
+    if not palette:
+        try:
+            palette = ui.palettes.add(
+                'citizenPalette',
+                'Citizen Machine Selector',
+                alt_url,
+                True,
+                True,
+                True
+            )
+        except Exception:
+            try:
+                palette = ui.palettes.add(
+                    'citizenPalette',
+                    'Citizen Machine Selector',
+                    file_url,
+                    True,
+                    True,
+                    True
+                )
+            except Exception as e2:
+                ui.messageBox(f"Error creating palette: {str(e2)}")
+                return
+    else:
+        palette.isVisible = True
+
+    palette.dockingState = adsk.core.PaletteDockingStates.PaletteDockStateFloating
+
+    # Register HTML handler only once per add-in session.
+    if not palette_html_handler_registered:
+        html_handler = HTMLPaletteIncomingHandler()
+        try:
+            palette.incomingFromHTML.add(html_handler)
+        except Exception as e:
+            ui.messageBox(f"Error registering handler: {str(e)}")
+            return
+
+        handlers.append(html_handler)
+        palette_html_handler_registered = True
+
+    try:
+        palette.dockingState = adsk.core.PaletteDockingStates.PaletteDockStateFloating
+        palette.setSize(574, 890)
+        center_palette_on_screen(palette, 574, 890)
+    except Exception:
+        pass
+
+    palette.isVisible = True
+    send_machine_config_to_palette(ui)
+
+def startApp(context):
+    global posts_fldr, output_fldr, addon_initialized, palette_html_handler_registered, startup_invocation_count
+
+    startup_invocation_count += 1
     ui = None
     try:
         app = adsk.core.Application.get()
@@ -58,6 +573,15 @@ def startApp(context):
         if sys.platform == 'darwin':
             ui.messageBox('Unfortunately the Citizen addin only works on Windows')
             return
+
+        # Fusion may invoke startup multiple times in quick succession when
+        # run-on-startup is enabled. Allow only the first invocation.
+        if should_skip_duplicate_startup():
+            print(f"Citizen: Skipped duplicate startup invocation #{startup_invocation_count}")
+            return
+
+        # Always run cleanup/rebuild on startup to force UI convergence to one icon.
+        addon_initialized = True
         
         # Initialize posts folder
         posts_fldr = os.path.join(os.path.dirname(__file__), 'posts')
@@ -81,47 +605,71 @@ def startApp(context):
         if not os.path.exists(output_fldr):
             raise Exception(f"Could not create output folder: {output_fldr}")
         
-        # Clean up any existing commands first
-        endApp(context)
-        
-        # Small delay to ensure cleanup is complete
-        time.sleep(0.5)
+        # Always clean up old controls/definitions before creating the single fresh button.
+        try:
+            remove_citizen_toolbar_controls(ui)
+            remove_citizen_command_definitions(ui)
+            handlers.clear()
+            palette_html_handler_registered = False
+        except:
+            pass
+
+        # Small delay to ensure cleanup is complete.
+        time.sleep(0.2)
+
+        # Remove previously created duplicated controls from earlier versions.
+        remove_citizen_toolbar_controls(ui)
+        remove_citizen_command_definitions(ui)
 
         cmdDefs = ui.commandDefinitions
         if not cmdDefs:
             raise Exception("Could not access command definitions")
-            
-        # Get CAM Action Panel
-        CAMActionPan = ui.allToolbarPanels.itemById('CAMActionPanel')
-        if not CAMActionPan:
-            raise Exception("Could not access CAM Action Panel")
-        
-        # Check if command already exists and delete it
-        try:
-            existing_cmd = ui.commandDefinitions.itemById('citizenPostCommand')
-            if existing_cmd:
-                existing_cmd.deleteMe()
-                time.sleep(0.1)  # Small delay after deletion
-        except:
-            pass
-            
-        # Command Definition - use a simple, consistent ID
-        selectCitizenPostcmdDef = ui.commandDefinitions.addButtonDefinition('citizenPostCommand','Output to Citizen','Output to Citizen Alkart Wizard','resources')
-        if not selectCitizenPostcmdDef:
-            raise Exception("Could not create command definition")
 
-        # Add the command to the toolbar
-        try:
-            CAMActionPan.controls.addCommand(selectCitizenPostcmdDef, '', True)
-        except Exception as e:
-            raise Exception(f"Failed to add command to toolbar: {str(e)}")
+        selectCitizenPostcmdDef = cmdDefs.addButtonDefinition(
+            'citizenPostProcessorV2',
+            'Output to Citizen',
+            'Output to Citizen Alkart Wizard',
+            get_resources_path()
+        )
+
         onCommandCreated = selectCitizenPostCommandCreatedHandler()
         selectCitizenPostcmdDef.commandCreated.add(onCommandCreated)
         handlers.append(onCommandCreated)
 
+        try:
+            button_panel = ui.allToolbarPanels.itemById('CAMActionPanel')
+            if not button_panel:
+                button_panel = ui.allToolbarPanels.itemById('CAMAddinsPanel')
+
+            if button_panel:
+                control = button_panel.controls.itemById('citizenPostProcessorV2Control')
+                if not control:
+                    control = button_panel.controls.addCommand(
+                        selectCitizenPostcmdDef,
+                        'citizenPostProcessorV2Control',
+                        True
+                    )
+                if control:
+                    control.isVisible = True
+                    control.isPromoted = False
+                    try:
+                        control.isPromotedByDefault = False
+                    except:
+                        pass
+            else:
+                ui.messageBox(
+                    "Citizen button could not be added: Manufacturing panel not found.",
+                    "Citizen Button Placement"
+                )
+        except Exception as e:
+            print(f"Toolbar button not added: {str(e)}")
+
+        addon_initialized = True
+
         # Add-in loaded successfully
 
     except Exception as e:
+        addon_initialized = False
         import traceback
         error_details = traceback.format_exc()
         if ui:
@@ -131,18 +679,11 @@ def startApp(context):
             print(f"Details: {error_details}")
 
 def endApp(context):
+    global palette_html_handler_registered, last_submit_payload, last_submit_time, post_request_in_progress, last_post_request_time, last_export_message_time, addon_initialized, startup_guard_pid, startup_invocation_count
     ui = None
     try:
         app = adsk.core.Application.get()
         ui = app.userInterface
-
-        # Delete any existing command definitions
-        try:
-            existing_cmd = ui.commandDefinitions.itemById('citizenPostCommand')
-            if existing_cmd:
-                existing_cmd.deleteMe()
-        except:
-            pass
 
         # Also try to clean up any palette that might exist
         try:
@@ -152,9 +693,33 @@ def endApp(context):
         except:
             pass
 
+        # Also remove the toolbar control so startup can re-add it cleanly
+        remove_citizen_toolbar_controls(ui)
+        remove_citizen_command_definitions(ui)
+
         # Clear handlers list
         global handlers
         handlers.clear()
+        palette_html_handler_registered = False
+        last_submit_payload = None
+        last_submit_time = 0.0
+        post_request_in_progress = False
+        last_post_request_time = 0.0
+        last_export_message_time = 0.0
+        addon_initialized = False
+        startup_guard_pid = None
+        startup_invocation_count = 0
+
+        # Clear startup lock for this process.
+        try:
+            lock_path = os.path.join(tempfile.gettempdir(), 'citizen_addin_startup.lock')
+            if os.path.exists(lock_path):
+                with open(lock_path, 'r', encoding='ascii') as f:
+                    lock_pid = f.read().strip()
+                if lock_pid == str(os.getpid()):
+                    os.remove(lock_path)
+        except:
+            pass
 
     except Exception as err:
         # Don't show error messages during cleanup - just log them
@@ -170,79 +735,7 @@ class selectCitizenPostCommandCreatedHandler(adsk.core.CommandCreatedEventHandle
         try:
             app = adsk.core.Application.get()
             ui = app.userInterface
-            
-            # Get the HTML file path - use the citizen_selector.html in root folder
-            html_path = 'citizen_selector.html'
-            full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
-            if not os.path.exists(full_path):
-                html_path = 'resources/samplePage_fixed.html'
-                full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
-                if not os.path.exists(full_path):
-                    html_path = 'resources/samplePage.html'
-                    full_path = os.path.abspath(os.path.join(os.path.dirname(__file__), html_path))
-                    if not os.path.exists(full_path):
-                        ui.messageBox(f'HTML file not found: {full_path}', 'Error')
-                        return
-
-            # Try different URL formats
-            file_url = 'file:///' + full_path.replace('\\', '/')
-            alt_url = full_path.replace('\\', '/')
-            
-            # Check if palette exists, create if it doesn't
-            palette = ui.palettes.itemById('citizenPalette')
-            if not palette:
-                try:
-                    # Try with alternative URL format first
-                    palette = ui.palettes.add(
-                        'citizenPalette',
-                        'Citizen Machine Selector',
-                        alt_url,
-                        True,  # isVisible
-                        True,  # showCloseButton
-                        True   # isResizable
-                    )
-                except Exception as e:
-                    try:
-                        # Try with file:/// format
-                        palette = ui.palettes.add(
-                            'citizenPalette',
-                            'Citizen Machine Selector',
-                            file_url,
-                            True,  # isVisible
-                            True,  # showCloseButton
-                            True   # isResizable
-                        )
-                    except Exception as e2:
-                        ui.messageBox(f"Error creating palette: {str(e2)}")
-                        return
-            else:
-                # Palette already exists, just make sure it's visible
-                palette.isVisible = True
-
-            palette.dockingState = adsk.core.PaletteDockingStates.PaletteDockStateFloating
-            
-            # Create and add the HTML handler
-            html_handler = HTMLPaletteIncomingHandler()
-            
-            # Register the event handler
-            try:
-                palette.incomingFromHTML.add(html_handler)
-            except Exception as e:
-                ui.messageBox(f"Error registering handler: {str(e)}")
-                return
-            
-            handlers.append(html_handler)
-            
-            # Show the palette
-            palette.isVisible = True
-            
-            # Position and size the palette
-            try:
-                palette.dockingState = adsk.core.PaletteDockingStates.PaletteDockStateFloating
-                palette.setPosition(100, 100)
-                palette.setSize(574, 890)
-            except Exception as e:
-                pass
+            show_citizen_palette(ui)
                 
         except Exception as err:
             if ui:
@@ -303,6 +796,7 @@ def clearOutputFolder(folder):
             failedFiles += 1
 
 def postProcess(collection=None, programName='1001', cpsPath=None, outputFolder=None, viewResult=False, form_data=None):
+    global last_export_message_time
     app = adsk.core.Application.get()
     ui = app.userInterface
     doc = app.activeDocument
@@ -347,7 +841,7 @@ def postProcess(collection=None, programName='1001', cpsPath=None, outputFolder=
             postInput.postProperties = getPostProperties(form_data)
             postInput.isOpenInEditor = False
             cam.postProcess(collection, postInput)
-            time.sleep(3)
+            time.sleep(1)
             
             try:
                 # Check what files were actually generated in the output folder
@@ -366,7 +860,10 @@ def postProcess(collection=None, programName='1001', cpsPath=None, outputFolder=
                         break
 
                 if nc_file_found:
-                    ui.messageBox('Export successful')
+                    now = time.time()
+                    if (now - last_export_message_time) > 12:
+                        ui.messageBox('Export completed')
+                        last_export_message_time = now
                 else:
                     # Show what files were actually created
                     files_info = f"Files in output folder: {output_files}" if output_files else "No files in output folder"
@@ -398,6 +895,7 @@ class HTMLPaletteIncomingHandler(adsk.core.HTMLEventHandler):
 
     def notify(self, args):
         try:
+            global last_submit_payload, last_submit_time, post_request_in_progress, last_post_request_time
             app = adsk.core.Application.get()
             ui = app.userInterface
             
@@ -419,6 +917,21 @@ class HTMLPaletteIncomingHandler(adsk.core.HTMLEventHandler):
                     return
             else:
                 data_source = args.data
+
+            # Ignore immediate duplicate post submits from repeated HTML events/handlers.
+            now = time.time()
+            payload_key = data_source.strip() if data_source else ''
+            is_control_message = payload_key.startswith('{') and ('"action"' in payload_key)
+            if (not is_control_message) and payload_key and payload_key == last_submit_payload and (now - last_submit_time) < 8:
+                return
+            if payload_key and (not is_control_message):
+                last_submit_payload = payload_key
+                last_submit_time = now
+
+            # Some Fusion builds can pass control actions directly in args.action.
+            if data_source in ['requestMachineConfig', 'refreshMachineConfig']:
+                send_machine_config_to_palette(ui)
+                return
             
             # Handle different message formats
             if data_source.startswith('TRIGGER_PYTHON_PROCESSING:'):
@@ -452,6 +965,25 @@ class HTMLPaletteIncomingHandler(adsk.core.HTMLEventHandler):
                     data = json.loads(data_source)
                     print(f"Successfully parsed JSON: {data}")
                     
+                    action = data.get("action") if isinstance(data, dict) else None
+
+                    if action == 'requestMachineConfig':
+                        send_machine_config_to_palette(ui)
+                        return
+                    elif action == 'saveMachineSelection':
+                        all_machines = read_machine_definitions()
+                        save_visible_machine_values(data.get('visibleMachines', []), all_machines)
+                        send_machine_config_to_palette(ui)
+                        return
+                    elif action == 'saveMachineDefinitions':
+                        all_machines = save_machine_definitions(data.get('machines', []))
+                        save_visible_machine_values(data.get('visibleMachines', []), all_machines)
+                        send_machine_config_to_palette(ui)
+                        return
+                    elif action == 'refreshMachineConfig':
+                        send_machine_config_to_palette(ui)
+                        return
+
                     # Check if it's the new format (direct form data)
                     if "selectedImage" in data:
                         selected_machine = data.get("selectedImage")
@@ -467,8 +999,9 @@ class HTMLPaletteIncomingHandler(adsk.core.HTMLEventHandler):
                     print(f"Data that failed to parse: {data_source}")
                     return
 
+            # Ignore non-post UI messages that don't include a machine selection.
+            # The HTML form already validates selection on actual Post clicks.
             if not selected_machine:
-                ui.messageBox("No machine selected.")
                 return
 
             # Ensure post lists are populated
@@ -560,16 +1093,28 @@ class HTMLPaletteIncomingHandler(adsk.core.HTMLEventHandler):
                 return
 
             if selected_post:
-                postProcess(
-                    collection=operationCollection,
-                    cpsPath=os.path.join(posts_fldr, selected_post),
-                    outputFolder=output_fldr,
-                    viewResult=True,
-                    form_data=form
-                )
-                palette = ui.palettes.itemById('citizenPalette')
-                if palette:
-                    palette.isVisible = False
+                now = time.time()
+                # Hard guard against duplicate submit events.
+                if post_request_in_progress:
+                    return
+                if (now - last_post_request_time) < 12:
+                    return
+
+                post_request_in_progress = True
+                last_post_request_time = now
+                try:
+                    postProcess(
+                        collection=operationCollection,
+                        cpsPath=os.path.join(posts_fldr, selected_post),
+                        outputFolder=output_fldr,
+                        viewResult=True,
+                        form_data=form
+                    )
+                    palette = ui.palettes.itemById('citizenPalette')
+                    if palette:
+                        palette.isVisible = False
+                finally:
+                    post_request_in_progress = False
             else:
                 ui.messageBox("Post processor not selected.")
         except Exception as e:

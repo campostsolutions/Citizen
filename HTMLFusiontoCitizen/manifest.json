@@ -4,7 +4,7 @@
     "id": "CitizenPostAddin",
     "name": "Citizen Post Processor",
     "description": "Add-in to post-process CAM setups using Citizen post processors with HTML form integration.",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "author": "Andy Millard",
     "runOnStartup": true,
     "main": "main.py"

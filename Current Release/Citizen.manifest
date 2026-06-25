@@ -7,7 +7,7 @@
 		"":	""
 	},
 	"version":	"2.0.0",
-	"runOnStartup":	true,
+	"runOnStartup":	false,
 	"supportedOS":	"windows",
 	"editEnabled":	false
 }

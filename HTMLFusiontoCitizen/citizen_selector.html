@@ -1,391 +1,1044 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Citizen Machine Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 5px;
+            background: #f5f7fa;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Citizen Machine Selector</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; padding: 5px; background: #f5f7fa; margin: 0; height: 100vh; overflow: hidden; }
-                        .container { max-width: 100%; margin: 0 auto; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); height: calc(100vh - 10px); overflow: hidden; display: flex; flex-direction: column; }
-                        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-shrink: 0; }
-                        .gear-button { 
-                            background: transparent; 
-                            color: #4a90e2; 
-                            border: none; 
-                            font-size: 14px; 
-                            padding: 5px 8px; 
-                            border-radius: 50%; 
-                            cursor: pointer; 
-                            box-shadow: none;
-                        }
-                        .gear-button:hover { background: #f0f0f0; }
-                        .tabs { display: flex; gap: 6px; border-bottom: 2px solid #4a90e2; margin-bottom: 10px; flex-shrink: 0; }
-                        .tab { background: none; border: none; padding: 6px 12px; cursor: pointer; font-size: 12px; }
-                        .tab.active { color: #4a90e2; border-bottom: 3px solid #4a90e2; }
-                        .tabcontent { display: none; }
-                        .tabcontent.active { display: block; }
-                        .machine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 6px; margin: 8px 0; flex: 1; overflow-y: auto; max-height: 300px; }
-                        .machine-btn { padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 10px; }
-                        .machine-btn:hover { background: #357abd; }
-                        .machine-btn.selected { background: #357abd; border: 2px solid #2c5aa0; }
-                        .form-section { margin: 8px 0; padding: 6px; border: 1px solid #ddd; border-radius: 4px; flex-shrink: 0; }
-                        .form-row { margin: 3px 0; }
-                        .form-row label { display: block; margin-bottom: 1px; font-weight: bold; font-size: 11px; }
-                        .submit-btn { background: #4a90e2; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; flex-shrink: 0; }
-                        .submit-btn:hover { background: #357abd; }
-                        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
-                        h1 { font-size: 18px; margin: 0; }
-                        h3 { font-size: 13px; margin: 6px 0; }
-                        input[type="number"] { width: 80px; font-size: 11px; }
-                        input[type="checkbox"], input[type="radio"] { margin-right: 4px; }
-                    </style>
-                </head>
-                <body>
-                    <div class="container">
-                        <div class="header">
-                            <h1>Citizen Machine Selector</h1>
-                            <button class="gear-button" onclick="refreshMachines()" title="Refresh Machine List">⚙️</button>
-                        </div>
-                        
-                        <!-- Tabs -->
-                        <div class="tabs" id="tabsContainer">
-                            <!-- Tabs will be generated here -->
-                        </div>
-                        
-                        <!-- Tab Contents -->
-                        <div id="tabContents">
-                            <!-- Tab contents will be generated here -->
-                        </div>
-                        
-                        <!-- Form -->
-                        <form id="machineForm">
-                            <input type="hidden" id="selectedImage" name="selectedImage" value="">
-                            
-                            <div class="form-section">
-                                <h3>Output Units</h3>
-                                <div class="form-row">
-                                    <label><input type="radio" name="outputUnits" value="mm" checked> MM</label>
-                                    <label><input type="radio" name="outputUnits" value="in"> IN</label>
-                                </div>
-                            </div>
-                            
-                            <div class="form-section" id="postPropertiesSection" style="display: none;">
-                                <h3>Post Properties</h3>
-                                
-                                <!-- Citizen-specific options -->
-                                <div id="citizenOptions" style="display: none;">
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="useSequence"> Use sequence numbers</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="optionalStop" checked> Optional stop</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="parametricFeed"> Parametric Feed</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="g50Gang"> G50 on Gang Driven</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="increaseBStroke"> Increase B-axis stroke</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Sub Spindle Phase Angle: <input type="number" name="subPhaseAngle" step="0.01" placeholder="e.g. 45.0"></label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label>
-                                    </div>
-                                </div>
-                                
-                                <!-- Miyano-specific options -->
-                                <div id="miyanoOptions" style="display: none;">
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="useSequence"> Use sequence numbers</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="optionalStop" checked> Optional stop</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="parametricFeed"> Parametric Feed</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label>
-                                    </div>
-                                    <div class="form-row">
-                                        <label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button type="submit" class="submit-btn" id="submitBtn">Post</button>
-                        </form>
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: calc(100vh - 10px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+        }
+
+        .gear-button {
+            background: transparent;
+            color: #4a90e2;
+            border: none;
+            font-size: 18px;
+            line-height: 1;
+            padding: 4px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .gear-button:hover {
+            background: #f0f0f0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            border-bottom: 2px solid #4a90e2;
+            margin-bottom: 10px;
+            flex-shrink: 0;
+            overflow-x: auto;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            color: #4a90e2;
+            border-bottom: 3px solid #4a90e2;
+        }
+
+        .tabcontent {
+            display: none;
+        }
+
+        .tabcontent.active {
+            display: block;
+        }
+
+        .machine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+            gap: 8px;
+            margin: 8px 0;
+            flex: 1;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .machine-card {
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-align: center;
+            min-height: 120px;
+        }
+
+        .machine-card:hover {
+            border-color: #9ec2ef;
+        }
+
+        .machine-card.selected {
+            border-color: #357abd;
+            box-shadow: 0 0 0 1px #357abd;
+        }
+
+        .machine-image {
+            width: 90px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 4px;
+            background: #e9eef5;
+        }
+
+        .machine-label {
+            font-size: 11px;
+            color: #1f2937;
+            line-height: 1.2;
+        }
+
+        .empty-state {
+            padding: 12px;
+            border: 1px dashed #b7c5d8;
+            border-radius: 8px;
+            background: #f8fbff;
+            color: #4b5563;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .form-section {
+            margin: 8px 0;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .form-row {
+            margin: 3px 0;
+        }
+
+        .form-row label {
+            display: block;
+            margin-bottom: 1px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .submit-btn {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .submit-btn:hover {
+            background: #357abd;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 13px;
+            margin: 6px 0;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            font-size: 11px;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 4px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 24, 39, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-panel {
+            width: min(860px, 96vw);
+            max-height: 90vh;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .modal-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-tab {
+            border: 1px solid #c6d1df;
+            background: #f8fafc;
+            color: #1f2937;
+            border-radius: 5px;
+            padding: 4px 10px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .modal-tab.active {
+            background: #4a90e2;
+            color: #fff;
+            border-color: #4a90e2;
+        }
+
+        .modal-body {
+            padding: 10px 14px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-section {
+            display: none;
+        }
+
+        .modal-section.active {
+            display: block;
+        }
+
+        .settings-toolbar {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .small-btn {
+            border: 1px solid #c6d1df;
+            background: #f8fafc;
+            color: #1f2937;
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .small-btn:hover {
+            background: #eef3f9;
+        }
+
+        .series-group {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+
+        .series-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #1f2937;
+        }
+
+        .settings-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 12px;
+            padding: 3px 0;
+        }
+
+        .manage-grid {
+            display: grid;
+            gap: 8px;
+        }
+
+        .manage-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr 1.8fr auto;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .manage-row input,
+        .manage-row select {
+            width: 100%;
+            font-size: 11px;
+            padding: 4px 6px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background: #fff;
+        }
+
+        .manage-row-header {
+            font-size: 11px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .manage-empty {
+            font-size: 12px;
+            color: #6b7280;
+            border: 1px dashed #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .delete-btn {
+            border: 1px solid #ef4444;
+            background: #fff5f5;
+            color: #b91c1c;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #fee2e2;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .modal-footer .small-btn,
+        .modal-footer .submit-btn {
+            margin-top: 0;
+            min-width: 88px;
+            height: 30px;
+            padding: 0 12px;
+            font-size: 12px;
+            line-height: 1;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Citizen Machine Selector</h1>
+            <button class="gear-button" onclick="openSettingsModal()" title="Machine Settings">&#9881;</button>
+        </div>
+
+        <div id="machineEmptyState" class="empty-state" style="display: none;">
+            No machines are currently visible. Click the gear icon and select machines to display.
+        </div>
+
+        <div class="tabs" id="tabsContainer"></div>
+        <div id="tabContents"></div>
+
+        <form id="machineForm">
+            <input type="hidden" id="selectedImage" name="selectedImage" value="">
+
+            <div class="form-section">
+                <h3>Output Units</h3>
+                <div class="form-row">
+                    <label><input type="radio" name="outputUnits" value="mm" checked> MM</label>
+                    <label><input type="radio" name="outputUnits" value="in"> IN</label>
+                </div>
+            </div>
+
+            <div class="form-section" id="postPropertiesSection" style="display: none;">
+                <h3>Post Properties</h3>
+
+                <div id="citizenOptions" style="display: none;">
+                    <div class="form-row"><label><input type="checkbox" name="useSequence"> Use sequence numbers</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="optionalStop" checked> Optional stop</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="parametricFeed"> Parametric Feed</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="g50Gang"> G50 on Gang Driven</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="increaseBStroke"> Increase B-axis stroke</label></div>
+                    <div class="form-row"><label>Sub Spindle Phase Angle: <input type="number" name="subPhaseAngle" step="0.01" placeholder="e.g. 45.0"></label></div>
+                    <div class="form-row"><label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label></div>
+                    <div class="form-row"><label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label></div>
+                    <div class="form-row"><label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label></div>
+                </div>
+
+                <div id="miyanoOptions" style="display: none;">
+                    <div class="form-row"><label><input type="checkbox" name="useSequence"> Use sequence numbers</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="outputSubprogs"> Output Code as Sub Programs</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="optionalStop" checked> Optional stop</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="radiusArcs" checked> Radius Arcs</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="parametricFeed"> Parametric Feed</label></div>
+                    <div class="form-row"><label><input type="checkbox" name="leaveSpindles" checked> Leave Spindles Running</label></div>
+                    <div class="form-row"><label>Start sequence number: <input type="number" name="startSeqNum" step="1" placeholder="e.g. 10" value="1"></label></div>
+                    <div class="form-row"><label>Sequence number increment: <input type="number" name="seqIncrement" step="1" placeholder="e.g. 1" value="1"></label></div>
+                    <div class="form-row"><label>Max spindle speed: <input type="number" name="maxSpindleSpeed" step="1" placeholder="e.g. 5000" value="5000"></label></div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Post</button>
+        </form>
+    </div>
+
+    <div id="settingsModal" class="modal" role="dialog" aria-modal="true" aria-label="Machine Settings">
+        <div class="modal-panel">
+            <div class="modal-header">
+                <span>Machine Settings</span>
+                <button class="small-btn" type="button" onclick="closeSettingsModal()">Close</button>
+            </div>
+
+            <div class="modal-tabs">
+                <button id="visibilityTabBtn" class="modal-tab active" type="button" onclick="showModalTab('visibility')">Visibility</button>
+                <button id="manageTabBtn" class="modal-tab" type="button" onclick="showModalTab('manage')">Manage Machines</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="visibilitySection" class="modal-section active">
+                    <div class="settings-toolbar">
+                        <button class="small-btn" type="button" onclick="setAllVisibility(true)">Select All</button>
+                        <button class="small-btn" type="button" onclick="setAllVisibility(false)">Clear All</button>
                     </div>
-                    
-                    <script>
-                        // Machine data embedded from Python
-                        const machineData = [{"series": "L10Series", "label": "L12-VII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L12.jpg", "value": "L12-VII"}, {"series": "L20Series", "label": "L220-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L220-XII"}, {"series": "L20Series", "label": "L32-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg", "value": "L32-VIII"}, {"series": "L20Series", "label": "L32-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L32-XII.jpg", "value": "L32-X"}, {"series": "L20Series", "label": "L32-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L20X.jpg", "value": "L32-XII"}, {"series": "L20Series", "label": "L212-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L12X.jpg", "value": "L212-X"}, {"series": "L20Series", "label": "L220-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220-VIII.jpg", "value": "L220-VIII"}, {"series": "L300Series", "label": "L320-XII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-XII"}, {"series": "L300Series", "label": "L320-XIIB5", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-XIIB5"}, {"series": "L300Series", "label": "L320-VIII", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-VIII"}, {"series": "L300Series", "label": "L320-X", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/L220.jpg", "value": "L320-X"}, {"series": "MSeries", "label": "M316 III", "imagePath": "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M232-III.jpg", "value": "M316"}, {"series": "MSeries", "label": "M232 III", "imagePath": "C:\\Program Files (x86)\\Alkart CNC Wizard\\icons\\M232-III.jpg", "value": "M232III"}, {"series": "Miyano", "label": "BNE MYY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/BNE MYY.jpg", "value": "BNE"}, {"series": "Miyano", "label": "ABX SYY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/ABX-SYY.jpg", "value": "ABXSYY"}, {"series": "Miyano", "label": "BNA GTY", "imagePath": "C:/Program Files (x86)/Alkart CNC Wizard/icons/BNA GTY.jpg", "value": "BNAGTY"}];
-                        
-                        // Function to build tabs and machine grids
-                        function buildMachineInterface() {
-                            const tabsContainer = document.getElementById('tabsContainer');
-                            const tabContents = document.getElementById('tabContents');
-                            
-                            if (!tabsContainer || !tabContents) {
-                                return;
-                            }
-                            
-                            // Clear existing content
-                            tabsContainer.innerHTML = '';
-                            tabContents.innerHTML = '';
-                            
-                            // Group machines by series
-                            const seriesGroups = {};
-                            machineData.forEach(machine => {
-                                if (!seriesGroups[machine.series]) {
-                                    seriesGroups[machine.series] = [];
-                                }
-                                seriesGroups[machine.series].push(machine);
-                            });
-                            
-                            // Create tabs and content
-                            let firstTab = true;
-                            Object.keys(seriesGroups).forEach(seriesName => {
-                                // Create tab button
-                                const tabButton = document.createElement('button');
-                                tabButton.className = 'tab' + (firstTab ? ' active' : '');
-                                tabButton.textContent = seriesName.replace('Series', ' Series');
-                                tabButton.onclick = (e) => showTab(seriesName, e);
-                                tabsContainer.appendChild(tabButton);
-                                
-                                // Create tab content
-                                const tabContent = document.createElement('div');
-                                tabContent.id = seriesName;
-                                tabContent.className = 'tabcontent' + (firstTab ? ' active' : '');
-                                
-                                const machineGrid = document.createElement('div');
-                                machineGrid.className = 'machine-grid';
-                                
-                                seriesGroups[seriesName].forEach(machine => {
-                                    const cell = document.createElement('td');
-                                    cell.style.cssText = 'flex: 0 0 120px; display: flex; flex-direction: column; align-items: center; background: white; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); padding: 8px; cursor: pointer; border: 2px solid transparent;';
-                                    
-                                    if (machine.imagePath && machine.imagePath.trim() !== '') {
-                                        // Try to use image
-                                        const img = document.createElement('img');
-                                        img.src = machine.imagePath.replace(/\\/g, '/');
-                                        img.alt = machine.label;
-                                        img.style.cssText = 'width: 80px; height: 60px; object-fit: cover; border-radius: 4px; cursor: pointer;';
-                                        img.dataset.value = machine.value;
-                                        img.dataset.tab = seriesName;
-                                        img.onclick = () => selectImage(img);
-                                        img.onerror = function() {
-                                            // Replace with button if image fails
-                                            const btn = document.createElement('button');
-                                            btn.textContent = machine.label;
-                                            btn.style.cssText = 'width: 100%; padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;';
-                                            btn.dataset.value = machine.value;
-                                            btn.dataset.tab = seriesName;
-                                            btn.onclick = () => selectMachine(btn);
-                                            cell.innerHTML = '';
-                                            cell.appendChild(btn);
-                                        };
-                                        
-                                        const cap = document.createElement('div');
-                                        cap.textContent = machine.label;
-                                        cap.style.cssText = 'margin-top: 4px; font-size: 11px; text-align: center;';
-                                        cell.appendChild(img);
-                                        cell.appendChild(cap);
-                                    } else {
-                                        // Use button if no image path
-                                        const btn = document.createElement('button');
-                                        btn.textContent = machine.label;
-                                        btn.style.cssText = 'width: 100%; padding: 8px; background: #4a90e2; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;';
-                                        btn.dataset.value = machine.value;
-                                        btn.dataset.tab = seriesName;
-                                        btn.onclick = () => selectMachine(btn);
-                                        cell.appendChild(btn);
-                                    }
-                                    
-                                    machineGrid.appendChild(cell);
-                                });
-                                
-                                tabContent.appendChild(machineGrid);
-                                tabContents.appendChild(tabContent);
-                                
-                                firstTab = false;
-                            });
-                        }
-                        
-                        // Function to show tab
-                        function showTab(tabName, event) {
-                            // Hide all tab contents
-                            const tabContents = document.querySelectorAll('.tabcontent');
-                            tabContents.forEach(content => content.classList.remove('active'));
-                            
-                            // Remove active class from all tabs
-                            const tabs = document.querySelectorAll('.tab');
-                            tabs.forEach(tab => tab.classList.remove('active'));
-                            
-                            // Show selected tab content
-                            const selectedTab = document.getElementById(tabName);
-                            if (selectedTab) selectedTab.classList.add('active');
-                            
-                            // Add active class to clicked tab
-                            if (event) event.target.classList.add('active');
-                            
-                            // Clear machine selection when changing tabs
-                            clearSelection();
-                        }
-                        
-                        // Function to select machine
-                        function selectMachine(btn) {
-                            clearSelection();
-                            btn.style.background = '#357abd';
-                            document.getElementById('selectedImage').value = btn.dataset.value;
-                            showPostProperties();
-                            // Re-enable button when machine is selected (in case it was stuck)
-                            enablePostButton();
-                        }
-                        
-                        // Function to select image
-                        function selectImage(img) {
-                            clearSelection();
-                            img.style.border = '2px solid #357abd';
-                            document.getElementById('selectedImage').value = img.dataset.value;
-                            showPostProperties();
-                            // Re-enable button when machine is selected (in case it was stuck)
-                            enablePostButton();
-                        }
-                        
-                        // Function to show post properties
-                        function showPostProperties() {
-                            const postSection = document.getElementById('postPropertiesSection');
-                            const citizenOptions = document.getElementById('citizenOptions');
-                            const miyanoOptions = document.getElementById('miyanoOptions');
-                            
-                            if (postSection) {
-                                postSection.style.display = 'block';
-                                
-                                // Determine machine type and show appropriate options
-                                const selectedMachine = document.getElementById('selectedImage').value;
-                                if (selectedMachine) {
-                                    if (selectedMachine.includes('BNA') || selectedMachine.includes('BNE') || selectedMachine.includes('BNJ') || selectedMachine.includes('ABX')) {
-                                        // Miyano machine
-                                        if (citizenOptions) citizenOptions.style.display = 'none';
-                                        if (miyanoOptions) miyanoOptions.style.display = 'block';
-                                    } else {
-                                        // Citizen machine
-                                        if (citizenOptions) citizenOptions.style.display = 'block';
-                                        if (miyanoOptions) miyanoOptions.style.display = 'none';
-                                    }
-                                }
-                            }
-                        }
-                        
-                        // Function to clear selection
-                        function clearSelection() {
-                            document.querySelectorAll('td button').forEach(btn => btn.style.background = '#4a90e2');
-                            document.querySelectorAll('td img').forEach(img => img.style.border = 'none');
-                            document.getElementById('selectedImage').value = '';
-                            
-                            // Hide post properties when no machine is selected
-                            const postSection = document.getElementById('postPropertiesSection');
-                            if (postSection) {
-                                postSection.style.display = 'none';
-                            }
-                        }
-                        
-                        // Function to refresh machines (will reload the palette)
-                        function refreshMachines() {
-                            if (window.adsk) {
-                                window.adsk.fusionSendData(JSON.stringify({"action": "refresh"}));
-                            }
-                        }
-                        
-                        // Simple button control functions
-                        function disablePostButton() {
-                            const submitBtn = document.getElementById('submitBtn');
-                            if (submitBtn) {
-                                submitBtn.disabled = true;
-                                submitBtn.textContent = 'Processing...';
-                            }
-                        }
-                        
-                        function enablePostButton() {
-                            const submitBtn = document.getElementById('submitBtn');
-                            if (submitBtn) {
-                                submitBtn.disabled = false;
-                                submitBtn.textContent = 'Post';
-                            }
-                        }
-                        
-                        // Form submission
-                        document.getElementById('machineForm').addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            
-                            const selectedMachine = document.getElementById('selectedImage').value;
-                            if (!selectedMachine) {
-                                alert('Please select a machine before submitting.');
-                                return;
-                            }
-                            
-                            // Disable the button
-                            disablePostButton();
-                            
-                            // Collect form data
-                            const formData = new FormData(this);
-                            const formValues = {};
-                            
-                            for (let [key, value] of formData.entries()) {
-                                formValues[key] = value;
-                            }
-                            
-                            // Send data to Python backend
-                            if (window.adsk) {
-                                window.adsk.fusionSendData(JSON.stringify(formValues));
-                            } else {
-                                alert('Fusion 360 API not available.');
-                                enablePostButton();
-                            }
-                        });
-                        
+                    <div id="settingsList"></div>
+                </div>
 
-                        
-                        // Handle completion messages from Python - removed to prevent initialization issues
-                        
-                        // Initialize on page load
-                        document.addEventListener('DOMContentLoaded', function() {
-                            buildMachineInterface();
-                            // Ensure button is enabled when page loads
-                            enablePostButton();
-                        });
-                    </script>
-                </body>
-                </html>
-                
+                <div id="manageSection" class="modal-section">
+                    <div class="settings-toolbar">
+                        <button class="small-btn" type="button" onclick="addMachineRow()">Add Machine</button>
+                    </div>
+                    <div class="manage-row manage-row-header">
+                        <div>Series</div>
+                        <div>Machine Name</div>
+                        <div>Image Name</div>
+                        <div></div>
+                    </div>
+                    <div id="machineEditor" class="manage-grid"></div>
+                    <div id="machineEditorEmpty" class="manage-empty" style="display:none;">No machine rows. Click Add Machine.</div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="small-btn" type="button" onclick="closeSettingsModal()">Cancel</button>
+                <button class="submit-btn" type="button" onclick="saveSettings()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let machineData = [];
+        let visibleMachineValues = [];
+        let selectedMachineValue = '';
+        let settingsDraftValues = [];
+        let settingsMachineDraft = [];
+        let machineConfigRetryCount = 0;
+        let machineImageFiles = [];
+
+        function getMachineImageFileName(imagePath) {
+            const normalized = String(imagePath || '').replace(/\\/g, '/').trim();
+            if (!normalized) {
+                return '';
+            }
+            const parts = normalized.split('/');
+            return parts[parts.length - 1] || '';
+        }
+
+        function normalizeMachineImagePath(imagePath) {
+            const fileName = getMachineImageFileName(imagePath);
+            return fileName ? (`./machines/${fileName}`) : '';
+        }
+
+        function normalizePath(pathValue) {
+            return String(pathValue || '').replace(/\\/g, '/');
+        }
+
+        function getImageSrc(pathValue) {
+            const normalized = normalizePath(pathValue).trim();
+            if (!normalized) {
+                return '';
+            }
+
+            // Images are stored under resources/Machines in the add-in folder.
+            if (normalized.startsWith('./machines/')) {
+                return normalized.replace('./machines/', './resources/Machines/');
+            }
+            return normalized;
+        }
+
+        function groupBySeries(machines) {
+            const groups = {};
+            machines.forEach(machine => {
+                const key = machine.series || 'General';
+                if (!groups[key]) {
+                    groups[key] = [];
+                }
+                groups[key].push(machine);
+            });
+            return groups;
+        }
+
+        function getVisibleMachines() {
+            if (!machineData.length) {
+                return [];
+            }
+            if (!visibleMachineValues.length) {
+                return [];
+            }
+            const visibleSet = new Set(visibleMachineValues);
+            return machineData.filter(machine => visibleSet.has(machine.value));
+        }
+
+        function buildMachineInterface() {
+            const tabsContainer = document.getElementById('tabsContainer');
+            const tabContents = document.getElementById('tabContents');
+            const emptyState = document.getElementById('machineEmptyState');
+            const visibleMachines = getVisibleMachines();
+
+            tabsContainer.innerHTML = '';
+            tabContents.innerHTML = '';
+
+            if (!visibleMachines.length) {
+                emptyState.style.display = 'block';
+                clearSelection();
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            const seriesGroups = groupBySeries(visibleMachines);
+
+            let firstTab = true;
+            Object.keys(seriesGroups).forEach(seriesName => {
+                const tabButton = document.createElement('button');
+                tabButton.type = 'button';
+                tabButton.className = 'tab' + (firstTab ? ' active' : '');
+                tabButton.textContent = seriesName.replace('Series', ' Series');
+                tabButton.onclick = (event) => showTab(seriesName, event);
+                tabsContainer.appendChild(tabButton);
+
+                const tabContent = document.createElement('div');
+                tabContent.id = seriesName;
+                tabContent.className = 'tabcontent' + (firstTab ? ' active' : '');
+
+                const machineGrid = document.createElement('div');
+                machineGrid.className = 'machine-grid';
+
+                seriesGroups[seriesName].forEach(machine => {
+                    const card = document.createElement('button');
+                    card.type = 'button';
+                    card.className = 'machine-card';
+                    card.dataset.value = machine.value;
+
+                    const image = document.createElement('img');
+                    image.className = 'machine-image';
+                    image.alt = machine.label;
+                    image.src = getImageSrc(machine.imagePath);
+                    image.onerror = function onImageError() {
+                        image.style.display = 'none';
+                    };
+
+                    const label = document.createElement('div');
+                    label.className = 'machine-label';
+                    label.textContent = machine.label;
+
+                    card.appendChild(image);
+                    card.appendChild(label);
+                    card.onclick = () => selectMachine(machine.value);
+                    machineGrid.appendChild(card);
+                });
+
+                tabContent.appendChild(machineGrid);
+                tabContents.appendChild(tabContent);
+                firstTab = false;
+            });
+
+            if (selectedMachineValue) {
+                applySelectionVisual();
+            }
+        }
+
+        function showTab(tabName, event) {
+            document.querySelectorAll('.tabcontent').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        function selectMachine(machineValue) {
+            selectedMachineValue = machineValue;
+            document.getElementById('selectedImage').value = machineValue;
+            applySelectionVisual();
+            showPostProperties();
+            enablePostButton();
+        }
+
+        function applySelectionVisual() {
+            document.querySelectorAll('.machine-card').forEach(card => {
+                if (card.dataset.value === selectedMachineValue) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        }
+
+        function showPostProperties() {
+            const postSection = document.getElementById('postPropertiesSection');
+            const citizenOptions = document.getElementById('citizenOptions');
+            const miyanoOptions = document.getElementById('miyanoOptions');
+
+            if (!postSection) {
+                return;
+            }
+
+            const selectedMachine = document.getElementById('selectedImage').value;
+            if (!selectedMachine) {
+                postSection.style.display = 'none';
+                return;
+            }
+
+            postSection.style.display = 'block';
+
+            if (
+                selectedMachine.includes('BNA')
+                || selectedMachine.includes('BNE')
+                || selectedMachine.includes('BNJ')
+                || selectedMachine.includes('ABX')
+            ) {
+                citizenOptions.style.display = 'none';
+                miyanoOptions.style.display = 'block';
+            } else {
+                citizenOptions.style.display = 'block';
+                miyanoOptions.style.display = 'none';
+            }
+        }
+
+        function clearSelection() {
+            selectedMachineValue = '';
+            document.getElementById('selectedImage').value = '';
+            document.querySelectorAll('.machine-card').forEach(card => card.classList.remove('selected'));
+
+            const postSection = document.getElementById('postPropertiesSection');
+            if (postSection) {
+                postSection.style.display = 'none';
+            }
+        }
+
+        function disablePostButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing...';
+            }
+        }
+
+        function enablePostButton() {
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post';
+            }
+        }
+
+        function requestMachineConfig() {
+            if (window.adsk) {
+                window.adsk.fusionSendData(JSON.stringify({ action: 'requestMachineConfig' }));
+            }
+        }
+
+        function requestMachineConfigWithRetry() {
+            requestMachineConfig();
+            machineConfigRetryCount += 1;
+
+            if (machineData.length > 0 || machineConfigRetryCount >= 8) {
+                return;
+            }
+
+            setTimeout(requestMachineConfigWithRetry, 350);
+        }
+
+        function normalizeMachineEntry(machine) {
+            const label = String(machine.label || '').trim();
+            const entry = {
+                series: String(machine.series || '').trim() || 'General',
+                label: label,
+                value: label,
+                imagePath: normalizeMachineImagePath(machine.imagePath)
+            };
+            return entry;
+        }
+
+        function sanitizeMachineDraft(rows) {
+            const dedupe = new Set();
+            const sanitized = [];
+
+            rows.forEach(row => {
+                const entry = normalizeMachineEntry(row);
+                if (!entry.label || !entry.value) {
+                    return;
+                }
+                const dedupeKey = entry.value.toLowerCase();
+                if (dedupe.has(dedupeKey)) {
+                    return;
+                }
+                dedupe.add(dedupeKey);
+                sanitized.push(entry);
+            });
+
+            return sanitized;
+        }
+
+        function showModalTab(tabName) {
+            const visibilitySection = document.getElementById('visibilitySection');
+            const manageSection = document.getElementById('manageSection');
+            const visibilityTabBtn = document.getElementById('visibilityTabBtn');
+            const manageTabBtn = document.getElementById('manageTabBtn');
+
+            if (tabName === 'manage') {
+                visibilitySection.classList.remove('active');
+                manageSection.classList.add('active');
+                visibilityTabBtn.classList.remove('active');
+                manageTabBtn.classList.add('active');
+            } else {
+                manageSection.classList.remove('active');
+                visibilitySection.classList.add('active');
+                manageTabBtn.classList.remove('active');
+                visibilityTabBtn.classList.add('active');
+            }
+        }
+
+        function openSettingsModal() {
+            settingsDraftValues = [...visibleMachineValues];
+            settingsMachineDraft = machineData.map(machine => ({ ...machine }));
+            buildSettingsList();
+            buildMachineEditor();
+            showModalTab('visibility');
+            document.getElementById('settingsModal').classList.add('open');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').classList.remove('open');
+        }
+
+        function buildSettingsList() {
+            const settingsList = document.getElementById('settingsList');
+            const grouped = groupBySeries(settingsMachineDraft);
+            settingsList.innerHTML = '';
+
+            Object.keys(grouped).forEach(seriesName => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = 'series-group';
+
+                const title = document.createElement('div');
+                title.className = 'series-title';
+                title.textContent = seriesName.replace('Series', ' Series');
+                groupDiv.appendChild(title);
+
+                grouped[seriesName].forEach(machine => {
+                    const row = document.createElement('label');
+                    row.className = 'settings-item';
+
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.value = machine.value;
+                    checkbox.checked = settingsDraftValues.includes(machine.value);
+                    checkbox.onchange = () => {
+                        if (checkbox.checked) {
+                            if (!settingsDraftValues.includes(machine.value)) {
+                                settingsDraftValues.push(machine.value);
+                            }
+                        } else {
+                            settingsDraftValues = settingsDraftValues.filter(value => value !== machine.value);
+                        }
+                    };
+
+                    const text = document.createElement('span');
+                    text.textContent = machine.label;
+
+                    row.appendChild(checkbox);
+                    row.appendChild(text);
+                    groupDiv.appendChild(row);
+                });
+
+                settingsList.appendChild(groupDiv);
+            });
+        }
+
+        function addMachineRow() {
+            settingsMachineDraft.push({
+                series: 'General',
+                label: '',
+                imagePath: ''
+            });
+            buildMachineEditor();
+        }
+
+        function removeMachineRow(index) {
+            settingsMachineDraft.splice(index, 1);
+            buildMachineEditor();
+        }
+
+        function updateMachineDraft(index, field, value) {
+            if (!settingsMachineDraft[index]) {
+                return;
+            }
+            settingsMachineDraft[index][field] = value;
+        }
+
+        function buildMachineEditor() {
+            const editor = document.getElementById('machineEditor');
+            const empty = document.getElementById('machineEditorEmpty');
+            editor.innerHTML = '';
+
+            if (!settingsMachineDraft.length) {
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            settingsMachineDraft.forEach((machine, index) => {
+                const row = document.createElement('div');
+                row.className = 'manage-row';
+
+                const seriesInput = document.createElement('input');
+                seriesInput.value = machine.series || '';
+                seriesInput.placeholder = 'L20Series';
+                seriesInput.oninput = (e) => updateMachineDraft(index, 'series', e.target.value);
+
+                const labelInput = document.createElement('input');
+                labelInput.value = machine.label || '';
+                labelInput.placeholder = 'L220-XII';
+                labelInput.oninput = (e) => {
+                    updateMachineDraft(index, 'label', e.target.value);
+                    updateMachineDraft(index, 'value', e.target.value);
+                };
+
+                const imageSelect = document.createElement('select');
+
+                const emptyOption = document.createElement('option');
+                emptyOption.value = '';
+                emptyOption.textContent = '-- none --';
+                imageSelect.appendChild(emptyOption);
+
+                machineImageFiles.forEach(fileName => {
+                    const option = document.createElement('option');
+                    option.value = fileName;
+                    option.textContent = fileName;
+                    imageSelect.appendChild(option);
+                });
+
+                const currentImageFile = getMachineImageFileName(machine.imagePath);
+                if (currentImageFile && !machineImageFiles.includes(currentImageFile)) {
+                    const customOption = document.createElement('option');
+                    customOption.value = currentImageFile;
+                    customOption.textContent = currentImageFile;
+                    imageSelect.appendChild(customOption);
+                }
+
+                imageSelect.value = currentImageFile;
+                imageSelect.onchange = (e) => updateMachineDraft(index, 'imagePath', normalizeMachineImagePath(e.target.value));
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'delete-btn';
+                removeBtn.textContent = 'Remove';
+                removeBtn.onclick = () => removeMachineRow(index);
+
+                row.appendChild(seriesInput);
+                row.appendChild(labelInput);
+                row.appendChild(imageSelect);
+                row.appendChild(removeBtn);
+
+                editor.appendChild(row);
+            });
+        }
+
+        function setAllVisibility(isVisible) {
+            settingsDraftValues = isVisible
+                ? settingsMachineDraft.map(machine => machine.value)
+                : [];
+            buildSettingsList();
+        }
+
+        function saveSettings() {
+            const savedMachines = sanitizeMachineDraft(settingsMachineDraft);
+            const allowedValues = new Set(savedMachines.map(machine => machine.value));
+            const uniqueValues = [...new Set(settingsDraftValues)].filter(value => allowedValues.has(value));
+
+            machineData = savedMachines;
+            visibleMachineValues = uniqueValues.length ? uniqueValues : savedMachines.map(machine => machine.value);
+
+            buildMachineInterface();
+            closeSettingsModal();
+
+            if (window.adsk) {
+                window.adsk.fusionSendData(JSON.stringify({
+                    action: 'saveMachineDefinitions',
+                    machines: savedMachines,
+                    visibleMachines: visibleMachineValues
+                }));
+            }
+        }
+
+        function applyMachineConfig(payload) {
+            const machines = Array.isArray(payload.machines) ? payload.machines : [];
+            const visible = Array.isArray(payload.visibleMachines) ? payload.visibleMachines : [];
+            const images = Array.isArray(payload.imageFiles) ? payload.imageFiles : [];
+
+            machineData = sanitizeMachineDraft(machines);
+            machineImageFiles = images;
+
+            if (visible.length) {
+                const allowed = new Set(machineData.map(machine => machine.value));
+                visibleMachineValues = visible.filter(value => allowed.has(value));
+            } else {
+                visibleMachineValues = machineData.map(machine => machine.value);
+            }
+
+            if (selectedMachineValue && !visibleMachineValues.includes(selectedMachineValue)) {
+                clearSelection();
+            }
+
+            buildMachineInterface();
+        }
+
+        function handleFusionMessage(action, data) {
+            if (action === 'MACHINE_CONFIG') {
+                try {
+                    const payload = typeof data === 'string' ? JSON.parse(data) : data;
+                    applyMachineConfig(payload || {});
+                } catch (error) {
+                    console.error('Failed to parse machine config', error);
+                }
+                return;
+            }
+
+            if (action === 'REQUEST_FORM_DATA') {
+                const form = document.getElementById('machineForm');
+                if (!form || !window.adsk) {
+                    return;
+                }
+                const formData = new FormData(form);
+                const formValues = {};
+                for (const [key, value] of formData.entries()) {
+                    formValues[key] = value;
+                }
+                window.adsk.fusionSendData(JSON.stringify(formValues));
+            }
+        }
+
+        window.fusionJavaScriptHandler = {
+            handle: function(action, data) {
+                handleFusionMessage(action, data);
+            }
+        };
+
+        window.fusionJavaScriptHandlerLegacy = function(action, data) {
+            handleFusionMessage(action, data);
+        };
+
+        if (window.adsk && window.adsk.fusionJavaScriptHandler) {
+            window.adsk.fusionJavaScriptHandler = window.fusionJavaScriptHandler;
+        }
+
+        document.getElementById('machineForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedMachine = document.getElementById('selectedImage').value;
+            if (!selectedMachine) {
+                alert('Please select a machine before submitting.');
+                return;
+            }
+
+            disablePostButton();
+            const formData = new FormData(this);
+            const formValues = {};
+
+            for (const [key, value] of formData.entries()) {
+                formValues[key] = value;
+            }
+
+            if (window.adsk) {
+                window.adsk.fusionSendData(JSON.stringify(formValues));
+                enablePostButton();
+            } else {
+                alert('Fusion 360 API not available.');
+                enablePostButton();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            enablePostButton();
+            requestMachineConfigWithRetry();
+        });
+    </script>
+</body>
+</html>

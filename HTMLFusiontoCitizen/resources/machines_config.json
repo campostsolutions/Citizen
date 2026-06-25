@@ -1,0 +1,106 @@
+{
+  "machines": [
+    {
+      "series": "L10Series",
+      "label": "L12-VII",
+      "value": "L12-VII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L12.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L220-X",
+      "value": "L220-X",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L20X.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L220-XII",
+      "value": "L220-XII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\R07-VI.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L32-VIII",
+      "value": "L32-VIII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L32-XII.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L32-X",
+      "value": "L32-X",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L32-XII.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L32-XII",
+      "value": "L32-XII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L20X.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L212-X",
+      "value": "L212-X",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L12X.jpg"
+    },
+    {
+      "series": "L20Series",
+      "label": "L220-VIII",
+      "value": "L220-VIII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L220-VIII.jpg"
+    },
+    {
+      "series": "L300Series",
+      "label": "L320-XII",
+      "value": "L320-XII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L220.jpg"
+    },
+    {
+      "series": "L300Series",
+      "label": "L320-XIIB5",
+      "value": "L320-XIIB5",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L220.jpg"
+    },
+    {
+      "series": "L300Series",
+      "label": "L320-VIII",
+      "value": "L320-VIII",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L220.jpg"
+    },
+    {
+      "series": "L300Series",
+      "label": "L320-X",
+      "value": "L320-X",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\L220.jpg"
+    },
+    {
+      "series": "MSeries",
+      "label": "M316 III",
+      "value": "M316 III",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\M232-III.jpg"
+    },
+    {
+      "series": "MSeries",
+      "label": "M232 III",
+      "value": "M232 III",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\M232-III.jpg"
+    },
+    {
+      "series": "Miyano",
+      "label": "BNE MYY",
+      "value": "BNE MYY",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\BNE MYY.jpg"
+    },
+    {
+      "series": "Miyano",
+      "label": "ABX SYY",
+      "value": "ABX SYY",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\ABX-SYY.jpg"
+    },
+    {
+      "series": "Miyano",
+      "label": "BNA GTY",
+      "value": "BNA GTY",
+      "imagePath": "D:\\OneDrive - Cam Post Solutions Ltd\\Citizen\\HTMLFusiontoCitizen\\resources\\machines\\BNA GTY.jpg"
+    }
+  ]
+}

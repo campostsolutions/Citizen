@@ -1,7 +1,7 @@
 {
 	"autodeskProduct":	"Fusion360",
 	"type":	"addin",
-	"id":	"bd3f16d8-613e-4237-94e8-61ddba172bac",
+	"id":	"f2a879f0-6c0b-4f3f-8c93-3b41db8f6f2d",
 	"author":	"Citizen",
 	"description":	{
 		"":	"Citizen Post Processor with HTML Form Integration"
