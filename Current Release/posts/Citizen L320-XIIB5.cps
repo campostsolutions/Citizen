@@ -95,7 +95,7 @@ gangBaxisDriven = {
   spindleOff  : 82,
   safetyVal   : "X#100450",
   bAxisOffset : 15,
-  xScale      : 2,
+  xScale      : 4,
   yScale      : -2,
   zScale      : -1,
   zDir        : 1,

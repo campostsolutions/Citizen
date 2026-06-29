@@ -381,6 +381,47 @@
             line-height: 1;
             box-sizing: border-box;
         }
+
+        .manage-lock {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 24px 12px;
+            text-align: center;
+        }
+
+        .manage-lock-icon {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .manage-lock p {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .manage-lock-row {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .manage-lock-row input {
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 12px;
+            width: 140px;
+        }
+
+        .manage-lock-error {
+            font-size: 11px;
+            color: #ef4444;
+            min-height: 16px;
+        }
     </style>
 </head>
 <body>
@@ -452,7 +493,7 @@
 
             <div class="modal-tabs">
                 <button id="visibilityTabBtn" class="modal-tab active" type="button" onclick="showModalTab('visibility')">Visibility</button>
-                <button id="manageTabBtn" class="modal-tab" type="button" onclick="showModalTab('manage')">Manage Machines</button>
+                <button id="manageTabBtn" class="modal-tab" type="button" onclick="requestManageTab()">Manage Machines</button>
             </div>
 
             <div class="modal-body">
@@ -465,6 +506,16 @@
                 </div>
 
                 <div id="manageSection" class="modal-section">
+                    <div id="manageLock" class="manage-lock">
+                        <div class="manage-lock-icon">&#128274;</div>
+                        <p>Enter password to manage machines</p>
+                        <div class="manage-lock-row">
+                            <input type="password" id="managePwInput" placeholder="Password" onkeydown="if(event.key==='Enter')submitManagePassword()" />
+                            <button class="small-btn" type="button" onclick="submitManagePassword()">Unlock</button>
+                        </div>
+                        <div id="managePwError" class="manage-lock-error"></div>
+                    </div>
+                    <div id="manageContent" style="display:none;">
                     <div class="settings-toolbar">
                         <button class="small-btn" type="button" onclick="addMachineRow()">Add Machine</button>
                     </div>
@@ -476,6 +527,7 @@
                     </div>
                     <div id="machineEditor" class="manage-grid"></div>
                     <div id="machineEditorEmpty" class="manage-empty" style="display:none;">No machine rows. Click Add Machine.</div>
+                    </div>
                 </div>
             </div>
 
@@ -755,6 +807,8 @@
             return sanitized;
         }
 
+        let manageUnlocked = false;
+
         function showModalTab(tabName) {
             const visibilitySection = document.getElementById('visibilitySection');
             const manageSection = document.getElementById('manageSection');
@@ -766,11 +820,37 @@
                 manageSection.classList.add('active');
                 visibilityTabBtn.classList.remove('active');
                 manageTabBtn.classList.add('active');
+                document.getElementById('manageLock').style.display = manageUnlocked ? 'none' : 'flex';
+                document.getElementById('manageContent').style.display = manageUnlocked ? 'block' : 'none';
+                if (!manageUnlocked) {
+                    document.getElementById('managePwInput').value = '';
+                    document.getElementById('managePwError').textContent = '';
+                    setTimeout(() => document.getElementById('managePwInput').focus(), 50);
+                }
             } else {
                 manageSection.classList.remove('active');
                 visibilitySection.classList.add('active');
                 manageTabBtn.classList.remove('active');
                 visibilityTabBtn.classList.add('active');
+            }
+        }
+
+        function requestManageTab() {
+            showModalTab('manage');
+        }
+
+        function submitManagePassword() {
+            const input = document.getElementById('managePwInput');
+            const errorEl = document.getElementById('managePwError');
+            if (input.value === 'Citiz3n') {
+                manageUnlocked = true;
+                document.getElementById('manageLock').style.display = 'none';
+                document.getElementById('manageContent').style.display = 'block';
+                errorEl.textContent = '';
+            } else {
+                errorEl.textContent = 'Incorrect password.';
+                input.value = '';
+                input.focus();
             }
         }
 
@@ -785,6 +865,7 @@
 
         function closeSettingsModal() {
             document.getElementById('settingsModal').classList.remove('open');
+            manageUnlocked = false;
         }
 
         function buildSettingsList() {

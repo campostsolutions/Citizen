@@ -1,4 +1,4 @@
-/// <reference path="c:\Users\millara\.vscode\extensions\autodesk.hsm-post-processor-4.1.6\res\language files\globals.d.ts" />
+/// <reference path="c:\Users\CamPostSupport\.vscode\extensions\autodesk.hsm-post-processor-4.1.7\res\language files\globals.d.ts" />
 /**
   Copyright (C) 2012-2018 by Autodesk, Inc.
   All rights reserved.
@@ -846,7 +846,7 @@ var tapping = false;
 var ejectRoutine = false;
 var bestABCIndex = undefined;
 var headOffset = 0;
-var debugMode = false;
+var debugMode = true;
 var base64encoded = true;
 var previousABCyManual = undefined;
 var previousAngledManual;
