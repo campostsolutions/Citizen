@@ -1,4 +1,4 @@
-/// <reference path="c:\Users\millara\.vscode\extensions\autodesk.hsm-post-processor-4.1.6\res\language files\globals.d.ts" />
+/// <reference path="c:\Users\CamPostSupport\.vscode\extensions\autodesk.hsm-post-processor-4.1.7\res\language files\globals.d.ts" />
 /**
   Copyright (C) 2012-2018 by Autodesk, Inc.
   All rights reserved.

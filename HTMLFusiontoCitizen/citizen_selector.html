@@ -256,10 +256,12 @@
 
         .modal-body {
             padding: 10px 14px;
-            overflow-y: auto;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
         }
 
         .modal-section {
@@ -267,7 +269,9 @@
         }
 
         .modal-section.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .settings-toolbar {
@@ -275,6 +279,17 @@
             gap: 6px;
             flex-wrap: wrap;
             margin-bottom: 8px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #ffffff;
+            padding-bottom: 6px;
+        }
+
+        #settingsList {
+            overflow-y: auto;
+            min-height: 0;
+            flex: 1;
         }
 
         .small-btn {
@@ -491,11 +506,6 @@
                 <button class="small-btn" type="button" onclick="closeSettingsModal()">Close</button>
             </div>
 
-            <div class="modal-tabs">
-                <button id="visibilityTabBtn" class="modal-tab active" type="button" onclick="showModalTab('visibility')">Visibility</button>
-                <button id="manageTabBtn" class="modal-tab" type="button" onclick="requestManageTab()">Manage Machines</button>
-            </div>
-
             <div class="modal-body">
                 <div id="visibilitySection" class="modal-section active">
                     <div class="settings-toolbar">
@@ -503,31 +513,6 @@
                         <button class="small-btn" type="button" onclick="setAllVisibility(false)">Clear All</button>
                     </div>
                     <div id="settingsList"></div>
-                </div>
-
-                <div id="manageSection" class="modal-section">
-                    <div id="manageLock" class="manage-lock">
-                        <div class="manage-lock-icon">&#128274;</div>
-                        <p>Enter password to manage machines</p>
-                        <div class="manage-lock-row">
-                            <input type="password" id="managePwInput" placeholder="Password" onkeydown="if(event.key==='Enter')submitManagePassword()" />
-                            <button class="small-btn" type="button" onclick="submitManagePassword()">Unlock</button>
-                        </div>
-                        <div id="managePwError" class="manage-lock-error"></div>
-                    </div>
-                    <div id="manageContent" style="display:none;">
-                    <div class="settings-toolbar">
-                        <button class="small-btn" type="button" onclick="addMachineRow()">Add Machine</button>
-                    </div>
-                    <div class="manage-row manage-row-header">
-                        <div>Series</div>
-                        <div>Machine Name</div>
-                        <div>Image Name</div>
-                        <div></div>
-                    </div>
-                    <div id="machineEditor" class="manage-grid"></div>
-                    <div id="machineEditorEmpty" class="manage-empty" style="display:none;">No machine rows. Click Add Machine.</div>
-                    </div>
                 </div>
             </div>
 
@@ -545,7 +530,6 @@
         let settingsDraftValues = [];
         let settingsMachineDraft = [];
         let machineConfigRetryCount = 0;
-        let machineImageFiles = [];
 
         function getMachineImageFileName(imagePath) {
             const normalized = String(imagePath || '').replace(/\\/g, '/').trim();
@@ -807,65 +791,15 @@
             return sanitized;
         }
 
-        let manageUnlocked = false;
-
-        function showModalTab(tabName) {
-            const visibilitySection = document.getElementById('visibilitySection');
-            const manageSection = document.getElementById('manageSection');
-            const visibilityTabBtn = document.getElementById('visibilityTabBtn');
-            const manageTabBtn = document.getElementById('manageTabBtn');
-
-            if (tabName === 'manage') {
-                visibilitySection.classList.remove('active');
-                manageSection.classList.add('active');
-                visibilityTabBtn.classList.remove('active');
-                manageTabBtn.classList.add('active');
-                document.getElementById('manageLock').style.display = manageUnlocked ? 'none' : 'flex';
-                document.getElementById('manageContent').style.display = manageUnlocked ? 'block' : 'none';
-                if (!manageUnlocked) {
-                    document.getElementById('managePwInput').value = '';
-                    document.getElementById('managePwError').textContent = '';
-                    setTimeout(() => document.getElementById('managePwInput').focus(), 50);
-                }
-            } else {
-                manageSection.classList.remove('active');
-                visibilitySection.classList.add('active');
-                manageTabBtn.classList.remove('active');
-                visibilityTabBtn.classList.add('active');
-            }
-        }
-
-        function requestManageTab() {
-            showModalTab('manage');
-        }
-
-        function submitManagePassword() {
-            const input = document.getElementById('managePwInput');
-            const errorEl = document.getElementById('managePwError');
-            if (input.value === 'Citiz3n') {
-                manageUnlocked = true;
-                document.getElementById('manageLock').style.display = 'none';
-                document.getElementById('manageContent').style.display = 'block';
-                errorEl.textContent = '';
-            } else {
-                errorEl.textContent = 'Incorrect password.';
-                input.value = '';
-                input.focus();
-            }
-        }
-
         function openSettingsModal() {
             settingsDraftValues = [...visibleMachineValues];
             settingsMachineDraft = machineData.map(machine => ({ ...machine }));
             buildSettingsList();
-            buildMachineEditor();
-            showModalTab('visibility');
             document.getElementById('settingsModal').classList.add('open');
         }
 
         function closeSettingsModal() {
             document.getElementById('settingsModal').classList.remove('open');
-            manageUnlocked = false;
         }
 
         function buildSettingsList() {
@@ -912,96 +846,6 @@
             });
         }
 
-        function addMachineRow() {
-            settingsMachineDraft.push({
-                series: 'General',
-                label: '',
-                imagePath: ''
-            });
-            buildMachineEditor();
-        }
-
-        function removeMachineRow(index) {
-            settingsMachineDraft.splice(index, 1);
-            buildMachineEditor();
-        }
-
-        function updateMachineDraft(index, field, value) {
-            if (!settingsMachineDraft[index]) {
-                return;
-            }
-            settingsMachineDraft[index][field] = value;
-        }
-
-        function buildMachineEditor() {
-            const editor = document.getElementById('machineEditor');
-            const empty = document.getElementById('machineEditorEmpty');
-            editor.innerHTML = '';
-
-            if (!settingsMachineDraft.length) {
-                empty.style.display = 'block';
-                return;
-            }
-
-            empty.style.display = 'none';
-
-            settingsMachineDraft.forEach((machine, index) => {
-                const row = document.createElement('div');
-                row.className = 'manage-row';
-
-                const seriesInput = document.createElement('input');
-                seriesInput.value = machine.series || '';
-                seriesInput.placeholder = 'L20Series';
-                seriesInput.oninput = (e) => updateMachineDraft(index, 'series', e.target.value);
-
-                const labelInput = document.createElement('input');
-                labelInput.value = machine.label || '';
-                labelInput.placeholder = 'L220-XII';
-                labelInput.oninput = (e) => {
-                    updateMachineDraft(index, 'label', e.target.value);
-                    updateMachineDraft(index, 'value', e.target.value);
-                };
-
-                const imageSelect = document.createElement('select');
-
-                const emptyOption = document.createElement('option');
-                emptyOption.value = '';
-                emptyOption.textContent = '-- none --';
-                imageSelect.appendChild(emptyOption);
-
-                machineImageFiles.forEach(fileName => {
-                    const option = document.createElement('option');
-                    option.value = fileName;
-                    option.textContent = fileName;
-                    imageSelect.appendChild(option);
-                });
-
-                const currentImageFile = getMachineImageFileName(machine.imagePath);
-                if (currentImageFile && !machineImageFiles.includes(currentImageFile)) {
-                    const customOption = document.createElement('option');
-                    customOption.value = currentImageFile;
-                    customOption.textContent = currentImageFile;
-                    imageSelect.appendChild(customOption);
-                }
-
-                imageSelect.value = currentImageFile;
-                imageSelect.onchange = (e) => updateMachineDraft(index, 'imagePath', normalizeMachineImagePath(e.target.value));
-
-                const removeBtn = document.createElement('button');
-                removeBtn.type = 'button';
-                removeBtn.className = 'delete-btn';
-                removeBtn.textContent = 'Remove';
-                removeBtn.onclick = () => removeMachineRow(index);
-
-                row.appendChild(seriesInput);
-                row.appendChild(labelInput);
-                row.appendChild(imageSelect);
-                row.appendChild(removeBtn);
-
-                editor.appendChild(row);
-            });
-        }
-
         function setAllVisibility(isVisible) {
             settingsDraftValues = isVisible
                 ? settingsMachineDraft.map(machine => machine.value)
@@ -1032,10 +876,8 @@
         function applyMachineConfig(payload) {
             const machines = Array.isArray(payload.machines) ? payload.machines : [];
             const visible = Array.isArray(payload.visibleMachines) ? payload.visibleMachines : [];
-            const images = Array.isArray(payload.imageFiles) ? payload.imageFiles : [];
 
             machineData = sanitizeMachineDraft(machines);
-            machineImageFiles = images;
 
             if (visible.length) {
                 const allowed = new Set(machineData.map(machine => machine.value));
