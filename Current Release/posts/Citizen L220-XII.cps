@@ -11,7 +11,7 @@ capabilities = CAPABILITY_MILLING | CAPABILITY_TURNING | CAPABILITY_SETUP_SHEET;
 mimetype = "text/html";
 keywords = "MODEL_IMAGE PREVIEW_IMAGE PREVIEW_IMAGE_ALWAYS";
 setCodePage("utf-8");
-include("Common700.cps");
+include("common3.cps");
 generalSettings = {};
 
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ gangTurning = {
   spindleOnCW: 3,
   spindleOnCCW: 4,
   spindleOff: 5,
-  safetyVal: "X#814+" + xFormat.format(toPreciseUnit(1.0, MM)),
+  safetyVal: "X#814+" + xFormat.format(toPreciseUnit(1.0, MM)) + yOutput.format(0),
   fluctuation: { on: mFormat.format(96), off: mFormat.format(97) },
   xScale: 2,
   yScale: 1,
@@ -63,7 +63,7 @@ gangEndWorking = {
   spindleOff: { live: 82, static: 5 },
   safetyVal: "Z" + zFormat.format(toPreciseUnit(-1.0,MM)),
   fluctuation: { on: mFormat.format(96), off: mFormat.format(97) },
-  xScale: 2,
+  xScale: -2,
   yScale: -2,
   zScale: -1,
   zDir: 1,
@@ -77,7 +77,7 @@ gangCrossWorking = {
   spindleOnCW: 80,
   spindleOnCCW: 81,
   spindleOff: 82,
-  safetyVal: "X#814+" + xFormat.format(toPreciseUnit(1.0, MM)),
+  safetyVal: "X#814+" + xFormat.format(toPreciseUnit(1.0, MM)) + yOutput.format(0),
   xScale: 2,
   yScale: -2,
   zScale: -1,

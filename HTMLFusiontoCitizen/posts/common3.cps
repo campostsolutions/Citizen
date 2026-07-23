@@ -197,18 +197,19 @@ function setScaling(toolNumber) {
   zOutput = createVariable({prefix:"Z"}, zFormat);
   wOutput = createVariable({prefix:"W"}, zFormat);
   yOutput = createVariable({prefix:"Y"}, yFormat);
-  cFormat = createFormat({decimals:3, forceDecimal:true, scale:DEG});
+  cFormat = createFormat({decimals:4, forceDecimal:true, scale:DEG});
   if (getMachiningDirection(currentSection) == MACHINING_DIRECTION_RADIAL) {
     crossWorking = true;
   } else {
     crossWorking = false;
   }
   //let crossWorking = (getMachiningDirection(currentSection) == MACHINING_DIRECTION_RADIAL);
-  var offset90 = ((toolNumber >= 11 && toolNumber <= 14) && (!description.includes("M5")) || (toolNumber >= 21 && toolNumber <= 23) && !offset180);
-  var offset180 = ((toolNumber >= 21 && toolNumber <= 23) && crossWorking) || (description.includes("M5") && (tool.number >= 20 && tool.number <= 29));
-  var offset270 = (toolNumber >= 11 && toolNumber <= 14) && (description.includes("M5"));
-  cFormat.setOffset(offset90 ? 90 : offset180 ? 180 : offset270 ? 270 : 0);
-  eFormat.setOffset(offset90 ? 90 : offset180 ? 180 : offset270 ? 270 : 0);
+
+  var offset180 = (toolNumber >= 21 && toolNumber <= 23) && crossWorking;
+  var offset90 = ((toolNumber >= 11 && toolNumber <= 14) || (toolNumber >= 21 && toolNumber <= 23) && !offset180);
+  cFormat.setOffset(offset90 ? 90 : offset180 ? 180 : 0);
+  eFormat.setOffset(offset90 ? 90 : offset180 ? 180 : 0);
+
   cOutput = createOutputVariable({prefix:"C"}, cFormat);
   cOutput.setCyclicLimit(360);
   eOutput = createOutputVariable({prefix:"E"}, eFormat);
@@ -216,11 +217,14 @@ function setScaling(toolNumber) {
 
   //added here for baxis polar
   if (currentSection.isMultiAxis() && generalSettings.toolpost == "gangBaxisDriven" || generalSettings.toolpost == "gangBaxisManual") {
-
-    xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.xScale ? generalSettings.xScale : 1});
+    xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:-1});
+    zFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:-1});
+    //xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.xScale ? generalSettings.xScale : 1});
     yFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.yScale ? generalSettings.yScale : 1});
-    zFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.zScale ? generalSettings.zScale : 1});
-    if (generalSettings.toolpost == "gangBaxisManual" || currentSection.isMultiAxis()) {
+    // zFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.zScale ? generalSettings.zScale : 1});
+    if (generalSettings.toolpost == "gangBaxisManual" /*|| currentSection.isMultiAxis()*/) {
+    //if (generalSettings.toolpost == "gangBaxisManual") {
+      xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:1});
       xOutput = createVariable({prefix:"X"}, xFormat);
       yOutput = createVariable({prefix:"Y"}, yFormat);
       zOutput = createVariable({prefix:"Z"}, zFormat);
@@ -336,15 +340,18 @@ function onToolChange(tempSpindle, abcValue) {
           eFormat.setOffset(properties.subSpindlePhaseAngle);
         }
       }
-      var evalue = eOutput.format(Math.abs(abcValue.z));
+      //var evalue = eOutput.format(Math.abs(abcValue.z));
+      var evalue = eOutput.format(0);
+      eOutput.reset();
       if (!currentSection.isMultiAxis()) {
         writeBlock(
           gFormat.format(97), spindleDir = mFormat.format(tool.clockwise ? getCode("START_SPINDLE_CW", getSpindle(false)) : getCode("START_SPINDLE_CCW", getSpindle(false)))
           + "S" + getEncoder() + "=" + rpmOutput.format(tool.spindleRPM)
           + "T" + tool.number * 100
-          + evalue
+          + "E0"
         );
       } else {
+
         writeBlock(
           gFormat.format(97), spindleDir = mFormat.format(tool.clockwise ? getCode("START_SPINDLE_CW", getSpindle(false)) : getCode("START_SPINDLE_CCW", getSpindle(false)))
           + "S" + getEncoder() + "=" + rpmOutput.format(tool.spindleRPM)
@@ -445,7 +452,7 @@ function initialPositioning(abc) {
           writeBlock(gMotionModal.format(0), xOutput.format(initialPosition.x), yOutput.format(initialPosition.y), zOutput.format((-1 - tool.diameter / 2) * -1) + "T" + tool.number);
         }
       } else {
-        writeBlock(gMotionModal.format(0), xOutput.format(initialPosition.x), generalSettings.safetyVal + "T" + tool.number);
+        writeBlock(gMotionModal.format(0), xOutput.format(initialPosition.x), "Y0.", generalSettings.safetyVal + "T" + tool.number);
         if ((tool.maximumSpindleSpeed > 0) && (currentSection.getTool().getSpindleMode() == SPINDLE_CONSTANT_SURFACE_SPEED)) {
           var maximumSpindleSpeed = (tool.maximumSpindleSpeed > 0) ? Math.min(tool.maximumSpindleSpeed, properties.maximumSpindleSpeed) : properties.maximumSpindleSpeed;
           writeBlock(gFormat.format(50), sOutput.format(maximumSpindleSpeed));
@@ -481,7 +488,7 @@ function initialPositioning(abc) {
       } else {
         cOutput.reset();
         bOutput.reset();
-        writeBlock(gMotionModal.format(1), xOutput.format(initialPosition.x), yOutput.format(initialPosition.y), bOutput.format(abc.y), properties.useParametricFeed ? "F#109" : feedOutput.format(highFeedrate));
+        writeBlock(gMotionModal.format(1), xOutput.format(initialPosition.x), yOutput.format(initialPosition.y), bOutput.format(abc.y), cOutput.format(abc.z), properties.useParametricFeed ? "F#109" : feedOutput.format(highFeedrate));
       }
     }
   } else {
@@ -501,7 +508,7 @@ function initialPositioning(abc) {
       writeBlock(gFormat.format(0), zOutput.format(initialPosition.z), machineState.usePolarMode ? xOutput.format(getModulus(initialPosition.x, initialPosition.y)) : xOutput.format(initialPosition.x), currentSection.getType() == TYPE_MILLING && !machineState.usePolarMode ? yOutput.format(initialPosition.y) : "");
     } else {
       //if (getParameter("operation-strategy") != "drill") {
-      writeBlock(gMotionModal.format(0), zOutput.format(initialPosition.z), (!tool.isTurningTool() ? yOutput.format(initialPosition.y) : "") + (!toolOut ? "T" + tool.number : ""));
+      writeBlock(gMotionModal.format(0), zOutput.format(initialPosition.z), (!tool.isTurningTool() ? yOutput.format(initialPosition.y) : "Y0.") + (!toolOut ? "T" + tool.number : ""));
       if (generalSettings.toolpost == "backToolPostStatic") {
         writeBlock(gMotionModal.format(0), xOutput.format(getModulus(initialPosition.x, initialPosition.y)));
       } else {
@@ -536,32 +543,22 @@ function cancelWorkPlane() {
     } else {
       if (generalSettings.toolpost == "gangBaxisDriven") {
         if (machineState.usePolarMode) {
-          if (generalSettings.newGen) {
-            writeBlock(gMotionModal.format(0), generalSettings.safetyVal + "+" + xyzFormat.format(tool.diameter * 2 + 1));
-            writeBlock(bFormat.format(90 / 180 * Math.PI));
-            writeBlock(gFormat.format(50), "W#2");
-          } else {
-            writeBlock(gMotionModal.format(0), "X-#100450" + "-" + xyzFormat.format(tool.diameter + 1), bFormat.format(90 / 180 * Math.PI));
-          }
+          writeBlock(gMotionModal.format(0), "X-#814" + "-" + xyzFormat.format(tool.diameter + 1), bFormat.format(90 / 180 * Math.PI));
         } else {
           if (generalSettings.newGen) {
-            if (getParameter("operation:isMultiAxisStrategy") == 0) {
-              writeBlock("G931");
-            } else {
-              writeBlock("G921");
-            }
-            writeBlock(gFormat.format(0), gFormat.format(18), "X#100450+" + xyzFormat.format((tool.diameter * 2 + 1)), yOutput.format(0));
-            writeBlock(gFormat.format(910) + "B90.");
+            writeBlock("G921");
+            writeBlock(gFormat.format(0), gFormat.format(18), "X#814+" + xyzFormat.format((tool.diameter * 2 + 1)));
+            writeBlock(yOutput.format(0) + "B90.");
           } else {
             writeBlock(gWCSModal.format(951));
-            writeBlock(gFormat.format(0), gFormat.format(18), "X#100450+" + xyzFormat.format((tool.diameter + 1)) + "B90.0");
+            writeBlock(gFormat.format(0), gFormat.format(18), "X#814+" + xyzFormat.format((tool.diameter + 1)) +  "B90.0");
             writeBlock(gWCSModal.format(901));
           }
         }
 
       } else if (generalSettings.toolpost == "gangBaxisManual") {
         if (!machineState.usePolarMode) {
-          writeBlock(gWCSModal.format(951));
+          writeBlock(gWCSModal.format(176));
         }
       }
     }
@@ -592,64 +589,40 @@ function setWorkPlane(abc) {
           error(localize("Manual B Axis toolpost HAS to be the same angle - " + previousAngledManual + " is " + bManualFormat.format(previousABCyManual) + " degrees and " + getParameter("operation-comment") + " is " + bManualFormat.format(abc.y) + " degrees"));
         }
       }
-      writeBlock("#1=#[180500+#81314]");
+      //writeBlock("#1=#[25030+#858]");
+      writeBlock("#1=#[25030+#858]+20");
       writeBlock("#2=#1-[#1*[SIN[" + bManualFormat.format(abc.y) + "]]]#3=[#1*[COS[" + bManualFormat.format(abc.y) + "]]]/2");
-      writeBlock(gFormat.format(950) + "X" + spatialFormat.format(X) + "-#2 " + zOutput.format(0) + "+#81930-#3 D" + bManualFormat.format(abc.y));
+      //writeBlock(gFormat.format(176) + "X" + spatialFormat.format(X) + "-#2 " + zOutput.format(0) + "+#26115-#3 D" + bManualFormat.format(abc.y));
+      writeBlock(gFormat.format(176) + "X" + spatialFormat.format(X) + "-#2 " + zOutput.format(0) + "+10-#3 D" + bManualFormat.format(abc.y));
       previousABCyManual = abc.y;
 
       previousAngledManual = getParameter("operation-comment");
 
       if (machineState.usePolarMode) {
         writeBlock(mFormat.format(212), "Y1");
-        writeBlock(gMotionModal.format(50) + "X-#100450" + addTo814 + "Y0");
+        writeBlock(gMotionModal.format(50) + "X-#814" + addTo814 + "Y0");
         zOutput.reset();
         writeBlock(gMotionModal.format(0) + zOutput.format(transformedPosition.z));
       }
     } else if (generalSettings.toolpost == "gangBaxisDriven") {
-      var addTo814 = xyzFormat.format(tool.diameter * 2 + 1);
-      if (generalSettings.newGen && hasParameter("operation:isMultiAxisStrategy") && hasParameter("operation:multiAxisMachiningType") && getParameter("operation:multiAxisMachiningType") == "five_axis" || machineState.usePolarMode) {
-        yFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:-2});
-        xOutput = createVariable({prefix:"X"}, xFormat);
-        yOutput = createVariable({prefix:"Y"}, yFormat);
-        gPlaneModal.reset();
-        writeBlock(gMotionModal.format(0), generalSettings.safetyVal + "+" + addTo814, zOutput.format(0), tooloffsetOutput ? "" : "T" + tool.number);
-        zOutput.reset();
-        if (machineState.usePolarMode) {
-          writeBlock("#1=#5022");
-        }
-        writeBlock(gFormat.format(920), generalSettings.safetyVal + "+" + addTo814, yOutput.format(0), zOutput.format(0), bOutput.format(abc.y), cOutput.format(0));
-        if (machineState.usePolarMode) {
-          writeBlock(gFormat.format(921));
-          writeBlock("#2=#5022-#1");
-          zOutput.reset();
-          writeBlock(gFormat.format(50), generalSettings.safetyVal + "+" + addTo814, zOutput.format(0));
-        }
-      } else if (generalSettings.newGen) {
+      var addTo814 = xyzFormat.format(tool.diameter + 1);
+      if (generalSettings.newGen) {
         yFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:-2});
         xOutput = createVariable({prefix:"X"}, xFormat);
         yOutput = createVariable({prefix:"Y"}, yFormat);
         gPlaneModal.reset();
         writeBlock(gMotionModal.format(0), generalSettings.safetyVal + "+" + addTo814, zOutput.format(-1.0 + (tool.diameter * 2) - 15), tooloffsetOutput ? "" : "T" + tool.number);
         zOutput.reset();
-        writeBlock(gMotionModal.format(0), cOutput.format(abc.z));
-
-        writeBlock(
-          gFormat.format(930),
-          "X" + spatialFormat.format(0),
-          "Y" + spatialFormat.format(0),
-          "Z" + spatialFormat.format(0),
-          bFormat.format((getSpindle(true) == SPINDLE_MAIN) ? abc.y : -abc.y) // only B-axis is supported for G368
-        );
-        //writeBlock(gFormat.format(930), generalSettings.safetyVal + "+" + addTo814, yOutput.format(0), zOutput.format((-1.0 - tool.diameter / 2)*-1), bOutput.format(abc.y), cOutput.format(0));
+        writeBlock(gFormat.format(920), generalSettings.safetyVal + "+" + addTo814, yOutput.format(0), zOutput.format((-1.0 - tool.diameter / 2) * -1), bOutput.format(abc.y), cOutput.format(0));
       } else {
         gPlaneModal.reset();
         writeBlock(gMotionModal.format(0), generalSettings.safetyVal + "+" + addTo814, "Z" + zFormat.format(-(generalSettings.bAxisOffset - transformedPosition.z - 1.0 - tool.diameter / 2)), tooloffsetOutput ? "" : "T" + tool.number);
         zOutput.reset();
-        // writeBlock(gMotionModal.format(900) + "X#100450+" + addTo814 + "Z"+(zFormat.format(transformedPosition.z)), bFormat.format(90 / 180 * Math.PI));
-        writeBlock(gMotionModal.format(0), cOutput.format(abc.z));
+        writeBlock(gMotionModal.format(900) + "X#814+" + addTo814 + "Z" + (zFormat.format(transformedPosition.z)), bFormat.format(90 / 180 * Math.PI));
+        writeBlock(gMotionModal.format(0), bFormat.format((getSpindle(true) == SPINDLE_MAIN) ? abc.y : -abc.y), cOutput.format(abc.z));
         if (machineState.usePolarMode) {
           writeBlock(mFormat.format(212), "Y1");// + xyzFormat.format(1));
-          writeBlock(gMotionModal.format(50) + "X-#100450-" + addTo814 + "Y0");//,  bFormat.format((getSpindle(true) == SPINDLE_MAIN) ? abc.y : -abc.y)/*bFormat.format(90 / 180 * Math.PI)*/);
+          writeBlock(gMotionModal.format(50) + "X-#814-" + addTo814 + "Y0");//,  bFormat.format((getSpindle(true) == SPINDLE_MAIN) ? abc.y : -abc.y)/*bFormat.format(90 / 180 * Math.PI)*/);
           zOutput.reset();
           writeBlock(gMotionModal.format(0) + zOutput.format(transformedPosition.z));
           //writeBlock(gFormat.format(98));
@@ -750,6 +723,7 @@ minimumCircularSweep = toRad(0.01);
 maximumCircularSweep = toRad(120); // reduced sweep due to G112 support
 allowHelicalMoves = true;
 allowedCircularPlanes = undefined; // allow any circular motion
+allowSpiralMoves = false;
 highFeedrate = (unit == IN) ? 470 : 10000;
 
 // user-defined properties
@@ -766,7 +740,7 @@ properties = {
   leaveSpindleRunning    : true,
   subroutineAll          : false,
   subSpindlePhaseAngle   : 0,
-  increaseBAxisStroke    : true
+  increaseBAxisStroke    : false
 };
 
 // user-defined property definitions
@@ -799,7 +773,7 @@ var useSimpleThread = false;
 var permittedCommentChars = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,=_-";
 var spatialFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true});
 var xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.xScale ? generalSettings.xScale : 1}); // diameter mode & IS SCALING POLAR COORDINATES
-var yFormat = createFormat({decimals:(unit == MM ? 3 : 3), forceDecimal:true});
+var yFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true});
 var yPolarFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:generalSettings.toolpost == "gangBaxisDriven" || generalSettings.toolpost == "backToolPostStatic" ? 1 : 1});
 var zFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true});
 var rFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true}); // radius
@@ -809,7 +783,7 @@ var bManualFormat = createFormat({decimals:3, forceDecimal:true, scale:DEG});
 var cFormat = createFormat({decimals:3, type:FORMAT_REAL, scale:DEG});
 //var cFormat = createFormat({decimals:3, forceDecimal:true, scale:DEG, cyclicLimit:Math.PI * 2});
 var eFormat = createFormat({decimals:3, forceDecimal:true, scale:DEG});
-var fpmFormat = createFormat({decimals:(unit == MM ? 0 : 3), type:FORMAT_INTEGER});
+var fpmFormat = createFormat({decimals:(unit == MM ? 3 : 3), type:FORMAT_INTEGER});
 var fprFormat = createFormat({type:FORMAT_REAL, decimals:(unit == MM ? 3 : 4), minimum:(unit == MM ? 0.001 : 0.0001)});
 var feedFormat = fpmFormat;
 //var feedFormat = createFormat({decimals:(unit == MM ? 2 : 3), forceDecimal:true});
@@ -912,7 +886,7 @@ var tapping = false;
 var ejectRoutine = false;
 var bestABCIndex = undefined;
 var headOffset = 0;
-var debugMode = true;
+var debugMode = false;
 var base64encoded = true;
 var previousABCyManual = undefined;
 var previousAngledManual;
@@ -1719,9 +1693,7 @@ function onSection() {
   debugSectionHeader("redirectSection");
 
   shouldRedirect = !groupedOperations || isFirstSection() || tool.number != getPreviousSection().getTool().number;
-  if ((groupedOperations && hasParameter("operation:isMultiAxisStrategy") && (getParameter("operation:isMultiAxisStrategy") != 0))) {
-    error(localize("Grouped 5 Axis Simultaneous Operations are currently not supported."));
-  }
+
   if (shouldRedirect || !redirectStarted) {
 
     if (!debugMode && isRedirecting()) {
@@ -1756,7 +1728,7 @@ function onSection() {
   // }
 
   setMachineConfiguration(machineConfiguration);
-  currentSection.optimizeMachineAnglesByMachine(machineConfiguration, OPTIMIZE_NONE); // map tip mode
+  currentSection.optimizeMachineAnglesByMachine(machineConfiguration, 1); // map tip mode
 
   tapping = hasParameter("operation:cycleType") &&
     ((getParameter("operation:cycleType") == "tapping") ||
@@ -1909,7 +1881,7 @@ function onSection() {
       gPlaneModal.reset();
       writeBlock(gMotionModal.format(0), generalSettings.safetyVal + "+" + addTo814, xOutput.format(-(generalSettings.bAxisOffset - transformedPosition.z - 1.0 - tool.diameter / 2)), GroupedbAxis ? "" : "T" + tool.number);
       zOutput.reset();
-      writeBlock(gMotionModal.format(900) + "X#100450+" + addTo814 + xOutput.format(transformedPosition.z), bFormat.format(abc.y /*90/180*Math.PI*/));
+      writeBlock(gMotionModal.format(900) + "X#814+" + addTo814 + xOutput.format(transformedPosition.z), bFormat.format(abc.y /*90/180*Math.PI*/));
       writeBlock(gMotionModal.format(0), aOutput.format(abc.x), bOutput.format(abc.y), cOutput.format(abc.z));
       writeBlock(
         gFormat.format(950),
@@ -2131,7 +2103,6 @@ function updateMachiningMode(section) {
         machineState.usePolarMode = true;
       }
     }
-
   }
 }
 
@@ -2349,12 +2320,8 @@ function onRapid(_x, _y, _z) {
         writeBlock(gMotionModal.format(1), x, machineState.axialCenterDrilling ? "" : y, z, getFeed(highFeedrate));
         resetFeed = false;
       } else {
-        if (machineState.usePolarMode) {
-          writeBlock(gMotionModal.format(1), x, machineState.axialCenterDrilling ? "" : y, z, getFeed(highFeedrate));
-        } else {
-          writeBlock(gMotionModal.format(0), x, machineState.axialCenterDrilling ? "" : y, z);
+        writeBlock(gMotionModal.format(0), x, machineState.axialCenterDrilling ? "" : y, z);
         // forceFeed();
-        }
       }
     }
   }
@@ -2645,8 +2612,6 @@ function onLinear5D(_x, _y, _z, _a, _b, _c, feed) {
   var a = aOutput.format(_a);
   var b = bOutput.format(_b);
   var c = cOutput.format(_c);
-  //var actualFeed = getMultiaxisFeed(_x, _y, _z, _a, _b, _c, feed);
-  //var f = feedOutput.format(feed);
 
   //*************** WE SHOULD BE USING MULTI AXIS FEEDRATE HERE ***************
   //  var f = getFeed(feed);
@@ -3185,7 +3150,7 @@ function onCyclePoint(x, y, z) {
       return;
     }
   }
-  if (generalSettings.toolpost == "gangBaxisDriven") {
+  if (generalSettings.toolpost == "gangBaxisDriven" || "gangBaxisManual") {
     plane = 18;
   }
   if (generalSettings.toolpost == "gangCrossWorking") {
@@ -3441,7 +3406,6 @@ function onParameter(name, value) {
       forcePolarMode = true;
       forceXZCMode = false;
     } else if (String(value).toUpperCase() == "STARTGROUP") {
-
       shouldRedirect = false;
       redirectStarted = false;
       groupedOperations = true;
@@ -3587,15 +3551,9 @@ function onCommand(command) {
     break;
   case COMMAND_STOP_SPINDLE:
     if (properties.leaveSpindleRunning) {
-      if (machineState.isTurningOperation) {
-        writeBlock("(" +
+      writeBlock("(" +
           mFormat.format(getCode("STOP_SPINDLE", activeSpindle)) + ")");
-        sOutput.reset();
-      } else {
-        writeBlock(
-          mFormat.format(getCode("STOP_SPINDLE", activeSpindle)));
-        sOutput.reset();
-      }
+      sOutput.reset();
     } else {
       writeBlock(
         mFormat.format(getCode("STOP_SPINDLE", activeSpindle)));
@@ -3747,7 +3705,7 @@ function onSectionEnd() {
     if (machineState.usePolarMode) {
       const currentPosition = getCurrentPosition();
       if (!generalSettings.toolpost == "backToolPostStatic" || generalSettings.toolpost == "gangBaxisDriven" || generalSettings.toolpost == "gangBaxisManual") {
-        writeBlock(gMotionModal.format(machineState.usePolarMode ? 1 : 0), zOutput.format(currentPosition.z + tool.diameter / 2));
+        writeBlock(gMotionModal.format(0), zOutput.format(currentPosition.z + tool.diameter / 2));
         setPolarMode(false); // disable polar interpolation mode
         writeBlock(gPlaneModal.format(18));
       } else {
@@ -3797,16 +3755,15 @@ function onSectionEnd() {
 
     if (generalSettings.toolpost == "gangBaxisDriven" || generalSettings.toolpost == "gangBaxisManual") {
       if (machineState.usePolarMode) {
-        if (!generalSettings.newGen) {
-          writeBlock(mFormat.format(211), "Y1");
-          writeBlock(gWCSModal.format(901));
-        }
-        writeBlock(gMotionModal.format(40), "X#100450+" + xyzFormat.format(tool.diameter + 1) + "T0");
+        writeBlock(mFormat.format(211), "Y1");
+        writeBlock(gWCSModal.format(901));
+        writeBlock(gMotionModal.format(40), "X#814+"+ xyzFormat.format(tool.diameter + 1) + "T0");
+
       } else {
         if (generalSettings.newGen) {
-          writeBlock(gMotionModal.format(40), "X#100450+" + xyzFormat.format(tool.diameter * 2 + 1) + "T0");
+          writeBlock(gMotionModal.format(40), "X#814+" + xyzFormat.format(tool.diameter * 2 + 1) + "T0");
         } else {
-          writeBlock(gMotionModal.format(40), generalSettings.safetyVal + "+" + xyzFormat.format(tool.diameter + 1) + "T0");
+          writeBlock(gMotionModal.format(40), generalSettings.safetyVal + "+" + xyzFormat.format(tool.diameter + 1) + yOutput.format(0) + "T0");
         }
       }
     } else {
@@ -3842,7 +3799,7 @@ function onSectionEnd() {
       } else {
         if (currentSection.getParameter("operation:isRotaryStrategy")) {
           if (generalSettings.toolpost == "gangEndWorking") {
-            writeBlock(gMotionModal.format(0), gMotionModal.format(40), "X#100450+1.0" + "T0");
+            writeBlock(gMotionModal.format(0), gMotionModal.format(40), "X#814+1.0 Y0." + "T0");
           } else if (generalSettings.toolpost == "oppositeEndWorking1") {
             if (getMachiningDirection(currentSection) == MACHINING_DIRECTION_RADIAL) {
               writeBlock(gMotionModal.format(0), gMotionModal.format(40), "Z" + zFormat.format((-1 - tool.diameter / 2) * -1) + "T0");
@@ -3871,10 +3828,7 @@ function onSectionEnd() {
     forcePolarMode = false;
     partCutoff = false;
     onCommand(COMMAND_STOP_SPINDLE);
-    //need an M147 after using the turret on an M machine
-    if (description.includes("M5") && (tool.number >= 20 && tool.number <= 29)) {
-      writeBlock(mFormat.format(147));
-    }
+
     closedSection = true;
     forceAny();
     shouldRedirect = false;

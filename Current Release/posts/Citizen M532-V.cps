@@ -11,7 +11,7 @@ capabilities = CAPABILITY_MILLING | CAPABILITY_TURNING | CAPABILITY_SETUP_SHEET;
 mimetype = "text/html";
 keywords = "MODEL_IMAGE PREVIEW_IMAGE PREVIEW_IMAGE_ALWAYS";
 setCodePage("utf-8");
-include("Common800.cps");
+include("Common6.cps");
 
 generalSettings = {};
 //-------------------------------------------------------------------------------------------------------------------------------
