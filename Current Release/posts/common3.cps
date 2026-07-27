@@ -197,7 +197,7 @@ function setScaling(toolNumber) {
   zOutput = createVariable({prefix:"Z"}, zFormat);
   wOutput = createVariable({prefix:"W"}, zFormat);
   yOutput = createVariable({prefix:"Y"}, yFormat);
-  cFormat = createFormat({decimals:4, forceDecimal:true, scale:DEG});
+  cFormat = createFormat({decimals:3, forceDecimal:true, scale:DEG});
   if (getMachiningDirection(currentSection) == MACHINING_DIRECTION_RADIAL) {
     crossWorking = true;
   } else {
@@ -234,6 +234,10 @@ function setScaling(toolNumber) {
       zOutput = createVariable({prefix:"X"}, zFormat);
     }
     yPolarFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:1});
+  }
+  if (generalSettings.toolpost == "gangEndWorking") {
+    xFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:2});
+    xOutput = createVariable({prefix:"X"}, xFormat);
   }
   if (generalSettings.toolpost == "backToolPostStatic" || generalSettings.toolpost == "oppositeEndWorking1") {
     yPolarFormat = createFormat({decimals:(unit == MM ? 3 : 4), forceDecimal:true, scale:-1});
@@ -488,7 +492,7 @@ function initialPositioning(abc) {
       } else {
         cOutput.reset();
         bOutput.reset();
-        writeBlock(gMotionModal.format(1), xOutput.format(initialPosition.x), yOutput.format(initialPosition.y), bOutput.format(abc.y), cOutput.format(abc.z), properties.useParametricFeed ? "F#109" : feedOutput.format(highFeedrate));
+        writeBlock(gMotionModal.format(1), xOutput.format(initialPosition.x), yOutput.format(initialPosition.y), bOutput.format(abc.y), cOutput.format(abc.z), properties.useParametricFeed ? "F#109" : formatFeedWordForSection(highFeedrate));
       }
     }
   } else {
@@ -508,7 +512,7 @@ function initialPositioning(abc) {
       writeBlock(gFormat.format(0), zOutput.format(initialPosition.z), machineState.usePolarMode ? xOutput.format(getModulus(initialPosition.x, initialPosition.y)) : xOutput.format(initialPosition.x), currentSection.getType() == TYPE_MILLING && !machineState.usePolarMode ? yOutput.format(initialPosition.y) : "");
     } else {
       //if (getParameter("operation-strategy") != "drill") {
-      writeBlock(gMotionModal.format(0), zOutput.format(initialPosition.z), yOutput.format(0) + (!toolOut ? "T" + tool.number : ""));
+      writeBlock(gMotionModal.format(0), zOutput.format(initialPosition.z)+ "Y0. " + (!toolOut ? "T" + tool.number : ""));
       if (generalSettings.toolpost == "backToolPostStatic") {
         writeBlock(gMotionModal.format(0), xOutput.format(getModulus(initialPosition.x, initialPosition.y)));
       } else {
@@ -650,7 +654,7 @@ function setWorkPlane(abc) {
       if (!generalSettings.newGen) {
         if (generalSettings.toolpost == "oppositeEndWorking1" || generalSettings.toolpost == "backToolPostStatic") {
 
-          writeBlock(gMotionModal.format(0), cOutput.format(getCClosest(initialPosition.x, initialPosition.y, cOutput.getCurrent(), false)));
+          writeBlock(gMotionModal.format(0), /*cOutput.format(getCClosest(initialPosition.x, initialPosition.y, cOutput.getCurrent(), false))*/cOutput.format(abc.z));
         } else {
           writeBlock(gMotionModal.format(0), cOutput.format(abc.z));
         }
@@ -1187,6 +1191,30 @@ function FeedContext(id, description, feed) {
   this.feed = feed;
 }
 
+function ensureTurningFeedDecimal(text) {
+  var turningTool = tool && tool.isTurningTool && tool.isTurningTool();
+  if (turningTool && (text != "") && (text.indexOf(".") == -1)) {
+    return text + ".0";
+  }
+  return text;
+}
+
+function formatParametricFeedForSection(f) {
+  var turningTool = tool && tool.isTurningTool && tool.isTurningTool();
+  if (!turningTool) {
+    return String(Math.ceil(f - 1e-9));
+  }
+  return ensureTurningFeedDecimal(feedFormat.format(f));
+}
+
+function formatFeedWordForSection(f) {
+  var turningTool = tool && tool.isTurningTool && tool.isTurningTool();
+  if (!turningTool) {
+    return "F" + String(Math.ceil(f - 1e-9));
+  }
+  return ensureTurningFeedDecimal(feedOutput.format(f));
+}
+
 function getFeed(f) {
   if (currentSection.feedMode != FEED_PER_REVOLUTION && machineState.feedPerRevolution) {
     f /= spindleSpeed;
@@ -1205,7 +1233,7 @@ function getFeed(f) {
     }
     currentFeedId = undefined; // force Q feed next time
   }
-  return feedOutput.format(f); // use feed value
+  return formatFeedWordForSection(f); // use feed value
 }
 
 function initializeActiveFeeds() {
@@ -1355,7 +1383,7 @@ function initializeActiveFeeds() {
 
   for (var i = 0; i < activeFeeds.length; ++i) {
     var feedContext = activeFeeds[i];
-    writeBlock("#" + (firstFeedParameter + feedContext.id) + "=" + feedFormat.format(feedContext.feed), formatComment(feedContext.description));
+    writeBlock("#" + (firstFeedParameter + feedContext.id) + "=" + formatParametricFeedForSection(feedContext.feed), formatComment(feedContext.description));
   }
 }
 
@@ -2615,7 +2643,7 @@ function onLinear5D(_x, _y, _z, _a, _b, _c, feed) {
 
   //*************** WE SHOULD BE USING MULTI AXIS FEEDRATE HERE ***************
   //  var f = getFeed(feed);
-  var f = feedOutput.format(getMultiaxisFeed(_x, _y, _z, _a, _b, _c, feed).frn);
+  var f = formatFeedWordForSection(getMultiaxisFeed(_x, _y, _z, _a, _b, _c, feed).frn);
 
   if (x || y || z || a || b || c) {
     if (generalSettings.toolpost == "gangBaxisDriven" && !generalSettings.newGen) {
@@ -3235,14 +3263,14 @@ function onCyclePoint(x, y, z) {
         writeBlock(
           gCycleModal.format(87),
           machineState.useXZCMode ? xOutput.format(getModulus(x, y)) : xOutput.format(x),
-          feedOutput.format(F)
+          formatFeedWordForSection(F)
         );
 
       } else {
         writeBlock(
           gCycleModal.format(83),
           zOutput.format(z),
-          feedOutput.format(F)
+          formatFeedWordForSection(F)
         );
       }
       break;
@@ -3255,7 +3283,7 @@ function onCyclePoint(x, y, z) {
           gCycleModal.format(87),
           machineState.useXZCMode ? xOutput.format(getModulus(x, y)) : xOutput.format(x),
           conditional(cycle.incrementalDepth > 0, qOutput.format(cycle.incrementalDepth)),
-          feedOutput.format(F)
+          formatFeedWordForSection(F)
         );
 
       } else {
@@ -3263,7 +3291,7 @@ function onCyclePoint(x, y, z) {
           gCycleModal.format(83),
           zOutput.format(z),
           conditional(cycle.incrementalDepth > 0, qOutput.format(cycle.incrementalDepth)),
-          feedOutput.format(F)
+          formatFeedWordForSection(F)
         );
       }
       break;
@@ -3702,29 +3730,30 @@ function onSectionEnd() {
     threadROutput.reset();
 
     gPlaneModal.reset();
+    if (currentSection.getType() == TYPE_MILLING) {
+      writeBlock (mFormat.format(3) + "S1=0");
+    }
     if (machineState.usePolarMode) {
       const currentPosition = getCurrentPosition();
       if (!generalSettings.toolpost == "backToolPostStatic" || generalSettings.toolpost == "gangBaxisDriven" || generalSettings.toolpost == "gangBaxisManual") {
         writeBlock(gMotionModal.format(0), zOutput.format(currentPosition.z + tool.diameter / 2));
         setPolarMode(false); // disable polar interpolation mode
-        writeBlock(mFormat.format(3) + "S1=0");
         writeBlock(gPlaneModal.format(18));
       } else {
         setPolarMode(false); // disable polar interpolation mode
         writeBlock(gPlaneModal.format(18));
-        writeBlock(mFormat.format(3) + "S1=0");
         writeBlock(gMotionModal.format(0), generalSettings.safetyVal);
       }
     }
     if (generalSettings.toolpost == "oppositeEndWorking1" || generalSettings.toolpost == "oppositeEndWorking2") {
       if (getMachiningDirection(currentSection) == MACHINING_DIRECTION_RADIAL) {
         writeBlock(gMotionModal.format(0), "Z" + zFormat.format((-1 - tool.diameter / 2) * -1));
-      } else {
-        if (currentSection.isMultiAxis()) {
+      } else if (currentSection.isMultiAxis()) {
           writeBlock(gMotionModal.format(0), "Z" + zFormat.format((-1 - tool.diameter / 2) * -1));
-        }
+        
+      } else {
+        writeBlock(gMotionModal.format(0), generalSettings.safetyVal);
       }
-            writeBlock(mFormat.format(3) + "S1=0");
     } else if (generalSettings.toolpost == "subCrossWorking") {
       writeBlock(gMotionModal.format(0), "Z" + zFormat.format((-1 - tool.diameter / 2) * -1));
     } else if (generalSettings.toolpost == "backToolPostStatic") {
@@ -3742,7 +3771,7 @@ function onSectionEnd() {
 
     // cancel SFM mode to preserve spindle speed
     if ((tool.getSpindleMode() == SPINDLE_CONSTANT_SURFACE_SPEED)) {
-      writeBlock(gFormat.format(97));
+     // writeBlock(gFormat.format(97));
     }
     if (tool.getSpindleMode() == SPINDLE_CONSTANT_SURFACE_SPEED) {
       if (generalSettings.fluctuation) {
@@ -3770,7 +3799,7 @@ function onSectionEnd() {
           writeBlock(gMotionModal.format(40), generalSettings.safetyVal + "+" + xyzFormat.format(tool.diameter + 1) + yOutput.format(0) + "T0");
         }
       }
-      writeBlock(mFormat.format(3) + "S1=0");
+
     } else {
       if (tool.number >= 31 && tool.number <= 39) {
         if (currentSection.getType() == TYPE_MILLING && !generalSettings.toolpost == "backToolPostStatic") {
